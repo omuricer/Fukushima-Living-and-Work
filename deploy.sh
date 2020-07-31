@@ -5,5 +5,5 @@ rm -rdf docs app/dist
 npm install
 npx webpack --mode production
 cp -rd src/image dist
-mv app/dist/* docs
+mv dist/* docs
 exit
