@@ -5,6 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import Hero from "@/components/template/hero";
 import Loading from "@/components/loading";
 
+import VirtualSpace from "@/components/virtualSpace";
+
+// @ts-ignore
+import mainVisual from "@/image/tatenaga.jpg";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: { position: "relative" },
@@ -56,9 +61,7 @@ const App: React.FC<IAppProps> = (props) => {
           </div>
         </div>
       </Hero>
-      <Hero>
-        <Typography>メインビジュアル</Typography>
-      </Hero>
+      <VirtualSpace />
     </div>
   );
 };
