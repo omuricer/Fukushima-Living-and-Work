@@ -1,2 +1,6 @@
-export type Icon = JSX.Element;
-export type Modal = JSX.Element;
+export type IconProps = {
+  image: string;
+  positionX: number;
+  positionY: number;
+};
+export type ModalProps = {};

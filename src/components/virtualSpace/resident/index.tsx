@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Modal } from "./types";
 import { IIconProps } from "./icon";
 import { IModalProps } from "./modal";
+import { IconProps, ModalProps } from "./types";
 
 type IResidentProps = {
-  iconProps: { image: string; positionX: number; positionY: number };
-  generateIcon: (props: IIconProps) => Icon;
-  modalProps: {};
-  generateModal: (props: IModalProps) => Modal;
+  icon: {
+    props: IconProps;
+    generate: (props: IIconProps) => JSX.Element;
+  };
+  modal: {
+    props: ModalProps;
+    generate: (props: IModalProps) => JSX.Element;
+  };
 };
 const Resident: React.FC<IResidentProps> = (props) => {
   const [opened, setOpened] = useState<boolean>(false);
 
-  const icon = props.generateIcon({
-    ...props.iconProps,
+  const icon = props.icon.generate({
+    ...props.icon.props,
     onClick: () => {
       setOpened(true);
     },
   });
-  const modal = props.generateModal({
+  const modal = props.modal.generate({
+    ...props.modal.props,
     open: opened,
     onClose: () => {
       setOpened(false);

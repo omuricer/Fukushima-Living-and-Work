@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Modal } from "./types";
 
 export type IIconProps = {
   image: string;
@@ -15,6 +14,7 @@ const Icon: React.FC<IIconProps> = (props) => {
       src={props.image}
       // className={[classes.shop, classes.bounds].join(" ")}
       style={{
+        position: "absolute",
         // width: `calc(0.25 * ${props.ratio} * ${naturalWidth}px)`,
         top: `calc(${props.positionY}%)`,
         left: `calc(${props.positionX}%)`,

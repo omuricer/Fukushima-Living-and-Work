@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Modal } from "./types";
+import {
+  IconProps,
+  ModalProps,
+} from "@/components/virtualSpace/resident/types";
 import ResidentComponent from "@/components/virtualSpace/resident";
 import { IIconProps } from "@/components/virtualSpace/resident/icon";
 import { IModalProps } from "@/components/virtualSpace/resident/modal";
@@ -8,28 +11,25 @@ export abstract class Resident {
   private iconProps: { image: string; positionX: number; positionY: number };
   private modalProps: {};
 
-  constructor(
-    iconProps: {
-      image: string;
-      positionX: number;
-      positionY: number;
-    },
-    modalProps: {}
-  ) {
+  constructor(iconProps: IconProps, modalProps: ModalProps) {
     this.iconProps = iconProps;
     this.modalProps = modalProps;
   }
 
-  abstract generateIcon(props: IIconProps): Icon;
-  abstract generateModal(props: IModalProps): Modal;
+  abstract generateIcon(props: IIconProps): JSX.Element;
+  abstract generateModal(props: IModalProps): JSX.Element;
 
   element(key: number) {
     return (
       <ResidentComponent
-        generateIcon={this.generateIcon}
-        iconProps={this.iconProps}
-        generateModal={this.generateModal}
-        modalProps={this.modalProps}
+        icon={{
+          generate: this.generateIcon,
+          props: this.iconProps,
+        }}
+        modal={{
+          generate: this.generateModal,
+          props: this.modalProps,
+        }}
         key={key}
       />
     );

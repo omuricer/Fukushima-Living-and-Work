@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 import { ResidentCreater } from "@/app/resident/residentCreater";
+import RegidentsDefinitions from "./data";
 
 // @ts-ignore
 import mainVisual from "@/image/tatenaga.jpg";
@@ -22,29 +23,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const data = [
-  {
-    iconProps: {
-      image: "image/loading/star.gif",
-      positionX: 10,
-      positionY: 10,
-    },
-    modalProps: {},
-  },
-  {
-    iconProps: {
-      image: "image/loading/star.gif",
-      positionX: 10,
-      positionY: 10,
-    },
-    modalProps: {},
-  },
-];
-
 const residentCreater = new ResidentCreater();
-const residents: JSX.Element[] = data.map((data, index) => {
-  return residentCreater.create(data.iconProps, data.modalProps).element(index);
-});
+const residents: JSX.Element[] = RegidentsDefinitions.map(
+  (d, index: number) => {
+    return residentCreater.create(d.icon, d.modal).element(index);
+  }
+);
 
 interface IVirtualSpaceProps {}
 const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
