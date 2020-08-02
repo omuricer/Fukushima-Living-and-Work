@@ -55,6 +55,8 @@ const Shop: React.FC<IShopProps> = (props) => {
   const classes = useStyles();
 
   const shopDialog = props.shop.rooms ? (
+    <React.Fragment></React.Fragment>
+  ) : (
     // <ShopDialogApartment
     //   open={selected}
     //   setOpen={setSelected}
@@ -62,7 +64,7 @@ const Shop: React.FC<IShopProps> = (props) => {
     //   content={props.shop.content}
     //   rooms={props.shop.rooms}
     // />
-  ) : (
+    <React.Fragment></React.Fragment>
     // <ShopDialog
     //   open={selected}
     //   setOpen={setSelected}
@@ -87,8 +89,8 @@ const Shop: React.FC<IShopProps> = (props) => {
         className={[classes.shop, classes.bounds].join(" ")}
         style={{
           width: `calc(0.25 * ${props.ratio} * ${naturalWidth}px)`,
-          top: `calc(50% + ${props.shop.icon.positionY}%)`,
-          left: `calc(50% + ${props.shop.icon.positionX}%)`,
+          // top: `calc(50% + ${props.shop.icon.positionY}%)`,
+          // left: `calc(50% + ${props.shop.icon.positionX}%)`,
           animationDelay: `${generateRondomDelay()}s`,
         }}
         onClick={() => {

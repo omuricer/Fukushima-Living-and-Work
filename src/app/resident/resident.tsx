@@ -1,4 +1,6 @@
+import React, { useState, useEffect } from "react";
 import { Icon, Modal } from "./types";
+import ResidentComponent from "@/components/virtualSpace/resident";
 
 export abstract class Resident {
   icon: Icon;
@@ -11,4 +13,8 @@ export abstract class Resident {
 
   abstract generateIcon(): Icon;
   abstract generateModal(): Modal;
+
+  element(key: number) {
+    return <ResidentComponent icon={this.icon} modal={this.modal} key={key} />;
+  }
 }

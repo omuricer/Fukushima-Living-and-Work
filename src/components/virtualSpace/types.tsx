@@ -10,13 +10,13 @@ export type Resident = {
 export type Icon = JSX.Element;
 export type Modal = JSX.Element;
 
-// export type Icon2 = {
-//   id: number;
-//   image: string;
-//   position: Position;
-//   genre: Genre;
-//   contents: Content[];
-// };
+export type TIcon = {
+  id: number;
+  image: string;
+  position: Position;
+  // genre: Genre;
+  contents: TContent[];
+};
 
 export type TShop = {
   id: number;
@@ -32,14 +32,14 @@ export type TShop = {
 
 // export type Genre = string;
 
-// export type TContent = {
-//   room?: string;
-//   logoExt: string;
-//   name: string;
-//   business: string;
-//   area: string;
-//   shopURL: string;
-// };
+export type TContent = {
+  room?: string;
+  logoExt: string;
+  name: string;
+  business: string;
+  area: string;
+  shopURL: string;
+};
 
 // export function isTContent(arg: any): arg is TContent {
 //   return !Array.isArray(arg);

@@ -5,10 +5,10 @@ import { Resident } from "./resident";
 export class ResidentA extends Resident {
   generateIcon(): Icon {
     // TODO: 書く
-    return <React.Fragment></React.Fragment>;
+    return <React.Fragment>icon</React.Fragment>;
   }
   generateModal(): Modal {
     // TODO: 書く
-    return <React.Fragment></React.Fragment>;
+    return <React.Fragment>modal</React.Fragment>;
   }
 }
