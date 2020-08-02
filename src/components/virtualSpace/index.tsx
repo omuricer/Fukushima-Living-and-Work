@@ -24,20 +24,27 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const data = [
   {
-    a: 1,
+    iconProps: {
+      image: "image/loading/star.gif",
+      positionX: 10,
+      positionY: 10,
+    },
     b: 1,
   },
   {
-    a: 2,
+    iconProps: {
+      image: "image/loading/star.gif",
+      positionX: 10,
+      positionY: 10,
+    },
     b: 2,
   },
 ];
 
 const residentCreater = new ResidentCreater();
 const residents: JSX.Element[] = data.map((data, index) => {
-  return residentCreater.create().element(index);
-});;
-
+  return residentCreater.create(data.iconProps).element(index);
+});
 
 interface IVirtualSpaceProps {}
 const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
