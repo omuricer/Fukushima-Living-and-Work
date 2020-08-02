@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  IconProps,
-  ModalProps,
-} from "@/components/virtualSpace/resident/types";
+import { IconProps, ModalProps } from "@/app/resident/types";
 import ResidentComponent from "@/components/virtualSpace/resident";
 import { IIconProps } from "@/components/virtualSpace/resident/icon";
 import { IModalProps } from "@/components/virtualSpace/resident/modal";

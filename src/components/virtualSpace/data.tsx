@@ -1,4 +1,4 @@
-import { IconProps, ModalProps } from "./resident/types";
+import { IconProps, ModalProps } from "@/app/resident/types";
 
 export type ResidentDefinition = { icon: IconProps; modal: ModalProps };
 const RegidentsDefinitions: ResidentDefinition[] = [

@@ -1,18 +1,11 @@
 import { Resident } from "./resident";
 import { ResidentA } from "./residentA";
-import { IIconProps } from "@/components/virtualSpace/resident/icon";
+import { IconProps, ModalProps } from "./types";
 
 export class ResidentCreater {
   constructor() {}
 
-  create(
-    iconProps: {
-      image: string;
-      positionX: number;
-      positionY: number;
-    },
-    modalProps: {}
-  ): Resident {
+  create(iconProps: IconProps, modalProps: ModalProps): Resident {
     return new ResidentA(iconProps, modalProps);
   }
 }

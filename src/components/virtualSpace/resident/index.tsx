@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IIconProps } from "./icon";
 import { IModalProps } from "./modal";
-import { IconProps, ModalProps } from "./types";
+import { IconProps, ModalProps } from "@/app/resident/types";
 
 type IResidentProps = {
   icon: {
