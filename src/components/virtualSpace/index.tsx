@@ -29,7 +29,7 @@ const data = [
       positionX: 10,
       positionY: 10,
     },
-    b: 1,
+    modalProps: {},
   },
   {
     iconProps: {
@@ -37,13 +37,13 @@ const data = [
       positionX: 10,
       positionY: 10,
     },
-    b: 2,
+    modalProps: {},
   },
 ];
 
 const residentCreater = new ResidentCreater();
 const residents: JSX.Element[] = data.map((data, index) => {
-  return residentCreater.create(data.iconProps).element(index);
+  return residentCreater.create(data.iconProps, data.modalProps).element(index);
 });
 
 interface IVirtualSpaceProps {}

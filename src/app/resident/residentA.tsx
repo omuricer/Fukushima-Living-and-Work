@@ -5,23 +5,14 @@ import {
   default as IconComponent,
   IIconProps,
 } from "@/components/virtualSpace/resident/icon";
+import { IModalProps } from "@/components/virtualSpace/resident/modal";
+import { default as ModalComponent } from "@/components/virtualSpace/resident/a/modal";
 
 export class ResidentA extends Resident {
   generateIcon(props: IIconProps): Icon {
-    // TODO: 書く
-    return (
-      <IconComponent
-        image={props.image}
-        positionX={props.positionX}
-        positionY={props.positionY}
-        onClick={props.onClick}
-      >
-        icon
-      </IconComponent>
-    );
+    return <IconComponent {...props} />;
   }
-  generateModal(): Modal {
-    // TODO: 書く
-    return <React.Fragment>modal</React.Fragment>;
+  generateModal(props: IModalProps): Modal {
+    return <ModalComponent {...props} />;
   }
 }

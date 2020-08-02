@@ -2,23 +2,34 @@ import React, { useState, useEffect } from "react";
 import { Icon, Modal } from "./types";
 import ResidentComponent from "@/components/virtualSpace/resident";
 import { IIconProps } from "@/components/virtualSpace/resident/icon";
+import { IModalProps } from "@/components/virtualSpace/resident/modal";
 
 export abstract class Resident {
   private iconProps: { image: string; positionX: number; positionY: number };
+  private modalProps: {};
 
-  constructor(props: { image: string; positionX: number; positionY: number }) {
-    this.iconProps = props;
+  constructor(
+    iconProps: {
+      image: string;
+      positionX: number;
+      positionY: number;
+    },
+    modalProps: {}
+  ) {
+    this.iconProps = iconProps;
+    this.modalProps = modalProps;
   }
 
   abstract generateIcon(props: IIconProps): Icon;
-  abstract generateModal(): Modal;
+  abstract generateModal(props: IModalProps): Modal;
 
   element(key: number) {
     return (
       <ResidentComponent
         generateIcon={this.generateIcon}
         iconProps={this.iconProps}
-        modal={this.generateModal()}
+        generateModal={this.generateModal}
+        modalProps={this.modalProps}
         key={key}
       />
     );
