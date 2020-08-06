@@ -32,12 +32,37 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Modal: React.FC<IModalProps> = (props) => {
+export type LivingContent = {
+  title: string;
+  icon: string;
+  advisors: {
+    name: string;
+    image: string;
+    comment: string;
+  }[];
+};
+/**
+ * TODO: タイプガードを書く
+ */
+export const isLivingContent = (v: unknown): v is LivingContent =>
+  v !== null &&
+  typeof v === "object" &&
+  typeof (v as { title: unknown }).title === "string";
+
+export interface IlivingModalProps extends IModalProps {
+  content: LivingContent;
+}
+const Modal: React.FC<IlivingModalProps> = (props) => {
   const classes = useStyles();
+
+  const advisors = props.content.advisors.map((a) => <li>{a.name}</li>);
 
   return (
     <Dialog open={props.open} onClose={props.onClose}>
-      <DialogContent className={classes.contentRoot}>Content</DialogContent>
+      <DialogContent className={classes.contentRoot}>
+        <div>{props.content.title}</div>
+        advisors
+      </DialogContent>
       <DialogActions className={classes.actionsRoot}>
         <Button variant="outlined" onClick={props.onClose} autoFocus>
           Close

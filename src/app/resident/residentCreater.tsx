@@ -1,11 +1,14 @@
 import { Resident } from "./resident";
-import { ResidentA } from "./residentA";
-import { IconProps, ModalProps } from "./types";
+import { LivingResident } from "./livingResident";
+import { IconProps, ModalProps, ModalContent, isLivingModal } from "./types";
 
 export class ResidentCreater {
   constructor() {}
 
-  create(iconProps: IconProps, modalProps: ModalProps): Resident {
-    return new ResidentA(iconProps, modalProps);
+  create(iconProps: IconProps, modalProps: ModalProps<ModalContent>): Resident {
+    if (isLivingModal(modalProps)) {
+      return new LivingResident(iconProps, modalProps);
+    }
+    return new LivingResident(iconProps, modalProps);
   }
 }

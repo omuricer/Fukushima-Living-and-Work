@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IIconProps } from "./icon";
 import { IModalProps } from "./modal";
-import { IconProps, ModalProps } from "@/app/resident/types";
+import { IconProps, ModalProps, ModalContent } from "@/app/resident/types";
 
 type IResidentProps = {
   icon: {
@@ -9,7 +9,7 @@ type IResidentProps = {
     generate: (props: IIconProps) => JSX.Element;
   };
   modal: {
-    props: ModalProps;
+    props: ModalProps<ModalContent>;
     generate: (props: IModalProps) => JSX.Element;
   };
 };

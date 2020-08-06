@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 import { ResidentCreater } from "@/app/resident/residentCreater";
-import RegidentsDefinitions from "./data";
+import RegidentsDefinitions from "./resident/data/livingResidents";
 
 // @ts-ignore
 import mainVisual from "@/image/tatenaga.jpg";
