@@ -1,11 +1,11 @@
-import { IconProps, ModalProps, ModalContent } from "@/app/resident/types";
+import { IconProps, ModalProps } from "@/app/resident/types";
 import { LivingContent } from "@/components/virtualSpace/resident/modal/livingModal";
 
-export type ResidentDefinition = {
+type Resident = {
   icon: IconProps;
   modal: ModalProps<LivingContent>;
 };
-const RegidentsDefinitions: ResidentDefinition[] = [
+const LivingRegidents: Resident[] = [
   {
     icon: {
       image: "image/loading/star.gif",
@@ -57,4 +57,4 @@ const RegidentsDefinitions: ResidentDefinition[] = [
     },
   },
 ];
-export default RegidentsDefinitions;
+export default LivingRegidents;

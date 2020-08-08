@@ -32,36 +32,38 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export type LivingContent = {
+export type ProjectionContent = {
   title: string;
   icon: string;
-  advisors: {
-    name: string;
-    image: string;
-    comment: string;
-  }[];
+  youtubeURLs: string[];
 };
-export const isLivingContent = (v: unknown): v is LivingContent =>
+export const isProjectionContent = (v: unknown): v is ProjectionContent =>
   v !== null &&
   typeof v === "object" &&
-  typeof (v as { title: unknown }).title === "string" &&
-  (v as { advisors: unknown }).advisors instanceof Array;
+  (v as { youtubeURLs: unknown }).youtubeURLs instanceof Array;
 
-export interface ILivingModalProps extends IModalProps {
-  content: LivingContent;
+export interface IProjectionModalProps extends IModalProps {
+  content: ProjectionContent;
 }
-const LivingModal: React.FC<ILivingModalProps> = (props) => {
+const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
   const classes = useStyles();
 
-  const advisors = props.content.advisors.map((a, index) => (
-    <li key={index}>{a.name}</li>
+  const youtubeURLs = props.content.youtubeURLs.map((URL, index) => (
+    <li key={index}>{URL}</li>
   ));
 
   return (
     <Dialog open={props.open} onClose={props.onClose}>
       <DialogContent className={classes.contentRoot}>
         <div>{props.content.title}</div>
-        {advisors}
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/OWoKzNxZWw8"
+          seamless
+          allow="autoplay; encrypted-media"
+        ></iframe>
+        {youtubeURLs}
       </DialogContent>
       <DialogActions className={classes.actionsRoot}>
         <Button variant="outlined" onClick={props.onClose} autoFocus>
@@ -71,4 +73,4 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
     </Dialog>
   );
 };
-export default LivingModal;
+export default ProjectionModal;

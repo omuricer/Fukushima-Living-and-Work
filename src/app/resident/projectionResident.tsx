@@ -4,15 +4,15 @@ import {
   default as IconComponent,
   IIconProps,
 } from "@/components/virtualSpace/resident/icon";
-import LivingModal, {
-  ILivingModalProps,
-} from "@/components/virtualSpace/resident/modal/livingModal";
+import ProjectionModal, {
+  IProjectionModalProps,
+} from "@/components/virtualSpace/resident/modal/projectionModal";
 
-export class LivingResident extends Resident {
+export class ProjectionResident extends Resident {
   generateIcon(props: IIconProps): JSX.Element {
     return <IconComponent {...props} />;
   }
-  generateModal(props: ILivingModalProps): JSX.Element {
-    return <LivingModal {...props} />;
+  generateModal(props: IProjectionModalProps): JSX.Element {
+    return <ProjectionModal {...props} />;
   }
 }
