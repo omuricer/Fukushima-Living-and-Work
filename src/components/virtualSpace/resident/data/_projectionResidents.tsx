@@ -16,11 +16,11 @@ const ProjectionRegidents: Resident[] = [
       content: {
         title: "タイトル1",
         icon: "icon", // TODO:
-        youtubeURLs: [
-          "https://www.youtube.com/embed/mGYhDIW-rIQ",
-          "https://www.youtube.com/embed/mGYhDIW-rIQ",
-          "https://www.youtube.com/embed/mGYhDIW-rIQ",
-        ],
+        youtubeDataAPI: {
+          key: "AIzaSyCOdHoXvxi2fferydOqo4O4Z-6o4p0s0fE",
+          q: "ふくしま",
+          channelId: "UCdZsC9AS5zcZEKOm6eIAC5w",
+        },
       },
     },
   },
