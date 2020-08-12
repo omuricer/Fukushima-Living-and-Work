@@ -7,7 +7,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import { IModalProps } from "../modal";
 import YouTube from "react-youtube";
-import api from "@/app/libs/api";
+import YoutubeAPI, { TSearchResponse } from "@/components/youtube/api";
+import PlayView from "@/components/youtube/playView";
+import Thumbnails from "@/components/youtube/thumbnails";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,41 +55,25 @@ export interface IProjectionModalProps extends IModalProps {
   content: ProjectionContent;
 }
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
-  const [movies, setMovies] = useState<
-    {
-      videoId: string;
-      thumbnail: string;
-    }[]
-  >([]);
+  const [movies, setMovies] = useState<TSearchResponse>([]);
+  const [playVideoId, setPlayVideoId] = useState<string | undefined>(undefined);
 
   const classes = useStyles();
 
   const searchMovies = async (
     apiProps: ProjectionContent["youtubeDataAPI"]
   ) => {
-    const response = await api.get("/youtube/v3/search", {
-      baseURL: "https://www.googleapis.com",
-      params: {
-        part: "snippet",
-        type: "video",
-        order: "date",
-        maxResults: "50",
-        channelId: apiProps.channelId,
-        key: apiProps.key,
-        q: apiProps.q,
-        publishedAfter: "2020-07-31T15:00:00Z",
-      },
+    YoutubeAPI.init(apiProps.key);
+    const movies = await YoutubeAPI.search({
+      part: "snippet",
+      type: "video",
+      order: "date",
+      maxResults: 50,
+      channelId: apiProps.channelId,
+      q: apiProps.q,
+      publishedAfter: "2020-07-31T15:00:00Z",
     });
-    console.log(response);
-    if (response.data.pageInfo.totalResults == 0) return;
-    setMovies(
-      response.data.items.map((item: any) => {
-        return {
-          videoId: item.id.videoId,
-          thumbnail: item.snippet.thumbnails.medium,
-        };
-      })
-    );
+    setMovies(movies);
   };
 
   useEffect(() => {
@@ -96,23 +82,13 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
     };
     asyncs();
   }, []);
+
   return (
     <Dialog open={props.open} onClose={props.onClose}>
       <DialogContent className={classes.contentRoot}>
         <DialogTitle>{props.content.title}</DialogTitle>
-        <YouTube
-          videoId="RuXChVAw8EE"
-          opts={{
-            height: "auto",
-            width: "100%",
-            playerVars: {
-              autoplay: 1,
-            },
-          }}
-          onReady={(e) => {
-            e.target.pauseVideo();
-          }}
-        />
+        <PlayView videoId={playVideoId} />
+        <Thumbnails videos={movies} setPlayVideoId={setPlayVideoId} />
       </DialogContent>
       <DialogActions className={classes.actionsRoot}>
         <Button variant="outlined" onClick={props.onClose} autoFocus>
