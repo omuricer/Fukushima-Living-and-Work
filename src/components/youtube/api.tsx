@@ -10,6 +10,11 @@ class YouTubeApi {
     this.apiKey = apiKey;
   }
 
+  /**
+   * Youtube Data APIのsearchをコールし、結果を返却する
+   * @param params Youtube Data API searchのリクエストパラメータ
+   * @return APIのレスポンス（Youtubeコンポーネントに必要な項目をピックアップ）
+   */
   async search(params: SearchRequest): Promise<TSearchResponse> {
     if (!this.apiKey) throw "Un Initted.";
     const url = "/youtube/v3/search";

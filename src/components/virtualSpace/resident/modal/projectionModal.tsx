@@ -6,7 +6,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import { IModalProps } from "../modal";
-import YouTube from "react-youtube";
 import YoutubeAPI, { TSearchResponse } from "@/components/youtube/api";
 import PlayView from "@/components/youtube/playView";
 import Thumbnails from "@/components/youtube/thumbnails";
@@ -54,26 +53,35 @@ export const isProjectionContent = (v: unknown): v is ProjectionContent =>
 export interface IProjectionModalProps extends IModalProps {
   content: ProjectionContent;
 }
+/**
+ * Youtube動画 上映コンポーネント
+ * @param props
+ */
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
   const [movies, setMovies] = useState<TSearchResponse>([]);
   const [playVideoId, setPlayVideoId] = useState<string | undefined>(undefined);
 
   const classes = useStyles();
 
+  /**
+   * Youtube Data APIをコールし、Stateのmoviesに設定する
+   * @param apiProps Youtube Data API の検索条件
+   */
   const searchMovies = async (
     apiProps: ProjectionContent["youtubeDataAPI"]
   ) => {
     YoutubeAPI.init(apiProps.key);
-    const movies = await YoutubeAPI.search({
-      part: "snippet",
-      type: "video",
-      order: "date",
-      maxResults: 50,
-      channelId: apiProps.channelId,
-      q: apiProps.q,
-      publishedAfter: "2020-07-31T15:00:00Z",
-    });
-    setMovies(movies);
+    setMovies(
+      await YoutubeAPI.search({
+        part: "snippet",
+        type: "video",
+        order: "date",
+        maxResults: 50,
+        channelId: apiProps.channelId,
+        q: apiProps.q,
+        publishedAfter: "2020-07-31T15:00:00Z",
+      })
+    );
   };
 
   useEffect(() => {
@@ -85,9 +93,16 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
 
   return (
     <Dialog open={props.open} onClose={props.onClose}>
-      <DialogContent className={classes.contentRoot}>
-        <DialogTitle>{props.content.title}</DialogTitle>
+      <DialogTitle>
+        {props.content.title}
+        <Button variant="outlined" onClick={props.onClose} autoFocus>
+          Close
+        </Button>
+      </DialogTitle>
+      <DialogTitle>
         <PlayView videoId={playVideoId} />
+      </DialogTitle>
+      <DialogContent className={classes.contentRoot}>
         <Thumbnails videos={movies} setPlayVideoId={setPlayVideoId} />
       </DialogContent>
       <DialogActions className={classes.actionsRoot}>

@@ -14,7 +14,7 @@ const ProjectionRegidents: Resident[] = [
     },
     modal: {
       content: {
-        title: "タイトル1",
+        title: "ライブ配信",
         icon: "icon", // TODO:
         youtubeDataAPI: {
           key: "AIzaSyCOdHoXvxi2fferydOqo4O4Z-6o4p0s0fE",
