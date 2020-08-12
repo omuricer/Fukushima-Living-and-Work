@@ -4,6 +4,7 @@ import Loading from "@/components/loading";
 
 import VirtualSpace from "@/components/virtualSpace";
 import FirstView from "@/components/firstView";
+import Footer from "@/components/footer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,8 +24,13 @@ const App: React.FC<IAppProps> = (props) => {
   return (
     <div className={classes.root}>
       <Loading display={loading} />
-      <FirstView />
-      <VirtualSpace />
+      {!loading && (
+        <React.Fragment>
+          <FirstView />
+          <VirtualSpace />
+          <Footer />
+        </React.Fragment>
+      )}
     </div>
   );
 };
