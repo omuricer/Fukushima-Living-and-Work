@@ -9,9 +9,26 @@ import { IModalProps } from "../modal";
 import YoutubeAPI, { TSearchResponse } from "@/components/youtube/api";
 import PlayView from "@/components/youtube/playView";
 import Thumbnails from "@/components/youtube/thumbnails";
+import Title from "./title";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    // Override MuiDialog-paper
+    paper: {
+      width: "90vw",
+      margin: "0",
+      maxHeight: "80vh",
+      top: "-40px",
+    },
+    buttonConcierge: {
+      position: "fixed",
+      bottom: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      WebkitTransform: "translateX(-50%)",
+      MsTransform: "translateX(-50%)",
+      zIndex: 1301,
+    },
     contentRoot: {
       background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
       minWidth: "600px",
@@ -92,25 +109,35 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
   }, []);
 
   return (
-    <Dialog open={props.open} onClose={props.onClose}>
-      <DialogTitle>
-        {props.content.title}
-        <Button variant="outlined" onClick={props.onClose} autoFocus>
-          Close
+    <React.Fragment>
+      <Dialog
+        open={props.open}
+        onClose={props.onClose}
+        classes={{ paper: classes.paper }}
+      >
+        <Title
+          icon={"icon/icon"}
+          title={props.content.title}
+          onClose={props.onClose}
+        />
+        <DialogTitle>
+          <PlayView videoId={playVideoId} />
+        </DialogTitle>
+        <DialogContent className={classes.contentRoot}>
+          <Thumbnails videos={movies} setPlayVideoId={setPlayVideoId} />
+        </DialogContent>
+      </Dialog>
+      {props.open && (
+        <Button
+          onClick={() => {
+            alert("click!!!");
+          }}
+          className={classes.buttonConcierge}
+        >
+          個別相談受付
         </Button>
-      </DialogTitle>
-      <DialogTitle>
-        <PlayView videoId={playVideoId} />
-      </DialogTitle>
-      <DialogContent className={classes.contentRoot}>
-        <Thumbnails videos={movies} setPlayVideoId={setPlayVideoId} />
-      </DialogContent>
-      <DialogActions className={classes.actionsRoot}>
-        <Button variant="outlined" onClick={props.onClose} autoFocus>
-          Close
-        </Button>
-      </DialogActions>
-    </Dialog>
+      )}
+    </React.Fragment>
   );
 };
 export default ProjectionModal;

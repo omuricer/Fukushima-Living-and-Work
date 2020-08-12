@@ -8,13 +8,13 @@ type Resident = {
 const ProjectionRegidents: Resident[] = [
   {
     icon: {
-      image: "image/loading/star.gif",
+      image: "image/virtualSpace/icons/icon.png",
       positionX: 30,
       positionY: 10,
     },
     modal: {
       content: {
-        title: "ライブ配信",
+        title: "動画配信シアター",
         icon: "icon", // TODO:
         youtubeDataAPI: {
           key: "AIzaSyCOdHoXvxi2fferydOqo4O4Z-6o4p0s0fE",

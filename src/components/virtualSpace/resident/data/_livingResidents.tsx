@@ -8,7 +8,7 @@ type Resident = {
 const LivingRegidents: Resident[] = [
   {
     icon: {
-      image: "image/loading/star.gif",
+      image: "image/virtualSpace/icons/icon.png",
       positionX: 10,
       positionY: 10,
     },
@@ -33,7 +33,7 @@ const LivingRegidents: Resident[] = [
   },
   {
     icon: {
-      image: "image/loading/star.gif",
+      image: "image/virtualSpace/icons/icon.png",
       positionX: 20,
       positionY: 10,
     },

@@ -7,20 +7,23 @@ import Div100vh from "react-div-100vh";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     content: {
+      width: "100%",
       display: "flex",
       flexDirection: "column",
     },
   })
 );
 
-interface IHeroProps {}
+interface IHeroProps extends React.HTMLAttributes<HTMLDivElement> {}
 const Hero: React.FC<IHeroProps> = (props) => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <Grid container>
-        <Div100vh className={classes.content}>{props.children}</Div100vh>
+        <Div100vh className={classes.content} {...props}>
+          {props.children}
+        </Div100vh>
       </Grid>
     </React.Fragment>
   );

@@ -1,30 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import IconButton from "@material-ui/core/IconButton";
+import Image from "@/components/form/image";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    contentRoot: {
-      background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
-      minWidth: "600px",
-      // display: "flex",
-      // justifyContent: "center",
-      // alignItems: "center",
-
-      paddingTop: "2rem",
-      paddingLeft: "2rem",
-      paddingRight: "2rem",
-      [theme.breakpoints.down("xs")]: {
-        minWidth: "auto",
-      },
+    root: {
+      display: "flex",
+      flexFlow: "wrap",
+      justifyContent: "space-between",
+      alignItems: "center",
     },
-    actionsRoot: {
-      background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
-      paddingLeft: "2rem",
-      paddingRight: "2rem",
-      paddingBottom: "1rem",
-      justifyContent: "center",
+    icon: {
+      width: "60px",
     },
   })
 );
@@ -32,19 +22,23 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface ITitleProps {
   icon: string;
   title: string;
+  onClose: () => void;
 }
 /**
- * Youtube動画 上映コンポーネント
+ * モーダルタイトル部分
  * @param props
  */
 const Title: React.FC<ITitleProps> = (props) => {
   const classes = useStyles();
   return (
     <DialogTitle>
-      {props.content.title}
-      <Button variant="outlined" onClick={props.onClose} autoFocus>
-        Close
-      </Button>
+      <div className={classes.root}>
+        <Image src={props.icon} className={classes.icon} />
+        {props.title}
+        <IconButton onClick={props.onClose}>
+          <Icon>close</Icon>
+        </IconButton>
+      </div>
     </DialogTitle>
   );
 };
