@@ -6,6 +6,10 @@ import {
   ProjectionContent,
   isProjectionContent,
 } from "@/components/virtualSpace/resident/modal/projectionModal";
+import {
+  ConciergeContent,
+  isConciergeContent,
+} from "@/components/virtualSpace/resident/modal/conciergeModal";
 
 export type IconProps = {
   image: string;
@@ -15,7 +19,7 @@ export type IconProps = {
 export type ModalProps<T> = {
   content: T;
 };
-export type ModalContent = LivingContent | ProjectionContent;
+export type ModalContent = LivingContent | ProjectionContent | ConciergeContent;
 
 export const isLivingModal = (v: unknown): v is ModalProps<LivingContent> =>
   v !== null &&
@@ -28,3 +32,10 @@ export const isProjectionModal = (
   v !== null &&
   typeof v === "object" &&
   isProjectionContent((v as { content: unknown }).content);
+
+export const isConciergeModal = (
+  v: unknown
+): v is ModalProps<ConciergeContent> =>
+  v !== null &&
+  typeof v === "object" &&
+  isConciergeContent((v as { content: unknown }).content);

@@ -1,14 +1,15 @@
 import { Resident } from "./resident";
 import { LivingResident } from "./livingResident";
 import { ProjectionResident } from "./projectionResident";
+import { ConciergeResident } from "./conciergeResident";
 import {
   IconProps,
   ModalProps,
   ModalContent,
   isLivingModal,
   isProjectionModal,
+  isConciergeModal,
 } from "./types";
-import { isProjectionContent } from "@/components/virtualSpace/resident/modal/projectionModal";
 
 export class ResidentCreater {
   constructor() {}
@@ -19,6 +20,9 @@ export class ResidentCreater {
     }
     if (isProjectionModal(modalProps)) {
       return new ProjectionResident(iconProps, modalProps);
+    }
+    if (isConciergeModal(modalProps)) {
+      return new ConciergeResident(iconProps, modalProps);
     }
     return new LivingResident(iconProps, modalProps);
   }
