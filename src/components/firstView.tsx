@@ -18,15 +18,33 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
     },
-    center: {
-      textAlign: "center",
-    },
     bottom: {
       textAlign: "center",
       marginTop: "auto",
     },
     logo: {
-      width: "90vw",
+      textAlign: "center",
+      marginTop: "5vh",
+    },
+    logoImage: {
+      width: "60vw",
+    },
+    catch: {
+      textAlign: "center",
+      marginTop: "5vh",
+    },
+    event: {
+      textAlign: "center",
+      marginTop: "5vh",
+    },
+    eventBoard: {
+      padding: "20px",
+      width: "80vw",
+      borderColor: "gray",
+      borderStyle: "solid",
+      borderWidth: "1px",
+      backgroundColor: "lightgray",
+      margin: "0 auto",
     },
   })
 );
@@ -37,10 +55,10 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
 
   return (
     <Hero className={classes.root}>
-      <Grid className={classes.center}>
-        <Image src={"logo"} className={classes.logo} />
+      <Grid className={classes.logo}>
+        <Image src={"logo"} className={classes.logoImage} />
       </Grid>
-      <Grid className={classes.center}>
+      <Grid className={classes.catch}>
         <Typography>
           今年も開催,”ふくしまの本気”移住イベント！
           <br />
@@ -53,9 +71,11 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
           見つけてみませんか？
         </Typography>
       </Grid>
-      <Grid className={classes.center}>
-        <Typography>トークライブ</Typography>
-        <Typography>リアルミニイベント告知</Typography>
+      <Grid className={classes.event}>
+        <div className={classes.eventBoard}>
+          <Typography>トークライブ</Typography>
+          <Typography>リアルミニイベント告知</Typography>
+        </div>
       </Grid>
       <div className={classes.bottom}>
         <Typography>scroll</Typography>

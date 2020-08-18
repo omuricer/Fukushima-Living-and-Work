@@ -6,9 +6,15 @@ import VirtualSpace from "@/components/virtualSpace";
 import FirstView from "@/components/firstView";
 import Footer from "@/components/footer";
 
+import backgroundImage from "@/image/background.jpg";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: { position: "relative" },
+    root: {
+      position: "relative",
+      backgroundSize: "contain",
+      background: `linear-gradient(to bottom, rgba(68, 186, 255, 0.2), rgba(0, 255, 31, 0.2)), url(${backgroundImage})`,
+    },
   })
 );
 
