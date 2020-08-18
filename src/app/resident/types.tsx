@@ -44,3 +44,7 @@ export const isConciergeModal = (
   v !== null &&
   typeof v === "object" &&
   isConciergeContent((v as { content: unknown }).content);
+
+export type HandleAnothers = {
+  openConciergeModal: () => void;
+};

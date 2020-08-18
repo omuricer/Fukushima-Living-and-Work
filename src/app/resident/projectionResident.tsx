@@ -17,7 +17,6 @@ export class ProjectionResident extends Resident {
       <ProjectionModal
         {...{
           ...props,
-          openConciergeModal: this.openAnotherModals.openConciergeModal,
         }}
       />
     );

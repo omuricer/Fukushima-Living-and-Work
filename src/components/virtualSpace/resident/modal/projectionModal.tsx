@@ -69,7 +69,6 @@ export const isProjectionContent = (v: unknown): v is ProjectionContent =>
 
 export interface IProjectionModalProps extends IModalProps {
   content: ProjectionContent;
-  openConciergeModal: () => void;
 }
 /**
  * Youtube動画 上映コンポーネント
@@ -132,7 +131,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <Button
           onClick={() => {
             props.closeModal();
-            props.openConciergeModal();
+            props.handleAnothers.openConciergeModal();
           }}
           className={classes.buttonConcierge}
         >
