@@ -12,18 +12,21 @@ import {
 } from "./types";
 
 export class ResidentCreater {
-  constructor() {}
+  private props: { openConciergeModal: () => void };
+  constructor(props: { openConciergeModal: () => void }) {
+    this.props = props;
+  }
 
   create(iconProps: IconProps, modalProps: ModalProps<ModalContent>): Resident {
     if (isLivingModal(modalProps)) {
-      return new LivingResident(iconProps, modalProps);
+      return new LivingResident(iconProps, modalProps, this.props);
     }
     if (isProjectionModal(modalProps)) {
-      return new ProjectionResident(iconProps, modalProps);
+      return new ProjectionResident(iconProps, modalProps, this.props);
     }
     if (isConciergeModal(modalProps)) {
-      return new ConciergeResident(iconProps, modalProps);
+      return new ConciergeResident(iconProps, modalProps, this.props);
     }
-    return new LivingResident(iconProps, modalProps);
+    return new LivingResident(iconProps, modalProps, this.props);
   }
 }

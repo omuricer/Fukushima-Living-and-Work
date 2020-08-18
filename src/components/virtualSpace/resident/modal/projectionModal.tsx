@@ -113,13 +113,13 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
     <React.Fragment>
       <Dialog
         open={props.open}
-        onClose={props.onClose}
+        onClose={props.closeModal}
         classes={{ paper: classes.paper }}
       >
         <Title
           icon={"icon/icon"}
           title={props.content.title}
-          onClose={props.onClose}
+          closeModal={props.closeModal}
         />
         <DialogTitle>
           <PlayView videoId={playVideoId} />
@@ -131,7 +131,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
       {props.open && (
         <Button
           onClick={() => {
-            props.onClose();
+            props.closeModal();
             props.openConciergeModal();
           }}
           className={classes.buttonConcierge}

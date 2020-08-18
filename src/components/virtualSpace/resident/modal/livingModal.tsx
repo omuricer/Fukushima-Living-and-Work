@@ -58,13 +58,13 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
   ));
 
   return (
-    <Dialog open={props.open} onClose={props.onClose}>
+    <Dialog open={props.open} onClose={props.closeModal}>
       <DialogContent className={classes.contentRoot}>
         <div>{props.content.title}</div>
         {advisors}
       </DialogContent>
       <DialogActions className={classes.actionsRoot}>
-        <Button variant="outlined" onClick={props.onClose} autoFocus>
+        <Button variant="outlined" onClick={props.closeModal} autoFocus>
           Close
         </Button>
       </DialogActions>

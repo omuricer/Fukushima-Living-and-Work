@@ -11,6 +11,11 @@ import {
   isConciergeContent,
 } from "@/components/virtualSpace/resident/modal/conciergeModal";
 
+export type Resident<T> = {
+  key: string;
+  icon: IconProps;
+  modal: ModalProps<T>;
+};
 export type IconProps = {
   image: string;
   positionX: number;

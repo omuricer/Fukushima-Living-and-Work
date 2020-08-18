@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import { IModalProps } from "../modal";
 import Title from "./title";
 import Image from "@/components/form/image";
+import CommentatorAnimal from "./commentatorAnimal";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -16,16 +17,24 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "0",
       maxHeight: "80vh",
     },
-    contentRoot: {
-      background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
-      minWidth: "600px",
-
-      paddingTop: "2rem",
-      paddingLeft: "2rem",
-      paddingRight: "2rem",
-      [theme.breakpoints.down("xs")]: {
-        minWidth: "auto",
-      },
+    // Override MuiDialogContent-root
+    root: {
+      // background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
+      padding: "8px 10px",
+    },
+    flow: {
+      textAlign: "center",
+      marginTop: "20px",
+    },
+    divideLine: {
+      margin: "15px 20px",
+    },
+    answer: {
+      display: "flex",
+    },
+    answerButton: {
+      width: "100%",
+      margin: "5px",
     },
   })
 );
@@ -48,8 +57,13 @@ export interface IConciergeModalProps extends IModalProps {
  * @param props
  */
 const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
-  // const [movies, setMovies] = useState<TSearchResponse>([]);
-  // const [playVideoId, setPlayVideoId] = useState<string | undefined>(undefined);
+  const [content, setContent] = useState<JSX.Element>(
+    <CounterContent
+      viewSelectLifeStyle={() => {
+        setContent(<SelectLifeStyleContent aaaaaa={() => {}} />);
+      }}
+    />
+  );
 
   const classes = useStyles();
 
@@ -57,41 +71,136 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
     <React.Fragment>
       <Dialog
         open={props.open}
-        onClose={props.onClose}
+        onClose={props.closeModal}
         classes={{ paper: classes.paper }}
       >
         <Title
           icon={"icon/icon"}
           title={props.content.title}
-          onClose={props.onClose}
+          closeModal={props.closeModal}
         />
-        <DialogContent className={classes.contentRoot}>
-          {/* TODO: srcを設定 */}
-          <Image src={"concierge"} />
-          <Typography>オンライン相談の流れ</Typography>
-          <Typography>・・・</Typography>
-          <hr />
-          <div>
-            <Image src={"concierge"} />
-            <Typography>{"くらし・しごと\nどちらのご相談ですか？"}</Typography>
-            <Button
-              onClick={() => {
-                alert("click!!!");
-              }}
-            >
-              くらし
-            </Button>
-            <Button
-              onClick={() => {
-                alert("click!!!");
-              }}
-            >
-              しごと
-            </Button>
-          </div>
+        <DialogContent classes={{ root: classes.root }}>
+          {content}
         </DialogContent>
       </Dialog>
     </React.Fragment>
   );
 };
 export default ConciergeModal;
+
+const useStylesFirstContent = makeStyles((theme: Theme) =>
+  createStyles({
+    flow: {
+      textAlign: "center",
+      marginTop: "20px",
+    },
+    divideLine: {
+      margin: "15px 20px",
+    },
+    answer: {
+      display: "flex",
+    },
+    answerButton: {
+      width: "100%",
+      margin: "5px",
+    },
+  })
+);
+export interface ICounterContentProps {
+  viewSelectLifeStyle: () => void;
+}
+/**
+ * ご相談カウンター
+ * @param props
+ */
+const CounterContent: React.FC<ICounterContentProps> = (props) => {
+  const classes = useStylesFirstContent();
+
+  return (
+    <React.Fragment>
+      {/* TODO: srcを設定 */}
+      <Image src={"concierge"} />
+      <div className={classes.flow}>
+        <Typography>オンライン相談の流れ</Typography>
+        <Typography>・・・</Typography>
+      </div>
+      <hr className={classes.divideLine} />
+      <CommentatorAnimal
+        icon={"concierge"}
+        comment={"くらし・しごと\nどちらのご相談ですか？"}
+      />
+      <div className={classes.answer}>
+        <Button
+          className={classes.answerButton}
+          onClick={props.viewSelectLifeStyle}
+        >
+          くらし
+        </Button>
+        <Button
+          className={classes.answerButton}
+          onClick={() => {
+            alert("click!!!"); // TODO:予約サイトへ
+          }}
+        >
+          しごと
+        </Button>
+      </div>
+    </React.Fragment>
+  );
+};
+
+const useStylesSelectLifeStyle = makeStyles((theme: Theme) =>
+  createStyles({
+    lifeStyles: {
+      display: "flex",
+      flexFlow: "wrap",
+      justifyContent: "center",
+      marginTop: "15px",
+      marginBottom: "25px",
+    },
+    lifeStyle: {
+      width: "50%",
+      padding: "5px",
+      textAlign: "center",
+    },
+  })
+);
+export interface ISelectLifeStyleContentProps {
+  aaaaaa: () => void;
+}
+/**
+ * ご相談カウンター
+ * @param props
+ */
+const SelectLifeStyleContent: React.FC<ISelectLifeStyleContentProps> = (
+  props
+) => {
+  const classes = useStylesSelectLifeStyle();
+
+  return (
+    <React.Fragment>
+      <CommentatorAnimal
+        icon={"concierge"}
+        comment={"気になるくらしのスタイルを\n選択してください"}
+      />
+      <div className={classes.lifeStyles}>
+        <div className={classes.lifeStyle}>
+          <Image src={"mountain"} />
+          <Typography>山のあるくらし</Typography>
+        </div>
+        <div className={classes.lifeStyle}>
+          <Image src={"sea"} />
+          <Typography>海・湖のあるくらし</Typography>
+        </div>
+        <div className={classes.lifeStyle}>
+          <Image src={"culture"} />
+          <Typography>文化のあるくらし</Typography>
+        </div>
+        <div className={classes.lifeStyle}>
+          <Image src={"city"} />
+          <Typography>街のあるくらし</Typography>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};

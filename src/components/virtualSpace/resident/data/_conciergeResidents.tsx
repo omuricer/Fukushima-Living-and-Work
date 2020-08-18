@@ -1,12 +1,9 @@
-import { IconProps, ModalProps } from "@/app/resident/types";
+import { Resident } from "@/app/resident/types";
 import { ConciergeContent } from "@/components/virtualSpace/resident/modal/conciergeModal";
 
-type Resident = {
-  icon: IconProps;
-  modal: ModalProps<ConciergeContent>;
-};
-const ConciergeRegidents: Resident[] = [
+const ConciergeRegidents: Resident<ConciergeContent>[] = [
   {
+    key: "concierge",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 30,
