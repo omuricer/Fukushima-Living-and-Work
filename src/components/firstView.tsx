@@ -56,6 +56,7 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
   return (
     <Hero className={classes.root}>
       <Grid className={classes.logo}>
+        {/* TODO: srcを設定 */}
         <Image src={"logo"} className={classes.logoImage} />
       </Grid>
       <Grid className={classes.catch}>

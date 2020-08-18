@@ -1,12 +1,9 @@
-import { IconProps, ModalProps } from "@/app/resident/types";
+import { Resident } from "@/app/resident/types";
 import { LivingContent } from "@/components/virtualSpace/resident/modal/livingModal";
 
-type Resident = {
-  icon: IconProps;
-  modal: ModalProps<LivingContent>;
-};
-const LivingRegidents: Resident[] = [
+const LivingRegidents: Resident<LivingContent>[] = [
   {
+    key: "living1",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 10,
@@ -32,6 +29,7 @@ const LivingRegidents: Resident[] = [
     },
   },
   {
+    key: "living2",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 20,

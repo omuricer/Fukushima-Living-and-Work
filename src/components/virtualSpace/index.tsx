@@ -23,16 +23,27 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const residentCreater = new ResidentCreater();
-const residents: JSX.Element[] = RegidentsDefinitions.map(
-  (d, index: number) => {
-    return residentCreater.create(d.icon, d.modal).element(index);
-  }
-);
-
 interface IVirtualSpaceProps {}
 const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
+  const [openedResident, setOpenedResident] = useState<string | null>(null);
   const classes = useStyles();
+
+  const specialProps = {
+    openConciergeModal: () => {
+      setOpenedResident("concierge");
+    },
+  };
+  const residentCreater = new ResidentCreater(specialProps);
+  const residents: JSX.Element[] = RegidentsDefinitions.map(
+    (d, index: number) => {
+      return residentCreater.create(d.icon, d.modal).element(
+        d.key,
+        openedResident == d.key,
+        () => setOpenedResident(d.key),
+        () => setOpenedResident(null)
+      );
+    }
+  );
 
   return (
     <Grid container className={classes.root}>

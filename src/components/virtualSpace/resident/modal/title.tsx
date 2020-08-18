@@ -7,9 +7,12 @@ import Image from "@/components/form/image";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    // Override MuiDialogTitle-root
     root: {
+      padding: "10px 10px",
+    },
+    rapper: {
       display: "flex",
-      flexFlow: "wrap",
       justifyContent: "space-between",
       alignItems: "center",
     },
@@ -22,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface ITitleProps {
   icon: string;
   title: string;
-  onClose: () => void;
+  closeModal: () => void;
 }
 /**
  * モーダルタイトル部分
@@ -31,11 +34,11 @@ export interface ITitleProps {
 const Title: React.FC<ITitleProps> = (props) => {
   const classes = useStyles();
   return (
-    <DialogTitle>
-      <div className={classes.root}>
+    <DialogTitle classes={{ root: classes.root }}>
+      <div className={classes.rapper}>
         <Image src={props.icon} className={classes.icon} />
         {props.title}
-        <IconButton onClick={props.onClose}>
+        <IconButton onClick={props.closeModal}>
           <Icon>close</Icon>
         </IconButton>
       </div>

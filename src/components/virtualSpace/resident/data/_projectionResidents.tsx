@@ -1,12 +1,9 @@
-import { IconProps, ModalProps } from "@/app/resident/types";
+import { Resident } from "@/app/resident/types";
 import { ProjectionContent } from "@/components/virtualSpace/resident/modal/projectionModal";
 
-type Resident = {
-  icon: IconProps;
-  modal: ModalProps<ProjectionContent>;
-};
-const ProjectionRegidents: Resident[] = [
+const ProjectionRegidents: Resident<ProjectionContent>[] = [
   {
+    key: "projection",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 30,

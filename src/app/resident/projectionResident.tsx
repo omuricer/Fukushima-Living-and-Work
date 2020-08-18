@@ -13,6 +13,13 @@ export class ProjectionResident extends Resident {
     return <IconComponent {...props} />;
   }
   generateModal(props: IProjectionModalProps): JSX.Element {
-    return <ProjectionModal {...props} />;
+    return (
+      <ProjectionModal
+        {...{
+          ...props,
+          openConciergeModal: this.openAnotherModals.openConciergeModal,
+        }}
+      />
+    );
   }
 }
