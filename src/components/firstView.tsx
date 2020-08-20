@@ -61,7 +61,7 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
       </Grid>
       <Grid className={classes.catch}>
         <Typography>
-          今年も開催,”ふくしまの本気”移住イベント！
+          今年も開催”ふくしまの本気”移住イベント！
           <br />
           移住相談員、移住コーディネーターの他
           <br />
