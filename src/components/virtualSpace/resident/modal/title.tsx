@@ -8,16 +8,43 @@ import Image from "@/components/form/image";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     // Override MuiDialogTitle-root
-    root: {
-      padding: "10px 10px",
+    // root: {
+    //   padding: "10px 10px",
+    // },
+    header: {
+      height: "90px",
+      position: "relative",
     },
-    rapper: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-    },
+    // rapper: {
+    //   display: "flex",
+    //   justifyContent: "space-between",
+    //   alignItems: "center",
+    // },
     icon: {
-      width: "60px",
+      position: "absolute",
+      height: "150px",
+      top: "0",
+      right: "0",
+      bottom: "0",
+      left: "0",
+      marginTop: "auto",
+      marginBottom: "0",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+    close: {
+      position: "absolute",
+      top: "0",
+      right: "0",
+      bottom: "0",
+      left: "0",
+      marginTop: "auto",
+      marginBottom: "auto",
+      marginLeft: "auto",
+      marginRight: "10px",
+    },
+    title: {
+      textAlign: "center",
     },
   })
 );
@@ -34,15 +61,15 @@ export interface ITitleProps {
 const Title: React.FC<ITitleProps> = (props) => {
   const classes = useStyles();
   return (
-    <DialogTitle classes={{ root: classes.root }}>
-      <div className={classes.rapper}>
+    <React.Fragment>
+      <div className={classes.header}>
         <Image src={props.icon} className={classes.icon} />
-        {props.title}
-        <IconButton onClick={props.closeModal}>
+        <IconButton onClick={props.closeModal} className={classes.close}>
           <Icon>close</Icon>
         </IconButton>
       </div>
-    </DialogTitle>
+      <DialogTitle className={classes.title}>{props.title}</DialogTitle>
+    </React.Fragment>
   );
 };
 export default Title;
