@@ -46,5 +46,5 @@ export const isConciergeModal = (
   isConciergeContent((v as { content: unknown }).content);
 
 export type HandleAnothers = {
-  openConciergeModal: () => void;
+  openModal: (residentKey: string) => void;
 };

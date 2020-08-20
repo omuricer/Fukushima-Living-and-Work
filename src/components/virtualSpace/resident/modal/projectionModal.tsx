@@ -131,7 +131,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <Button
           onClick={() => {
             props.closeModal();
-            props.handleAnothers.openConciergeModal();
+            props.handleAnothers.openModal("concierge");
           }}
           className={classes.buttonConcierge}
         >
