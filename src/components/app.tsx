@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import GlobalStyle from "@/components/globalStyles";
 import Loading from "@/components/loading";
 
 import VirtualSpace from "@/components/virtualSpace";
@@ -29,6 +30,7 @@ const App: React.FC<IAppProps> = (props) => {
 
   return (
     <div className={classes.root}>
+      <GlobalStyle />
       <Loading display={loading} />
       {!loading && (
         <React.Fragment>

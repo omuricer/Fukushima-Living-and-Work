@@ -28,12 +28,12 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
   const [openedResident, setOpenedResident] = useState<string | null>(null);
   const classes = useStyles();
 
-  const specialProps = {
-    openConciergeModal: () => {
-      setOpenedResident("concierge");
+  const handleAnothers = {
+    openModal: (residentKey: string) => {
+      setOpenedResident(residentKey);
     },
   };
-  const residentCreater = new ResidentCreater(specialProps);
+  const residentCreater = new ResidentCreater(handleAnothers);
   const residents: JSX.Element[] = RegidentsDefinitions.map(
     (d, index: number) => {
       return residentCreater.create(d.icon, d.modal).element(

@@ -24,27 +24,32 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     logo: {
       textAlign: "center",
-      marginTop: "5vh",
+      marginTop: "3vh",
     },
     logoImage: {
-      width: "60vw",
+      height: "200px",
     },
     catch: {
       textAlign: "center",
-      marginTop: "5vh",
+      marginTop: "3vh",
     },
     event: {
       textAlign: "center",
-      marginTop: "5vh",
+      marginTop: "3vh",
     },
     eventBoard: {
       padding: "20px",
-      width: "80vw",
+      width: "320px",
+      height: "120px",
       borderColor: "gray",
       borderStyle: "solid",
       borderWidth: "1px",
       backgroundColor: "lightgray",
       margin: "0 auto",
+    },
+    scroll: {
+      textAlign: "center",
+      marginTop: "2vh",
     },
   })
 );
@@ -61,7 +66,7 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
       </Grid>
       <Grid className={classes.catch}>
         <Typography>
-          今年も開催,”ふくしまの本気”移住イベント！
+          今年も開催”ふくしまの本気”移住イベント！
           <br />
           移住相談員、移住コーディネーターの他
           <br />
@@ -78,10 +83,10 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
           <Typography>リアルミニイベント告知</Typography>
         </div>
       </Grid>
-      <div className={classes.bottom}>
-        <Typography>scroll</Typography>
+      <Grid className={classes.scroll}>
+        <Typography>SCROLL</Typography>
         <Typography>∨</Typography>
-      </div>
+      </Grid>
     </Hero>
   );
 };

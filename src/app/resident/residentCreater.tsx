@@ -9,24 +9,25 @@ import {
   isLivingModal,
   isProjectionModal,
   isConciergeModal,
+  HandleAnothers,
 } from "./types";
 
 export class ResidentCreater {
-  private props: { openConciergeModal: () => void };
-  constructor(props: { openConciergeModal: () => void }) {
-    this.props = props;
+  private handleAnothers: HandleAnothers;
+  constructor(handleAnothers: HandleAnothers) {
+    this.handleAnothers = handleAnothers;
   }
 
   create(iconProps: IconProps, modalProps: ModalProps<ModalContent>): Resident {
     if (isLivingModal(modalProps)) {
-      return new LivingResident(iconProps, modalProps, this.props);
+      return new LivingResident(iconProps, modalProps, this.handleAnothers);
     }
     if (isProjectionModal(modalProps)) {
-      return new ProjectionResident(iconProps, modalProps, this.props);
+      return new ProjectionResident(iconProps, modalProps, this.handleAnothers);
     }
     if (isConciergeModal(modalProps)) {
-      return new ConciergeResident(iconProps, modalProps, this.props);
+      return new ConciergeResident(iconProps, modalProps, this.handleAnothers);
     }
-    return new LivingResident(iconProps, modalProps, this.props);
+    return new LivingResident(iconProps, modalProps, this.handleAnothers);
   }
 }

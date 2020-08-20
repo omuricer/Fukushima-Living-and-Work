@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { IIconProps } from "./icon";
-import { IModalProps } from "./modal";
-import { IconProps, ModalProps, ModalContent } from "@/app/resident/types";
 import { Resident as Generator } from "@/app/resident/resident";
 
 type IResidentProps = {
@@ -9,14 +6,6 @@ type IResidentProps = {
   onOpen: () => void;
   onClose: () => void;
   generator: Generator;
-  // icon: {
-  //   props: IconProps;
-  //   generate: (props: IIconProps) => JSX.Element;
-  // };
-  // modal: {
-  //   props: ModalProps<ModalContent>;
-  //   generate: (props: IModalProps) => JSX.Element;
-  // };
 };
 const Resident: React.FC<IResidentProps> = (props) => {
   const icon = props.generator.generateIcon({
@@ -31,6 +20,7 @@ const Resident: React.FC<IResidentProps> = (props) => {
     closeModal: () => {
       props.onClose();
     },
+    handleAnothers: props.generator.handleAnothers,
   });
 
   return (
