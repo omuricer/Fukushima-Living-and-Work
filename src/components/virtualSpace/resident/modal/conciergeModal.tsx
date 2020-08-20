@@ -4,7 +4,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import { IModalProps } from "../modal";
-import Title from "./title";
+import Header from "./header";
 import Image from "@/components/form/image";
 import CommentatorAnimal from "./commentatorAnimal";
 import Typography from "@material-ui/core/Typography";
@@ -75,12 +75,13 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
         onClose={props.closeModal}
         classes={{ paper: classes.paper }}
       >
-        <Title
+        <Header
           icon={"icon/icon"}
-          title={props.content.title}
+          color={"#E08C38"}
           closeModal={props.closeModal}
         />
         <DialogContent classes={{ root: classes.root }}>
+          <Typography variant="h3">{props.content.title}</Typography>
           {content}
         </DialogContent>
       </Dialog>

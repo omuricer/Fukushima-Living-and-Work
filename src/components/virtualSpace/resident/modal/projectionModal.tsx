@@ -9,7 +9,8 @@ import { IModalProps } from "../modal";
 import YoutubeAPI, { TSearchResponse } from "@/components/youtube/api";
 import PlayView from "@/components/youtube/playView";
 import Thumbnails from "@/components/youtube/thumbnails";
-import Title from "./title";
+import Header from "./header";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -115,11 +116,8 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         onClose={props.closeModal}
         classes={{ paper: classes.paper }}
       >
-        <Title
-          icon={"icon/icon"}
-          title={props.content.title}
-          closeModal={props.closeModal}
-        />
+        <Header icon={"icon/icon"} closeModal={props.closeModal} />
+        <Typography variant="h3">{props.content.title}</Typography>
         <DialogTitle>
           <PlayView videoId={playVideoId} />
         </DialogTitle>

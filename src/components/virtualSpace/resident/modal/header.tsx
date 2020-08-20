@@ -4,25 +4,25 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Icon from "@material-ui/core/Icon";
 import IconButton from "@material-ui/core/IconButton";
 import Image from "@/components/form/image";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     // Override MuiDialogTitle-root
-    // root: {
-    //   padding: "10px 10px",
-    // },
+    root: {
+      padding: "0",
+      height: "60px",
+      position: "relative",
+      borderTopLeftRadius: "4px",
+      borderTopRightRadius: "4px",
+    },
     header: {
-      height: "90px",
+      height: "60px",
       position: "relative",
     },
-    // rapper: {
-    //   display: "flex",
-    //   justifyContent: "space-between",
-    //   alignItems: "center",
-    // },
     icon: {
       position: "absolute",
-      height: "150px",
+      height: "100px",
       top: "0",
       right: "0",
       bottom: "0",
@@ -43,33 +43,37 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: "auto",
       marginRight: "10px",
     },
-    title: {
-      textAlign: "center",
-    },
   })
 );
 
 export interface ITitleProps {
   icon: string;
-  title: string;
+  color?: string;
   closeModal: () => void;
 }
 /**
- * モーダルタイトル部分
+ * モーダルヘッダー部分
  * @param props
  */
-const Title: React.FC<ITitleProps> = (props) => {
+const Header: React.FC<ITitleProps> = (props) => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <div className={classes.header}>
+      <DialogTitle
+        classes={{ root: classes.root }}
+        disableTypography={true}
+        style={{ backgroundColor: props.color ?? "#485859" }}
+      >
         <Image src={props.icon} className={classes.icon} />
-        <IconButton onClick={props.closeModal} className={classes.close}>
+        <IconButton
+          onClick={props.closeModal}
+          className={classes.close}
+          color="primary"
+        >
           <Icon>close</Icon>
         </IconButton>
-      </div>
-      <DialogTitle className={classes.title}>{props.title}</DialogTitle>
+      </DialogTitle>
     </React.Fragment>
   );
 };
-export default Title;
+export default Header;
