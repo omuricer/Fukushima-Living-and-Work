@@ -29,27 +29,45 @@ const useStyles = makeStyles((theme: Theme) =>
 const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
   const classes = useStyles();
 
+  const changeModal = (key: string) => {
+    props.closeModal();
+    props.handleAnothers.openModal(key);
+  };
+
   return (
     <React.Fragment>
       <div>気になるくらしのスタイルを\n選択してください</div>
-      <div className={classes.lifeStyles}>
-        <div className={classes.lifeStyle}>
+      <ul className={classes.lifeStyles}>
+        <li
+          className={classes.lifeStyle}
+          onClick={() => changeModal("livingMountain")}
+        >
           <Image src={"mountain"} />
           <Typography>山のあるくらし</Typography>
-        </div>
-        <div className={classes.lifeStyle}>
+        </li>
+        <li
+          className={classes.lifeStyle}
+          onClick={() => changeModal("livingSea")}
+        >
           <Image src={"sea"} />
           <Typography>海・湖のあるくらし</Typography>
-        </div>
-        <div className={classes.lifeStyle}>
+        </li>
+        <li
+          className={classes.lifeStyle}
+          onClick={() => changeModal("livingCity")}
+        >
           <Image src={"culture"} />
           <Typography>文化のあるくらし</Typography>
-        </div>
-        <div className={classes.lifeStyle}>
+        </li>
+        <li
+          className={classes.lifeStyle}
+          onClick={() => changeModal("livingCulture")}
+        >
           <Image src={"city"} />
           <Typography>街のあるくらし</Typography>
-        </div>
-      </div>
+        </li>
+      </ul>
+      <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
     </React.Fragment>
   );
 };

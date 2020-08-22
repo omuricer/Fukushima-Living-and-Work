@@ -21,9 +21,34 @@ const useStyles = makeStyles((theme: Theme) =>
 const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
   const classes = useStyles();
 
+  const changeModal = (key: string) => {
+    props.closeModal();
+    props.handleAnothers.openModal(key);
+  };
+
   return (
     <React.Fragment>
-      <div>SelectWorkStyle</div>
+      <Typography>
+        気になるしごとのスタイルを
+        <br />
+        選択してください
+      </Typography>
+      <Button onClick={() => changeModal("workingNature")}>
+        自然の中で働きたい
+      </Button>
+      <Button onClick={() => changeModal("workingStartBussiness")}>
+        自分で仕事をつくりたい
+      </Button>
+      <Button onClick={() => changeModal("workingOfferLocals")}>
+        地域の魅力を発信したい
+      </Button>
+      <Button onClick={() => changeModal("workingForLocals")}>
+        地域貢献できて、安定した仕事がしたい
+      </Button>
+      <Button onClick={() => changeModal("workingIT")}>
+        ITスキルを活かしたい
+      </Button>
+      <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
     </React.Fragment>
   );
 };

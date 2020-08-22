@@ -13,6 +13,7 @@ const LivingRegidents: Resident<LivingContent>[] = [
       content: {
         type: "living",
         icon: "animal",
+        headerColor: "green",
         title: "山のあるくらし",
         visual: "kuma",
         comment: "ライフスタイル説明",
@@ -21,14 +22,17 @@ const LivingRegidents: Resident<LivingContent>[] = [
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
         ],
       },
@@ -45,6 +49,7 @@ const LivingRegidents: Resident<LivingContent>[] = [
       content: {
         type: "living",
         icon: "animal",
+        headerColor: "blue",
         title: "海・湖のあるくらし",
         visual: "kuma",
         comment: "ライフスタイル説明",
@@ -53,14 +58,17 @@ const LivingRegidents: Resident<LivingContent>[] = [
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
         ],
       },
@@ -77,6 +85,7 @@ const LivingRegidents: Resident<LivingContent>[] = [
       content: {
         type: "living",
         icon: "animal",
+        headerColor: "red",
         title: "街のあるくらし",
         visual: "kuma",
         comment: "ライフスタイル説明",
@@ -85,14 +94,17 @@ const LivingRegidents: Resident<LivingContent>[] = [
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
         ],
       },
@@ -109,6 +121,7 @@ const LivingRegidents: Resident<LivingContent>[] = [
       content: {
         type: "living",
         icon: "animal",
+        headerColor: "purple",
         title: "文化のあるくらし",
         visual: "kuma",
         comment: "ライフスタイル説明",
@@ -117,14 +130,17 @@ const LivingRegidents: Resident<LivingContent>[] = [
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
           {
             name: "○○",
             image: "image",
+            id: "1",
           },
         ],
       },

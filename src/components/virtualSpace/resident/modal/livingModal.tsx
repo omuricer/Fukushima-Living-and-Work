@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Modal, { IModalProps } from "./index";
+import Typography from "@material-ui/core/Typography";
+import Image from "@/components/form/image";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    // actionsRoot: {
-    //   background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
-    //   paddingLeft: "2rem",
-    //   paddingRight: "2rem",
-    //   paddingBottom: "1rem",
-    //   justifyContent: "center",
-    // },
+    h3: {
+      marginTop: "10px",
+      marginBottom: "10px",
+    },
+    comment: {},
   })
 );
 
 export type LivingContent = {
   type: string;
   icon: string;
+  headerColor: string;
   title: string;
   visual: string;
   comment: string;
@@ -24,6 +25,7 @@ export type LivingContent = {
   advisors: {
     name: string;
     image: string;
+    id: string;
   }[];
 };
 export const isLivingContent = (v: unknown): v is LivingContent =>
@@ -38,10 +40,47 @@ export interface ILivingModalProps extends IModalProps {
 const LivingModal: React.FC<ILivingModalProps> = (props) => {
   const classes = useStyles();
 
+  const advisors = props.content.advisors.map((a, index) => (
+    <Advisor key={index} {...a} />
+  ));
+
   return (
-    <Modal {...props}>
-      <div>{props.content.title}</div>
+    <Modal {...props} headerColor={props.content.headerColor}>
+      <Typography variant="h3" className={classes.h3}>
+        {props.content.title}
+      </Typography>
+      <div>
+        <Image src={props.content.visual} />
+        <p className={classes.comment}>{props.content.comment}</p>
+      </div>
+      <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
+      {advisors}
     </Modal>
   );
 };
 export default LivingModal;
+
+const useStylesAdvisor = makeStyles((theme: Theme) =>
+  createStyles({
+    image: {},
+  })
+);
+
+export interface IAdvisorProps {
+  image: string;
+  name: string;
+  id: string;
+}
+const Advisor: React.FC<IAdvisorProps> = (props) => {
+  const classes = useStylesAdvisor();
+  return (
+    <a
+      href={`https://xxx.xxx/aaa/${props.id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Image src={props.image} className={classes.image} />
+      <p>{props.name}</p>
+    </a>
+  );
+};

@@ -40,6 +40,7 @@ export interface IModalProps {
   open: boolean;
   closeModal: () => void;
   handleAnothers: HandleAnothers;
+  headerColor: string;
 }
 /**
  * モーダルコンポーネント
@@ -57,7 +58,7 @@ const Modal: React.FC<IModalProps> = (props) => {
       >
         <Header
           icon={"icon/icon"}
-          color={"#E08C38"}
+          color={props.headerColor}
           closeModal={props.closeModal}
         />
         <DialogContent classes={{ root: classes.root }}>

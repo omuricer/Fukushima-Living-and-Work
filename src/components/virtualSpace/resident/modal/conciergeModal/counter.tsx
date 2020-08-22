@@ -47,7 +47,8 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
           <Button
             className={classes.answerButton}
             onClick={() => {
-              alert("click!!!"); // TODO:予約サイトへ
+              props.closeModal();
+              props.handleAnothers.openModal("conciergeSelectLifeStyle");
             }}
           >
             くらし
@@ -55,7 +56,8 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
           <Button
             className={classes.answerButton}
             onClick={() => {
-              alert("click!!!"); // TODO:予約サイトへ
+              props.closeModal();
+              props.handleAnothers.openModal("conciergeSelectWorkStyle");
             }}
           >
             しごと
