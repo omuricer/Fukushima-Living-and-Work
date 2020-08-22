@@ -18,7 +18,7 @@ export class ResidentCreater {
     this.handleAnothers = handleAnothers;
   }
 
-  create(iconProps: IconProps, modalProps: ModalProps<ModalContent>): Resident {
+  create(iconProps: IconProps | null, modalProps: ModalProps<ModalContent>): Resident {
     if (isLivingModal(modalProps)) {
       return new LivingResident(iconProps, modalProps, this.handleAnothers);
     }

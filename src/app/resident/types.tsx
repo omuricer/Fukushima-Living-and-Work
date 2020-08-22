@@ -9,11 +9,11 @@ import {
 import {
   ConciergeContent,
   isConciergeContent,
-} from "@/components/virtualSpace/resident/modal/conciergeModal";
+} from "@/components/virtualSpace/resident/modal/conciergeModal/index";
 
 export type Resident<T> = {
   key: string;
-  icon: IconProps;
+  icon?: IconProps;
   modal: ModalProps<T>;
 };
 export type IconProps = {

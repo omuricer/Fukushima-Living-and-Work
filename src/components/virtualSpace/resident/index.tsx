@@ -8,12 +8,14 @@ type IResidentProps = {
   generator: Generator;
 };
 const Resident: React.FC<IResidentProps> = (props) => {
-  const icon = props.generator.generateIcon({
-    ...props.generator.iconProps,
-    onClick: () => {
-      props.onOpen();
-    },
-  });
+  const icon = props.generator.iconProps
+    ? props.generator.generateIcon({
+        ...props.generator.iconProps,
+        onClick: () => {
+          props.onOpen();
+        },
+      })
+    : null;
   const modal = props.generator.generateModal({
     ...props.generator.modalProps,
     open: props.opened,
