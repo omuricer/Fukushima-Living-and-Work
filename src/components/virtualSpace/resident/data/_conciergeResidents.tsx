@@ -7,7 +7,7 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 30,
-      positionY: 100,
+      positionY: 90,
     },
     modal: {
       content: {
