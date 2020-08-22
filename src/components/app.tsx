@@ -32,13 +32,9 @@ const App: React.FC<IAppProps> = (props) => {
     <div className={classes.root}>
       <GlobalStyle />
       <Loading display={loading} />
-      {!loading && (
-        <React.Fragment>
-          <FirstView />
-          <VirtualSpace />
-          <Footer />
-        </React.Fragment>
-      )}
+      <FirstView />
+      <VirtualSpace />
+      <Footer />
     </div>
   );
 };

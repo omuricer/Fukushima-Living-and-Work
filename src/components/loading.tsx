@@ -28,7 +28,25 @@ interface ILoadingProps {
 const Loading: React.FC<ILoadingProps> = (props) => {
   const classes = useStyles();
 
-  if (!props.display) return <React.Fragment></React.Fragment>;
+  const noScroll = (event: Event) => {
+    event.preventDefault();
+  };
+  const opts: AddEventListenerOptions & EventListenerOptions = {
+    passive: true,
+  };
+
+  if (!props.display) {
+    // スクロール禁止を解除(SP)
+    document.removeEventListener("touchmove", noScroll, opts);
+    // スクロール禁止を解除(PC)
+    document.removeEventListener("mousewheel", noScroll, opts);
+    return <React.Fragment></React.Fragment>;
+  }
+
+  // スクロール禁止(SP)
+  document.addEventListener("touchmove", noScroll, opts);
+  // スクロール禁止(PC)
+  document.addEventListener("mousewheel", noScroll, opts);
 
   return (
     <div className={classes.loading}>
