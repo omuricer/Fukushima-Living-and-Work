@@ -10,6 +10,10 @@ import {
   ConciergeContent,
   isConciergeContent,
 } from "@/components/virtualSpace/resident/modal/conciergeModal/index";
+import {
+  WorkingContent,
+  isWorkingContent,
+} from "@/components/virtualSpace/resident/modal/workingModal";
 
 export type Resident<T> = {
   key: string;
@@ -24,7 +28,11 @@ export type IconProps = {
 export type ModalProps<T> = {
   content: T;
 };
-export type ModalContent = LivingContent | ProjectionContent | ConciergeContent;
+export type ModalContent =
+  | LivingContent
+  | ProjectionContent
+  | ConciergeContent
+  | WorkingContent;
 
 export const isLivingModal = (v: unknown): v is ModalProps<LivingContent> =>
   v !== null &&
@@ -44,6 +52,11 @@ export const isConciergeModal = (
   v !== null &&
   typeof v === "object" &&
   isConciergeContent((v as { content: unknown }).content);
+
+export const isWorkingModal = (v: unknown): v is ModalProps<WorkingContent> =>
+  v !== null &&
+  typeof v === "object" &&
+  isWorkingContent((v as { content: unknown }).content);
 
 export type HandleAnothers = {
   openModal: (residentKey: string) => void;
