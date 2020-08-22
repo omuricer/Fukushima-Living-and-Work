@@ -5,12 +5,12 @@ import { IIconProps } from "@/components/virtualSpace/resident/icon";
 import { IModalProps } from "@/components/virtualSpace/resident/modal";
 
 export abstract class Resident {
-  public iconProps: IconProps;
+  public iconProps: IconProps | null;
   public modalProps: ModalProps<ModalContent>;
   public handleAnothers: HandleAnothers;
 
   constructor(
-    iconProps: IconProps,
+    iconProps: IconProps | null,
     modalProps: ModalProps<ModalContent>,
     handleAnothers: HandleAnothers
   ) {

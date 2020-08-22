@@ -7,7 +7,7 @@ import { ResidentCreater } from "@/app/resident/residentCreater";
 import RegidentsDefinitions from "./resident/data";
 
 // @ts-ignore
-import mainVisual from "@/image/tatenaga.jpg";
+import mainVisual from "@/image/virtualSpace.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,7 +36,7 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
   const residentCreater = new ResidentCreater(handleAnothers);
   const residents: JSX.Element[] = RegidentsDefinitions.map(
     (d, index: number) => {
-      return residentCreater.create(d.icon, d.modal).element(
+      return residentCreater.create(d.icon ?? null, d.modal).element(
         d.key,
         openedResident == d.key,
         () => setOpenedResident(d.key),

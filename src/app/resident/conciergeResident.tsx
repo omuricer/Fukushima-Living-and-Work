@@ -6,7 +6,7 @@ import {
 } from "@/components/virtualSpace/resident/icon";
 import ConciergeModal, {
   IConciergeModalProps,
-} from "@/components/virtualSpace/resident/modal/conciergeModal";
+} from "@/components/virtualSpace/resident/modal/conciergeModal/index";
 
 export class ConciergeResident extends Resident {
   generateIcon(props: IIconProps): JSX.Element {

@@ -11,14 +11,10 @@ const useStyles = makeStyles((theme: Theme) =>
     // Override MuiDialogTitle-root
     root: {
       padding: "0",
-      height: "60px",
+      height: "50px",
       position: "relative",
       borderTopLeftRadius: "4px",
       borderTopRightRadius: "4px",
-    },
-    header: {
-      height: "60px",
-      position: "relative",
     },
     icon: {
       position: "absolute",
@@ -68,7 +64,7 @@ const Header: React.FC<ITitleProps> = (props) => {
         <IconButton
           onClick={props.closeModal}
           className={classes.close}
-          color="primary"
+          color="secondary"
         >
           <Icon>close</Icon>
         </IconButton>
