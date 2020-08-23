@@ -31,6 +31,10 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
       return <SelectWorkStyle {...props} />;
   };
 
-  return <Modal {...props}>{content()}</Modal>;
+  return (
+    <Modal {...props} headerColor={"#F6E9A3"}>
+      {content()}
+    </Modal>
+  );
 };
 export default ConciergeModal;
