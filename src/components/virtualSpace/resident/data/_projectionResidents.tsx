@@ -3,10 +3,11 @@ import { ProjectionContent } from "@/components/virtualSpace/resident/modal/proj
 
 const ProjectionRegidents: Resident<ProjectionContent>[] = [
   {
+    floor: 7,
     key: "projection",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
-      positionX: 30,
+      positionX: 10,
       positionY: 10,
     },
     modal: {

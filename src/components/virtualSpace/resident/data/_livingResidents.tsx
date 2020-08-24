@@ -3,6 +3,7 @@ import { LivingContent } from "@/components/virtualSpace/resident/modal/livingMo
 
 const LivingRegidents: Resident<LivingContent>[] = [
   {
+    floor: 5,
     key: "livingMountain",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
@@ -39,11 +40,12 @@ const LivingRegidents: Resident<LivingContent>[] = [
     },
   },
   {
+    floor: 4,
     key: "livingSea",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 10,
-      positionY: 30,
+      positionY: 10,
     },
     modal: {
       content: {
@@ -75,11 +77,12 @@ const LivingRegidents: Resident<LivingContent>[] = [
     },
   },
   {
+    floor: 3,
     key: "livingCity",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 10,
-      positionY: 50,
+      positionY: 10,
     },
     modal: {
       content: {
@@ -111,11 +114,12 @@ const LivingRegidents: Resident<LivingContent>[] = [
     },
   },
   {
+    floor: 6,
     key: "livingCulture",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
       positionX: 10,
-      positionY: 70,
+      positionY: 10,
     },
     modal: {
       content: {

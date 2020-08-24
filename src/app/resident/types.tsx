@@ -16,6 +16,7 @@ import {
 } from "@/components/virtualSpace/resident/modal/workingModal";
 
 export type Resident<T> = {
+  floor: number;
   key: string;
   icon?: IconProps;
   modal: ModalProps<T>;

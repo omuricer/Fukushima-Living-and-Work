@@ -3,11 +3,12 @@ import { ConciergeContent } from "@/components/virtualSpace/resident/modal/conci
 
 const ConciergeRegidents: Resident<ConciergeContent>[] = [
   {
+    floor: 1,
     key: "conciergeCounter",
     icon: {
       image: "image/virtualSpace/icons/icon.png",
-      positionX: 30,
-      positionY: 90,
+      positionX: 10,
+      positionY: 10,
     },
     modal: {
       content: {
@@ -19,6 +20,7 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     },
   },
   {
+    floor: 1,
     key: "conciergeSelectLifeStyle",
     modal: {
       content: {
@@ -30,6 +32,7 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     },
   },
   {
+    floor: 1,
     key: "conciergeSelectWorkStyle",
     modal: {
       content: {

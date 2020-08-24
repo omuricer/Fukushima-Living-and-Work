@@ -3,6 +3,7 @@ import { WorkingContent } from "@/components/virtualSpace/resident/modal/working
 
 const Working: Resident<WorkingContent>[] = [
   {
+    floor: 1,
     key: "workingNature",
     modal: {
       content: {
@@ -31,6 +32,7 @@ const Working: Resident<WorkingContent>[] = [
     },
   },
   {
+    floor: 1,
     key: "workingStartBussiness",
     modal: {
       content: {
@@ -60,6 +62,7 @@ const Working: Resident<WorkingContent>[] = [
   },
 
   {
+    floor: 1,
     key: "workingOfferLocals",
     modal: {
       content: {
@@ -88,6 +91,7 @@ const Working: Resident<WorkingContent>[] = [
     },
   },
   {
+    floor: 1,
     key: "workingForLocals",
     modal: {
       content: {
@@ -116,6 +120,7 @@ const Working: Resident<WorkingContent>[] = [
     },
   },
   {
+    floor: 1,
     key: "workingIT",
     modal: {
       content: {

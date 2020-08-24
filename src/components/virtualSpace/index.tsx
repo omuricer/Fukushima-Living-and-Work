@@ -5,9 +5,7 @@ import Typography from "@material-ui/core/Typography";
 
 import { ResidentCreater } from "@/app/resident/residentCreater";
 import RegidentsDefinitions from "./resident/data";
-
-// @ts-ignore
-import mainVisual from "@/image/virtualSpace.png";
+import Floor from "./floor";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,23 +31,21 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
       setOpenedResident(residentKey);
     },
   };
-  const residentCreater = new ResidentCreater(handleAnothers);
-  const residents: JSX.Element[] = RegidentsDefinitions.map(
-    (d, index: number) => {
-      return residentCreater.create(d.icon ?? null, d.modal).element(
-        d.key,
-        openedResident == d.key,
-        () => setOpenedResident(d.key),
-        () => setOpenedResident(null)
-      );
-    }
-  );
+  const floorProps = {
+    openedResident: openedResident,
+    setOpenedResident: setOpenedResident,
+    handleAnothers: handleAnothers,
+  };
 
   return (
     <Grid container className={classes.root}>
-      <img src={mainVisual} className={classes.image} />
-      <Typography className={classes.icon}>メインビジュアル</Typography>
-      {residents}
+      <Floor number={7} visual={"thater"} {...floorProps} />
+      <Floor number={6} visual={"calture"} {...floorProps} />
+      <Floor number={5} visual={"mountain"} {...floorProps} />
+      <Floor number={4} visual={"sea"} {...floorProps} />
+      <Floor number={3} visual={"city"} {...floorProps} />
+      <Floor number={2} visual={"school"} {...floorProps} />
+      <Floor number={1} visual={"concierge"} {...floorProps} />
     </Grid>
   );
 };

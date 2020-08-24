@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Dialog from "@material-ui/core/Dialog";
+import Dialog, { DialogClassKey } from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Header from "./header";
 import { HandleAnothers } from "@/app/resident/types";
@@ -41,6 +41,7 @@ export interface IModalProps {
   closeModal: () => void;
   handleAnothers: HandleAnothers;
   headerColor: string;
+  classes: Partial<Record<DialogClassKey, string>>;
 }
 /**
  * モーダルコンポーネント
@@ -54,7 +55,7 @@ const Modal: React.FC<IModalProps> = (props) => {
       <Dialog
         open={props.open}
         onClose={props.closeModal}
-        classes={{ paper: classes.paper }}
+        classes={{ ...{ paper: classes.paper }, ...props.classes }}
       >
         <Header
           icon={"icon/icon"}
