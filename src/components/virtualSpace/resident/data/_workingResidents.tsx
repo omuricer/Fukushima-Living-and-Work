@@ -11,6 +11,7 @@ const Working: Resident<WorkingContent>[] = [
         icon: "icon", // TODO:
         advisors: [
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -18,6 +19,7 @@ const Working: Resident<WorkingContent>[] = [
             },
           },
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -37,6 +39,7 @@ const Working: Resident<WorkingContent>[] = [
         icon: "icon", // TODO:
         advisors: [
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -44,6 +47,7 @@ const Working: Resident<WorkingContent>[] = [
             },
           },
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -64,6 +68,7 @@ const Working: Resident<WorkingContent>[] = [
         icon: "icon", // TODO:
         advisors: [
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -71,6 +76,7 @@ const Working: Resident<WorkingContent>[] = [
             },
           },
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -90,6 +96,7 @@ const Working: Resident<WorkingContent>[] = [
         icon: "icon", // TODO:
         advisors: [
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -97,6 +104,7 @@ const Working: Resident<WorkingContent>[] = [
             },
           },
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -116,6 +124,7 @@ const Working: Resident<WorkingContent>[] = [
         icon: "icon", // TODO:
         advisors: [
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:
@@ -123,6 +132,7 @@ const Working: Resident<WorkingContent>[] = [
             },
           },
           {
+            id: "1",
             name: "団体名",
             inCharge: {
               name: "担当者名", // TODO:

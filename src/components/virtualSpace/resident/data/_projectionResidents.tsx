@@ -13,6 +13,7 @@ const ProjectionRegidents: Resident<ProjectionContent>[] = [
       content: {
         title: "動画配信シアター",
         icon: "icon", // TODO:
+        type: "projection",
         youtubeDataAPI: {
           key: "AIzaSyCOdHoXvxi2fferydOqo4O4Z-6o4p0s0fE",
           q: "ふくしま",

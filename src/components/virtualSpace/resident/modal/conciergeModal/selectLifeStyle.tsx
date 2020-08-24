@@ -7,17 +7,15 @@ import { IConciergeModalProps } from "./index";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    text: {
+      margin: "15px",
+    },
     lifeStyles: {
       display: "flex",
       flexFlow: "wrap",
-      justifyContent: "center",
+      justifyContent: "space-around",
       marginTop: "15px",
       marginBottom: "25px",
-    },
-    lifeStyle: {
-      width: "50%",
-      padding: "5px",
-      textAlign: "center",
     },
   })
 );
@@ -36,39 +34,82 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div>気になるくらしのスタイルを\n選択してください</div>
+      <Typography className={classes.text}>
+        気になるくらしのスタイルを
+        <br />
+        選択してください
+      </Typography>
       <ul className={classes.lifeStyles}>
-        <li
-          className={classes.lifeStyle}
+        <LifeStyle
+          image={"moutain"}
+          text={"山のあるくらし"}
+          color="green"
           onClick={() => changeModal("livingMountain")}
-        >
-          <Image src={"mountain"} />
-          <Typography>山のあるくらし</Typography>
-        </li>
-        <li
-          className={classes.lifeStyle}
+        />
+        <LifeStyle
+          image={"livingSea"}
+          text={"海・湖のあるくらし"}
+          color="blue"
           onClick={() => changeModal("livingSea")}
-        >
-          <Image src={"sea"} />
-          <Typography>海・湖のあるくらし</Typography>
-        </li>
-        <li
-          className={classes.lifeStyle}
-          onClick={() => changeModal("livingCity")}
-        >
-          <Image src={"culture"} />
-          <Typography>文化のあるくらし</Typography>
-        </li>
-        <li
-          className={classes.lifeStyle}
+        />
+        <LifeStyle
+          image={"culture"}
+          text={"文化のあるくらし"}
+          color="purple"
           onClick={() => changeModal("livingCulture")}
-        >
-          <Image src={"city"} />
-          <Typography>街のあるくらし</Typography>
-        </li>
+        />
+        <LifeStyle
+          image={"moutain"}
+          text={"街のあるくらし"}
+          color="red"
+          onClick={() => changeModal("livingCity")}
+        />
       </ul>
       <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
     </React.Fragment>
   );
 };
 export default SelectLifeStyle;
+
+const useStylesLifeStyle = makeStyles((theme: Theme) =>
+  createStyles({
+    lifeStyle: {
+      width: "47%",
+      padding: "5px",
+      margin: "4px",
+      textAlign: "center",
+      borderRadius: "4px",
+    },
+    image: {},
+    text: {
+      marginTop: "5px",
+      color: "#ffffff",
+      letterSpacing: "0",
+    },
+  })
+);
+
+interface ILifeStyleProps {
+  image: string;
+  text: string;
+  color: string;
+  onClick: () => void;
+}
+/**
+ * くらしのスタイルを選ぶ
+ * @param props
+ */
+const LifeStyle: React.FC<ILifeStyleProps> = (props) => {
+  const classes = useStylesLifeStyle();
+
+  return (
+    <li
+      className={classes.lifeStyle}
+      onClick={props.onClick}
+      style={{ backgroundColor: props.color }}
+    >
+      <Image src={props.image} className={classes.image} />
+      <Typography className={classes.text}>{props.text}</Typography>
+    </li>
+  );
+};

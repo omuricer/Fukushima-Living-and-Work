@@ -2,29 +2,17 @@ import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Modal, { IModalProps } from "./index";
+import Typography from "@material-ui/core/Typography";
+import Image from "@/components/form/image";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    contentRoot: {
-      background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
-      minWidth: "600px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-
-      paddingTop: "2rem",
-      paddingLeft: "2rem",
-      paddingRight: "2rem",
-      [theme.breakpoints.down("xs")]: {
-        minWidth: "auto",
-      },
+    h3: {
+      margin: "15px",
     },
-    actionsRoot: {
-      background: "rgba(225,225,225, 0.9)", // 透過を子要素に継承しないためRGBで指定している
-      paddingLeft: "2rem",
-      paddingRight: "2rem",
-      paddingBottom: "1rem",
-      justifyContent: "center",
+    advidors: {
+      display: "flex",
+      flexFlow: "wrap",
     },
   })
 );
@@ -35,6 +23,7 @@ export type WorkingContent = {
   type: string;
   advisors: {
     name: string;
+    id: string;
     inCharge: {
       name: string;
       icon: string;
@@ -52,10 +41,108 @@ export interface IWorkingModalProps extends IModalProps {
 const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
   const classes = useStyles();
 
+  const advisors = props.content.advisors.map((a, index) => (
+    <Advisor key={index} color={props.headerColor} {...a} />
+  ));
+  const changeModal = (key: string) => {
+    props.closeModal();
+    props.handleAnothers.openModal(key);
+  };
+
   return (
-    <Modal {...props}>
-      <div>{props.content.title}</div>
+    <Modal {...props} headerColor={"#F6E9A3"}>
+      <Typography variant="h3" className={classes.h3}>
+        {props.content.title}
+      </Typography>
+      <hr />
+      <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
+
+      <ul className={classes.advidors}>{advisors}</ul>
+      <Button onClick={() => changeModal("conciergeSelectWorkStyle")}>
+        ＜ 戻る
+      </Button>
     </Modal>
   );
 };
 export default WorkingModal;
+
+const useStylesAdvisor = makeStyles((theme: Theme) =>
+  createStyles({
+    wrap: {
+      width: "100%",
+    },
+    li: {
+      borderStyle: "solid",
+      borderRadius: "4px",
+      margin: "5px",
+    },
+    h3: {
+      margin: "15px",
+    },
+    line: {
+      display: "flex",
+      alignItems: "center",
+    },
+    inCharge: {
+      textAlign: "left",
+      margin: "10px",
+      display: "flex",
+      flexFlow: "column",
+      justifyContent: "center",
+      flex: 1,
+    },
+    inChargeLabel: {
+      color: "#797979",
+      margin: "0",
+      marginBottom: "3px",
+    },
+    image: {
+      width: "60px",
+      borderRadius: "50%",
+      margin: "5px",
+    },
+    name: {
+      margin: "10px",
+    },
+  })
+);
+
+export interface IAdvisorProps {
+  name: string;
+  id: string;
+  inCharge: {
+    name: string;
+    icon: string;
+  };
+  color: string;
+}
+const Advisor: React.FC<IAdvisorProps> = (props) => {
+  const classes = useStylesAdvisor();
+  return (
+    <div className={classes.wrap}>
+      <li className={classes.li} style={{ borderColor: props.color }}>
+        <Typography variant="h3" className={classes.h3}>
+          {props.name}
+        </Typography>
+        <div className={classes.line}>
+          <Image src={props.inCharge.icon} className={classes.image} />
+          <div className={classes.inCharge}>
+            <Typography className={classes.inChargeLabel} variant="body2">
+              担当
+            </Typography>
+            <Typography className={classes.name}>
+              {props.inCharge.name}
+            </Typography>
+          </div>
+          <a
+            href={`https://xxx.xxx/aaa/${props.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>＜ 戻る</Button>
+          </a>
+        </div>
+      </li>
+    </div>
+  );
+};
