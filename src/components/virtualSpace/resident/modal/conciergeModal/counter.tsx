@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import SquareButton from "@/components/form/squareButton";
 import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
@@ -44,7 +45,9 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
         }
       >
         <div className={classes.answer}>
-          <Button
+          <SquareButton
+            variant="contained"
+            color="primary"
             className={classes.answerButton}
             onClick={() => {
               props.closeModal();
@@ -52,8 +55,10 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
             }}
           >
             くらし
-          </Button>
-          <Button
+          </SquareButton>
+          <SquareButton
+            variant="contained"
+            color="primary"
             className={classes.answerButton}
             onClick={() => {
               props.closeModal();
@@ -61,7 +66,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
             }}
           >
             しごと
-          </Button>
+          </SquareButton>
         </div>
       </Flow>
       <Flow

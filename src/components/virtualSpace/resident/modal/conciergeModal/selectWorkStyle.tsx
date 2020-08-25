@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
+import SquareButton from "@/components/form/squareButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
       marginTop: "10px",
       marginBottom: "10px",
+    },
+    selectButton: {
+      width: "100%",
+      marginBottom: "5px",
     },
   })
 );
@@ -28,26 +32,51 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Typography>
+      <Typography className={classes.h3}>
         気になるしごとのスタイルを
         <br />
         選択してください
       </Typography>
-      <Button onClick={() => changeModal("workingNature")}>
+      <SquareButton
+        variant="contained"
+        color="primary"
+        onClick={() => changeModal("workingNature")}
+        className={classes.selectButton}
+      >
         自然の中で働きたい
-      </Button>
-      <Button onClick={() => changeModal("workingStartBussiness")}>
+      </SquareButton>
+      <SquareButton
+        variant="contained"
+        color="primary"
+        onClick={() => changeModal("workingStartBussiness")}
+        className={classes.selectButton}
+      >
         自分で仕事をつくりたい
-      </Button>
-      <Button onClick={() => changeModal("workingOfferLocals")}>
+      </SquareButton>
+      <SquareButton
+        variant="contained"
+        color="primary"
+        onClick={() => changeModal("workingOfferLocals")}
+        className={classes.selectButton}
+      >
         地域の魅力を発信したい
-      </Button>
-      <Button onClick={() => changeModal("workingForLocals")}>
+      </SquareButton>
+      <SquareButton
+        variant="contained"
+        color="primary"
+        onClick={() => changeModal("workingForLocals")}
+        className={classes.selectButton}
+      >
         地域貢献できて、安定した仕事がしたい
-      </Button>
-      <Button onClick={() => changeModal("workingIT")}>
+      </SquareButton>
+      <SquareButton
+        variant="contained"
+        color="primary"
+        onClick={() => changeModal("workingIT")}
+        className={classes.selectButton}
+      >
         ITスキルを活かしたい
-      </Button>
+      </SquareButton>
       <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
     </React.Fragment>
   );

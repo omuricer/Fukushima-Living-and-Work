@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import RoundButton from "@/components/form/roundButton";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
@@ -86,15 +86,17 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         </ul>
       </Modal>
       {props.open && (
-        <Button
+        <RoundButton
           onClick={() => {
             props.closeModal();
             props.handleAnothers.openModal("conciergeCounter");
           }}
+          variant="contained"
+          color="primary"
           className={classes.buttonConcierge}
         >
           個別相談受付
-        </Button>
+        </RoundButton>
       )}
     </React.Fragment>
   );
