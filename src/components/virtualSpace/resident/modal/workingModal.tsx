@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
+import RoundButton from "@/components/form/roundButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -102,7 +103,7 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       margin: "5px",
     },
     name: {
-      margin: "10px",
+      marginTop: "5px",
     },
   })
 );
@@ -139,7 +140,9 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button>＜ 戻る</Button>
+            <RoundButton variant="contained" color="primary">
+              個別相談
+            </RoundButton>
           </a>
         </div>
       </li>

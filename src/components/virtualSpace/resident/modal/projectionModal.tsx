@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import RoundButton from "@/components/form/roundButton";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    // Override MuiDialog-paper TODO: 
+    // Override MuiDialog-paper TODO:
     paper: {
-      width: "90vw",
+      width: "91vw",
       margin: "0",
       maxHeight: "80vh",
+      overflowY: "visible",
       top: "-40px",
     },
     h3: {
@@ -23,6 +24,15 @@ const useStyles = makeStyles((theme: Theme) =>
     programs: {
       display: "flex",
       flexFlow: "wrap",
+    },
+    buttonConcierge: {
+      position: "fixed",
+      bottom: "20px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      WebkitTransform: "translateX(-50%)",
+      MsTransform: "translateX(-50%)",
+      zIndex: 1301,
     },
   })
 );
@@ -54,22 +64,41 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
   };
 
   return (
-    <Modal {...props} headerColor={"#F6E9A3"}>
-      <Typography variant="h3" className={classes.h3}>
-        {props.content.title}
-      </Typography>
-      <Image src={"image"} className={classes.image} />
-      <Typography variant="h3" className={classes.h3}>
-        プログラム
-      </Typography>
+    <React.Fragment>
+      <Modal
+        {...props}
+        headerColor={"#F6E9A3"}
+        classes={{ paper: classes.paper }}
+      >
+        <Typography variant="h3" className={classes.h3}>
+          {props.content.title}
+        </Typography>
+        <Image src={"image"} className={classes.image} />
+        <Typography variant="h3" className={classes.h3}>
+          プログラム
+        </Typography>
 
-      <ul className={classes.programs}>
-        <Program title="program1" start="10:00" end="12:00" />
-        <Program title="program2" start="10:00" end="12:00" />
-        <Program title="program3" start="10:00" end="12:00" />
-        <Program title="program4" start="10:00" end="12:00" />
-      </ul>
-    </Modal>
+        <ul className={classes.programs}>
+          <Program title="program1" start="10:00" end="12:00" />
+          <Program title="program2" start="10:00" end="12:00" />
+          <Program title="program3" start="10:00" end="12:00" />
+          <Program title="program4" start="10:00" end="12:00" />
+        </ul>
+      </Modal>
+      {props.open && (
+        <RoundButton
+          onClick={() => {
+            props.closeModal();
+            props.handleAnothers.openModal("conciergeCounter");
+          }}
+          variant="contained"
+          color="primary"
+          className={classes.buttonConcierge}
+        >
+          個別相談受付
+        </RoundButton>
+      )}
+    </React.Fragment>
   );
 };
 export default ProjectionModal;
@@ -106,6 +135,7 @@ const useStylesProgram = makeStyles((theme: Theme) =>
     title: {
       flex: 1,
       textAlign: "left",
+      marginLeft: "10px",
     },
   })
 );

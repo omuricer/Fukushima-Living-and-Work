@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-
-import { ResidentCreater } from "@/app/resident/residentCreater";
-import RegidentsDefinitions from "./resident/data";
-
-// @ts-ignore
-import mainVisual from "@/image/virtualSpace.png";
+import Floor from "./floor";
+import FloorImage1 from "@/image/virtualSpace/1F.png";
+import FloorImage2 from "@/image/virtualSpace/2F.png";
+import FloorImage3 from "@/image/virtualSpace/3F.png";
+import FloorImage4 from "@/image/virtualSpace/4F.png";
+import FloorImage5 from "@/image/virtualSpace/5F.png";
+import FloorImage6 from "@/image/virtualSpace/6F.png";
+import FloorImage7 from "@/image/virtualSpace/7F.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,23 +34,21 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
       setOpenedResident(residentKey);
     },
   };
-  const residentCreater = new ResidentCreater(handleAnothers);
-  const residents: JSX.Element[] = RegidentsDefinitions.map(
-    (d, index: number) => {
-      return residentCreater.create(d.icon ?? null, d.modal).element(
-        d.key,
-        openedResident == d.key,
-        () => setOpenedResident(d.key),
-        () => setOpenedResident(null)
-      );
-    }
-  );
+  const floorProps = {
+    openedResident: openedResident,
+    setOpenedResident: setOpenedResident,
+    handleAnothers: handleAnothers,
+  };
 
   return (
     <Grid container className={classes.root}>
-      <img src={mainVisual} className={classes.image} />
-      <Typography className={classes.icon}>メインビジュアル</Typography>
-      {residents}
+      <Floor number={7} visual={FloorImage7} {...floorProps} />
+      <Floor number={6} visual={FloorImage6} {...floorProps} />
+      <Floor number={5} visual={FloorImage5} {...floorProps} />
+      <Floor number={4} visual={FloorImage4} {...floorProps} />
+      <Floor number={3} visual={FloorImage3} {...floorProps} />
+      <Floor number={2} visual={FloorImage2} {...floorProps} />
+      <Floor number={1} visual={FloorImage1} {...floorProps} />
     </Grid>
   );
 };
