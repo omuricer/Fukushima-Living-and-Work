@@ -9,17 +9,12 @@ import FloorImage4 from "@/image/virtualSpace/4F.png";
 import FloorImage5 from "@/image/virtualSpace/5F.png";
 import FloorImage6 from "@/image/virtualSpace/6F.png";
 import FloorImage7 from "@/image/virtualSpace/7F.png";
+import Menu from "@/components/menu";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       position: "relative",
-    },
-    image: {
-      width: "100%",
-    },
-    icon: {
-      position: "absolute",
     },
   })
 );
@@ -42,6 +37,7 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
 
   return (
     <Grid container className={classes.root}>
+      <Menu />
       <Floor number={7} visual={FloorImage7} {...floorProps} />
       <Floor number={6} visual={FloorImage6} {...floorProps} />
       <Floor number={5} visual={FloorImage5} {...floorProps} />
