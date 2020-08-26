@@ -57,41 +57,46 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IListProps {
   isVisible: boolean;
   closeMenu: () => void;
+  sclollToFloors: (() => void)[];
 }
 const List: React.FC<IListProps> = (props) => {
   const classes = useStyles();
 
   const list = [
     {
-      floor: "7F",
-      name: "動画配信シアター",
+      floor: "1F",
+      name: "個別相談予約カウンター",
     },
     {
-      floor: "6F",
-      name: "福島県を学ぶ",
-    },
-    {
-      floor: "5F",
-      name: "街のあるくらし",
-    },
-    {
-      floor: "4F",
-      name: "山のあるくらし",
+      floor: "2F",
+      name: "●●●●（しごと）",
     },
     {
       floor: "3F",
       name: "海・湖のあるくらし",
     },
     {
-      floor: "2F",
-      name: "●●●●●●●●（しごと）",
+      floor: "4F",
+      name: "山のあるくらし",
     },
     {
-      floor: "1F",
-      name: "個別相談予約カウンター",
+      floor: "5F",
+      name: "街のあるくらし",
     },
-  ].map((m) => (
-    <Button className={classes.button}>
+    {
+      floor: "6F",
+      name: "福島県を学ぶ",
+    },
+    {
+      floor: "7F",
+      name: "動画配信シアター",
+    },
+  ].map((m, i) => (
+    <Button
+      key={i}
+      className={classes.button}
+      onClick={props.sclollToFloors[i]}
+    >
       <li className={classes.li}>
         <Typography className={classes.floor} color="textSecondary">
           {m.floor}
@@ -102,6 +107,7 @@ const List: React.FC<IListProps> = (props) => {
       </li>
     </Button>
   ));
+  list.reverse();
 
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,

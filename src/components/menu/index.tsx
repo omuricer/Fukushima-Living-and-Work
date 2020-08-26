@@ -16,7 +16,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface IMenuProps {}
+interface IMenuProps {
+  sclollToFloors: (() => void)[];
+}
 const Menu: React.FC<IMenuProps> = (props) => {
   const [isVisibleButton, setIsVisibleButton] = useState<boolean>(false);
   const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false);
@@ -53,8 +55,17 @@ const Menu: React.FC<IMenuProps> = (props) => {
   return (
     <React.Fragment>
       <div ref={intersectingPoint} className={classes.intersectingPoint} />
-      <Button isVisible={isVisibleButton} onClick={openMenu} />
-      <List isVisible={isVisibleMenu} closeMenu={closeMenu} />
+      <Button
+        isVisible={isVisibleButton}
+        onClick={() => {
+          if (isVisibleButton) openMenu();
+        }}
+      />
+      <List
+        isVisible={isVisibleMenu}
+        closeMenu={closeMenu}
+        sclollToFloors={props.sclollToFloors}
+      />
     </React.Fragment>
   );
 };

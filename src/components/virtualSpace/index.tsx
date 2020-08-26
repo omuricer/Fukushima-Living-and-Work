@@ -29,22 +29,46 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
       setOpenedResident(residentKey);
     },
   };
-  const floorProps = {
-    openedResident: openedResident,
-    setOpenedResident: setOpenedResident,
-    handleAnothers: handleAnothers,
-  };
+
+  const floorNumber = 7;
+  const floorRefs = [...Array(floorNumber)].map(() =>
+    React.createRef<HTMLDivElement>()
+  );
+  const floorImages = [
+    FloorImage1,
+    FloorImage2,
+    FloorImage3,
+    FloorImage4,
+    FloorImage5,
+    FloorImage6,
+    FloorImage7,
+  ];
+  const floors = [...Array(floorNumber)].map((_, i) => (
+    <Floor
+      key={i}
+      number={i}
+      visual={floorImages[i]}
+      openedResident={openedResident}
+      setOpenedResident={setOpenedResident}
+      handleAnothers={handleAnothers}
+      ref={floorRefs[i]}
+    />
+  ));
+  floors.reverse();
+
+  const sclollToFloors = [...Array(floorNumber)].map((_, i) =>
+    React.useCallback(() => {
+      floorRefs[i]!.current!.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, [floorRefs[i]])
+  );
 
   return (
     <Grid container className={classes.root}>
-      <Menu />
-      <Floor number={7} visual={FloorImage7} {...floorProps} />
-      <Floor number={6} visual={FloorImage6} {...floorProps} />
-      <Floor number={5} visual={FloorImage5} {...floorProps} />
-      <Floor number={4} visual={FloorImage4} {...floorProps} />
-      <Floor number={3} visual={FloorImage3} {...floorProps} />
-      <Floor number={2} visual={FloorImage2} {...floorProps} />
-      <Floor number={1} visual={FloorImage1} {...floorProps} />
+      <Menu sclollToFloors={sclollToFloors} />
+      {floors}
     </Grid>
   );
 };
