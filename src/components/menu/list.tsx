@@ -7,6 +7,9 @@ import backgroundImage from "@/image/background.jpg";
 import menuBackgroundImage from "@/image/menu_bg.png";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import IconButton from "@material-ui/core/IconButton";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,14 +38,15 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "0",
       display: "block",
       width: "100%",
-    },
-    li: {
+      borderRadius: 0,
       borderTop: "1px solid #ffffff",
-      display: "block",
-      lineHeight: "3rem",
       "&:last-child": {
         borderBottom: "1px solid #ffffff",
       },
+    },
+    li: {
+      display: "block",
+      lineHeight: "3rem",
     },
     floor: {
       marginRight: "10px",
@@ -50,6 +54,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     name: {
       display: "inline",
+    },
+    close: {
+      position: "absolute",
+      top: "10px",
+      right: "10px",
     },
   })
 );
@@ -62,6 +71,10 @@ interface IListProps {
 const List: React.FC<IListProps> = (props) => {
   const classes = useStyles();
 
+  const handleClickMenu = (sclollToFloors: () => void) => {
+    props.closeMenu();
+    sclollToFloors();
+  };
   const list = [
     {
       floor: "1F",
@@ -95,7 +108,10 @@ const List: React.FC<IListProps> = (props) => {
     <Button
       key={i}
       className={classes.button}
-      onClick={props.sclollToFloors[i]}
+      onClick={async () => {
+        await Sleep.wait(150);
+        handleClickMenu(props.sclollToFloors[i]);
+      }}
     >
       <li className={classes.li}>
         <Typography className={classes.floor} color="textSecondary">
@@ -111,6 +127,7 @@ const List: React.FC<IListProps> = (props) => {
 
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,
+    animationDelay: `1s`,
   });
   return (
     <Backdrop
@@ -118,9 +135,19 @@ const List: React.FC<IListProps> = (props) => {
       open={props.isVisible}
       onClick={props.closeMenu}
     >
-      <animated.div style={springProps}>
+      <animated.div style={springProps} onClick={(e) => e.stopPropagation()}>
         <div className={classes.boad}>
           <Image src={menuBackgroundImage} className={classes.boadImage} />
+          <IconButton
+            onClick={async () => {
+              await Sleep.wait(150);
+              props.closeMenu();
+            }}
+            className={classes.close}
+            color="secondary"
+          >
+            <Icon style={{ fontSize: "3rem" }}>close</Icon>
+          </IconButton>
           <menu className={classes.menu}>{list}</menu>
         </div>
       </animated.div>

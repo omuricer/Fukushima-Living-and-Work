@@ -13,6 +13,6 @@
       "@/*": ["./src/*"],
       "@": ["./src"]
     },
-    "typeRoots": ["types", "node_modules/@types"]
+    "typeRoots": ["@types", "node_modules/@types"]
   }
 }
