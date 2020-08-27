@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
     },
     boadImage: {
-      width: "80vw",
+      height: "70vw",
     },
     menu: {
       top: "23%",
@@ -109,7 +109,7 @@ const List: React.FC<IListProps> = (props) => {
       key={i}
       className={classes.button}
       onClick={async () => {
-        await Sleep.wait(150);
+        await Sleep.waitRipple();
         handleClickMenu(props.sclollToFloors[i]);
       }}
     >
@@ -127,7 +127,7 @@ const List: React.FC<IListProps> = (props) => {
 
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,
-    animationDelay: `1s`,
+    animationDelay: `1s`, // TODO: 効いてない
   });
   return (
     <Backdrop
@@ -140,7 +140,7 @@ const List: React.FC<IListProps> = (props) => {
           <Image src={menuBackgroundImage} className={classes.boadImage} />
           <IconButton
             onClick={async () => {
-              await Sleep.wait(150);
+              await Sleep.waitRipple();
               props.closeMenu();
             }}
             className={classes.close}
