@@ -1,5 +1,7 @@
 import { Resident } from "@/app/resident/types";
 import { LivingContent } from "@/components/virtualSpace/resident/modal/livingModal";
+import livingCultureImage from "@/image/no_image.jpg"; // TODO: 正式な画像を設定
+// TODO: すべての画像をimportする
 
 const LivingRegidents: Resident<LivingContent>[] = [
   {
@@ -127,23 +129,23 @@ const LivingRegidents: Resident<LivingContent>[] = [
         icon: "animal",
         headerColor: "purple",
         title: "文化のあるくらし",
-        visual: "kuma",
+        visual: livingCultureImage, // TODO: 正式な画像を設定
         comment: "ライフスタイル説明",
         commentDirection: "right",
         advisors: [
           {
             name: "○○",
-            image: "image",
+            image: livingCultureImage,
             id: "1",
           },
           {
             name: "○○",
-            image: "image",
+            image: livingCultureImage,
             id: "1",
           },
           {
             name: "○○",
-            image: "image",
+            image: livingCultureImage,
             id: "1",
           },
         ],

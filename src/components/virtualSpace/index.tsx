@@ -10,6 +10,10 @@ import FloorImage5 from "@/image/virtualSpace/5F.png";
 import FloorImage6 from "@/image/virtualSpace/6F.png";
 import FloorImage7 from "@/image/virtualSpace/7F.png";
 import Menu from "@/components/menu";
+import SideButtonArea from "@/components/sideButton";
+import SideButton from "@/components/sideButton/button";
+import SideButtonImage from "@/image/sideButtons/sidebutton.png"; // [TODO:
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,6 +26,10 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IVirtualSpaceProps {}
 const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
   const [openedResident, setOpenedResident] = useState<string | null>(null);
+  const [isVisibleSideButtons, setIsVisibleSideButtons] = useState<boolean>(
+    false
+  );
+  const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false);
   const classes = useStyles();
 
   const handleAnothers = {
@@ -65,9 +73,50 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
     }, [floorRefs[i]])
   );
 
+  const openMenu = () => {
+    setIsVisibleMenu(true);
+  };
+  const closeMenu = () => {
+    setIsVisibleMenu(false);
+  };
+
   return (
     <Grid container className={classes.root}>
-      <Menu sclollToFloors={sclollToFloors} />
+      <SideButtonArea
+        onVisible={() => setIsVisibleSideButtons(true)}
+        onHide={() => setIsVisibleSideButtons(false)}
+      >
+        <SideButton
+          isVisible={isVisibleSideButtons}
+          visibleDelay={100}
+          onClick={openMenu}
+          image={SideButtonImage}
+        >
+          Floor Guide
+        </SideButton>
+        <SideButton
+          isVisible={isVisibleSideButtons}
+          visibleDelay={200}
+          onClick={() => {}}
+          image={SideButtonImage}
+        >
+          個別相談予約
+        </SideButton>
+        <SideButton
+          isVisible={isVisibleSideButtons}
+          visibleDelay={300}
+          onClick={() => {}}
+          image={SideButtonImage}
+        >
+          <ChatBubbleIcon style={{ fontSize: "1.5rem" }} />
+          チャット相談
+        </SideButton>
+      </SideButtonArea>
+      <Menu
+        isVisible={isVisibleMenu}
+        closeMenu={closeMenu}
+        sclollToFloors={sclollToFloors}
+      />
       {floors}
     </Grid>
   );

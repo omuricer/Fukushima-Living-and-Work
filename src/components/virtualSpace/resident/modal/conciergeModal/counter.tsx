@@ -5,6 +5,7 @@ import SquareButton from "@/components/form/squareButton";
 import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
+import conciergeImage from "@/image/no_image.jpg"; // TODO:
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,7 +35,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <Image src={"concierge"} />
+      <Image src={conciergeImage} />
       <Typography variant="h3" className={classes.h3}>
         オンライン相談の流れ
       </Typography>

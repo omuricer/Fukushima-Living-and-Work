@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     // Override MuiDialogContent-root
     root: {
-      padding: "5px 5px",
+      padding: "5px 8px 20px 8px",
       textAlign: "center",
     },
     flow: {

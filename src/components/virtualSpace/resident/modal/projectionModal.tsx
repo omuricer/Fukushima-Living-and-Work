@@ -4,17 +4,18 @@ import RoundButton from "@/components/form/roundButton";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
+import talkLiveImage from "@/image/no_image.jpg"; // TODO: 正式な画像を設定
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    // Override MuiDialog-paper TODO:
-    paper: {
-      width: "91vw",
-      margin: "0",
-      maxHeight: "80vh",
-      overflowY: "visible",
-      top: "-40px",
-    },
+    // Override MuiDialog-paper
+    // paper: {
+    //   width: "91vw",
+    //   margin: "0",
+    //   maxHeight: "80vh",
+    //   overflowY: "visible",
+    //   top: "-40px",
+    // },
     h3: {
       margin: "15px",
     },
@@ -63,29 +64,63 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
     props.handleAnothers.openModal(key);
   };
 
+  const programs = [
+    {
+      title: "参加者へのアンケート",
+      subtitle: "アイスブレイク",
+      start: "00:00",
+      end: "00:00",
+    },
+    {
+      title: "地方だからこそ！地方の魅力的な仕事",
+      subtitle: "しごとトークセッション①",
+      start: "00:00",
+      end: "00:00",
+    },
+    {
+      title: "地方で求められる人材像とは",
+      subtitle: "しごとトークセッション②",
+      start: "00:00",
+      end: "00:00",
+    },
+    {
+      title: "空き家 × 自然くらし",
+      subtitle: "ゲストトーク① 会津地域",
+      start: "00:00",
+      end: "00:00",
+    },
+    {
+      title: "まちの仕掛人 × 街なかくらし",
+      subtitle: "ゲストトーク② 中通り地域",
+      start: "00:00",
+      end: "00:00",
+    },
+    {
+      title: "サーフィン × 海のあるくらし",
+      subtitle: "ゲストトーク③ 浜通り地域",
+      start: "00:00",
+      end: "00:00",
+    },
+  ].map((p, i) => <Program {...p} key={i} />);
+
   return (
     <React.Fragment>
       <Modal
         {...props}
-        headerColor={"#F6E9A3"}
-        classes={{ paper: classes.paper }}
+        headerColor={"red"} // TODO: 正式な色にする
+        // classes={{ paper: classes.paper }}
       >
         <Typography variant="h3" className={classes.h3}>
           {props.content.title}
         </Typography>
-        <Image src={"image"} className={classes.image} />
+        <Image src={talkLiveImage} className={classes.image} />
         <Typography variant="h3" className={classes.h3}>
           プログラム
         </Typography>
 
-        <ul className={classes.programs}>
-          <Program title="program1" start="10:00" end="12:00" />
-          <Program title="program2" start="10:00" end="12:00" />
-          <Program title="program3" start="10:00" end="12:00" />
-          <Program title="program4" start="10:00" end="12:00" />
-        </ul>
+        <ul className={classes.programs}>{programs}</ul>
       </Modal>
-      {props.open && (
+      {/* {props.open && (
         <RoundButton
           onClick={() => {
             props.closeModal();
@@ -97,7 +132,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         >
           個別相談受付
         </RoundButton>
-      )}
+      )} */}
     </React.Fragment>
   );
 };
@@ -114,7 +149,7 @@ const useStylesProgram = makeStyles((theme: Theme) =>
       borderTop: "1px solid #000000",
       padding: "5px",
       "&:nth-child(odd)": {
-        backgroundColor: "lightgray",
+        backgroundColor: "#ebebeb",
       },
       "&:last-child": {
         borderBottom: "1px solid #000000",
@@ -136,12 +171,20 @@ const useStylesProgram = makeStyles((theme: Theme) =>
       flex: 1,
       textAlign: "left",
       marginLeft: "10px",
+      display: "flex",
+      flexFlow: "column",
+      justifyContent: "center",
+    },
+    subtitle: {
+      cmarginBottom: "5px",
+      color: "#919191",
     },
   })
 );
 
 export interface IProgramProps {
   title: string;
+  subtitle: string;
   start: string;
   end: string;
 }
@@ -160,7 +203,10 @@ const Program: React.FC<IProgramProps> = (props) => {
           {props.end}
         </Typography>
       </div>
-      <Typography className={classes.title}>{props.title}</Typography>
+      <div className={classes.title}>
+        <Typography variant="body2">{props.subtitle}</Typography>
+        <Typography>{props.title}</Typography>
+      </div>
     </li>
   );
 };

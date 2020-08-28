@@ -4,6 +4,7 @@ import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import Button from "@material-ui/core/Button";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
     advidors: {
       display: "flex",
       flexFlow: "wrap",
+      marginBottom: "20px",
     },
   })
 );
@@ -58,10 +60,11 @@ export interface ILivingModalProps extends IModalProps {
   content: LivingContent;
 }
 const LivingModal: React.FC<ILivingModalProps> = (props) => {
+  const [preLoadedImage, setPreLoadedImage] = useState<boolean>(false);
   const classes = useStyles();
 
   const advisors = props.content.advisors.map((a, index) => (
-    <Advisor key={index} color={props.headerColor} {...a} />
+    <Advisor {...a} key={index} color={props.content.headerColor} />
   ));
   const changeModal = (key: string) => {
     props.closeModal();
@@ -93,15 +96,18 @@ export default LivingModal;
 
 const useStylesAdvisor = makeStyles((theme: Theme) =>
   createStyles({
-    a: {
+    button: {
       width: "50%",
+      padding: 0,
     },
     li: {
+      width: "100%",
       display: "flex",
       alignItems: "center",
       borderStyle: "solid",
       borderRadius: "4px",
       margin: "5px",
+      position: "relative",
     },
     image: {
       width: "60px",
@@ -110,6 +116,17 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
     },
     name: {
       margin: "10px",
+    },
+    shadow: {
+      borderBottom: "solid 4px rgba(0,0,0,0.2)",
+      borderRadius: "7px",
+      position: "absolute",
+      width: "calc(100% + 4px)",
+      height: "30px",
+      top: "calc(100% + 2px)",
+      left: "50%",
+      transform: "translateY(-50%) translateX(-50%)",
+      WebkitTransform: "translateY(-100%) translateX(-50%)",
     },
   })
 );
@@ -123,17 +140,19 @@ export interface IAdvisorProps {
 const Advisor: React.FC<IAdvisorProps> = (props) => {
   const classes = useStylesAdvisor();
   return (
-    <a
-      href={`https://xxx.xxx/aaa/${props.id}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={classes.a}
+    <Button
+      className={classes.button}
+      onClick={async () => {
+        await Sleep.waitRipple();
+        window.open(`https://xxx.xxx/aaa/${props.id}`);
+      }}
     >
       <li className={classes.li} style={{ borderColor: props.color }}>
         <Image src={props.image} className={classes.image} />
         <Typography className={classes.name}>{props.name}</Typography>
+        <div className={classes.shadow} />
       </li>
-    </a>
+    </Button>
   );
 };
 
