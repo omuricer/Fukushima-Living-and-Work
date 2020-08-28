@@ -101,6 +101,7 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       padding: 0,
     },
     li: {
+      width: "100%",
       display: "flex",
       alignItems: "center",
       borderStyle: "solid",
