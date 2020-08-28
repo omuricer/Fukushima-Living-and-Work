@@ -4,7 +4,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Icon from "@material-ui/core/Icon";
 import IconButton from "@material-ui/core/IconButton";
 import Image from "@/components/form/image";
-import Typography from "@material-ui/core/Typography";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,7 +62,10 @@ const Header: React.FC<ITitleProps> = (props) => {
       >
         <Image src={props.icon} className={classes.icon} />
         <IconButton
-          onClick={props.closeModal}
+          onClick={async () => {
+            await Sleep.waitRipple();
+            props.closeModal();
+          }}
           className={classes.close}
           color="secondary"
         >

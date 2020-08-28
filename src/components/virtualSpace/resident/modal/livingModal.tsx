@@ -4,7 +4,7 @@ import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import Button from "@material-ui/core/Button";
-import { parallel } from "@/app/libs/thread";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -142,7 +142,10 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
   return (
     <Button
       className={classes.button}
-      onClick={() => window.open(`https://xxx.xxx/aaa/${props.id}`)}
+      onClick={async () => {
+        await Sleep.waitRipple();
+        window.open(`https://xxx.xxx/aaa/${props.id}`);
+      }}
     >
       <li className={classes.li} style={{ borderColor: props.color }}>
         <Image src={props.image} className={classes.image} />
