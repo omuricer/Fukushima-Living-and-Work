@@ -4,15 +4,16 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import SquareButton from "@/components/form/squareButton";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
-      marginTop: "10px",
-      marginBottom: "10px",
+      margin: "30px",
     },
     selectButton: {
       width: "100%",
+      height: "55px",
       marginBottom: "5px",
     },
   })
@@ -40,7 +41,10 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       <SquareButton
         variant="contained"
         color="primary"
-        onClick={() => changeModal("workingNature")}
+        onClick={async () => {
+          await Sleep.waitRipple();
+          changeModal("workingNature");
+        }}
         className={classes.selectButton}
       >
         自然の中で働きたい
@@ -77,7 +81,14 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       >
         ITスキルを活かしたい
       </SquareButton>
-      <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
+      <Button
+        onClick={() => changeModal("conciergeCounter")}
+        style={{
+          marginTop: "15px",
+        }}
+      >
+        ＜ 戻る
+      </Button>
     </React.Fragment>
   );
 };
