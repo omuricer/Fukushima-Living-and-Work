@@ -32,8 +32,13 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     },
   },
   {
-    floor: 1,
+    floor: 2,
     key: "conciergeSelectWorkStyle",
+    icon: {
+      image: "image/virtualSpace/icons/icon.png",
+      positionX: 10,
+      positionY: 10,
+    },
     modal: {
       content: {
         title: "ご相談受付カウンター",

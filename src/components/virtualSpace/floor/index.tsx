@@ -5,9 +5,6 @@ import Grid, { GridProps } from "@material-ui/core/Grid";
 import { ResidentCreater } from "@/app/resident/residentCreater";
 import RegidentsDefinitions from "../resident/data";
 
-// @ts-ignore
-import mainVisual from "@/image/virtualSpace.png";
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -38,7 +35,7 @@ const Floor = React.forwardRef(
 
     const residentCreater = new ResidentCreater(props.handleAnothers);
     const residents: JSX.Element[] = RegidentsDefinitions.filter(
-      (d) => d.floor === props.number
+      (d) => d.floor === props.number + 1
     ).map((d, index: number) => {
       return residentCreater.create(d.icon ?? null, d.modal).element(
         d.key,
