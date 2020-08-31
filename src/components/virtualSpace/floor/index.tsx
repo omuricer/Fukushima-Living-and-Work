@@ -37,8 +37,7 @@ const Floor = React.forwardRef(
     const residents: JSX.Element[] = RegidentsDefinitions.filter(
       (d) => d.floor === props.number + 1
     ).map((d, index: number) => {
-      return residentCreater.create(d.icon ?? null, d.modal).element(
-        d.key,
+      return residentCreater.create(d.key, d.icon ?? null, d.modal).element(
         props.openedResident == d.key,
         () => props.setOpenedResident(d.key),
         () => props.setOpenedResident(null)

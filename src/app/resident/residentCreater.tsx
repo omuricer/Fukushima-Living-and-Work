@@ -21,21 +21,42 @@ export class ResidentCreater {
   }
 
   create(
+    key: string,
     iconProps: IconProps | null,
     modalProps: ModalProps<ModalContent>
   ): Resident {
     if (isLivingModal(modalProps)) {
-      return new LivingResident(iconProps, modalProps, this.handleAnothers);
+      return new LivingResident(
+        key,
+        iconProps,
+        modalProps,
+        this.handleAnothers
+      );
     }
     if (isProjectionModal(modalProps)) {
-      return new ProjectionResident(iconProps, modalProps, this.handleAnothers);
+      return new ProjectionResident(
+        key,
+        iconProps,
+        modalProps,
+        this.handleAnothers
+      );
     }
     if (isConciergeModal(modalProps)) {
-      return new ConciergeResident(iconProps, modalProps, this.handleAnothers);
+      return new ConciergeResident(
+        key,
+        iconProps,
+        modalProps,
+        this.handleAnothers
+      );
     }
     if (isWorkingModal(modalProps)) {
-      return new WorkingResident(iconProps, modalProps, this.handleAnothers);
+      return new WorkingResident(
+        key,
+        iconProps,
+        modalProps,
+        this.handleAnothers
+      );
     }
-    return new LivingResident(iconProps, modalProps, this.handleAnothers);
+    return new LivingResident(key, iconProps, modalProps, this.handleAnothers);
   }
 }

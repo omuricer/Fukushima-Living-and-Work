@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Resident as Generator } from "@/app/resident/resident";
 
 type IResidentProps = {
+  key: string;
   opened: boolean;
   onOpen: () => void;
   onClose: () => void;
@@ -16,7 +17,7 @@ const Resident: React.FC<IResidentProps> = (props) => {
         },
       })
     : null;
-  const modal = props.generator.generateModal({
+  const modal = props.generator.generateModal(props.key, {
     ...props.generator.modalProps,
     open: props.opened,
     closeModal: () => {

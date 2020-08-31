@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Modal, { IModalProps } from "../index";
 import Counter from "./counter";
 import SelectLifeStyle from "./selectLifeStyle";
 import SelectWorkStyle from "./selectWorkStyle";
+import { BackHistoryContext } from "@/context/backHistory";
 
 export type ConciergeContent = {
   title: string;
@@ -30,9 +31,16 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
     if (props.content.phase == "selectWorkStyle")
       return <SelectWorkStyle {...props} />;
   };
+  const backHistoryContext = useContext(BackHistoryContext);
 
   return (
-    <Modal {...props} headerColor={"#F6E9A3"}>
+    <Modal
+      {...props}
+      headerColor={"#F6E9A3"}
+      onEnter={() =>
+        backHistoryContext.push(() => props.handleAnothers.openModal(props.key))
+      }
+    >
       {content()}
     </Modal>
   );

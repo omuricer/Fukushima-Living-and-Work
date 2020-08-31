@@ -37,8 +37,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export interface IModalProps {
+  key: string;
   open: boolean;
   closeModal: () => void;
+  onEnter: () => void;
   handleAnothers: HandleAnothers;
   headerColor: string;
   classes: Partial<Record<DialogClassKey, string>>;
@@ -55,6 +57,7 @@ const Modal: React.FC<IModalProps> = (props) => {
       <Dialog
         open={props.open}
         onClose={props.closeModal}
+        onEnter={props.onEnter}
         classes={{ ...{ paper: classes.paper }, ...props.classes }}
       >
         <Header
