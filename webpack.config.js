@@ -109,7 +109,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new OptimizeCSSAssetsPlugin({}),
-      new UglifyJsPlugin({ parallel: true, cache: true }),
+      // new UglifyJsPlugin({ parallel: true, cache: true }),
     ],
   },
 
