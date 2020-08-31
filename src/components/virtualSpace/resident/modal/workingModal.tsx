@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import RoundButton from "@/components/form/roundButton";
+import { BackHistoryContext } from "@/context/backHistory";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,6 +42,7 @@ export interface IWorkingModalProps extends IModalProps {
 }
 const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
   const classes = useStyles();
+  const backHistoryContext = useContext(BackHistoryContext);
 
   const advisors = props.content.advisors.map((a, index) => (
     <Advisor key={index} color={props.headerColor} {...a} />
@@ -51,7 +53,13 @@ const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
   };
 
   return (
-    <Modal {...props} headerColor={"#F6E9A3"}>
+    <Modal
+      {...props}
+      headerColor={"#F6E9A3"}
+      onEnter={() =>
+        backHistoryContext.push(() => props.handleAnothers.openModal(props.key))
+      }
+    >
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>

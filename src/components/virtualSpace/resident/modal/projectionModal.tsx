@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import RoundButton from "@/components/form/roundButton";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import talkLiveImage from "@/image/no_image.jpg"; // TODO: 正式な画像を設定
+import { BackHistoryContext } from "@/context/backHistory";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -58,6 +59,7 @@ export interface IProjectionModalProps extends IModalProps {
 }
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
   const classes = useStyles();
+  const backHistoryContext = useContext(BackHistoryContext);
 
   const changeModal = (key: string) => {
     props.closeModal();
@@ -108,6 +110,11 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
       <Modal
         {...props}
         headerColor={"red"} // TODO: 正式な色にする
+        onEnter={() =>
+          backHistoryContext.push(() =>
+            props.handleAnothers.openModal(props.key)
+          )
+        }
         // classes={{ paper: classes.paper }}
       >
         <Typography variant="h3" className={classes.h3}>

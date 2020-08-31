@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import Button from "@material-ui/core/Button";
 import Sleep from "@/app/libs/sleep";
+import { BackHistoryContext } from "@/context/backHistory";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,6 +63,7 @@ export interface ILivingModalProps extends IModalProps {
 const LivingModal: React.FC<ILivingModalProps> = (props) => {
   const [preLoadedImage, setPreLoadedImage] = useState<boolean>(false);
   const classes = useStyles();
+  const backHistoryContext = useContext(BackHistoryContext);
 
   const advisors = props.content.advisors.map((a, index) => (
     <Advisor {...a} key={index} color={props.content.headerColor} />
@@ -72,7 +74,13 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
   };
 
   return (
-    <Modal {...props} headerColor={props.content.headerColor}>
+    <Modal
+      {...props}
+      headerColor={props.content.headerColor}
+      onEnter={() =>
+        backHistoryContext.push(() => props.handleAnothers.openModal(props.key))
+      }
+    >
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>

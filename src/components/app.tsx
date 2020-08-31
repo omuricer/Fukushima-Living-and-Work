@@ -7,6 +7,9 @@ import VirtualSpace from "@/components/virtualSpace";
 import FirstView from "@/components/firstView";
 import Footer from "@/components/footer";
 
+import { BackHistoryContext } from "@/context/backHistory";
+import _backHistory, { BackHistory } from "@/app/libs/backHistory";
+
 import backgroundImage from "@/image/background.jpg";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,6 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IAppProps {}
 const App: React.FC<IAppProps> = (props) => {
   const [loading, setLoading] = useState<boolean>(true);
+  const [backHistory, setBackHistory] = useState<BackHistory>(_backHistory);
   const classes = useStyles();
 
   setTimeout(() => {
@@ -30,11 +34,13 @@ const App: React.FC<IAppProps> = (props) => {
 
   return (
     <div className={classes.root}>
-      <GlobalStyle />
-      <Loading display={loading} />
-      <FirstView />
-      <VirtualSpace />
-      <Footer />
+      <BackHistoryContext.Provider value={backHistory}>
+        <GlobalStyle />
+        <Loading display={loading} />
+        <FirstView />
+        <VirtualSpace />
+        <Footer />
+      </BackHistoryContext.Provider>
     </div>
   );
 };
