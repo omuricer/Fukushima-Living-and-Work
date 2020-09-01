@@ -78,7 +78,9 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
       {...props}
       headerColor={props.content.headerColor}
       onEnter={() =>
-        backHistoryContext.push(() => props.handleAnothers.openModal(props.key))
+        backHistoryContext.push(() =>
+          props.handleAnothers.openModal(props.modalKey)
+        )
       }
     >
       <Typography variant="h3" className={classes.h3}>

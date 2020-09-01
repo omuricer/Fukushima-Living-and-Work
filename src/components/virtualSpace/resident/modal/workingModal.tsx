@@ -57,7 +57,9 @@ const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
       {...props}
       headerColor={"#F6E9A3"}
       onEnter={() =>
-        backHistoryContext.push(() => props.handleAnothers.openModal(props.key))
+        backHistoryContext.push(() =>
+          props.handleAnothers.openModal(props.modalKey)
+        )
       }
     >
       <Typography variant="h3" className={classes.h3}>

@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export interface IModalProps {
-  key: string;
+  modalKey: string;
   open: boolean;
   closeModal: () => void;
   onEnter: () => void;

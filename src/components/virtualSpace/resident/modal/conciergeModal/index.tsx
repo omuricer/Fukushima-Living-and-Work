@@ -38,7 +38,9 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
       {...props}
       headerColor={"#F6E9A3"}
       onEnter={() =>
-        backHistoryContext.push(() => props.handleAnothers.openModal(props.key))
+        backHistoryContext.push(() =>
+          props.handleAnothers.openModal(props.modalKey)
+        )
       }
     >
       {content()}
