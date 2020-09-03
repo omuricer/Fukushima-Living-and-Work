@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import SquareButton from "@/components/form/squareButton";
 import Sleep from "@/app/libs/sleep";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -81,14 +82,12 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       >
         ITスキルを活かしたい
       </SquareButton>
-      <Button
-        onClick={() => changeModal("conciergeCounter")}
+      <BackButton
+        onClick={props.closeModal}
         style={{
           marginTop: "15px",
         }}
-      >
-        ＜ 戻る
-      </Button>
+      />
     </React.Fragment>
   );
 };

@@ -12,7 +12,7 @@ export class ConciergeResident extends Resident {
   generateIcon(props: IIconProps): JSX.Element {
     return <IconComponent {...props} />;
   }
-  generateModal(key: string, props: IConciergeModalProps): JSX.Element {
+  generateModal(props: IConciergeModalProps): JSX.Element {
     return <ConciergeModal {...props} />;
   }
 }

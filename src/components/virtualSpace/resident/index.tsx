@@ -17,8 +17,9 @@ const Resident: React.FC<IResidentProps> = (props) => {
         },
       })
     : null;
-  const modal = props.generator.generateModal(props.modalKey, {
+  const modal = props.generator.generateModal({
     ...props.generator.modalProps,
+    modalKey: props.modalKey,
     open: props.opened,
     closeModal: () => {
       props.onClose();

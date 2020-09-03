@@ -26,7 +26,7 @@ export abstract class Resident {
   }
 
   abstract generateIcon(props: IIconProps): JSX.Element;
-  abstract generateModal(key: string, props: IModalProps): JSX.Element;
+  abstract generateModal(props: IModalProps): JSX.Element;
 
   element(opened: boolean, onOpen: () => void, onClose: () => void) {
     return (

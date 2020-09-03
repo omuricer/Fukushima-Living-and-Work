@@ -6,6 +6,7 @@ import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import conciergeImage from "@/image/no_image.jpg"; // TODO:
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -102,7 +103,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
           <Image src="present" width="60px" />
         </div>
       </Flow>
-      <Button onClick={props.closeModal}>＜ 戻る</Button>
+      <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );
 };

@@ -6,6 +6,7 @@ import Image from "@/components/form/image";
 import Button from "@material-ui/core/Button";
 import Sleep from "@/app/libs/sleep";
 import { BackHistoryContext } from "@/context/backHistory";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -68,19 +69,15 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
   const advisors = props.content.advisors.map((a, index) => (
     <Advisor {...a} key={index} color={props.content.headerColor} />
   ));
-  const changeModal = (key: string) => {
-    props.closeModal();
-    props.handleAnothers.openModal(key);
-  };
 
   return (
     <Modal
       {...props}
       headerColor={props.content.headerColor}
       onEnter={() =>
-        backHistoryContext.push(() =>
-          props.handleAnothers.openModal(props.modalKey)
-        )
+        backHistoryContext.push(() => {
+          props.handleAnothers.openModal(props.modalKey);
+        })
       }
     >
       <Typography variant="h3" className={classes.h3}>
@@ -98,7 +95,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
       </div>
       <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
       <ul className={classes.advidors}>{advisors}</ul>
-      <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
+      <BackButton onClick={props.closeModal} />
     </Modal>
   );
 };

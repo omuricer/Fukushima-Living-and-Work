@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -65,7 +66,7 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
           onClick={() => changeModal("livingCity")}
         />
       </ul>
-      <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
+      <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );
 };

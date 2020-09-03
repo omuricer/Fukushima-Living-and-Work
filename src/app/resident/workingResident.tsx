@@ -12,7 +12,7 @@ export class WorkingResident extends Resident {
   generateIcon(props: IIconProps): JSX.Element {
     return <IconComponent {...props} />;
   }
-  generateModal(key: string, props: IWorkingModalProps): JSX.Element {
+  generateModal(props: IWorkingModalProps): JSX.Element {
     return <WorkingModal {...props} />;
   }
 }

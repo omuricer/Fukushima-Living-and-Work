@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import RoundButton from "@/components/form/roundButton";
 import { BackHistoryContext } from "@/context/backHistory";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,19 +48,13 @@ const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
   const advisors = props.content.advisors.map((a, index) => (
     <Advisor key={index} color={props.headerColor} {...a} />
   ));
-  const changeModal = (key: string) => {
-    props.closeModal();
-    props.handleAnothers.openModal(key);
-  };
 
   return (
     <Modal
       {...props}
       headerColor={"#F6E9A3"}
       onEnter={() =>
-        backHistoryContext.push(() =>
-          props.handleAnothers.openModal(props.modalKey)
-        )
+        backHistoryContext.push(() => {props.handleAnothers.openModal(props.modalKey)})
       }
     >
       <Typography variant="h3" className={classes.h3}>
@@ -69,9 +64,7 @@ const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
       <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
 
       <ul className={classes.advidors}>{advisors}</ul>
-      <Button onClick={() => changeModal("conciergeSelectWorkStyle")}>
-        ＜ 戻る
-      </Button>
+      <BackButton onClick={props.closeModal} />
     </Modal>
   );
 };
