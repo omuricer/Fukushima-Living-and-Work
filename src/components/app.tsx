@@ -11,13 +11,16 @@ import { BackHistoryContext } from "@/context/backHistory";
 import _backHistory, { BackHistory } from "@/app/libs/backHistory";
 
 import backgroundImage from "@/image/background.jpg";
+import backgroundImage2 from "@/image/cloud_mb_2.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       position: "relative",
-      backgroundSize: "contain",
-      background: `linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
+      background: `url(${backgroundImage2}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
+      backgroundRepeat: "no-repeat, repeat, repeat",
+      backgroundSize: "auto, contain, contain",
+      backgroundPositionX: "center",
     },
   })
 );
