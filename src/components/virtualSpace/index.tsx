@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Floor from "./floor";
-import FloorImage1 from "@/image/virtualSpace/1F.png";
-import FloorImage2 from "@/image/virtualSpace/2F.png";
-import FloorImage3 from "@/image/virtualSpace/3F.png";
-import FloorImage4 from "@/image/virtualSpace/4F.png";
-import FloorImage5 from "@/image/virtualSpace/5F.png";
-import FloorImage6 from "@/image/virtualSpace/6F.png";
-import FloorImage7 from "@/image/virtualSpace/7F.png";
+import FloorImage1 from "@/image/virtualSpace/hotel_08.png";
+import FloorImage2 from "@/image/virtualSpace/hotel_07.png";
+import FloorImage3 from "@/image/virtualSpace/hotel_06.png";
+import FloorImage4 from "@/image/virtualSpace/hotel_05.png";
+import FloorImage5 from "@/image/virtualSpace/hotel_04.png";
+import FloorImage6 from "@/image/virtualSpace/hotel_03.png";
+import FloorImage7 from "@/image/virtualSpace/hotel_02.png";
 import Menu from "@/components/menu";
 import SideButtonArea from "@/components/sideButton";
 import SideButton from "@/components/sideButton/button";
-import SideButtonImage from "@/image/sideButtons/sidebutton.png"; // [TODO:
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import tab01Image from "@/image/sideButtons/tab_01.png";
+import tab02Image from "@/image/sideButtons/tab_02.png";
+import tab03Image from "@/image/sideButtons/tab_03.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -90,27 +91,20 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
           isVisible={isVisibleSideButtons}
           visibleDelay={100}
           onClick={openMenu}
-          image={SideButtonImage}
-        >
-          Floor Guide
-        </SideButton>
+          image={tab01Image}
+        />
         <SideButton
           isVisible={isVisibleSideButtons}
           visibleDelay={200}
           onClick={() => {}}
-          image={SideButtonImage}
-        >
-          個別相談予約
-        </SideButton>
+          image={tab02Image}
+        />
         <SideButton
           isVisible={isVisibleSideButtons}
           visibleDelay={300}
           onClick={() => {}}
-          image={SideButtonImage}
-        >
-          <ChatBubbleIcon style={{ fontSize: "1.5rem" }} />
-          チャット相談
-        </SideButton>
+          image={tab03Image}
+        />
       </SideButtonArea>
       <Menu
         isVisible={isVisibleMenu}

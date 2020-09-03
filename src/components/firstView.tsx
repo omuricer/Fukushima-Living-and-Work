@@ -3,7 +3,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Hero from "@/components/template/hero";
-import backgroundImage from "@/image/rooftop.png";
+import backgroundImage from "@/image/virtualSpace/hotel_01.png";
 import Image from "@/components/form/image";
 
 const useStyles = makeStyles((theme: Theme) =>
