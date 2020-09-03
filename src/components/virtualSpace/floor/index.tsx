@@ -28,9 +28,8 @@ interface IFloorProps {
     openModal: (residentKey: string) => void;
   };
 }
-// const Floor: React.FC<IFloorProps> = (props) => {
-const Floor = React.forwardRef(
-  (props: IFloorProps, ref: React.Ref<HTMLDivElement>) => {
+const Floor = React.memo(
+  React.forwardRef((props: IFloorProps, ref: React.Ref<HTMLDivElement>) => {
     const classes = useStyles();
 
     const residentCreater = new ResidentCreater(props.handleAnothers);
@@ -52,6 +51,6 @@ const Floor = React.forwardRef(
         {residents}
       </Grid>
     );
-  }
+  })
 );
 export default Floor;

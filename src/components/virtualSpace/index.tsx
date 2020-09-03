@@ -16,6 +16,20 @@ import tab01Image from "@/image/sideButtons/tab_01.png";
 import tab02Image from "@/image/sideButtons/tab_02.png";
 import tab03Image from "@/image/sideButtons/tab_03.png";
 
+const floorNumber = 7;
+const floorRefs = [...Array(floorNumber)].map(() =>
+  React.createRef<HTMLDivElement>()
+);
+const floorImages = [
+  FloorImage1,
+  FloorImage2,
+  FloorImage3,
+  FloorImage4,
+  FloorImage5,
+  FloorImage6,
+  FloorImage7,
+];
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -25,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IVirtualSpaceProps {}
-const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
+const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
   const [openedResident, setOpenedResident] = useState<string | null>(null);
   const [isVisibleSideButtons, setIsVisibleSideButtons] = useState<boolean>(
     false
@@ -39,19 +53,6 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
     },
   };
 
-  const floorNumber = 7;
-  const floorRefs = [...Array(floorNumber)].map(() =>
-    React.createRef<HTMLDivElement>()
-  );
-  const floorImages = [
-    FloorImage1,
-    FloorImage2,
-    FloorImage3,
-    FloorImage4,
-    FloorImage5,
-    FloorImage6,
-    FloorImage7,
-  ];
   const floors = [...Array(floorNumber)].map((_, i) => (
     <Floor
       key={i}
@@ -66,12 +67,14 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
   floors.reverse();
 
   const sclollToFloors = [...Array(floorNumber)].map((_, i) =>
-    React.useCallback(() => {
-      floorRefs[i]!.current!.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }, [floorRefs[i]])
+    React.useCallback(
+      () =>
+        floorRefs[i]!.current!.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        }),
+      [floorRefs[i]]
+    )
   );
 
   const openMenu = () => {
@@ -114,5 +117,5 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = (props) => {
       {floors}
     </Grid>
   );
-};
+});
 export default VirtualSpace;
