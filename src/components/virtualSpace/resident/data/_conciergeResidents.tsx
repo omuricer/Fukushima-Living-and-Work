@@ -12,8 +12,9 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     },
     modal: {
       content: {
-        title: "ご相談受付カウンター",
+        title: "総合案内",
         icon: "icon", // TODO:
+        headerColor: "#E9A75B",
         type: "concierge",
         phase: "counter",
       },
@@ -24,8 +25,9 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     key: "conciergeSelectLifeStyle",
     modal: {
       content: {
-        title: "ご相談受付カウンター",
+        title: "",
         icon: "icon", // TODO:
+        headerColor: "#E9A75B",
         type: "concierge",
         phase: "selectLifeStyle",
       },
@@ -41,8 +43,9 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     },
     modal: {
       content: {
-        title: "ご相談受付カウンター",
+        title: "しごと相談室",
         icon: "icon", // TODO:
+        headerColor: "#745F74",
         type: "concierge",
         phase: "selectWorkStyle",
       },
