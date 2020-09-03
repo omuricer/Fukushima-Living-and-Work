@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       position: "relative",
       backgroundSize: "contain",
-      background: `linear-gradient(to bottom, rgba(68, 186, 255, 0.2), rgba(0, 255, 31, 0.2)), url(${backgroundImage})`,
+      background: `linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
     },
   })
 );

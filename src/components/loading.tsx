@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import backgroundImage from "@/image/background.jpg";
+import gif from "@/image/loading/akabeko.gif";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,7 +34,7 @@ const Loading: React.FC<ILoadingProps> = (props) => {
   }
   return (
     <div className={classes.loading}>
-      <img className={classes.animation} src="image/loading/star.gif" />
+      <img className={classes.animation} src={gif} />
     </div>
   );
 };
