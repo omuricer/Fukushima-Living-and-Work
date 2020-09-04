@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "91vw",
       margin: "0",
       maxHeight: "85vh",
-      minHeight: "80vh",
+      minHeight: "85vh",
       overflowY: "visible",
     },
     // Override MuiDialogContent-root
