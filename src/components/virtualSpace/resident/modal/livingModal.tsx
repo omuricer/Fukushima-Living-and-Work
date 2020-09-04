@@ -79,6 +79,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
           props.handleAnothers.openModal(props.modalKey);
         })
       }
+      headerIcon={props.content.icon}
     >
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}

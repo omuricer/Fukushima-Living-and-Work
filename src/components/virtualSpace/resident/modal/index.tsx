@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paper: {
       width: "91vw",
       margin: "0",
-      maxHeight: "85v",
+      maxHeight: "85vh",
       overflowY: "visible",
     },
     // Override MuiDialogContent-root
@@ -44,6 +44,7 @@ export interface IModalProps {
   handleAnothers: HandleAnothers;
   headerColor: string;
   classes: Partial<Record<DialogClassKey, string>>;
+  headerIcon: string;
 }
 /**
  * モーダルコンポーネント
@@ -61,7 +62,7 @@ const Modal: React.FC<IModalProps> = (props) => {
         classes={{ ...{ paper: classes.paper }, ...props.classes }}
       >
         <Header
-          icon={"icon/icon"}
+          icon={props.headerIcon}
           color={props.headerColor}
           closeModal={props.closeModal}
         />

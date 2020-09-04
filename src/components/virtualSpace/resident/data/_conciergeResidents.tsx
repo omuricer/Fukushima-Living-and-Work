@@ -1,19 +1,23 @@
 import { Resident } from "@/app/resident/types";
 import { ConciergeContent } from "@/components/virtualSpace/resident/modal/conciergeModal/index";
+import usagi from "@/image/virtualSpace/icons/icon_1.png";
+import workingGirl from "@/image/virtualSpace/icons/icon_2.png";
+import usagiTitle from "@/image/virtualSpace/modalTitleIcon/m_top_1.png";
+import workingGirlTitle from "@/image/virtualSpace/modalTitleIcon/m_top_2.png";
 
 const ConciergeRegidents: Resident<ConciergeContent>[] = [
   {
     floor: 1,
     key: "conciergeCounter",
     icon: {
-      image: "image/virtualSpace/icons/icon.png",
-      positionX: 10,
-      positionY: 10,
+      image: usagi,
+      positionY: 20,
+      positionX: 38,
     },
     modal: {
       content: {
         title: "総合案内",
-        icon: "icon", // TODO:
+        icon: usagiTitle,
         headerColor: "#E9A75B",
         type: "concierge",
         phase: "counter",
@@ -26,7 +30,7 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     modal: {
       content: {
         title: "",
-        icon: "icon", // TODO:
+        icon: usagiTitle,
         headerColor: "#E9A75B",
         type: "concierge",
         phase: "selectLifeStyle",
@@ -37,14 +41,14 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     floor: 2,
     key: "conciergeSelectWorkStyle",
     icon: {
-      image: "image/virtualSpace/icons/icon.png",
-      positionX: 10,
-      positionY: 10,
+      image: workingGirl,
+      positionY: 40,
+      positionX: 36,
     },
     modal: {
       content: {
         title: "しごと相談室",
-        icon: "icon", // TODO:
+        icon: workingGirlTitle,
         headerColor: "#745F74",
         type: "concierge",
         phase: "selectWorkStyle",

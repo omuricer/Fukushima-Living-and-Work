@@ -111,9 +111,11 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         {...props}
         headerColor={"red"} // TODO: 正式な色にする
         onEnter={() =>
-          backHistoryContext.push(() => {props.handleAnothers.openModal(props.modalKey)})
+          backHistoryContext.push(() => {
+            props.handleAnothers.openModal(props.modalKey);
+          })
         }
-          // classes={{ paper: classes.paper }}
+        headerIcon={props.content.icon}
       >
         <Typography variant="h3" className={classes.h3}>
           {props.content.title}

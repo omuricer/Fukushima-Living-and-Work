@@ -43,6 +43,7 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
           props.handleAnothers.openModal(props.modalKey);
         })
       }
+      headerIcon={props.content.icon}
     >
       {content()}
     </Modal>

@@ -5,6 +5,9 @@ import Typography from "@material-ui/core/Typography";
 import Hero from "@/components/template/hero";
 import backgroundImage from "@/image/virtualSpace/hotel_01.png";
 import Image from "@/components/form/image";
+import Bn from "@/image/1stv_bn.png";
+import Logo from "@/image/logo_01.png";
+import Scroll from "@/image/scroll.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,9 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       marginTop: "3vh",
     },
-    logoImage: {
-      height: "200px",
-    },
     catch: {
       textAlign: "center",
       marginTop: "3vh",
@@ -38,18 +38,16 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: "3vh",
     },
     eventBoard: {
-      padding: "20px",
-      width: "320px",
-      height: "120px",
-      borderColor: "gray",
-      borderStyle: "solid",
-      borderWidth: "1px",
-      backgroundColor: "lightgray",
       margin: "0 auto",
+      width: "80vw",
     },
     scroll: {
       textAlign: "center",
       marginTop: "2vh",
+    },
+    scrollImage: {
+      width: "50px",
+      margin: "0 auto",
     },
   })
 );
@@ -61,31 +59,26 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
   return (
     <Hero className={classes.root}>
       <Grid className={classes.logo}>
-        {/* TODO: srcを設定 */}
-        <Image src={"logo"} className={classes.logoImage} height="200px" />
+        <Image src={Logo} />
       </Grid>
       <Grid className={classes.catch}>
         <Typography>
-          今年も開催”ふくしまの本気”移住イベント！
+          福島県内の市町村や団体が大集合！！
           <br />
-          移住相談員、移住コーディネーターの他
+          ALLふくしまであなたの移住を応援します
           <br />
-          ●●の出店団体が大集結！
+          あなたに合ったふくしまぐらしを
           <br />
-          あなたに合ったふくしまぐらし
+          一緒に見つけましょう！
           <br />
           見つけてみませんか？
         </Typography>
       </Grid>
       <Grid className={classes.event}>
-        <div className={classes.eventBoard}>
-          <Typography>トークライブ</Typography>
-          <Typography>リアルミニイベント告知</Typography>
-        </div>
+        <Image src={Bn} className={classes.eventBoard} />
       </Grid>
       <Grid className={classes.scroll}>
-        <Typography>SCROLL</Typography>
-        <Typography>∨</Typography>
+        <Image src={Scroll} className={classes.scrollImage} />
       </Grid>
     </Hero>
   );

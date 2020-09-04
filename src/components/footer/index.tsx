@@ -51,11 +51,41 @@ const Footer: React.FC<IFooterProps> = (props) => {
   return (
     <React.Fragment>
       <Grid item xs={12} className={classes.bnGrid}>
-        <Image src={bn1} className={classes.bn} />
-        <Image src={bn2} className={classes.bn} />
-        <Image src={bn3} className={classes.bn} />
-        <Image src={bn4} className={classes.bn} />
-        <Image src={bn5} className={classes.bn} />
+        <a
+          href="https://www.pref.fukushima.lg.jp/site/fui/#wide/0"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image src={bn1} className={classes.bn} />
+        </a>
+        <a
+          href="https://www.f-turn.jp/ "
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image src={bn2} className={classes.bn} />
+        </a>
+        <a
+          href="https://www.pref.fukushima.lg.jp/sec/11025b/10000.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image src={bn3} className={classes.bn} />
+        </a>
+        <a
+          href="https://www.pref.fukushima.lg.jp/sec/11025b/iju.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image src={bn4} className={classes.bn} />
+        </a>
+        <a
+          href="https://www.pref.fukushima.lg.jp/sec/11025b/teleworkijuhojo.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image src={bn5} className={classes.bn} />
+        </a>
       </Grid>
       <Grid item xs={12} className={classes.contactGrid}>
         <hr className={classes.hr} />
