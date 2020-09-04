@@ -17,6 +17,12 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "55px",
       marginBottom: "5px",
     },
+    commingSoon: {
+      display: "flex",
+      flex: "1",
+      alignItems: "center",
+      color: "lightgray",
+    },
   })
 );
 
@@ -34,7 +40,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Typography className={classes.h3}>
+      {/* <Typography className={classes.h3}> //TODO: 9/23
         気になるしごとのスタイルを
         <br />
         選択してください
@@ -81,7 +87,10 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
         className={classes.selectButton}
       >
         ITスキルを活かしたい
-      </SquareButton>
+      </SquareButton> */}
+      <div className={classes.commingSoon}>
+        <Typography variant="body2">Comming Soon</Typography>
+      </div>
       <BackButton
         onClick={props.closeModal}
         style={{

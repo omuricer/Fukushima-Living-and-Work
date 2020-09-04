@@ -12,15 +12,16 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "91vw",
       margin: "0",
       maxHeight: "85vh",
+      minHeight: "80vh",
       overflowY: "visible",
     },
     // Override MuiDialogContent-root
     root: {
       padding: "5px 8px 20px 8px",
       textAlign: "center",
-      display: 'flex',
-      flexFlow: 'column',
-      alignItems: 'center',
+      display: "flex",
+      flexFlow: "column",
+      alignItems: "center",
     },
     flow: {
       textAlign: "center",
