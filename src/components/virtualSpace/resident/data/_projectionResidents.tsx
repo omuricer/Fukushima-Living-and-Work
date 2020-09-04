@@ -14,7 +14,7 @@ const ProjectionRegidents: Resident<ProjectionContent>[] = [
     },
     modal: {
       content: {
-        title: "動画配信シアター",
+        title: "動画シアター",
         icon: foxTitle,
         type: "projection",
         youtubeDataAPI: {

@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       padding: "5px 8px 20px 8px",
       textAlign: "center",
+      display: 'flex',
+      flexFlow: 'column',
+      alignItems: 'center',
     },
     flow: {
       textAlign: "center",
