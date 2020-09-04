@@ -102,12 +102,13 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
           onClick={() => {}}
           image={tab02Image}
         />
-        <SideButton
+        // TODO: 9/23
+        {/* <SideButton
           isVisible={isVisibleSideButtons}
           visibleDelay={300}
           onClick={() => {}}
           image={tab03Image}
-        />
+        /> */}
       </SideButtonArea>
       <Menu
         isVisible={isVisibleMenu}
