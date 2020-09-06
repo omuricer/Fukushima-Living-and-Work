@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
     answer: {
       display: "flex",
       width: "100%",
+      justifyContent: "stretch",
     },
     answerButton: {
       width: "100%",
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       width: "70%",
       marginTop: "15px",
+      justifyContent: "stretch",
     },
   })
 );

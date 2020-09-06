@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid, { GridProps } from "@material-ui/core/Grid";
+import Image from "@/components/form/image";
 
 import { ResidentCreater } from "@/app/resident/residentCreater";
 import RegidentsDefinitions from "../resident/data";
@@ -47,7 +48,7 @@ const Floor = React.memo(
 
     return (
       <Grid container className={classes.root} ref={ref}>
-        <img src={props.visual} className={classes.image} />
+        <Image src={props.visual} className={classes.image} />
         {residents}
       </Grid>
     );

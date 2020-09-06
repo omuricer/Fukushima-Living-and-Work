@@ -96,7 +96,9 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
         <SideButton
           isVisible={isVisibleSideButtons}
           visibleDelay={200}
-          onClick={() => {}}
+          onClick={() => {
+            props.openModal("conciergeCounter");
+          }}
           image={tab02Image}
         />
         {/* <SideButton TODO: 9/23
