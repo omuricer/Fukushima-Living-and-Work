@@ -12,6 +12,7 @@ import _backHistory, { BackHistory } from "@/app/libs/backHistory";
 
 import backgroundImage from "@/image/background.jpg";
 import backgroundImage2 from "@/image/cloud_mb_2.png";
+import Ogp from "@/image/ogp.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

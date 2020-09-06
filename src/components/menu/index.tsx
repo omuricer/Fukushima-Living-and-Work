@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
     },
     boadImage: {
-      height: "600px",
+      height: "95vh",
+      maxHeight: "570px",
     },
     menu: {
       top: "23%",
@@ -48,7 +49,9 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight: "3rem",
       display: "flex",
       alignItems: "center",
-      padding: "10px",
+      paddingTop: "1vh",
+      paddingBottom: "1vh",
+      paddingLeft: "1vh",
     },
     floor: {
       marginRight: "10px",

@@ -6,7 +6,7 @@ import Hero from "@/components/template/hero";
 import backgroundImage from "@/image/virtualSpace/hotel_01.png";
 import Image from "@/components/form/image";
 import Bn from "@/image/1stv_bn.png";
-import Logo from "@/image/logo_01.png";
+import Logo from "@/image/logo.png";
 import ScrollMe from "@/components/scrollMe";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -27,11 +27,16 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     logo: {
       textAlign: "center",
-      marginTop: "3vh",
+      backgroundImage: `url(${Logo})`,
+      backgroundSize: "cover",
+      height: "170px",
+      backgroundPositionX: "center",
     },
     catch: {
       textAlign: "center",
-      marginTop: "3vh",
+    },
+    catchText: {
+      lineHeight: "1.8em",
     },
     event: {
       textAlign: "center",
@@ -56,11 +61,9 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
 
   return (
     <Hero className={classes.root}>
-      <Grid className={classes.logo}>
-        <Image src={Logo} />
-      </Grid>
+      <Grid className={classes.logo}>{/* <Image src={Logo} /> */}</Grid>
       <Grid className={classes.catch}>
-        <Typography>
+        <Typography className={classes.catchText}>
           福島県内の市町村や団体が大集合！！
           <br />
           ALLふくしまであなたの移住を応援します
@@ -68,8 +71,6 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
           あなたに合ったふくしまぐらしを
           <br />
           一緒に見つけましょう！
-          <br />
-          見つけてみませんか？
         </Typography>
       </Grid>
       <Grid className={classes.event}>
