@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { BackHistoryContext } from "@/context/backHistory";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Dialog, { DialogClassKey } from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -11,13 +12,17 @@ const useStyles = makeStyles((theme: Theme) =>
     paper: {
       width: "91vw",
       margin: "0",
-      maxHeight: "85v",
+      maxHeight: "85vh",
+      minHeight: "85vh",
       overflowY: "visible",
     },
     // Override MuiDialogContent-root
     root: {
       padding: "5px 8px 20px 8px",
       textAlign: "center",
+      display: "flex",
+      flexFlow: "column",
+      alignItems: "center",
     },
     flow: {
       textAlign: "center",
@@ -37,13 +42,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export interface IModalProps {
-  key: string;
+  modalKey: string;
   open: boolean;
   closeModal: () => void;
   onEnter: () => void;
   handleAnothers: HandleAnothers;
   headerColor: string;
   classes: Partial<Record<DialogClassKey, string>>;
+  headerIcon: string;
 }
 /**
  * モーダルコンポーネント
@@ -51,17 +57,21 @@ export interface IModalProps {
  */
 const Modal: React.FC<IModalProps> = (props) => {
   const classes = useStyles();
+  const backHistoryContext = useContext(BackHistoryContext);
 
   return (
     <React.Fragment>
       <Dialog
         open={props.open}
-        onClose={props.closeModal}
+        onClose={() => {
+          props.closeModal();
+          backHistoryContext.flush();
+        }}
         onEnter={props.onEnter}
         classes={{ ...{ paper: classes.paper }, ...props.classes }}
       >
         <Header
-          icon={"icon/icon"}
+          icon={props.headerIcon}
           color={props.headerColor}
           closeModal={props.closeModal}
         />

@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,6 +17,12 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "space-around",
       marginTop: "15px",
       marginBottom: "25px",
+    },
+    commingSoon: {
+      display: "flex",
+      flex: "1",
+      alignItems: "center",
+      color: "lightgray",
     },
   })
 );
@@ -34,7 +41,7 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Typography className={classes.text}>
+      {/* <Typography className={classes.text}> // TODO: 9/23
         気になるくらしのスタイルを
         <br />
         選択してください
@@ -64,8 +71,11 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
           color="red"
           onClick={() => changeModal("livingCity")}
         />
-      </ul>
-      <Button onClick={() => changeModal("conciergeCounter")}>＜ 戻る</Button>
+      </ul> */}
+      <div className={classes.commingSoon}>
+        <Typography variant="body2">Comming Soon</Typography>
+      </div>
+      <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );
 };

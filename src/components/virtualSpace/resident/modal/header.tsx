@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Icon from "@material-ui/core/Icon";
-import IconButton from "@material-ui/core/IconButton";
 import Image from "@/components/form/image";
 import Sleep from "@/app/libs/sleep";
+import CloseButton from "@/components/form/closeButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,16 +60,14 @@ const Header: React.FC<ITitleProps> = (props) => {
         style={{ backgroundColor: props.color ?? "#485859" }}
       >
         <Image src={props.icon} className={classes.icon} />
-        <IconButton
+        <CloseButton
           onClick={async () => {
             await Sleep.waitRipple();
             props.closeModal();
           }}
           className={classes.close}
           color="secondary"
-        >
-          <Icon>close</Icon>
-        </IconButton>
+        />
       </DialogTitle>
     </React.Fragment>
   );

@@ -13,9 +13,13 @@ export class BackHistory {
     return this.histories.pop() ?? null;
   }
   back(): void {
+    this.pop();
     const backAction = this.pop();
     if (!backAction) return;
     return backAction();
+  }
+  flush(): void {
+    this.histories.splice(0);
   }
 }
 

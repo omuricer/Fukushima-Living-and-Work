@@ -5,7 +5,9 @@ import SquareButton from "@/components/form/squareButton";
 import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
-import conciergeImage from "@/image/no_image.jpg"; // TODO:
+import ConciergeImage from "@/image/virtualSpace/concierge/m_1f_01.png";
+import PresentImage from "@/image/virtualSpace/concierge/m_1f_02.png";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,10 +17,19 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     answer: {
       display: "flex",
+      width: "100%",
+      justifyContent: "stretch",
     },
     answerButton: {
       width: "100%",
+      height: "50px",
       margin: "5px",
+    },
+    registerUser: {
+      display: "flex",
+      width: "70%",
+      marginTop: "15px",
+      justifyContent: "stretch",
     },
   })
 );
@@ -35,17 +46,23 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <Image src={conciergeImage} />
-      <Typography variant="h3" className={classes.h3}>
+      <Image src={ConciergeImage} />
+      <Typography
+        variant="h3"
+        className={classes.h3}
+        style={{
+          marginTop: "20px",
+        }}
+      >
         オンライン相談の流れ
       </Typography>
       <Flow
         index={1}
         description={
-          "相談したい市町村・団体を見つけましょう\nくらし・しごと\nどちらのご相談ですか？"
+          "相談したい市町村・団体を見つけましょう\n\nくらし・しごと どちらのご相談ですか？\n何から相談してよいか\nわからない方は総合相談へ！"
         }
       >
-        <div className={classes.answer}>
+        <div className={classes.answer} style={{ marginTop: "15px" }}>
           <SquareButton
             variant="contained"
             color="primary"
@@ -69,40 +86,63 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
             しごと
           </SquareButton>
         </div>
+        <div className={classes.answer}>
+          <SquareButton
+            variant="contained"
+            color="primary"
+            className={classes.answerButton}
+            onClick={() => {}} // TODO: 9/23
+            disabled
+          >
+            総合相談
+          </SquareButton>
+        </div>
       </Flow>
       <Flow
         index={2}
         description={
           "相談したい市町村・団体を見つけたら\nご相談のためのユーザー登録を\nお願いいたします"
         }
-      />
+      >
+        <div className={classes.registerUser}>
+          <SquareButton
+            variant="contained"
+            color="primary"
+            className={classes.answerButton}
+            onClick={() => {}} // TODO: 9/23
+            disabled
+          >
+            ユーザー登録
+          </SquareButton>
+        </div>
+      </Flow>
       <Flow
         index={3}
         description={"ご希望の日時を選択ください"}
         subDescription={
-          "予約を確定するとユーザー・市町村双方にメール通知します。登録後はユーザーマイページで自分の予約状況が一覧できます。"
+          "予約を確定するとメールが届きます。相談用URL等については各市町村から後程お送りします。登録後はユーザーマイページで自分の予約状況が確認できます。"
         }
       />
       <Flow
         index={4}
         description={
-          "予約当日、時間になったら\nご自身のアプリケーションから\n相談を開始してください"
+          "予約日時になったら\nご自身のアプリケーションから\n相談を開始してください"
         }
         subDescription={
-          "Zoom、Skype等、対応可能なアプリケーションを事前にご登録をお願いします"
+          "Zoom、Skype等、対応可能なアプリケーションを事前にご登録をお願いします。"
         }
       />
       <Flow
         index={5}
         description={
-          "相談終了後\nアンケートに答えてくれた方には\n抽選で景品が当たる！"
+          "相談終了後\nアンケートに答えてくれた方には\n抽選で福島の特産品が当たる！"
         }
       >
         <div>
-          <Image src="present" width="60px" />
+          <Image src={PresentImage} />
         </div>
       </Flow>
-      <Button onClick={props.closeModal}>＜ 戻る</Button>
+      <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );
 };

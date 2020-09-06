@@ -4,21 +4,23 @@ import RoundButton from "@/components/form/roundButton";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
-import talkLiveImage from "@/image/no_image.jpg"; // TODO: 正式な画像を設定
 import { BackHistoryContext } from "@/context/backHistory";
+import TalkLive from "@/image/virtualSpace/projection/m_7f_01.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     // Override MuiDialog-paper
-    // paper: {
-    //   width: "91vw",
-    //   margin: "0",
-    //   maxHeight: "80vh",
-    //   overflowY: "visible",
-    //   top: "-40px",
-    // },
+    paper: {
+      width: "91vw",
+      margin: "0",
+      maxHeight: "80vh",
+      minHeight: "80vh",
+      overflowY: "visible",
+      top: "-10px",
+    },
     h3: {
-      margin: "15px",
+      marginTop: "15px",
+      marginBottom: "15px",
     },
     image: {
       margin: "5px",
@@ -29,12 +31,25 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     buttonConcierge: {
       position: "fixed",
-      bottom: "20px",
+      bottom: "30px",
       left: "50%",
       transform: "translateX(-50%)",
       WebkitTransform: "translateX(-50%)",
       MsTransform: "translateX(-50%)",
       zIndex: 1301,
+      width: "150px",
+    },
+    hr: {
+      width: "20vw",
+      marginBottom: "30px",
+      borderWidth: "2px",
+      margin: "0 auto",
+    },
+    commingSoon: {
+      display: "flex",
+      flex: "1",
+      alignItems: "center",
+      color: "lightgray",
     },
   })
 );
@@ -109,25 +124,33 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
     <React.Fragment>
       <Modal
         {...props}
-        headerColor={"red"} // TODO: 正式な色にする
+        headerColor={"#AE3345"}
         onEnter={() =>
-          backHistoryContext.push(() =>
-            props.handleAnothers.openModal(props.key)
-          )
+          backHistoryContext.push(() => {
+            props.handleAnothers.openModal(props.modalKey);
+          })
         }
-        // classes={{ paper: classes.paper }}
+        headerIcon={props.content.icon}
+        classes={{ paper: classes.paper }}
       >
         <Typography variant="h3" className={classes.h3}>
           {props.content.title}
         </Typography>
-        <Image src={talkLiveImage} className={classes.image} />
-        <Typography variant="h3" className={classes.h3}>
+        <hr className={classes.hr} />
+        <Typography className={classes.h3}>
+          トークライブや自治体関連動画をチェック
+        </Typography>
+        <Image src={TalkLive} className={classes.image} />
+        <div className={classes.commingSoon}>
+          <Typography variant="body2">Comming Soon</Typography>
+        </div>
+        {/* <Typography variant="h3" className={classes.h3}> // TODO: 9/27
           プログラム
         </Typography>
 
-        <ul className={classes.programs}>{programs}</ul>
+        <ul className={classes.programs}>{programs}</ul> */}
       </Modal>
-      {/* {props.open && (
+      {props.open && (
         <RoundButton
           onClick={() => {
             props.closeModal();
@@ -137,9 +160,9 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           color="primary"
           className={classes.buttonConcierge}
         >
-          個別相談受付
+          総合案内
         </RoundButton>
-      )} */}
+      )}
     </React.Fragment>
   );
 };

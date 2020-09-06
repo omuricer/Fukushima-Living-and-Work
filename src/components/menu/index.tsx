@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
     },
     boadImage: {
-      height: "70vh",
+      height: "600px",
     },
     menu: {
       top: "23%",
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "absolute",
       transform: "translateX(-50%)",
       WebkitTransform: "translateX(-50%)",
-      width: "60vw",
+      width: "75%",
       color: "#ffffff",
     },
     button: {
@@ -45,15 +45,25 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     li: {
-      display: "block",
       lineHeight: "3rem",
+      display: "flex",
+      alignItems: "center",
+      padding: "10px",
     },
     floor: {
       marginRight: "10px",
       display: "inline",
     },
+    discript: {
+      display: "flex",
+      flexFlow: "column",
+    },
     name: {
       display: "inline",
+    },
+    text: {
+      color: "#cecece",
+      whiteSpace: "pre-wrap",
     },
     close: {
       position: "absolute",
@@ -67,59 +77,83 @@ interface IMenuProps {
   isVisible: boolean;
   closeMenu: () => void;
   sclollToFloors: (() => void)[];
+  openModal: (modalKey: string) => void;
 }
 const Menu: React.FC<IMenuProps> = (props) => {
   const classes = useStyles();
 
-  const handleClickMenu = (sclollToFloors: () => void) => {
+  const handleClickMenu = (modalKey: string) => {
+    // const handleClickMenu = (sclollToFloors: () => void) => {
     props.closeMenu();
-    sclollToFloors();
+    // sclollToFloors();
+    props.openModal(modalKey);
   };
   const list = [
     {
       floor: "1F",
-      name: "個別相談予約カウンター",
+      name: "総合案内",
+      text: "何から相談するか\n悩んだらこちら！",
+      modalKey: "conciergeCounter",
     },
     {
       floor: "2F",
-      name: "●●●●（しごと）",
+      name: "しごと相談室",
+      text: "仕事の相談をしたい方",
+      modalKey: "conciergeSelectWorkStyle",
     },
     {
       floor: "3F",
-      name: "海・湖のあるくらし",
+      name: "水辺のあるくらし",
+      text: "海や湖の近くで暮らしたい方",
+      modalKey: null,
     },
     {
       floor: "4F",
-      name: "山のあるくらし",
+      name: "自然豊かな山あいのくらし",
+      text: "大自然の中で暮らしたい方",
+      modalKey: null,
     },
     {
       floor: "5F",
-      name: "街のあるくらし",
+      name: "便利な街でのくらし",
+      text: "利便性を重視する方",
+      modalKey: null,
     },
     {
       floor: "6F",
-      name: "福島県を学ぶ",
+      name: "市町村相談",
+      text: "相談したい市町村がある方",
+      modalKey: null,
     },
     {
       floor: "7F",
-      name: "動画配信シアター",
+      name: "動画シアター",
+      text: "トークライブや\n移住関連動画をチェック！",
+      modalKey: "projection",
     },
   ].map((m, i) => (
     <Button
       key={i}
       className={classes.button}
       onClick={async () => {
+        if (!m.modalKey) return;
         await Sleep.waitRipple();
-        handleClickMenu(props.sclollToFloors[i]);
+        // handleClickMenu(props.sclollToFloors[i]);
+        handleClickMenu(m.modalKey);
       }}
     >
       <li className={classes.li}>
         <Typography className={classes.floor} color="textSecondary">
           {m.floor}
         </Typography>
-        <Typography className={classes.name} color="textSecondary">
-          {m.name}
-        </Typography>
+        <div className={classes.discript}>
+          <Typography className={classes.name} color="textSecondary">
+            {m.name}
+          </Typography>
+          <Typography className={classes.text} variant="body2">
+            {m.text}
+          </Typography>
+        </div>
       </li>
     </Button>
   ));

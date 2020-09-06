@@ -27,20 +27,16 @@ interface ISideButtonAreaProps {
   onHide: () => void;
 }
 const SideButtonArea: React.FC<ISideButtonAreaProps> = (props) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
   const classes = useStyles();
   const intersectingPoint = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleObserver: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
-        console.log(entry);
         if (entry.isIntersecting) {
           props.onVisible();
-          // setIsVisible(true);
         } else {
           props.onHide();
-          // setIsVisible(false);
         }
       });
     };

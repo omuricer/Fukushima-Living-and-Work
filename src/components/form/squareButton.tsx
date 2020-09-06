@@ -20,7 +20,11 @@ const SquareButton: React.FC<ISquareButtonProps> = (props) => {
   const classes = useStyles();
 
   return (
-    <Button classes={{ root: classes.root, text: classes.text }} {...props}>
+    <Button
+      classes={{ root: classes.root, text: classes.text }}
+      {...props}
+      style={props.disabled ? { borderBottom: `solid 3px #c8c8c8` } : {}} // HACK: ダサすぎる
+    >
       {props.children}
     </Button>
   );

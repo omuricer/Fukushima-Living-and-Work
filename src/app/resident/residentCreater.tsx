@@ -22,12 +22,14 @@ export class ResidentCreater {
 
   create(
     key: string,
+    modalKey: string,
     iconProps: IconProps | null,
     modalProps: ModalProps<ModalContent>
   ): Resident {
     if (isLivingModal(modalProps)) {
       return new LivingResident(
         key,
+        modalKey,
         iconProps,
         modalProps,
         this.handleAnothers
@@ -36,6 +38,7 @@ export class ResidentCreater {
     if (isProjectionModal(modalProps)) {
       return new ProjectionResident(
         key,
+        modalKey,
         iconProps,
         modalProps,
         this.handleAnothers
@@ -44,6 +47,7 @@ export class ResidentCreater {
     if (isConciergeModal(modalProps)) {
       return new ConciergeResident(
         key,
+        modalKey,
         iconProps,
         modalProps,
         this.handleAnothers
@@ -52,11 +56,18 @@ export class ResidentCreater {
     if (isWorkingModal(modalProps)) {
       return new WorkingResident(
         key,
+        modalKey,
         iconProps,
         modalProps,
         this.handleAnothers
       );
     }
-    return new LivingResident(key, iconProps, modalProps, this.handleAnothers);
+    return new LivingResident(
+      key,
+      modalKey,
+      iconProps,
+      modalProps,
+      this.handleAnothers
+    );
   }
 }

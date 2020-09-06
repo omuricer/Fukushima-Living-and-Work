@@ -8,6 +8,7 @@ import { BackHistoryContext } from "@/context/backHistory";
 export type ConciergeContent = {
   title: string;
   icon: string;
+  headerColor: string;
   type: string;
   phase: "counter" | "selectLifeStyle" | "selectWorkStyle";
 };
@@ -36,10 +37,13 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
   return (
     <Modal
       {...props}
-      headerColor={"#F6E9A3"}
+      headerColor={props.content.headerColor}
       onEnter={() =>
-        backHistoryContext.push(() => props.handleAnothers.openModal(props.key))
+        backHistoryContext.push(() => {
+          props.handleAnothers.openModal(props.modalKey);
+        })
       }
+      headerIcon={props.content.icon}
     >
       {content()}
     </Modal>

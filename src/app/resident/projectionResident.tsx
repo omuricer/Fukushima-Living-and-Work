@@ -12,7 +12,7 @@ export class ProjectionResident extends Resident {
   generateIcon(props: IIconProps): JSX.Element {
     return <IconComponent {...props} />;
   }
-  generateModal(key: string, props: IProjectionModalProps): JSX.Element {
+  generateModal(props: IProjectionModalProps): JSX.Element {
     return (
       <ProjectionModal
         {...{

@@ -22,10 +22,10 @@ const Icon: React.FC<IIconProps> = (props) => {
       className={classes.bounds}
       style={{
         position: "absolute",
-        // width: `calc(0.25 * ${props.ratio} * ${naturalWidth}px)`,
         top: `calc(${props.positionY}%)`,
         left: `calc(${props.positionX}%)`,
         animationDelay: `${generateRondomDelay()}s`,
+        width: "25%",
       }}
       onClick={props.onClick}
     />

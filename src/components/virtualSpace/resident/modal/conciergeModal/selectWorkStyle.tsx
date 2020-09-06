@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import SquareButton from "@/components/form/squareButton";
 import Sleep from "@/app/libs/sleep";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,6 +16,12 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       height: "55px",
       marginBottom: "5px",
+    },
+    commingSoon: {
+      display: "flex",
+      flex: "1",
+      alignItems: "center",
+      color: "lightgray",
     },
   })
 );
@@ -33,7 +40,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Typography className={classes.h3}>
+      {/* <Typography className={classes.h3}> //TODO: 9/23
         気になるしごとのスタイルを
         <br />
         選択してください
@@ -80,15 +87,16 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
         className={classes.selectButton}
       >
         ITスキルを活かしたい
-      </SquareButton>
-      <Button
-        onClick={() => changeModal("conciergeCounter")}
+      </SquareButton> */}
+      <div className={classes.commingSoon}>
+        <Typography variant="body2">Comming Soon</Typography>
+      </div>
+      <BackButton
+        onClick={props.closeModal}
         style={{
           marginTop: "15px",
         }}
-      >
-        ＜ 戻る
-      </Button>
+      />
     </React.Fragment>
   );
 };

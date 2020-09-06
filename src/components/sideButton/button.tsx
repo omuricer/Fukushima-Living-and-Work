@@ -6,7 +6,6 @@ import Image from "@/components/form/image";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      backgroundColor: "gray", // TODO: あとでけす
       marginBottom: "10px",
       cursor: "pointer",
       position: "relative",
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: "translateY(-50%) translateX(-50%) rotateZ(-90deg)",
       WebkitTransform: "translateY(-50%) translateX(-50%) rotateZ(-90deg)",
       whiteSpace: "nowrap",
-      color: "#000000", //TODO: あとでかえる
+      color: "#ffffff",
     },
   })
 );
