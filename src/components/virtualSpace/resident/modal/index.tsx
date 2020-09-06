@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { BackHistoryContext } from "@/context/backHistory";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Dialog, { DialogClassKey } from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -56,12 +57,16 @@ export interface IModalProps {
  */
 const Modal: React.FC<IModalProps> = (props) => {
   const classes = useStyles();
+  const backHistoryContext = useContext(BackHistoryContext);
 
   return (
     <React.Fragment>
       <Dialog
         open={props.open}
-        onClose={props.closeModal}
+        onClose={() => {
+          props.closeModal();
+          backHistoryContext.flush();
+        }}
         onEnter={props.onEnter}
         classes={{ ...{ paper: classes.paper }, ...props.classes }}
       >

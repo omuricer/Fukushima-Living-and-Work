@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "30px",
     },
     bn: {
-      margin: "1px",
+      margin: "5px",
     },
     contactGrid: {
       display: "flex",
