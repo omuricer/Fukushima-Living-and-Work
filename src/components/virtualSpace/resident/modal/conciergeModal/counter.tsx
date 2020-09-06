@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       width: "100%",
       justifyContent: "stretch",
+      height: "60px",
     },
     answerButton: {
       width: "100%",
@@ -26,10 +27,17 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "5px",
     },
     registerUser: {
-      display: "flex",
       width: "70%",
+      height: "60px",
       marginTop: "15px",
-      justifyContent: "stretch",
+      marginBottom: "auto",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+    wrap: {
+      width: "100%",
+      height: "75px",
+      position: "relative",
     },
   })
 );
@@ -62,40 +70,44 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
           "相談したい市町村・団体を見つけましょう\n\nくらし・しごと どちらのご相談ですか？\n何から相談してよいか\nわからない方は総合相談へ！"
         }
       >
-        <div className={classes.answer} style={{ marginTop: "15px" }}>
-          <SquareButton
-            variant="contained"
-            color="primary"
-            className={classes.answerButton}
-            onClick={() => {
-              props.closeModal();
-              props.handleAnothers.openModal("conciergeSelectLifeStyle");
-            }}
-          >
-            くらし
-          </SquareButton>
-          <SquareButton
-            variant="contained"
-            color="primary"
-            className={classes.answerButton}
-            onClick={() => {
-              props.closeModal();
-              props.handleAnothers.openModal("conciergeSelectWorkStyle");
-            }}
-          >
-            しごと
-          </SquareButton>
+        <div className={classes.wrap}>
+          <div className={classes.answer} style={{ marginTop: "15px" }}>
+            <SquareButton
+              variant="contained"
+              color="primary"
+              className={classes.answerButton}
+              onClick={() => {
+                props.closeModal();
+                props.handleAnothers.openModal("conciergeSelectLifeStyle");
+              }}
+            >
+              くらし
+            </SquareButton>
+            <SquareButton
+              variant="contained"
+              color="primary"
+              className={classes.answerButton}
+              onClick={() => {
+                props.closeModal();
+                props.handleAnothers.openModal("conciergeSelectWorkStyle");
+              }}
+            >
+              しごと
+            </SquareButton>
+          </div>
         </div>
-        <div className={classes.answer}>
-          <SquareButton
-            variant="contained"
-            color="primary"
-            className={classes.answerButton}
-            onClick={() => {}} // TODO: 9/23
-            disabled
-          >
-            総合相談
-          </SquareButton>
+        <div className={classes.wrap}>
+          <div className={classes.answer}>
+            <SquareButton
+              variant="contained"
+              color="primary"
+              className={classes.answerButton}
+              onClick={() => {}} // TODO: 9/23
+              disabled
+            >
+              総合相談
+            </SquareButton>
+          </div>
         </div>
       </Flow>
       <Flow
@@ -104,16 +116,18 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
           "相談したい市町村・団体を見つけたら\nご相談のためのユーザー登録を\nお願いいたします"
         }
       >
-        <div className={classes.registerUser}>
-          <SquareButton
-            variant="contained"
-            color="primary"
-            className={classes.answerButton}
-            onClick={() => {}} // TODO: 9/23
-            disabled
-          >
-            ユーザー登録
-          </SquareButton>
+        <div className={classes.wrap}>
+          <div className={classes.registerUser}>
+            <SquareButton
+              variant="contained"
+              color="primary"
+              className={classes.answerButton}
+              onClick={() => {}} // TODO: 9/23
+              disabled
+            >
+              ユーザー登録
+            </SquareButton>
+          </div>
         </div>
       </Flow>
       <Flow

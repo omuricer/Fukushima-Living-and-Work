@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Button, { ButtonProps } from "@material-ui/core/Button";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,11 +20,17 @@ interface ISquareButtonProps extends ButtonProps {}
 const SquareButton: React.FC<ISquareButtonProps> = (props) => {
   const classes = useStyles();
 
+  const onClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!props.onClick) return;
+    await Sleep.waitRipple();
+    props.onClick(e);
+  };
   return (
     <Button
       classes={{ root: classes.root, text: classes.text }}
       {...props}
       style={props.disabled ? { borderBottom: `solid 3px #c8c8c8` } : {}} // HACK: ダサすぎる
+      onClick={onClick}
     >
       {props.children}
     </Button>

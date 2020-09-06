@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
     sideArea: {
       top: "10vh",
       right: "0",
-      width: "40px",
+      width: "36px",
       display: "flex",
       zIndex: 1,
       position: "fixed",
