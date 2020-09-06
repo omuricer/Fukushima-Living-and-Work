@@ -29,14 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     close: {
       position: "absolute",
-      top: "0",
-      right: "0",
-      bottom: "0",
-      left: "0",
-      marginTop: "auto",
-      marginBottom: "auto",
-      marginLeft: "auto",
-      marginRight: "10px",
+      right: "10px",
     },
   })
 );

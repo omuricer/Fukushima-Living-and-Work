@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexFlow: "column",
       alignItems: "center",
+      justifyContent: "stretch",
     },
     flow: {
       textAlign: "center",
