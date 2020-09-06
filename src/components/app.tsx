@@ -29,19 +29,31 @@ interface IAppProps {}
 const App: React.FC<IAppProps> = (props) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [backHistory, setBackHistory] = useState<BackHistory>(_backHistory);
+  const [openedModal, setOpenedModal] = useState<string | null>(null);
   const classes = useStyles();
 
   setTimeout(() => {
     setLoading(false);
   }, 2500);
 
+  const openModal = (modalKey: string) => {
+    setOpenedModal(modalKey);
+  };
+  const closeModal = () => {
+    setOpenedModal(null);
+  };
+
   return (
     <div className={classes.root}>
       <BackHistoryContext.Provider value={backHistory}>
         <GlobalStyle />
         <Loading display={loading} />
-        <FirstView />
-        <VirtualSpace />
+        <FirstView openModal={openModal} />
+        <VirtualSpace
+          openedModal={openedModal}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
         <Footer />
       </BackHistoryContext.Provider>
     </div>

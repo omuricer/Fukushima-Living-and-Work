@@ -52,7 +52,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface IFirstViewProps {}
+interface IFirstViewProps {
+  openModal: (modalKey: string) => void;
+}
 const FirstView: React.FC<IFirstViewProps> = (props) => {
   const classes = useStyles();
 
@@ -75,7 +77,11 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
         </Typography>
       </Grid>
       <Grid className={classes.event}>
-        <Image src={Bn} className={classes.eventBoard} />
+        <Image
+          src={Bn}
+          className={classes.eventBoard}
+          onClick={() => props.openModal("projection")}
+        />
       </Grid>
       <Grid className={classes.scroll}>
         <Image src={Scroll} className={classes.scrollImage} />

@@ -38,29 +38,26 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface IVirtualSpaceProps {}
+interface IVirtualSpaceProps {
+  openedModal: string | null;
+  openModal: (modalKey: string) => void;
+  closeModal: () => void;
+}
 const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
-  const [openedResident, setOpenedResident] = useState<string | null>(null);
   const [isVisibleSideButtons, setIsVisibleSideButtons] = useState<boolean>(
     false
   );
   const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false);
   const classes = useStyles();
 
-  const handleAnothers = {
-    openModal: (residentKey: string) => {
-      setOpenedResident(residentKey);
-    },
-  };
-
   const floors = [...Array(floorNumber)].map((_, i) => (
     <Floor
       key={i}
       number={i}
       visual={floorImages[i]}
-      openedResident={openedResident}
-      setOpenedResident={setOpenedResident}
-      handleAnothers={handleAnothers}
+      openedModal={props.openedModal}
+      openModal={props.openModal}
+      closeModal={props.closeModal}
       ref={floorRefs[i]}
     />
   ));

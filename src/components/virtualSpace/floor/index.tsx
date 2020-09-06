@@ -22,26 +22,26 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IFloorProps {
   number: number;
   visual: string;
-  openedResident: string | null;
-  setOpenedResident: (openedResident: string | null) => void;
-  handleAnothers: {
-    openModal: (residentKey: string) => void;
-  };
+  openedModal: string | null;
+  openModal: (modalKey: string) => void;
+  closeModal: () => void;
 }
 const Floor = React.memo(
   React.forwardRef((props: IFloorProps, ref: React.Ref<HTMLDivElement>) => {
     const classes = useStyles();
 
-    const residentCreater = new ResidentCreater(props.handleAnothers);
+    const residentCreater = new ResidentCreater({
+      openModal: props.openModal,
+    });
     const residents: JSX.Element[] = RegidentsDefinitions.filter(
       (d) => d.floor === props.number + 1
     ).map((d, index: number) => {
       return residentCreater
         .create(index.toString(), d.key, d.icon ?? null, d.modal)
         .element(
-          props.openedResident == d.key,
-          () => props.setOpenedResident(d.key),
-          () => props.setOpenedResident(null)
+          props.openedModal == d.key,
+          () => props.openModal(d.key),
+          () => props.closeModal()
         );
     });
 
