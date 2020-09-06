@@ -7,7 +7,7 @@ import backgroundImage from "@/image/virtualSpace/hotel_01.png";
 import Image from "@/components/form/image";
 import Bn from "@/image/1stv_bn.png";
 import Logo from "@/image/logo_01.png";
-import Scroll from "@/image/scroll.png";
+import ScrollMe from "@/components/scrollMe";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,10 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       marginTop: "2vh",
     },
-    scrollImage: {
-      width: "50px",
-      margin: "0 auto",
-    },
   })
 );
 
@@ -84,7 +80,7 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
         />
       </Grid>
       <Grid className={classes.scroll}>
-        <Image src={Scroll} className={classes.scrollImage} />
+        <ScrollMe sclolled={false} />
       </Grid>
     </Hero>
   );
