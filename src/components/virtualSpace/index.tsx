@@ -110,6 +110,7 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
         isVisible={isVisibleMenu}
         closeMenu={closeMenu}
         sclollToFloors={sclollToFloors}
+        openModal={props.openModal}
       />
       {floors}
     </Grid>
