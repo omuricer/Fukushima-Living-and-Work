@@ -23,9 +23,14 @@ const ScrollMe: React.FC<IScrollMeProps> = (props) => {
 
   const springProps = useSpring({
     from: {
-      transform: "translateY(-80px)",
+      transform: "translateY(-20px)",
+      visibility: "hidden",
     },
-    to: { transform: "translateY(0)" },
+    to: {
+      transform: "translateY(0)",
+      visibility: "visible",
+    },
+    delay: 800,
   });
 
   useEffect(() => {

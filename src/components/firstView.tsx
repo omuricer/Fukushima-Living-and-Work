@@ -3,7 +3,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Hero from "@/components/template/hero";
-import backgroundImage from "@/image/virtualSpace/hotel_01.png";
+import backgroundImage from "@/image/virtualSpace/hotel_00.png";
 import Image from "@/components/form/image";
 import Bn from "@/image/1stv_bn.png";
 import Logo from "@/image/logo.png";
@@ -28,9 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
     logo: {
       textAlign: "center",
       backgroundImage: `url(${Logo})`,
-      backgroundSize: "cover",
       height: "170px",
       backgroundPositionX: "center",
+      backgroundRepeat: "no-repeat",
     },
     catch: {
       textAlign: "center",
@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
     eventBoard: {
       margin: "0 auto",
       width: "80vw",
+      maxWidth: "450px",
     },
     scroll: {
       textAlign: "center",

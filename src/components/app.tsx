@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import GlobalStyle from "@/components/globalStyles";
 import Loading from "@/components/loading";
+import Grid from "@material-ui/core/Grid";
 
 import VirtualSpace from "@/components/virtualSpace";
 import FirstView from "@/components/firstView";
@@ -10,6 +11,8 @@ import Footer from "@/components/footer";
 import { BackHistoryContext } from "@/context/backHistory";
 import _backHistory, { BackHistory } from "@/app/libs/backHistory";
 
+import Image from "@/components/form/image";
+import Hotel from "@/image/virtualSpace/hotel_01.png";
 import backgroundImage from "@/image/background.jpg";
 import backgroundImage2 from "@/image/cloud_mb_2.png";
 import Ogp from "@/image/ogp.png";
@@ -49,13 +52,22 @@ const App: React.FC<IAppProps> = (props) => {
       <BackHistoryContext.Provider value={backHistory}>
         <GlobalStyle />
         <Loading display={loading} />
-        <FirstView openModal={openModal} />
-        <VirtualSpace
-          openedModal={openedModal}
-          openModal={openModal}
-          closeModal={closeModal}
-        />
-        <Footer />
+        {!loading ? (
+          <React.Fragment>
+            <FirstView openModal={openModal} />
+            <Grid>
+              <Image src={Hotel} style={{ width: "100%" }} />
+            </Grid>
+            <VirtualSpace
+              openedModal={openedModal}
+              openModal={openModal}
+              closeModal={closeModal}
+            />
+            <Footer />
+          </React.Fragment>
+        ) : (
+          <React.Fragment></React.Fragment>
+        )}
       </BackHistoryContext.Provider>
     </div>
   );
