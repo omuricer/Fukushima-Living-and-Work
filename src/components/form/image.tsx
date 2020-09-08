@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import noimage from "@/image/no_image.jpg";
+import Noimage from "@/image/no_image.jpg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,22 +17,30 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
+interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  noimage?: boolean;
+}
 const Image: React.FC<IImageProps> = (props) => {
   const [loaded, setLoaded] = React.useState(false);
   const [src, setSrc] = useState<string | undefined>(props.src);
   const classes = useStyles();
 
+  const { noimage, ...imageProps } = { ...props };
+
   const image = loaded ? classes.loaded : classes.unLoaded;
 
+  if (noimage !== undefined && !noimage && src == Noimage) {
+    return <div {...imageProps} />;
+  }
+
   return (
-    <div {...props}>
+    <div {...imageProps}>
       <img
         {...{
-          ...props,
-          ...{ src: src, onError: (e) => setSrc(noimage) },
+          ...imageProps,
+          ...{ src: src, onError: (e) => setSrc(Noimage) },
         }}
-        className={[image, classes.image, props.className].join(" ")}
+        className={[image, classes.image, imageProps.className].join(" ")}
         onLoad={() => setLoaded(true)}
       />
     </div>
