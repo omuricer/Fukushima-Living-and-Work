@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "20vw",
       marginBottom: "30px",
       borderWidth: "2px",
-      margin: '30px auto auto auto',
+      margin: "30px auto auto auto",
     },
   })
 );
@@ -105,18 +105,10 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       <SquareButton
         variant="contained"
         color="secondary"
-        onClick={() => changeModal("workingOfferLocals")}
-        className={classes.selectButton}
-      >
-        地域の魅力を発信したい
-      </SquareButton>
-      <SquareButton
-        variant="contained"
-        color="secondary"
         onClick={() => changeModal("workingForLocals")}
         className={classes.selectButton}
       >
-        地域貢献できて、安定した仕事がしたい
+        地域と関わる仕事がしたい
       </SquareButton>
       <SquareButton
         variant="contained"

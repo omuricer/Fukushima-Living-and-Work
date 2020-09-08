@@ -61,43 +61,13 @@ const Working: Resident<WorkingContent>[] = [
       },
     },
   },
-
-  {
-    floor: 1,
-    key: "workingOfferLocals",
-    modal: {
-      content: {
-        type: "working",
-        title: "地域の魅力を発信したい",
-        icon: workingGirlTitle,
-        advisors: [
-          {
-            id: "1",
-            name: "団体名",
-            inCharge: {
-              name: "担当者名", // TODO:
-              icon: "icon",
-            },
-          },
-          {
-            id: "1",
-            name: "団体名",
-            inCharge: {
-              name: "担当者名", // TODO:
-              icon: "icon",
-            },
-          },
-        ],
-      },
-    },
-  },
   {
     floor: 1,
     key: "workingForLocals",
     modal: {
       content: {
         type: "working",
-        title: "地域貢献できて、安定した仕事がしたい",
+        title: "地域と関わる仕事がしたい",
         icon: workingGirlTitle,
         advisors: [
           {
