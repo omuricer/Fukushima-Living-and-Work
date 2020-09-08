@@ -11,7 +11,7 @@ import BackButton from "@/components/form/backButton";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
-      margin: "15px",
+      margin: "10px",
     },
     advidors: {
       display: "flex",
@@ -63,7 +63,6 @@ const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <hr />
       <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
 
       <ul className={classes.advidors}>{advisors}</ul>
@@ -111,6 +110,9 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
     name: {
       marginTop: "5px",
     },
+    button: {
+      margin: "15px",
+    },
   })
 );
 
@@ -145,8 +147,9 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
             href={`https://xxx.xxx/aaa/${props.id}`}
             target="_blank"
             rel="noopener noreferrer"
+            className={classes.button}
           >
-            <RoundButton variant="contained" color="primary">
+            <RoundButton variant="contained" color="secondary">
               個別相談
             </RoundButton>
           </a>

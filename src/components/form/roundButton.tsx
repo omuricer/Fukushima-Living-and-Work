@@ -8,7 +8,13 @@ const useStyles = makeStyles((theme: Theme) =>
     // Override MuiButton-root
     root: {
       borderRadius: "30px",
-      borderBottom: `solid 3px ${theme.palette.primary.dark}`,
+      borderBottom: (props: IRoundButtonProps) => {
+        if (props.color == "primary")
+          return `solid 3px ${theme.palette.primary.dark}`;
+        if (props.color == "secondary")
+          return `solid 3px ${theme.palette.secondary.dark}`;
+        return `solid 3px`;
+      },
     },
     // Override MuiButton-text
     text: {
@@ -19,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface IRoundButtonProps extends ButtonProps {}
 const RoundButton: React.FC<IRoundButtonProps> = (props) => {
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   const onClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!props.onClick) return;
