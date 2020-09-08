@@ -4,10 +4,10 @@ import Grid from "@material-ui/core/Grid";
 import Floor from "./floor";
 import FloorImage1 from "@/image/virtualSpace/hotel_08.png";
 import FloorImage2 from "@/image/virtualSpace/hotel_07.png";
-import FloorImage3 from "@/image/virtualSpace/hotel_06_fix.png"; // TODO: 9/23
-import FloorImage4 from "@/image/virtualSpace/hotel_05_fix.png"; // TODO: 9/23
-import FloorImage5 from "@/image/virtualSpace/hotel_04_fix.png"; // TODO: 9/23
-import FloorImage6 from "@/image/virtualSpace/hotel_03_fix.png"; // TODO: 9/23
+import FloorImage3 from "@/image/virtualSpace/hotel_06.png";
+import FloorImage4 from "@/image/virtualSpace/hotel_05.png";
+import FloorImage5 from "@/image/virtualSpace/hotel_04.png";
+import FloorImage6 from "@/image/virtualSpace/hotel_03.png";
 import FloorImage7 from "@/image/virtualSpace/hotel_02.png";
 import Menu from "@/components/menu";
 import SideButtonArea from "@/components/sideButton";
