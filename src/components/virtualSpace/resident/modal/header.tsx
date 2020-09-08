@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
     close: {
       position: "absolute",
       right: "10px",
+      color: "white",
     },
   })
 );

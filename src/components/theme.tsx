@@ -71,7 +71,7 @@ let theme = createMuiTheme({
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#ffffff",
+      main: "#745F74",
     },
   },
   props: {

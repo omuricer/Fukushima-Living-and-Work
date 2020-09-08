@@ -8,8 +8,6 @@ import birdTitle from "@/image/virtualSpace/modalTitleIcon/m_top_3.png";
 import bearTitle from "@/image/virtualSpace/modalTitleIcon/m_top_4.png";
 import peachTitle from "@/image/virtualSpace/modalTitleIcon/m_top_5.png";
 
-import raccoon from "@/image/virtualSpace/icons/icon_6.png"; // TODO: 9/23 削除
-
 const LivingRegidents: Resident<LivingContent>[] = [
   {
     floor: 3,
@@ -113,34 +111,6 @@ const LivingRegidents: Resident<LivingContent>[] = [
             image: "image",
             id: "1",
           },
-          {
-            name: "○○",
-            image: "image",
-            id: "1",
-          },
-        ],
-      },
-    },
-  },
-  {
-    // TODO: 9/23 削除
-    floor: 6,
-    key: "livingXXXX",
-    icon: {
-      image: raccoon,
-      positionY: 26,
-      positionX: 20,
-    },
-    modal: {
-      content: {
-        type: "living",
-        icon: "xxxx",
-        headerColor: "gray",
-        title: "",
-        visual: "xxxx",
-        comment: "xxxx",
-        commentDirection: "left",
-        advisors: [
           {
             name: "○○",
             image: "image",

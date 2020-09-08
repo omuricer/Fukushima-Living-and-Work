@@ -45,12 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderWidth: "2px",
       margin: "0 auto",
     },
-    commingSoon: {
-      display: "flex",
-      flex: "1",
-      alignItems: "center",
-      color: "lightgray",
-    },
   })
 );
 
@@ -141,14 +135,10 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           トークライブや自治体関連動画をチェック
         </Typography>
         <Image src={TalkLive} className={classes.image} />
-        <div className={classes.commingSoon}>
-          <Typography variant="body2">Comming Soon</Typography>
-        </div>
-        {/* <Typography variant="h3" className={classes.h3}> // TODO: 9/27
+        <Typography variant="h3" className={classes.h3}>
           プログラム
         </Typography>
-
-        <ul className={classes.programs}>{programs}</ul> */}
+        <ul className={classes.programs}>{programs}</ul>
       </Modal>
       {props.open && (
         <RoundButton

@@ -18,12 +18,6 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: "15px",
       marginBottom: "25px",
     },
-    commingSoon: {
-      display: "flex",
-      flex: "1",
-      alignItems: "center",
-      color: "lightgray",
-    },
   })
 );
 
@@ -41,7 +35,7 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      {/* <Typography className={classes.text}> // TODO: 9/23
+      <Typography className={classes.text}>
         気になるくらしのスタイルを
         <br />
         選択してください
@@ -71,10 +65,7 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
           color="red"
           onClick={() => changeModal("livingCity")}
         />
-      </ul> */}
-      <div className={classes.commingSoon}>
-        <Typography variant="body2">Comming Soon</Typography>
-      </div>
+      </ul>
       <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );

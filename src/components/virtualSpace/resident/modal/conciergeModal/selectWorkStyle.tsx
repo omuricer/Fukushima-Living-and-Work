@@ -17,11 +17,12 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "55px",
       marginBottom: "5px",
     },
-    commingSoon: {
-      display: "flex",
+    space: {
       flex: "1",
+      display: "flex",
+      flexFlow: "column",
       alignItems: "center",
-      color: "lightgray",
+      justifyContent: "center",
     },
   })
 );
@@ -40,14 +41,14 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      {/* <Typography className={classes.h3}> //TODO: 9/23
+      <Typography className={classes.h3}>
         気になるしごとのスタイルを
         <br />
         選択してください
       </Typography>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={async () => {
           await Sleep.waitRipple();
           changeModal("workingNature");
@@ -58,7 +59,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       </SquareButton>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={() => changeModal("workingStartBussiness")}
         className={classes.selectButton}
       >
@@ -66,7 +67,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       </SquareButton>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={() => changeModal("workingOfferLocals")}
         className={classes.selectButton}
       >
@@ -74,7 +75,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       </SquareButton>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={() => changeModal("workingForLocals")}
         className={classes.selectButton}
       >
@@ -82,15 +83,13 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       </SquareButton>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={() => changeModal("workingIT")}
         className={classes.selectButton}
       >
         ITスキルを活かしたい
-      </SquareButton> */}
-      <div className={classes.commingSoon}>
-        <Typography variant="body2">Comming Soon</Typography>
-      </div>
+      </SquareButton>
+      <div className={classes.space} />
       <BackButton
         onClick={props.closeModal}
         style={{
