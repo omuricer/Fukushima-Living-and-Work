@@ -10,7 +10,10 @@ import BackButton from "@/components/form/backButton";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
-      margin: "30px",
+      margin: "10px",
+    },
+    text: {
+      margin: "20px",
     },
     selectButton: {
       width: "100%",
@@ -23,6 +26,12 @@ const useStyles = makeStyles((theme: Theme) =>
       flexFlow: "column",
       alignItems: "center",
       justifyContent: "center",
+    },
+    hr: {
+      width: "20vw",
+      marginBottom: "30px",
+      borderWidth: "2px",
+      margin: '30px auto auto auto',
     },
   })
 );
@@ -41,10 +50,38 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Typography className={classes.h3}>
-        気になるしごとのスタイルを
+      <Typography variant="h3" className={classes.h3}>
+        {props.content.title}
+      </Typography>
+      <hr className={classes.hr} />
+      <Typography className={classes.text}>総合相談はこちらから</Typography>
+      <SquareButton
+        variant="contained"
+        color="secondary"
+        onClick={async () => {
+          await Sleep.waitRipple();
+          // TODO: 9/23
+        }}
+        className={classes.selectButton}
+      >
+        就職総合相談
+      </SquareButton>
+      <SquareButton
+        variant="contained"
+        color="secondary"
+        onClick={async () => {
+          await Sleep.waitRipple();
+          // TODO: 9/23
+        }}
+        className={classes.selectButton}
+      >
+        地域おこし協力隊総合相談
+      </SquareButton>
+      <hr className={classes.hr} />
+      <Typography className={classes.text}>
+        働きたいしごとのスタイルが
         <br />
-        選択してください
+        決まっている方はこちらから
       </Typography>
       <SquareButton
         variant="contained"

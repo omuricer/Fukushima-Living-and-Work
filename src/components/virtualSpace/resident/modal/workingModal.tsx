@@ -52,7 +52,7 @@ const WorkingModal: React.FC<IWorkingModalProps> = (props) => {
   return (
     <Modal
       {...props}
-      headerColor={"#F6E9A3"}
+      headerColor={"#745F74"}
       onEnter={() =>
         backHistoryContext.push(() => {
           props.handleAnothers.openModal(props.modalKey);
