@@ -35,6 +35,17 @@ const useStyles = makeStyles((theme: Theme) =>
       flexFlow: "wrap",
       marginBottom: "20px",
     },
+    commingSoon: {
+      flex: "1",
+      color: "lightgray",
+      display: "flex",
+      flexFlow: "column",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    commingSoonText: {
+      margin: "10px",
+    },
   })
 );
 
@@ -84,7 +95,15 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <div className={classes.visual}>
+      <div className={classes.commingSoon}>
+        <Typography variant="body2" className={classes.commingSoonText}>
+          Comming Soon
+        </Typography>
+        <Typography variant="body2" className={classes.commingSoonText}>
+          10/1よりオンライン個別相談予約開始！
+        </Typography>
+      </div>
+      {/* <div className={classes.visual}> TODO: 9/23
         <Image src={props.content.visual} />
         <Comment
           text={props.content.comment}
@@ -95,7 +114,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
         />
       </div>
       <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
-      <ul className={classes.advidors}>{advisors}</ul>
+      <ul className={classes.advidors}>{advisors}</ul> */}
       <BackButton onClick={props.closeModal} />
     </Modal>
   );

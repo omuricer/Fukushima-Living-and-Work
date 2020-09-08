@@ -3,11 +3,15 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Hero from "@/components/template/hero";
-import backgroundImage from "@/image/virtualSpace/hotel_01.png";
+import backgroundImage from "@/image/virtualSpace/hotel_00.png";
 import Image from "@/components/form/image";
-import Bn from "@/image/1stv_bn.png";
+import Banner1 from "@/image/1stv_bn1.png";
+import Banner2 from "@/image/1stv_bn2.png";
 import Logo from "@/image/logo.png";
 import ScrollMe from "@/components/scrollMe";
+import Swiper from "react-id-swiper";
+
+// import "swiper/components/pagination/pagination.scss";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,9 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
     logo: {
       textAlign: "center",
       backgroundImage: `url(${Logo})`,
-      backgroundSize: "cover",
       height: "170px",
       backgroundPositionX: "center",
+      backgroundRepeat: "no-repeat",
     },
     catch: {
       textAlign: "center",
@@ -45,6 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
     eventBoard: {
       margin: "0 auto",
       width: "80vw",
+      maxWidth: "450px",
     },
     scroll: {
       textAlign: "center",
@@ -58,6 +63,14 @@ interface IFirstViewProps {
 }
 const FirstView: React.FC<IFirstViewProps> = (props) => {
   const classes = useStyles();
+
+  const swiperParams = {
+    slidesPerView: 1,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+  };
 
   return (
     <Hero className={classes.root}>
@@ -74,11 +87,18 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
         </Typography>
       </Grid>
       <Grid className={classes.event}>
-        <Image
-          src={Bn}
-          className={classes.eventBoard}
-          onClick={() => props.openModal("projection")}
-        />
+        <Swiper {...swiperParams}>
+          <Image
+            src={Banner1}
+            className={classes.eventBoard}
+            onClick={() => props.openModal("projection")}
+          />
+          <Image
+            src={Banner2}
+            className={classes.eventBoard}
+            // onClick={() => props.openModal("projection")}
+          />
+        </Swiper>
       </Grid>
       <Grid className={classes.scroll}>
         <ScrollMe sclolled={false} />

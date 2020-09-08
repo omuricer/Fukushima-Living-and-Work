@@ -52,7 +52,7 @@ const Header: React.FC<ITitleProps> = (props) => {
         disableTypography={true}
         style={{ backgroundColor: props.color ?? "#485859" }}
       >
-        <Image src={props.icon} className={classes.icon} />
+        <Image src={props.icon} className={classes.icon} noimage={false} />
         <CloseButton
           onClick={async () => {
             await Sleep.waitRipple();
