@@ -94,7 +94,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
         </Typography>
         <Typography variant="body2">tel:024-521-8023</Typography>
         <Typography variant="body2">
-          mail:ut-turn@pref.fukushima.lg.jp
+          mail:ui-turn@pref.fukushima.lg.jp
         </Typography>
       </Grid>
       <Grid item xs={12} className={classes.copyrightGrid}>
