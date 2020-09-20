@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import SquareButton from "@/components/form/squareButton";
 import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
@@ -13,10 +13,28 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     lifeStyles: {
       display: "flex",
-      flexFlow: "wrap",
-      justifyContent: "space-around",
+      flexFlow: "column",
+      justifyContent: "center",
       marginTop: "15px",
       marginBottom: "25px",
+    },
+    answerButton: {
+      width: "100%",
+      height: "50px",
+      margin: "5px",
+    },
+    registerUser: {
+      width: "70%",
+      height: "60px",
+      marginTop: "15px",
+      marginBottom: "auto",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+    wrap: {
+      width: "100%",
+      height: "75px",
+      position: "relative",
     },
   })
 );
@@ -43,29 +61,39 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
       <ul className={classes.lifeStyles}>
         <LifeStyle
           image={"moutain"}
-          text={"山のあるくらし"}
-          color="green"
+          text={"便利な街でのくらし"}
+          color="#BD8E6B"
+          onClick={() => changeModal("livingCity")}
+        />
+        <LifeStyle
+          image={"moutain"}
+          text={"自然豊かな山あいのくらし"}
+          color="#99BC81"
           onClick={() => changeModal("livingMountain")}
         />
         <LifeStyle
           image={"livingSea"}
-          text={"海・湖のあるくらし"}
-          color="blue"
+          text={"水辺でのくらし"}
+          color="#628FBD"
           onClick={() => changeModal("livingSea")}
         />
-        <LifeStyle
-          image={"culture"}
-          text={"文化のあるくらし"}
-          color="purple"
-          onClick={() => changeModal("livingCulture")}
-        />
-        <LifeStyle
-          image={"moutain"}
-          text={"街のあるくらし"}
-          color="red"
-          onClick={() => changeModal("livingCity")}
-        />
       </ul>
+      <Typography className={classes.text}>
+        市町村位一覧から探す
+      </Typography>
+      <div className={classes.wrap}>
+        <div className={classes.registerUser}>
+          <SquareButton
+            variant="contained"
+            color="primary"
+            className={classes.answerButton}
+            onClick={() => { }} // TODO: 9/23
+            disabled
+          >
+            市町村一覧
+            </SquareButton>
+        </div>
+      </div>
       <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );
@@ -75,7 +103,6 @@ export default SelectLifeStyle;
 const useStylesLifeStyle = makeStyles((theme: Theme) =>
   createStyles({
     lifeStyle: {
-      width: "47%",
       padding: "5px",
       margin: "4px",
       textAlign: "center",
@@ -83,9 +110,8 @@ const useStylesLifeStyle = makeStyles((theme: Theme) =>
     },
     image: {},
     text: {
-      marginTop: "5px",
+      margin: "10px",
       color: "#ffffff",
-      letterSpacing: "0",
     },
   })
 );

@@ -1,12 +1,14 @@
 import { Resident } from "@/app/resident/types";
 import { LivingContent } from "@/components/virtualSpace/resident/modal/livingModal";
-import livingCultureImage from "@/image/no_image.jpg"; // TODO: 正式な画像を設定
 import bird from "@/image/virtualSpace/icons/icon_3.png";
 import bear from "@/image/virtualSpace/icons/icon_4.png";
 import peach from "@/image/virtualSpace/icons/icon_5.png";
 import birdTitle from "@/image/virtualSpace/modalTitleIcon/m_top_3.png";
 import bearTitle from "@/image/virtualSpace/modalTitleIcon/m_top_4.png";
 import peachTitle from "@/image/virtualSpace/modalTitleIcon/m_top_5.png";
+import birdVisual from "@/image/virtualSpace/icons/icon_3.png"; // TODO: 正式な画像を設定
+import bearVisual from "@/image/virtualSpace/icons/icon_4.png"; // TODO: 正式な画像を設定
+import peachVisual from "@/image/virtualSpace/icons/icon_5.png";// TODO: 正式な画像を設定
 
 const LivingRegidents: Resident<LivingContent>[] = [
   {
@@ -23,24 +25,31 @@ const LivingRegidents: Resident<LivingContent>[] = [
         icon: birdTitle,
         headerColor: "#628FBD",
         title: "水辺でのくらし",
-        visual: "kuma",
-        comment: "水の恵みを感じる！\n海や湖などが\n身近にある暮らし",
-        commentDirection: "right",
+        visual: birdVisual,
         advisors: [
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
         ],
       },
@@ -60,24 +69,31 @@ const LivingRegidents: Resident<LivingContent>[] = [
         icon: bearTitle,
         headerColor: "#99BC81",
         title: "自然豊かな山あいのくらし",
-        visual: "kuma",
-        comment: "自然とともに暮らす\nアウトドアを満喫\nできる暮らし",
-        commentDirection: "right",
+        visual: bearVisual,
         advisors: [
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
         ],
       },
@@ -97,24 +113,31 @@ const LivingRegidents: Resident<LivingContent>[] = [
         icon: peachTitle,
         headerColor: "#BD8E6B",
         title: "便利な街でのくらし",
-        visual: "kuma",
-        comment: "生活に便利な\n商業施設や娯楽施設が\nある街での暮らし",
-        commentDirection: "left",
+        visual: peachVisual,
         advisors: [
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
           {
-            name: "○○",
-            image: "image",
             id: "1",
+            name: "団体名",
+            inCharge: {
+              name: "担当者名", // TODO:
+              icon: "icon",
+            },
           },
         ],
       },

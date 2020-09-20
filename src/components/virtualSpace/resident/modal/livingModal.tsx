@@ -3,10 +3,9 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
-import Button from "@material-ui/core/Button";
-import Sleep from "@/app/libs/sleep";
 import { BackHistoryContext } from "@/context/backHistory";
 import BackButton from "@/components/form/backButton";
+import RoundButton from "@/components/form/roundButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -55,12 +54,13 @@ export type LivingContent = {
   headerColor: string;
   title: string;
   visual: string;
-  comment: string;
-  commentDirection: "left" | "right";
   advisors: {
     name: string;
-    image: string;
     id: string;
+    inCharge: {
+      name: string;
+      icon: string;
+    };
   }[];
 };
 export const isLivingContent = (v: unknown): v is LivingContent =>
@@ -78,7 +78,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
   const backHistoryContext = useContext(BackHistoryContext);
 
   const advisors = props.content.advisors.map((a, index) => (
-    <Advisor {...a} key={index} color={props.content.headerColor} />
+    <Advisor key={index} color={props.content.headerColor} {...a} />
   ));
 
   return (
@@ -95,26 +95,11 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <div className={classes.commingSoon}>
-        <Typography variant="body2" className={classes.commingSoonText}>
-          Comming Soon
-        </Typography>
-        <Typography variant="body2" className={classes.commingSoonText}>
-          10/1よりオンライン個別相談予約開始！
-        </Typography>
-      </div>
-      {/* <div className={classes.visual}> TODO: 9/23
+      <div className={classes.visual}>
         <Image src={props.content.visual} />
-        <Comment
-          text={props.content.comment}
-          direction={
-            props.content.commentDirection == "left" ? "right" : "left"
-          }
-          className={classes.commentRight}
-        />
       </div>
       <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
-      <ul className={classes.advidors}>{advisors}</ul> */}
+      <ul className={classes.advidors}>{advisors}</ul>
       <BackButton onClick={props.closeModal} />
     </Modal>
   );
@@ -123,18 +108,33 @@ export default LivingModal;
 
 const useStylesAdvisor = makeStyles((theme: Theme) =>
   createStyles({
-    button: {
-      width: "50%",
-      padding: 0,
+    wrap: {
+      width: "100%",
     },
     li: {
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
       borderStyle: "solid",
       borderRadius: "4px",
       margin: "5px",
-      position: "relative",
+    },
+    h3: {
+      margin: "10px",
+    },
+    line: {
+      display: "flex",
+      alignItems: "center",
+    },
+    inCharge: {
+      textAlign: "left",
+      margin: "10px",
+      display: "flex",
+      flexFlow: "column",
+      justifyContent: "center",
+      flex: 1,
+    },
+    inChargeLabel: {
+      color: "#797979",
+      margin: "0",
+      marginBottom: "3px",
     },
     image: {
       width: "60px",
@@ -142,109 +142,52 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       margin: "5px",
     },
     name: {
-      margin: "10px",
+      marginTop: "5px",
     },
-    shadow: {
-      borderBottom: "solid 4px rgba(0,0,0,0.2)",
-      borderRadius: "7px",
-      position: "absolute",
-      width: "calc(100% + 4px)",
-      height: "30px",
-      top: "calc(100% + 2px)",
-      left: "50%",
-      transform: "translateY(-50%) translateX(-50%)",
-      WebkitTransform: "translateY(-100%) translateX(-50%)",
+    button: {
+      margin: "15px",
     },
   })
 );
-
 export interface IAdvisorProps {
-  image: string;
   name: string;
   id: string;
+  inCharge: {
+    name: string;
+    icon: string;
+  };
   color: string;
 }
 const Advisor: React.FC<IAdvisorProps> = (props) => {
   const classes = useStylesAdvisor();
   return (
-    <Button
-      className={classes.button}
-      onClick={async () => {
-        await Sleep.waitRipple();
-        window.open(`https://xxx.xxx/aaa/${props.id}`);
-      }}
-    >
+    <div className={classes.wrap}>
       <li className={classes.li} style={{ borderColor: props.color }}>
-        <Image src={props.image} className={classes.image} />
-        <Typography className={classes.name}>{props.name}</Typography>
-        <div className={classes.shadow} />
+        <Typography variant="h3" className={classes.h3}>
+          {props.name}
+        </Typography>
+        <div className={classes.line}>
+          <Image src={props.inCharge.icon} className={classes.image} />
+          <div className={classes.inCharge}>
+            <Typography className={classes.inChargeLabel} variant="body2">
+              担当
+            </Typography>
+            <Typography className={classes.name}>
+              {props.inCharge.name}
+            </Typography>
+          </div>
+          <a
+            href={`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.button}
+          >
+            <RoundButton variant="contained" color="secondary">
+              個別相談
+            </RoundButton>
+          </a>
+        </div>
       </li>
-    </Button>
-  );
-};
-
-const useStylesComment = makeStyles((theme: Theme) =>
-  createStyles({
-    left: {
-      display: "inline-block",
-      padding: "7px 10px",
-      minWidth: "120px",
-      maxWidth: "100%",
-      color: "#555",
-      fontSize: "16px",
-      background: "#ffffff",
-      opacity: "0.8",
-      whiteSpace: "nowrap",
-      "&:before": {
-        content: '""',
-        position: "absolute",
-        top: "50%",
-        left: "-30px",
-        marginTop: "-15px",
-        border: "15px solid transparent",
-        borderRight: "15px solid #ffffff",
-        opacity: "0.8",
-      },
-    },
-    right: {
-      display: "inline-block",
-      padding: "7px 10px",
-      minWidth: "120px",
-      maxWidth: "100%",
-      color: "#555",
-      fontSize: "16px",
-      background: "#ffffff",
-      opacity: "0.8",
-      whiteSpace: "nowrap",
-      "&:before": {
-        content: '""',
-        position: "absolute",
-        top: "50%",
-        left: "100%",
-        marginTop: "-15px",
-        border: "15px solid transparent",
-        borderLeft: "15px solid #ffffff",
-        opacity: "0.8",
-      },
-    },
-    text: {
-      margin: "0",
-      padding: "0",
-    },
-  })
-);
-
-export interface ICommentProps extends React.ImgHTMLAttributes<HTMLDivElement> {
-  text: string;
-  direction?: "left" | "right";
-}
-const Comment: React.FC<ICommentProps> = (props) => {
-  const classes = useStylesComment();
-  const dilectionStyle =
-    props.direction == "left" ? classes.left : classes.right;
-  return (
-    <div {...props} className={[dilectionStyle, props.className].join(" ")}>
-      <Typography>{props.text}</Typography>
     </div>
   );
 };

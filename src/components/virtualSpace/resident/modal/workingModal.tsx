@@ -83,7 +83,7 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       margin: "5px",
     },
     h3: {
-      margin: "15px",
+      margin: "10px",
     },
     line: {
       display: "flex",
