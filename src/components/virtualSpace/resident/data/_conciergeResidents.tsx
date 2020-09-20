@@ -55,5 +55,18 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
       },
     },
   },
+  {
+    floor: 1,
+    key: "conciergeChat",
+    modal: {
+      content: {
+        title: "チャット相談",
+        icon: usagiTitle,
+        headerColor: "#E9A75B",
+        type: "concierge",
+        phase: "chat",
+      },
+    },
+  },
 ];
 export default ConciergeRegidents;

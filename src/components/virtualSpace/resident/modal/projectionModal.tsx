@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
     programs: {
       display: "flex",
       flexFlow: "wrap",
+      marginBottom: '20px',
     },
     buttonConcierge: {
       position: "fixed",

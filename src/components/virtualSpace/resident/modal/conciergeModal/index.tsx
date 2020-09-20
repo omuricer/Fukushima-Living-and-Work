@@ -3,6 +3,7 @@ import Modal, { IModalProps } from "../index";
 import Counter from "./counter";
 import SelectLifeStyle from "./selectLifeStyle";
 import SelectWorkStyle from "./selectWorkStyle";
+import Chat from "./chat";
 import { BackHistoryContext } from "@/context/backHistory";
 
 export type ConciergeContent = {
@@ -10,7 +11,7 @@ export type ConciergeContent = {
   icon: string;
   headerColor: string;
   type: string;
-  phase: "counter" | "selectLifeStyle" | "selectWorkStyle";
+  phase: "counter" | "selectLifeStyle" | "selectWorkStyle" | "chat";
 };
 export const isConciergeContent = (v: unknown): v is ConciergeContent =>
   v !== null &&
@@ -31,6 +32,8 @@ const ConciergeModal: React.FC<IConciergeModalProps> = (props) => {
       return <SelectLifeStyle {...props} />;
     if (props.content.phase == "selectWorkStyle")
       return <SelectWorkStyle {...props} />;
+    if (props.content.phase == "chat")
+      return <Chat {...props} />;
   };
   const backHistoryContext = useContext(BackHistoryContext);
 
