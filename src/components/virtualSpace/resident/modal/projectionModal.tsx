@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import { BackHistoryContext } from "@/context/backHistory";
 import TalkLive from "@/image/virtualSpace/projection/m_7f_01.png";
+import BackButton from "@/components/form/backButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -139,6 +140,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           プログラム
         </Typography>
         <ul className={classes.programs}>{programs}</ul>
+        <BackButton onClick={props.closeModal} />
       </Modal>
       {props.open && (
         <RoundButton
