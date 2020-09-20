@@ -11,8 +11,8 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     key: "conciergeCounter",
     icon: {
       image: usagi,
-      positionY: 20,
-      positionX: 38,
+      positionY: 25,
+      positionX: 42.5,
     },
     modal: {
       content: {

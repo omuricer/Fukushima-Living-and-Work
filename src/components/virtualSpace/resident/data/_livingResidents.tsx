@@ -60,8 +60,8 @@ const LivingRegidents: Resident<LivingContent>[] = [
     key: "livingMountain",
     icon: {
       image: bear,
-      positionY: 48,
-      positionX: 18,
+      positionY: 42,
+      positionX: 16,
     },
     modal: {
       content: {
@@ -104,8 +104,8 @@ const LivingRegidents: Resident<LivingContent>[] = [
     key: "livingCity",
     icon: {
       image: peach,
-      positionY: 45,
-      positionX: 47,
+      positionY: 36,
+      positionX: 35,
     },
     modal: {
       content: {

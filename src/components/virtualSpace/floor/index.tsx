@@ -5,6 +5,8 @@ import Image from "@/components/form/image";
 
 import { ResidentCreater } from "@/app/resident/residentCreater";
 import RegidentsDefinitions from "../resident/data";
+import LinkIconsDefinitions from "../linkIcon/data";
+import Icon from "../resident/icon";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,6 +33,7 @@ const Floor = React.memo(
   React.forwardRef((props: IFloorProps, ref: React.Ref<HTMLDivElement>) => {
     const classes = useStyles();
 
+    // Residentコンポーネントを生成
     const residentCreater = new ResidentCreater({
       openModal: props.openModal,
     });
@@ -46,10 +49,18 @@ const Floor = React.memo(
         );
     });
 
+    // linkのみIconコンポーネントを生成
+    const linkIcons: JSX.Element[] = LinkIconsDefinitions.filter(
+      (i) => i.floor === props.number + 1
+    ).map((i, index: number) => {
+      return <Icon image={i.icon.image} positionX={i.icon.positionX} positionY={i.icon.positionY} onClick={i.icon.onclick} />;
+    });
+
     return (
       <Grid container className={classes.root} ref={ref}>
         <Image src={props.visual} className={classes.image} />
         {residents}
+        {linkIcons}
       </Grid>
     );
   })
