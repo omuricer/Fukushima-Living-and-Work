@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       alignItems: "center",
       justifyContent: "stretch",
+      position: "relative"
     },
     flow: {
       textAlign: "center",

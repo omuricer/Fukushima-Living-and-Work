@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import SquareButton from "@/components/form/squareButton";
-import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
-import ConciergeImage from "@/image/virtualSpace/concierge/m_1f_01.png";
-import PresentImage from "@/image/virtualSpace/concierge/m_1f_02.png";
 import BackButton from "@/components/form/backButton";
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
-      marginTop: "10px",
-      marginBottom: "10px",
+      margin: "20px",
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    answer: {
-      display: "flex",
-      width: "100%",
-      justifyContent: "stretch",
-      height: "60px",
+    text: {
+      margin: "20px",
+      lineHeight: '1.6rem',
+    },
+    icon: {
+      color: "#E9A75B",
+      marginRight: '5px',
     },
     answerButton: {
       width: "100%",
@@ -38,6 +40,10 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "75px",
       position: "relative",
     },
+    back: {
+      position: 'absolute',
+      bottom: '20px',
+    },
   })
 );
 
@@ -50,17 +56,20 @@ const Chat: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Typography variant="h3" className={classes.h3}>
-        {props.content.title}
-      </Typography>
-      <Typography className={classes.h3}>
+      <div className={classes.h3}>
+        <ChatBubbleIcon className={classes.icon} />
+        <Typography variant="h3">
+          {props.content.title}
+        </Typography>
+      </div>
+      <Typography className={classes.text}>
         移住に関する質問を気軽に<br />ご相談ください
       </Typography>
-      <Typography className={classes.h3}>
+      <Typography className={classes.text}>
         【受付日時】<br />11/1　10:00～17:00
       </Typography>
       <div className={classes.wrap}>
-        <div className={classes.answer}>
+        <div className={classes.registerUser}>
           <SquareButton
             variant="contained"
             color="primary"
@@ -75,7 +84,7 @@ const Chat: React.FC<IConciergeModalProps> = (props) => {
       <Typography>
         ※現在受付時間外です
       </Typography>
-      <BackButton onClick={props.closeModal} />
+      <BackButton onClick={props.closeModal} className={classes.back} />
     </React.Fragment >
   );
 };
