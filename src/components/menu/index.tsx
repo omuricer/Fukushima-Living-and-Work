@@ -72,6 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "absolute",
       top: "10px",
       right: "10px",
+      color: "#ffffff"
     },
   })
 );
