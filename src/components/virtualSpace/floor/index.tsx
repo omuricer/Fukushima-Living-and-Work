@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme: Theme) =>
     image: {
       width: "100%",
     },
+    image2: {
+      width: "100%",
+      position: "absolute",
+      pointerEvents: 'none',
+    },
     icon: {
       position: "absolute",
     },
@@ -25,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IFloorProps {
   number: number;
   visual: string;
+  visual2?: string;
   openedModal: string | null;
   openModal: (modalKey: string) => void;
   closeModal: () => void;
@@ -56,11 +62,14 @@ const Floor = React.memo(
       return <Icon image={i.icon.image} positionX={i.icon.positionX} positionY={i.icon.positionY} onClick={i.icon.onclick} />;
     });
 
+    const visual2 = (props.visual2) ? <Image src={props.visual2} className={classes.image2} /> : <React.Fragment />
+
     return (
       <Grid container className={classes.root} ref={ref}>
         <Image src={props.visual} className={classes.image} />
         {residents}
         {linkIcons}
+        {visual2}
       </Grid>
     );
   })

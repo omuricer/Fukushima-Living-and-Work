@@ -3,6 +3,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Floor from "./floor";
 import FloorImage1 from "@/image/virtualSpace/hotel_08.png";
+import FloorImage1_2 from "@/image/virtualSpace/hotel_08_2.png";
 import FloorImage2 from "@/image/virtualSpace/hotel_07.png";
 import FloorImage3 from "@/image/virtualSpace/hotel_06.png";
 import FloorImage4 from "@/image/virtualSpace/hotel_05.png";
@@ -28,6 +29,15 @@ const floorImages = [
   FloorImage5,
   FloorImage6,
   FloorImage7,
+];
+const floorImages2 = [
+  FloorImage1_2,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
 ];
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -55,6 +65,7 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
       key={i}
       number={i}
       visual={floorImages[i]}
+      visual2={floorImages2[i]}
       openedModal={props.openedModal}
       openModal={props.openModal}
       closeModal={props.closeModal}

@@ -52,6 +52,7 @@ export type LivingContent = {
   type: string;
   icon: string;
   headerColor: string;
+  headerColorDark: string;
   title: string;
   visual: string;
   advisors: {
@@ -78,7 +79,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
   const backHistoryContext = useContext(BackHistoryContext);
 
   const advisors = props.content.advisors.map((a, index) => (
-    <Advisor key={index} color={props.content.headerColor} {...a} />
+    <Advisor key={index} color={props.content.headerColor} colorDark={props.content.headerColorDark} {...a} />
   ));
 
   return (
@@ -147,6 +148,12 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
     button: {
       margin: "15px",
     },
+    // Override MuiButton-root
+    buttonRoot: {
+      borderRadius: "30px",
+      backgroundColor: (props: IAdvisorProps) => props.color,
+      borderBottom: (props: IAdvisorProps) => `solid 3px ${props.colorDark}`,
+    },
   })
 );
 export interface IAdvisorProps {
@@ -157,9 +164,10 @@ export interface IAdvisorProps {
     icon: string;
   };
   color: string;
+  colorDark: string;
 }
 const Advisor: React.FC<IAdvisorProps> = (props) => {
-  const classes = useStylesAdvisor();
+  const classes = useStylesAdvisor(props);
   return (
     <div className={classes.wrap}>
       <li className={classes.li} style={{ borderColor: props.color }}>
@@ -182,7 +190,8 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
             rel="noopener noreferrer"
             className={classes.button}
           >
-            <RoundButton variant="contained" color="secondary">
+            <RoundButton variant="contained" color="secondary" classes={{ root: classes.buttonRoot }}>
+
               個別相談
             </RoundButton>
           </a>

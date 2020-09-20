@@ -24,6 +24,7 @@ const LivingRegidents: Resident<LivingContent>[] = [
         type: "living",
         icon: birdTitle,
         headerColor: "#628FBD",
+        headerColorDark: "#42709f",
         title: "水辺でのくらし",
         visual: birdVisual,
         advisors: [
@@ -68,6 +69,7 @@ const LivingRegidents: Resident<LivingContent>[] = [
         type: "living",
         icon: bearTitle,
         headerColor: "#99BC81",
+        headerColorDark: "#739b58",
         title: "自然豊かな山あいのくらし",
         visual: bearVisual,
         advisors: [
@@ -112,6 +114,7 @@ const LivingRegidents: Resident<LivingContent>[] = [
         type: "living",
         icon: peachTitle,
         headerColor: "#BD8E6B",
+        headerColorDark: "#a57a59",
         title: "便利な街でのくらし",
         visual: peachVisual,
         advisors: [

@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
     programs: {
       display: "flex",
       flexFlow: "wrap",
-      marginBottom: '20px',
+      marginBottom: '30px',
     },
     buttonConcierge: {
       position: "fixed",
@@ -46,6 +46,11 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: "30px",
       borderWidth: "2px",
       margin: "0 auto",
+    },
+    guests: {
+      display: "flex",
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   })
 );
@@ -79,40 +84,46 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
 
   const programs = [
     {
-      title: "参加者へのアンケート",
-      subtitle: "アイスブレイク",
-      start: "00:00",
-      end: "00:00",
+      title: "オープニング",
+      subtitle: "",
+      start: "10:00",
+      end: "",
     },
     {
-      title: "地方だからこそ！地方の魅力的な仕事",
-      subtitle: "しごとトークセッション①",
-      start: "00:00",
-      end: "00:00",
+      title: "求人票ではわからない、地方企業の魅力",
+      subtitle: "地方での就職セミナー",
+      start: "10:10",
+      end: "10:45",
     },
     {
-      title: "地方で求められる人材像とは",
-      subtitle: "しごとトークセッション②",
-      start: "00:00",
-      end: "00:00",
+      title: "都会での仕事にモヤモヤ？？「地方ならではの仕事の流儀」お伝えします！",
+      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク①",
+      start: "11:00",
+      end: "11:40",
     },
     {
-      title: "空き家 × 自然くらし",
-      subtitle: "ゲストトーク① 会津地域",
-      start: "00:00",
-      end: "00:00",
+      title: "市町村PR（ランチタイムトーク）",
+      subtitle: "",
+      start: "12:00",
+      end: "12:40",
     },
     {
-      title: "まちの仕掛人 × 街なかくらし",
-      subtitle: "ゲストトーク② 中通り地域",
-      start: "00:00",
-      end: "00:00",
+      title: "人と人とのつながりで生まれる、\n空き家を通じた地域活性化とは？",
+      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク①",
+      start: "14:00",
+      end: "14:40",
     },
     {
-      title: "サーフィン × 海のあるくらし",
-      subtitle: "ゲストトーク③ 浜通り地域",
-      start: "00:00",
-      end: "00:00",
+      title: "市町村PR（おやつタイムトーク）",
+      subtitle: "",
+      start: "15:00",
+      end: "15:40",
+    },
+    {
+      title: "終了",
+      subtitle: "",
+      start: "",
+      end: "17:00",
     },
   ].map((p, i) => <Program {...p} key={i} />);
 
@@ -141,6 +152,26 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           プログラム
         </Typography>
         <ul className={classes.programs}>{programs}</ul>
+        <Typography variant="h3" className={classes.h3}>
+          ゲスト
+        </Typography>
+        <GuestLabel text={"地方での就職セミナー"} />
+        <Guest image={'image'} name={"金内　正"} job={'一般社団法人キャリア支援機構 理事長'} />
+        <GuestLabel text={"先輩移住者トーク①"} />
+        <div className={classes.guests}>
+          <Guest image={'image'} name={"斎藤　拓哉"} job={'空き家てらす\n隠れ家ゲストハウス'} />
+          <Guest image={'image'} name={"齋藤　康平"} job={'空き家てらす(株)\nなちゅらる'} />
+        </div>
+        <GuestLabel text={"先輩移住者トーク②"} />
+        <div className={classes.guests}>
+          <Guest image={'image'} name={"渡部　允道"} job={'ヘルベチカデザイン（株）\nまちの人事部'} />
+          <Guest image={'image'} name={"上神田　健太"} job={'家守舎桃ノ音アカリ\nFUKUSHIMA BONCHI'} />
+        </div>
+        <GuestLabel text={"先輩移住者トーク③"} />
+        <div className={classes.guests}>
+          <Guest image={'image'} name={"大和田　智之"} job={'南相馬市役所観光交流課\n交流推進係'} />
+          <Guest image={'image'} name={"後藤　彩"} job={'南相馬へ\nサーフィンに通う'} />
+        </div>
         <BackButton onClick={props.closeModal} />
       </Modal>
       {props.open && (
@@ -170,9 +201,12 @@ const useStylesProgram = makeStyles((theme: Theme) =>
       width: "100%",
       display: "flex",
       borderTop: "1px solid #000000",
-      padding: "5px",
+      paddingLeft: "5px",
+      paddingRight: "5px",
+      paddingTop: "10px",
+      paddingBottom: "10px",
       "&:nth-child(odd)": {
-        backgroundColor: "#ebebeb",
+        backgroundColor: "#fbedef",
       },
       "&:last-child": {
         borderBottom: "1px solid #000000",
@@ -198,9 +232,15 @@ const useStylesProgram = makeStyles((theme: Theme) =>
       flexFlow: "column",
       justifyContent: "center",
     },
-    subtitle: {
-      cmarginBottom: "5px",
-      color: "#919191",
+    titleText: {
+      whiteSpace: 'pre-wrap',
+    },
+    subtitleText: {
+      letterSpacing: '0',
+      fontSize: '10px',
+      marginTop: '5px',
+      marginBottom: '5px',
+      color: '#AE3345',
     },
   })
 );
@@ -227,9 +267,71 @@ const Program: React.FC<IProgramProps> = (props) => {
         </Typography>
       </div>
       <div className={classes.title}>
-        <Typography variant="body2">{props.subtitle}</Typography>
-        <Typography>{props.title}</Typography>
+        <Typography variant="body2" className={classes.subtitleText}>{props.subtitle}</Typography>
+        <Typography className={classes.titleText}>{props.title}</Typography>
       </div>
     </li>
+  );
+};
+
+const useStylesGuestLabel = makeStyles((theme: Theme) =>
+  createStyles({
+    text: {
+      border: 'solid 2px #AE3345',
+      borderRadius: '18px',
+      padding: '7px',
+      color: '#AE3345',
+      fontWeight: 600,
+      marginBottom: '10px',
+    },
+  })
+);
+export interface IGuestLabelProps {
+  text: string;
+}
+const GuestLabel: React.FC<IGuestLabelProps> = (props) => {
+  const classes = useStylesGuestLabel();
+  return (
+    <div className={classes.text}>
+      {props.text}
+    </div>
+  );
+};
+
+const useStylesGuest = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flexFlow: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: '30px',
+    },
+    image: {
+      width: '40vw',
+      marginBottom: '10px',
+    },
+    name: {
+      fontWeight: 600,
+      marginBottom: '10px',
+    },
+    job: {
+      whiteSpace: "pre-wrap",
+    },
+  })
+);
+export interface IGuestProps {
+  image: string;
+  name: string;
+  job: string;
+}
+const Guest: React.FC<IGuestProps> = (props) => {
+  const classes = useStylesGuest();
+  return (
+    <div className={classes.root}>
+      <Image src={props.image} className={classes.image} />
+      <Typography className={classes.name}>{props.name}</Typography>
+      <Typography className={classes.job}>{props.job}</Typography>
+    </div>
   );
 };
