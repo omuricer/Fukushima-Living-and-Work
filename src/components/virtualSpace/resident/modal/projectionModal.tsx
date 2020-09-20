@@ -108,8 +108,14 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
       end: "12:40",
     },
     {
+      title: "サーフィンが繋いでくれた、\n地方満喫ライフとは？",
+      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク②",
+      start: "14:00",
+      end: "14:40",
+    },
+    {
       title: "人と人とのつながりで生まれる、\n空き家を通じた地域活性化とは？",
-      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク①",
+      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク③",
       start: "14:00",
       end: "14:40",
     },
