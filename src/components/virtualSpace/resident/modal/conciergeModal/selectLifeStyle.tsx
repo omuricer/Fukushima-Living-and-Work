@@ -8,6 +8,7 @@ import BackButton from "@/components/form/backButton";
 import birdVisual from "@/image/virtualSpace/living/life1_sea.jpg";
 import bearVisual from "@/image/virtualSpace/living/life1_moutain.jpg";
 import peachVisual from "@/image/virtualSpace/living/life1_town.jpg";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -82,7 +83,7 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
         />
       </ul>
       <Typography className={classes.text}>
-        市町村位一覧から探す
+        市町村一覧から探す
       </Typography>
       <div className={classes.wrap}>
         <div className={classes.registerUser}>
@@ -90,8 +91,10 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
             variant="contained"
             color="primary"
             className={classes.answerButton}
-            onClick={() => { }} // TODO: 9/23
-            disabled
+            onClick={async () => {
+              await Sleep.waitRipple();
+              window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/")
+            }}
           >
             市町村一覧
             </SquareButton>

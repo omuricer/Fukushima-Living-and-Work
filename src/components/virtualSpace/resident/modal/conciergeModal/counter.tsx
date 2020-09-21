@@ -115,7 +115,6 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
                 // TODO: 10/1
                 window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040")
               }}
-              disabled
             >
               総合相談
             </SquareButton>
