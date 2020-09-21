@@ -18,6 +18,10 @@ import tab02Image from "@/image/sideButtons/tab_02.png";
 import tab03Image from "@/image/sideButtons/tab_03.png";
 import { IsMobileContext } from "@/context/isMobile";
 
+import Image from "@/components/form/image";
+import HotelRooftop from "@/image/virtualSpace/hotel_00_pc.png";
+import HotelSignBoard from "@/image/virtualSpace/hotel_01.png";
+
 const floorNumber = 7;
 const floorRefs = [...Array(floorNumber)].map(() =>
   React.createRef<HTMLDivElement>()
@@ -127,6 +131,19 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
         sclollToFloors={sclollToFloors}
         openModal={props.openModal}
       />
+      {
+        isMobileContext ? (
+          <React.Fragment />
+        ) : (
+            <React.Fragment>
+              <Grid>
+                <Image src={HotelRooftop} style={{ width: "100%" }} />
+              </Grid>
+              <Grid>
+                <Image src={HotelSignBoard} style={{ width: "100%" }} />
+              </Grid>
+            </React.Fragment>
+          )}
       {floors}
     </Grid>
   );
