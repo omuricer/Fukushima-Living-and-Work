@@ -33,15 +33,16 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight: "1.8em",
     },
     event: {
-      textAlign: "center",
       marginTop: "3vh",
+    },
+    eventSwiper: {
       width: "80%",
-      maxWidth: "450px",
+      maxWidth: "350px",
+      margin: "auto",
     },
     eventBoard: {
-      // margin: "0 auto",
       width: "80%",
-      maxWidth: "450px",
+      maxWidth: "350px",
     },
     scroll: {
       textAlign: "center",
@@ -58,11 +59,12 @@ const RightView: React.FC<IRightViewProps> = (props) => {
 
   const swiperParams = {
     slidesPerView: 1,
+    spaceBetween: 30,
     centeredSlides: true,
-    // autoplay: {
-    //   delay: 2500,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
   };
 
   return (
@@ -79,19 +81,21 @@ const RightView: React.FC<IRightViewProps> = (props) => {
           一緒に見つけましょう！
         </Typography>
       </Grid>
-      <div className={classes.event}>
-        <Swiper {...swiperParams}>
-          <Image
-            src={Banner1}
-            // className={classes.eventBoard}
-            onClick={() => props.openModal("projection")}
-          />
-          <Image
-            src={Banner2}
-          // className={classes.eventBoard}
-          />
-        </Swiper>
-      </div>
+      <Grid className={classes.event}>
+        <div className={classes.eventSwiper}>
+          <Swiper {...swiperParams}>
+            <Image
+              src={Banner1}
+              className={classes.eventBoard}
+              onClick={() => props.openModal("projection")}
+            />
+            <Image
+              src={Banner2}
+              className={classes.eventBoard}
+            />
+          </Swiper>
+        </div>
+      </Grid>
     </React.Fragment>
   );
 };
