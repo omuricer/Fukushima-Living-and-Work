@@ -140,7 +140,8 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
             </Typography>
           </div>
           <a
-            href={`https://xxx.xxx/aaa/${props.id}`}
+            // href={`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`}
+            href={`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`}
             target="_blank"
             rel="noopener noreferrer"
             className={classes.button}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import SquareButton from "@/components/form/squareButton";
@@ -60,7 +59,8 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
         color="secondary"
         onClick={async () => {
           await Sleep.waitRipple();
-          // TODO: 9/23
+          // TODO: 10/1
+          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`);
         }}
         className={classes.selectButton}
       >
@@ -71,7 +71,8 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
         color="secondary"
         onClick={async () => {
           await Sleep.waitRipple();
-          // TODO: 9/23
+          // TODO: 10/1
+          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`);
         }}
         className={classes.selectButton}
       >

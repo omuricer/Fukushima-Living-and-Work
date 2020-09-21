@@ -7,6 +7,7 @@ import { IConciergeModalProps } from "./index";
 import ConciergeImage from "@/image/virtualSpace/concierge/m_1f_01.png";
 import PresentImage from "@/image/virtualSpace/concierge/m_1f_02.png";
 import BackButton from "@/components/form/backButton";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -81,7 +82,8 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => {
+              onClick={async () => {
+                await Sleep.waitRipple();
                 props.closeModal();
                 props.handleAnothers.openModal("conciergeSelectLifeStyle");
               }}
@@ -92,7 +94,8 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => {
+              onClick={async () => {
+                await Sleep.waitRipple();
                 props.closeModal();
                 props.handleAnothers.openModal("conciergeSelectWorkStyle");
               }}
@@ -107,7 +110,11 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040")} // TODO: 10/1
+              onClick={async () => {
+                await Sleep.waitRipple();
+                // TODO: 10/1
+                window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040")
+              }}
               disabled
             >
               総合相談
@@ -127,7 +134,10 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => window.open("https://needyou.jp/signup/")}
+              onClick={async () => {
+                await Sleep.waitRipple();
+                window.open("https://needyou.jp/signup/")
+              }}
             >
               ユーザー登録
             </SquareButton>
