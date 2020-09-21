@@ -115,7 +115,7 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
         <SideButton
           isVisible={isVisibleSideButtons}
           visibleDelay={300}
-          onClick={() => { }}
+          onClick={() => window.open("https://needyou.jp/u/mypage/")}
           image={tab03Image}
         />
       </SideButtonArea>

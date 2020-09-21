@@ -107,7 +107,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => { }} // TODO: 9/23
+              onClick={() => window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040")} // TODO: 10/1
               disabled
             >
               総合相談
@@ -127,8 +127,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => { }} // TODO: 9/23
-              disabled
+              onClick={() => window.open("https://needyou.jp/signup/")}
             >
               ユーザー登録
             </SquareButton>

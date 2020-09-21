@@ -27,10 +27,8 @@ export type WorkingContent = {
   advisors: {
     name: string;
     id: string;
-    inCharge: {
-      name: string;
-      icon: string;
-    };
+    personName: string;
+    personImage: string;
   }[];
 };
 export const isWorkingContent = (v: unknown): v is WorkingContent =>
@@ -119,10 +117,8 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
 export interface IAdvisorProps {
   name: string;
   id: string;
-  inCharge: {
-    name: string;
-    icon: string;
-  };
+  personName: string;
+  personImage: string;
   color: string;
 }
 const Advisor: React.FC<IAdvisorProps> = (props) => {
@@ -134,13 +130,13 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
           {props.name}
         </Typography>
         <div className={classes.line}>
-          <Image src={props.inCharge.icon} className={classes.image} />
+          <Image src={props.personImage} className={classes.image} />
           <div className={classes.inCharge}>
             <Typography className={classes.inChargeLabel} variant="body2">
               担当
             </Typography>
             <Typography className={classes.name}>
-              {props.inCharge.name}
+              {props.personName}
             </Typography>
           </div>
           <a
