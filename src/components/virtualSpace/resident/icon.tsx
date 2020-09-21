@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Bounds } from "@/animations/bounds";
 import { useWindowDimensions } from "@/hooks/windowDimensions";
+import { IsMobileContext } from "@/context/isMobile";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +30,8 @@ const Icon: React.FC<IIconProps> = (props) => {
   }, []);
 
   const classes = useStyles();
+  const isMobileContext = useContext(IsMobileContext);
+
   return (
     <img
       src={props.image}
@@ -38,7 +41,7 @@ const Icon: React.FC<IIconProps> = (props) => {
         top: `calc(${props.positionY}%)`,
         left: `calc(${props.positionX}%)`,
         animationDelay: `${generateRondomDelay()}s`,
-        width: `calc((${width} / ${backgroundImageWidth}) * ${naturalWidth}px)`,
+        width: caluculateWidthPixel(width, backgroundImageWidth, naturalWidth, isMobileContext) + `px`,
       }}
       onClick={props.onClick}
     />
@@ -52,7 +55,6 @@ const roundAtDigit = (num: number, digit: number): number => {
   // num = 1.2345 & digit = 2 --> 1.23
   return Math.floor(num * Math.pow(10, digit)) / Math.pow(10, digit);
 };
-
 const requestImageNaturalSize = async (
   src: string
 ): Promise<{ natulalWidth: number; natulalHeight: number }> => {
@@ -72,6 +74,16 @@ const requestImageNaturalSize = async (
       );
     }
   );
+};
+const caluculateWidthPixel = (
+  windowWidth: number,
+  backgroundImageNaturalWidth: number,
+  iconImageNaturalWidth: number,
+  isMobile: boolean,
+): number => {
+  const backgroundRatio = windowWidth / backgroundImageNaturalWidth;
+  const iconWidthPixel = iconImageNaturalWidth * backgroundRatio * (isMobile ? 1 : 0.5);
+  return iconWidthPixel
 };
 
 
