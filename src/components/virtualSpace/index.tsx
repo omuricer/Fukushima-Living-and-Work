@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Floor from "./floor";
@@ -16,6 +16,7 @@ import SideButton from "@/components/sideButton/button";
 import tab01Image from "@/image/sideButtons/tab_01.png";
 import tab02Image from "@/image/sideButtons/tab_02.png";
 import tab03Image from "@/image/sideButtons/tab_03.png";
+import { IsMobileContext } from "@/context/isMobile";
 
 const floorNumber = 7;
 const floorRefs = [...Array(floorNumber)].map(() =>
@@ -59,6 +60,7 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
   );
   const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false);
   const classes = useStyles();
+  const isMobileContext = useContext(IsMobileContext);
 
   const floors = [...Array(floorNumber)].map((_, i) => (
     <Floor

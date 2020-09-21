@@ -2,23 +2,15 @@ import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Hero from "@/components/template/hero";
-import backgroundImage from "@/image/virtualSpace/hotel_00.png";
 import Image from "@/components/form/image";
 import Banner1 from "@/image/1stv_bn1.png";
 import Banner2 from "@/image/1stv_bn2.png";
 import Logo from "@/image/logo.png";
-import ScrollMe from "@/components/scrollMe";
 import Swiper from "react-id-swiper";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: "contain",
-      backgroundPosition: "bottom",
-      backgroundRepeat: "no-repeat",
-      // TODO: Heroコンポーネントと重複。マージするようにしたい
       width: "100%",
       display: "flex",
       flexDirection: "column",
@@ -43,10 +35,12 @@ const useStyles = makeStyles((theme: Theme) =>
     event: {
       textAlign: "center",
       marginTop: "3vh",
+      width: "80%",
+      maxWidth: "450px",
     },
     eventBoard: {
-      margin: "0 auto",
-      width: "80vw",
+      // margin: "0 auto",
+      width: "80%",
       maxWidth: "450px",
     },
     scroll: {
@@ -56,22 +50,23 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface IFirstViewProps {
+interface IRightViewProps {
   openModal: (modalKey: string) => void;
 }
-const FirstView: React.FC<IFirstViewProps> = (props) => {
+const RightView: React.FC<IRightViewProps> = (props) => {
   const classes = useStyles();
 
   const swiperParams = {
     slidesPerView: 1,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
+    centeredSlides: true,
+    // autoplay: {
+    //   delay: 2500,
+    //   disableOnInteraction: false,
+    // },
   };
 
   return (
-    <Hero className={classes.root}>
+    <React.Fragment>
       <Grid className={classes.logo}>{/* <Image src={Logo} /> */}</Grid>
       <Grid className={classes.catch}>
         <Typography className={classes.catchText}>
@@ -84,24 +79,20 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
           一緒に見つけましょう！
         </Typography>
       </Grid>
-      <Grid className={classes.event}>
+      <div className={classes.event}>
         <Swiper {...swiperParams}>
           <Image
             src={Banner1}
-            className={classes.eventBoard}
+            // className={classes.eventBoard}
             onClick={() => props.openModal("projection")}
           />
           <Image
             src={Banner2}
-            className={classes.eventBoard}
-          // onClick={() => props.openModal("projection")}
+          // className={classes.eventBoard}
           />
         </Swiper>
-      </Grid>
-      <Grid className={classes.scroll}>
-        <ScrollMe sclolled={false} />
-      </Grid>
-    </Hero>
+      </div>
+    </React.Fragment>
   );
 };
-export default FirstView;
+export default RightView;
