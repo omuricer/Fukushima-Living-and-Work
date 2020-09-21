@@ -6,9 +6,9 @@ import peach from "@/image/virtualSpace/icons/icon_5.png";
 import birdTitle from "@/image/virtualSpace/modalTitleIcon/m_top_3.png";
 import bearTitle from "@/image/virtualSpace/modalTitleIcon/m_top_4.png";
 import peachTitle from "@/image/virtualSpace/modalTitleIcon/m_top_5.png";
-import birdVisual from "@/image/virtualSpace/icons/icon_3.png"; // TODO: 正式な画像を設定
-import bearVisual from "@/image/virtualSpace/icons/icon_4.png"; // TODO: 正式な画像を設定
-import peachVisual from "@/image/virtualSpace/icons/icon_5.png";// TODO: 正式な画像を設定
+import birdVisual from "@/image/virtualSpace/living/life2_sea.png";
+import bearVisual from "@/image/virtualSpace/living/life2_mountain.png";
+import peachVisual from "@/image/virtualSpace/living/life2_town.png";
 
 const LivingRegidents: Resident<LivingContent>[] = [
   {

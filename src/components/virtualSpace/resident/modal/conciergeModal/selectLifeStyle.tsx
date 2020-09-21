@@ -5,6 +5,9 @@ import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import BackButton from "@/components/form/backButton";
+import birdVisual from "@/image/virtualSpace/living/life1_sea.jpg";
+import bearVisual from "@/image/virtualSpace/living/life1_moutain.jpg";
+import peachVisual from "@/image/virtualSpace/living/life1_town.jpg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -60,19 +63,19 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
       </Typography>
       <ul className={classes.lifeStyles}>
         <LifeStyle
-          image={"moutain"}
+          image={peachVisual}
           text={"便利な街でのくらし"}
           color="#BD8E6B"
           onClick={() => changeModal("livingCity")}
         />
         <LifeStyle
-          image={"moutain"}
+          image={bearVisual}
           text={"自然豊かな山あいのくらし"}
           color="#99BC81"
           onClick={() => changeModal("livingMountain")}
         />
         <LifeStyle
-          image={"livingSea"}
+          image={birdVisual}
           text={"水辺でのくらし"}
           color="#628FBD"
           onClick={() => changeModal("livingSea")}
