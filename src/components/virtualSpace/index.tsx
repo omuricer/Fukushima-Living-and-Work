@@ -149,10 +149,10 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
           <React.Fragment />
         ) : (
             <React.Fragment>
-              <Grid>
+              <Grid style={{ width: '100%' }}>
                 <Image src={HotelRooftop} style={{ width: "100%" }} />
               </Grid>
-              <Grid>
+              <Grid style={{ width: '100%' }}>
                 <Image src={HotelSignBoard} style={{ width: "100%" }} />
               </Grid>
             </React.Fragment>
