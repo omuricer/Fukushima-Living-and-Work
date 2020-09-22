@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
       minHeight: "80vh",
       overflowY: "visible",
       top: "-10px",
+      pointerEvents: 'auto',
     },
     h3: {
       marginTop: "15px",
