@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     contact: {
       display: (isMobileContext: boolean) => isMobileContext ? 'block' : 'inline-block',
+      margin: (isMobileContext: boolean) => isMobileContext ? 'auto' : '7px',
     }
   })
 );
@@ -97,10 +98,12 @@ const Footer: React.FC<IFooterProps> = (props) => {
         <Typography variant="body2">
           （お問い合わせ）福島県地域振興課
         </Typography>
-        <Typography variant="body2" className={classes.contact}>tel:024-521-8023</Typography>
-        <Typography variant="body2" className={classes.contact}>
-          mail:ui-turn@pref.fukushima.lg.jp
+        <div>
+          <Typography variant="body2" className={classes.contact}>tel:024-521-8023</Typography>
+          <Typography variant="body2" className={classes.contact}>
+            mail:ut-turn@pref.fukushima.lg.jp
         </Typography>
+        </div>
       </Grid>
       <Grid item xs={12} className={classes.copyrightGrid}>
         <Typography variant="body2">

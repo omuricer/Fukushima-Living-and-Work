@@ -23,34 +23,51 @@ import HotelRooftop from "@/image/virtualSpace/hotel_00_pc.png";
 import HotelSignBoard from "@/image/virtualSpace/hotel_01.png";
 
 const floorNumber = 7;
-const floorImages = [
-  FloorImage1,
-  FloorImage2,
-  FloorImage3,
-  FloorImage4,
-  FloorImage5,
-  FloorImage6,
-  FloorImage7,
-];
-const floorImages2 = [
-  FloorImage1_2,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-];
-const floorToolTipText = [
-  "総合案内\n何から相談するか悩んだらこちら！",
-  "しごと相談室\n仕事の相談をしたい方",
-  "水辺のあるくらし\n海や湖の近くで暮らしたい方",
-  "自然豊かな山あいのくらし\n大自然の中で暮らしたい方",
-  "便利な街でのくらし\n利便性を重視する方",
-  "市町村相談\n相談したい市町村がある方",
-  "動画シアター\nトークライブや移住関連動画をチェック！",
-];
+const floorData = [
+  {
+    image1: FloorImage1,
+    image2: FloorImage1_2,
+    tooltipTitle: '総合案内',
+    tooltipText: '何から相談するか悩んだらこちら！',
+  },
+  {
+    image1: FloorImage2,
+    image2: null,
+    tooltipTitle: 'しごと相談室',
+    tooltipText: '仕事の相談をしたい方',
+  },
+  {
+    image1: FloorImage3,
+    image2: null,
+    tooltipTitle: '水辺のあるくらし',
+    tooltipText: '海や湖の近くで暮らしたい方',
+  },
+  {
+    image1: FloorImage4,
+    image2: null,
+    tooltipTitle: '自然豊かな山あいのくらし',
+    tooltipText: '大自然の中で暮らしたい方',
+  },
+  {
+    image1: FloorImage5,
+    image2: null,
+    tooltipTitle: '便利な街でのくらし',
+    tooltipText: '利便性を重視する方',
+  },
+  {
+    image1: FloorImage6,
+    image2: null,
+    tooltipTitle: '市町村相談',
+    tooltipText: '相談したい市町村がある方',
+  },
+  {
+    image1: FloorImage7,
+    image2: null,
+    tooltipTitle: '動画シアター',
+    tooltipText: 'トークライブや移住関連動画をチェック！',
+  },
 
+];
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -77,12 +94,13 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
     <Floor
       key={i}
       number={i}
-      visual={floorImages[i]}
-      visual2={floorImages2[i]}
+      visual={floorData[i].image1}
+      visual2={floorData[i].image2}
       openedModal={props.openedModal}
       openModal={props.openModal}
       closeModal={props.closeModal}
-      toolTipText={floorToolTipText[i]}
+      toolTipTitle={floorData[i].tooltipTitle}
+      toolTipText={floorData[i].tooltipText}
     />
   ));
   floors.reverse();

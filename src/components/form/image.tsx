@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   noimage?: boolean;
 }
-const Image: React.FC<IImageProps> = (props) => {
+const Image = React.forwardRef((props: IImageProps, ref: React.Ref<HTMLDivElement>) => {
   const [loaded, setLoaded] = React.useState(false);
   const [src, setSrc] = useState<string | undefined>(props.src);
   const classes = useStyles();
@@ -34,7 +34,7 @@ const Image: React.FC<IImageProps> = (props) => {
   }
 
   return (
-    <div {...imageProps}>
+    <div {...imageProps} ref={ref}>
       <img
         {...{
           ...imageProps,
@@ -48,5 +48,5 @@ const Image: React.FC<IImageProps> = (props) => {
   // }
 
   return <div />;
-};
+});
 export default Image;

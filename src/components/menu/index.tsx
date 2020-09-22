@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       backgroundImage: `url(${backgroundImage})`,
-      zIndex: (isMobileContext: boolean) => isMobileContext ? theme.zIndex.drawer + 1 : 1300,
+      zIndex: 1300,
     },
     boad: {
       position: "relative",
@@ -25,8 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
       right: '10vw',
       top: '8vh',
       position: 'fixed',
-      zIndex: 1300,
-      boxShadow: '0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12)',
     },
     boadImage: {
       height: "95vh",
@@ -174,7 +172,8 @@ const Menu: React.FC<IMenuProps> = (props) => {
 
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,
-    animationDelay: `1s`, // TODO: 効いてない
+    zIndex: 1300,
+    // animationDelay: `1s`, // TODO: 効いてない
   });
   const menu = (
     <animated.div style={springProps} onClick={(e) => e.stopPropagation()}>

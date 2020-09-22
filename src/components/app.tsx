@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       position: "relative",
       background: `url(${backgroundImage2}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
-      backgroundRepeat: "no-repeat, repeat, repeat",
+      backgroundRepeat: (isMobile: boolean) => isMobile ? "no-repeat, repeat, repeat" : "repeat, repeat, repeat",
       backgroundSize: "auto, contain, contain",
       backgroundPositionX: "center",
     },
@@ -41,7 +41,7 @@ const App: React.FC<IAppProps> = (props) => {
   const [backHistory, setBackHistory] = useState<BackHistory>(_backHistory);
   const [openedModal, setOpenedModal] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const classes = useStyles();
+  const classes = useStyles(isMobile);
   const theme = useTheme();
 
   setTimeout(() => {

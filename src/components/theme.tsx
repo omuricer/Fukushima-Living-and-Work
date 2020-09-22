@@ -89,9 +89,26 @@ let theme = createMuiTheme({
     },
   },
 });
-// theme = responsiveFontSizes(theme);
+theme.typography.h3 = {
+  [theme.breakpoints.up('xs')]: {
+    fontSize: 19,
+    lineHeight: "1.3em",
+  },
+};
+theme.typography.body1 = {
+  [theme.breakpoints.up('xs')]: {
+    fontSize: 15,
+    lineHeight: "1.3em",
+  },
+};
+theme.typography.body2 = {
+  [theme.breakpoints.up('xs')]: {
+    fontSize: 12,
+    lineHeight: "1.3em",
+  },
+};
 
-interface IThemeProps {}
+interface IThemeProps { }
 const Theme: React.FC<IThemeProps> = (props) => {
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
 };

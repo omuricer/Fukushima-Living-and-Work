@@ -8,6 +8,7 @@ import RegidentsDefinitions from "../resident/data";
 import LinkIconsDefinitions from "../linkIcon/data";
 import Icon from "../resident/icon";
 import Tooltip from '@material-ui/core/Tooltip';
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,6 +26,9 @@ const useStyles = makeStyles((theme: Theme) =>
     icon: {
       position: "absolute",
     },
+    popper: {
+      left: "-10vw!important",
+    },
   })
 );
 
@@ -35,6 +39,7 @@ interface IFloorProps {
   openedModal: string | null;
   openModal: (modalKey: string) => void;
   closeModal: () => void;
+  toolTipTitle: string,
   toolTipText: string,
 }
 const Floor: React.FC<IFloorProps> = React.memo((props) => {
@@ -66,14 +71,17 @@ const Floor: React.FC<IFloorProps> = React.memo((props) => {
   const visual2 = (props.visual2) ? <Image src={props.visual2} className={classes.image2} /> : <React.Fragment />
 
   return (
-    <Tooltip title={props.toolTipText}>
-      <Grid container className={classes.root}>
+    <Grid container className={classes.root}>
+      <Tooltip title={<React.Fragment>
+        <Typography variant="h3" color="textSecondary">{props.toolTipTitle}</Typography>
+        <Typography color="textSecondary">{props.toolTipText}</Typography>
+      </React.Fragment>} placement="right-start" classes={{ popper: classes.popper }}>
         <Image src={props.visual} className={classes.image} />
-        {residents}
-        {linkIcons}
-        {visual2}
-      </Grid>
-    </Tooltip>
+      </Tooltip>
+      {residents}
+      {linkIcons}
+      {visual2}
+    </Grid>
   );
 });
 export default Floor;

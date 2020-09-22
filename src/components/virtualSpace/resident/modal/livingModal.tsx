@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import { BackHistoryContext } from "@/context/backHistory";
+import { IsMobileContext } from "@/context/isMobile";
 import BackButton from "@/components/form/backButton";
 import RoundButton from "@/components/form/roundButton";
 
@@ -116,11 +117,17 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       margin: "5px",
     },
     h3: {
-      margin: "10px",
+      marginTop: "10px",
     },
     line: {
       display: "flex",
       alignItems: "center",
+      justifyContent: 'space-around',
+      marginBottom: '10px',
+    },
+    person: {
+      display: "flex",
+      width: (arg: { props: IAdvisorProps, isMobile: boolean }) => arg.isMobile ? 'auto' : '250px',
     },
     inCharge: {
       textAlign: "left",
@@ -137,20 +144,25 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
     },
     image: {
       width: "60px",
+      height: "60px",
       borderRadius: "50%",
       margin: "5px",
+
+      backgroundImage: (arg: { props: IAdvisorProps, isMobile: boolean }) => `url(/image/virtualSpace/advisors/${arg.props.personImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
     },
     name: {
       marginTop: "5px",
     },
     button: {
-      margin: "15px",
     },
     // Override MuiButton-root
     buttonRoot: {
       borderRadius: "30px",
-      backgroundColor: (props: IAdvisorProps) => props.color,
-      borderBottom: (props: IAdvisorProps) => `solid 3px ${props.colorDark}`,
+      backgroundColor: (arg: { props: IAdvisorProps, isMobile: boolean }) => arg.props.color,
+      borderBottom: (arg: { props: IAdvisorProps, isMobile: boolean }) => `solid 3px ${arg.props.colorDark}`,
     },
   })
 );
@@ -163,7 +175,8 @@ export interface IAdvisorProps {
   colorDark: string;
 }
 const Advisor: React.FC<IAdvisorProps> = (props) => {
-  const classes = useStylesAdvisor(props);
+  const isMobileContext = useContext(IsMobileContext);
+  const classes = useStylesAdvisor({ props: props, isMobile: isMobileContext });
   return (
     <div className={classes.wrap}>
       <li className={classes.li} style={{ borderColor: props.color }}>
@@ -171,14 +184,16 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
           {props.name}
         </Typography>
         <div className={classes.line}>
-          <Image src={'/image/virtualSpace/advisors/' + props.personImage} className={classes.image} />
-          <div className={classes.inCharge}>
-            <Typography className={classes.inChargeLabel} variant="body2">
-              担当
+          <div className={classes.person}>
+            <div className={classes.image} />
+            <div className={classes.inCharge}>
+              <Typography className={classes.inChargeLabel} variant="body2">
+                担当
             </Typography>
-            <Typography className={classes.name}>
-              {props.personName}
-            </Typography>
+              <Typography className={classes.name}>
+                {props.personName}
+              </Typography>
+            </div>
           </div>
           <a
             // href={`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`}
