@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useSpring, animated } from "react-spring";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 import IconButton from "@material-ui/core/IconButton";
 import Sleep from "@/app/libs/sleep";
+import { IsMobileContext } from "@/context/isMobile";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,9 +21,19 @@ const useStyles = makeStyles((theme: Theme) =>
     boad: {
       position: "relative",
     },
+    boadPC: {
+      right: '10vw',
+      top: '8vh',
+      position: 'fixed',
+      zIndex: 1300,
+      boxShadow: '0px 11px 15px -7px rgba(0,0,0,0.2), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12)',
+    },
     boadImage: {
       height: "95vh",
       maxHeight: "570px",
+    },
+    boadImagePC: {
+      maxHeight: "700px",
     },
     menu: {
       top: "23%",
@@ -84,6 +95,7 @@ interface IMenuProps {
   openModal: (modalKey: string) => void;
 }
 const Menu: React.FC<IMenuProps> = (props) => {
+  const isMobileContext = useContext(IsMobileContext);
   const classes = useStyles();
 
   const handleClickMenu = (modalKey: string) => {
@@ -163,33 +175,37 @@ const Menu: React.FC<IMenuProps> = (props) => {
   ));
   list.reverse();
 
+
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,
     animationDelay: `1s`, // TODO: 効いてない
   });
-  return (
+  const menu = (
+    <animated.div style={springProps} onClick={(e) => e.stopPropagation()}>
+      <div className={isMobileContext ? classes.boad : classes.boadPC}>
+        <Image src={menuBackgroundImage} className={isMobileContext ? classes.boadImage : classes.boadImagePC} />
+        <IconButton
+          onClick={async () => {
+            await Sleep.waitRipple();
+            props.closeMenu();
+          }}
+          className={classes.close}
+          color="secondary"
+        >
+          <Icon style={{ fontSize: "3rem" }}>close</Icon>
+        </IconButton>
+        <menu className={classes.menu}>{list}</menu>
+      </div>
+    </animated.div>
+
+  );
+  return isMobileContext ? (
     <Backdrop
       className={classes.root}
       open={props.isVisible}
       onClick={props.closeMenu}
     >
-      <animated.div style={springProps} onClick={(e) => e.stopPropagation()}>
-        <div className={classes.boad}>
-          <Image src={menuBackgroundImage} className={classes.boadImage} />
-          <IconButton
-            onClick={async () => {
-              await Sleep.waitRipple();
-              props.closeMenu();
-            }}
-            className={classes.close}
-            color="secondary"
-          >
-            <Icon style={{ fontSize: "3rem" }}>close</Icon>
-          </IconButton>
-          <menu className={classes.menu}>{list}</menu>
-        </div>
-      </animated.div>
-    </Backdrop>
-  );
+      {menu}
+    </Backdrop>) : menu;
 };
 export default Menu;
