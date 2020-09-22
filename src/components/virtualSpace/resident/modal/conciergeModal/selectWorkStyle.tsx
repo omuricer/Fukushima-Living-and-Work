@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import SquareButton from "@/components/form/squareButton";
@@ -10,18 +9,28 @@ import BackButton from "@/components/form/backButton";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
-      margin: "30px",
+      margin: "10px",
+    },
+    text: {
+      margin: "20px",
     },
     selectButton: {
       width: "100%",
       height: "55px",
       marginBottom: "5px",
     },
-    commingSoon: {
-      display: "flex",
+    space: {
       flex: "1",
+      display: "flex",
+      flexFlow: "column",
       alignItems: "center",
-      color: "lightgray",
+      justifyContent: "center",
+    },
+    hr: {
+      width: "20vw",
+      marginBottom: "30px",
+      borderWidth: "2px",
+      margin: "30px auto auto auto",
     },
   })
 );
@@ -40,14 +49,44 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
 
   return (
     <React.Fragment>
-      {/* <Typography className={classes.h3}> //TODO: 9/23
-        気になるしごとのスタイルを
+      <Typography variant="h3" className={classes.h3}>
+        {props.content.title}
+      </Typography>
+      <hr className={classes.hr} />
+      <Typography className={classes.text}>総合相談はこちらから</Typography>
+      <SquareButton
+        variant="contained"
+        color="secondary"
+        onClick={async () => {
+          await Sleep.waitRipple();
+          // TODO: 10/1
+          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`);
+        }}
+        className={classes.selectButton}
+      >
+        就職総合相談
+      </SquareButton>
+      <SquareButton
+        variant="contained"
+        color="secondary"
+        onClick={async () => {
+          await Sleep.waitRipple();
+          // TODO: 10/1
+          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`);
+        }}
+        className={classes.selectButton}
+      >
+        地域おこし協力隊総合相談
+      </SquareButton>
+      <hr className={classes.hr} />
+      <Typography className={classes.text}>
+        働きたいしごとのスタイルが
         <br />
-        選択してください
+        決まっている方はこちらから
       </Typography>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={async () => {
           await Sleep.waitRipple();
           changeModal("workingNature");
@@ -58,7 +97,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       </SquareButton>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={() => changeModal("workingStartBussiness")}
         className={classes.selectButton}
       >
@@ -66,31 +105,21 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
       </SquareButton>
       <SquareButton
         variant="contained"
-        color="primary"
-        onClick={() => changeModal("workingOfferLocals")}
-        className={classes.selectButton}
-      >
-        地域の魅力を発信したい
-      </SquareButton>
-      <SquareButton
-        variant="contained"
-        color="primary"
+        color="secondary"
         onClick={() => changeModal("workingForLocals")}
         className={classes.selectButton}
       >
-        地域貢献できて、安定した仕事がしたい
+        地域と関わる仕事がしたい
       </SquareButton>
       <SquareButton
         variant="contained"
-        color="primary"
+        color="secondary"
         onClick={() => changeModal("workingIT")}
         className={classes.selectButton}
       >
         ITスキルを活かしたい
-      </SquareButton> */}
-      <div className={classes.commingSoon}>
-        <Typography variant="body2">Comming Soon</Typography>
-      </div>
+      </SquareButton>
+      <div className={classes.space} />
       <BackButton
         onClick={props.closeModal}
         style={{

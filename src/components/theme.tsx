@@ -36,27 +36,6 @@ let theme = createMuiTheme({
       lineHeight: "1.3em",
       letterSpacing: "0.2em",
     },
-    h3: {
-      color: "#333333",
-      fontSize: 19,
-      fontWeight: 600,
-      lineHeight: "1.3em",
-      letterSpacing: "0em",
-    },
-    body1: {
-      color: "#333333",
-      fontSize: 14,
-      fontWeight: 500,
-      lineHeight: "1.3em",
-      letterSpacing: "0em",
-    },
-    body2: {
-      color: "#333333",
-      fontSize: 11.5,
-      fontWeight: 400,
-      lineHeight: "1.3em",
-      letterSpacing: "0.1em",
-    },
     button: {
       textTransform: "none",
     },
@@ -71,7 +50,7 @@ let theme = createMuiTheme({
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#ffffff",
+      main: "#745F74",
     },
   },
   props: {
@@ -89,9 +68,38 @@ let theme = createMuiTheme({
     },
   },
 });
-// theme = responsiveFontSizes(theme);
+theme.typography.h3 = {
+  color: "#333333",
+  fontSize: 19,
+  fontWeight: 600,
+  lineHeight: "1.3em",
+  letterSpacing: "0em",
+  // [theme.breakpoints.up('sm')]: {
+  //   fontSize: 19,
+  // },
+};
+theme.typography.body1 = {
+  color: "#333333",
+  fontSize: 14,
+  fontWeight: 500,
+  lineHeight: "1.3em",
+  letterSpacing: "0em",
+  [theme.breakpoints.up('sm')]: {
+    fontSize: 15,
+  },
+};
+theme.typography.body2 = {
+  color: "#333333",
+  fontSize: 11.5,
+  fontWeight: 400,
+  lineHeight: "1.3em",
+  letterSpacing: "0.1em",
+  [theme.breakpoints.up('sm')]: {
+    fontSize: 12,
+  },
+};
 
-interface IThemeProps {}
+interface IThemeProps { }
 const Theme: React.FC<IThemeProps> = (props) => {
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
 };

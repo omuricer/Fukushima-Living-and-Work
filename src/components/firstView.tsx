@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -10,8 +10,6 @@ import Banner2 from "@/image/1stv_bn2.png";
 import Logo from "@/image/logo.png";
 import ScrollMe from "@/components/scrollMe";
 import Swiper from "react-id-swiper";
-
-// import "swiper/components/pagination/pagination.scss";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -96,7 +94,7 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
           <Image
             src={Banner2}
             className={classes.eventBoard}
-            // onClick={() => props.openModal("projection")}
+          // onClick={() => props.openModal("projection")}
           />
         </Swiper>
       </Grid>

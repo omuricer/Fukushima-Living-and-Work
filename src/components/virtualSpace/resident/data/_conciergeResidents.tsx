@@ -11,8 +11,8 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
     key: "conciergeCounter",
     icon: {
       image: usagi,
-      positionY: 20,
-      positionX: 38,
+      positionY: 25,
+      positionX: 42.5,
     },
     modal: {
       content: {
@@ -52,6 +52,19 @@ const ConciergeRegidents: Resident<ConciergeContent>[] = [
         headerColor: "#745F74",
         type: "concierge",
         phase: "selectWorkStyle",
+      },
+    },
+  },
+  {
+    floor: 1,
+    key: "conciergeChat",
+    modal: {
+      content: {
+        title: "チャット相談",
+        icon: usagiTitle,
+        headerColor: "#E9A75B",
+        type: "concierge",
+        phase: "chat",
       },
     },
   },

@@ -7,7 +7,13 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     // Override MuiButton-root
     root: {
-      borderBottom: `solid 3px ${theme.palette.primary.dark}`,
+      borderBottom: (props: ISquareButtonProps) => {
+        if (props.color == "primary")
+          return `solid 3px ${theme.palette.primary.dark}`;
+        if (props.color == "secondary")
+          return `solid 3px ${theme.palette.secondary.dark}`;
+        return `solid 3px`;
+      },
     },
     // Override MuiButton-text
     text: {
@@ -18,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ISquareButtonProps extends ButtonProps {}
 const SquareButton: React.FC<ISquareButtonProps> = (props) => {
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   const onClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!props.onClick) return;

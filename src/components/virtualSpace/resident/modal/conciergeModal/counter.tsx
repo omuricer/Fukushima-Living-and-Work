@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import SquareButton from "@/components/form/squareButton";
 import Image from "@/components/form/image";
 import Typography from "@material-ui/core/Typography";
@@ -8,6 +7,7 @@ import { IConciergeModalProps } from "./index";
 import ConciergeImage from "@/image/virtualSpace/concierge/m_1f_01.png";
 import PresentImage from "@/image/virtualSpace/concierge/m_1f_02.png";
 import BackButton from "@/components/form/backButton";
+import Sleep from "@/app/libs/sleep";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,6 +38,12 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       height: "75px",
       position: "relative",
+    },
+    chat: {
+      backgroundColor: '#fde4c8',
+      padding: '10px',
+      marginBottom: '20px',
+      marginTop: '20px',
     },
   })
 );
@@ -76,7 +82,8 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => {
+              onClick={async () => {
+                await Sleep.waitRipple();
                 props.closeModal();
                 props.handleAnothers.openModal("conciergeSelectLifeStyle");
               }}
@@ -87,7 +94,8 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => {
+              onClick={async () => {
+                await Sleep.waitRipple();
                 props.closeModal();
                 props.handleAnothers.openModal("conciergeSelectWorkStyle");
               }}
@@ -102,8 +110,11 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => {}} // TODO: 9/23
-              disabled
+              onClick={async () => {
+                await Sleep.waitRipple();
+                // TODO: 10/1
+                window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040")
+              }}
             >
               総合相談
             </SquareButton>
@@ -122,8 +133,10 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               variant="contained"
               color="primary"
               className={classes.answerButton}
-              onClick={() => {}} // TODO: 9/23
-              disabled
+              onClick={async () => {
+                await Sleep.waitRipple();
+                window.open("https://needyou.jp/signup/")
+              }}
             >
               ユーザー登録
             </SquareButton>
@@ -156,6 +169,26 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
           <Image src={PresentImage} />
         </div>
       </Flow>
+      <div className={classes.chat}>
+        <Typography className={classes.h3}>
+          わからないことがあった場合は<br />チャットで気軽にお問い合わせください
+        </Typography>
+        <div className={classes.wrap}>
+          <div className={classes.registerUser}>
+            <SquareButton
+              variant="contained"
+              color="primary"
+              className={classes.answerButton}
+              onClick={() => {
+                props.closeModal();
+                props.handleAnothers.openModal("conciergeChat");
+              }}
+            >
+              チャット相談
+            </SquareButton>
+          </div>
+        </div>
+      </div>
       <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );

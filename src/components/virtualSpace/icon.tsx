@@ -57,21 +57,21 @@ const Shop: React.FC<IShopProps> = (props) => {
   const shopDialog = props.shop.rooms ? (
     <React.Fragment></React.Fragment>
   ) : (
-    // <ShopDialogApartment
-    //   open={selected}
-    //   setOpen={setSelected}
-    //   id={props.shop.id}
-    //   content={props.shop.content}
-    //   rooms={props.shop.rooms}
-    // />
-    <React.Fragment></React.Fragment>
-    // <ShopDialog
-    //   open={selected}
-    //   setOpen={setSelected}
-    //   id={props.shop.id}
-    //   content={props.shop.content}
-    // />
-  );
+      // <ShopDialogApartment
+      //   open={selected}
+      //   setOpen={setSelected}
+      //   id={props.shop.id}
+      //   content={props.shop.content}
+      //   rooms={props.shop.rooms}
+      // />
+      <React.Fragment></React.Fragment>
+      // <ShopDialog
+      //   open={selected}
+      //   setOpen={setSelected}
+      //   id={props.shop.id}
+      //   content={props.shop.content}
+      // />
+    );
 
   const imageSrc = generateIconPath(props.shop.id);
   useEffect(() => {

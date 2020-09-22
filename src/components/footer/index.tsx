@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -8,6 +8,7 @@ import bn2 from "@/image/footer/footer_bn_02.jpg";
 import bn3 from "@/image/footer/footer_bn_03.jpg";
 import bn4 from "@/image/footer/footer_bn_04.jpg";
 import bn5 from "@/image/footer/footer_bn_05.jpg";
+import { IsMobileContext } from "@/context/isMobile";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,16 +42,22 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: "40px",
       paddingBottom: "20px",
     },
+    contact: {
+      display: (isMobileContext: boolean) => isMobileContext ? 'block' : 'inline-block',
+      margin: '7px',
+      textAlign: 'center',
+    }
   })
 );
 
-interface IFooterProps {}
+interface IFooterProps { }
 const Footer: React.FC<IFooterProps> = (props) => {
-  const classes = useStyles();
+  const isMobileContext = useContext(IsMobileContext);
+  const classes = useStyles(isMobileContext);
 
   return (
     <React.Fragment>
-      <Grid item xs={12} className={classes.bnGrid}>
+      {isMobileContext ? (<Grid item xs={12} className={classes.bnGrid}>
         <a
           href="https://www.pref.fukushima.lg.jp/site/fui/#wide/0"
           target="_blank"
@@ -86,16 +93,18 @@ const Footer: React.FC<IFooterProps> = (props) => {
         >
           <Image src={bn5} className={classes.bn} />
         </a>
-      </Grid>
+      </Grid>) : (<React.Fragment />)}
       <Grid item xs={12} className={classes.contactGrid}>
         <hr className={classes.hr} />
         <Typography variant="body2">
           （お問い合わせ）福島県地域振興課
         </Typography>
-        <Typography variant="body2">tel:024-521-8023</Typography>
-        <Typography variant="body2">
-          mail:ui-turn@pref.fukushima.lg.jp
+        <div>
+          <Typography variant="body2" className={classes.contact}>tel:024-521-8023</Typography>
+          <Typography variant="body2" className={classes.contact}>
+            mail:ui-turn@pref.fukushima.lg.jp
         </Typography>
+        </div>
       </Grid>
       <Grid item xs={12} className={classes.copyrightGrid}>
         <Typography variant="body2">
