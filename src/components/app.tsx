@@ -95,7 +95,7 @@ const App: React.FC<IAppProps> = (props) => {
                       closeModal={closeModal}
                     />
                   </Grid>
-                  <Grid item sm={6}>
+                  <Grid item sm={6} style={{ margin: '0 auto', width: '100%', position: "relative" }}>
                     <RightView openModal={openModal} />
                   </Grid>
                   <Grid item sm={12}>

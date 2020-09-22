@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import RoundButton from "@/components/form/roundButton";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import { BackHistoryContext } from "@/context/backHistory";
+import { IsMobileContext } from "@/context/isMobile";
 import TalkLive from "@/image/virtualSpace/projection/m_7f_01.png";
 import BackButton from "@/components/form/backButton";
 
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
     buttonConcierge: {
       position: "fixed",
       bottom: "30px",
-      left: "50%",
+      left: (isMobileContext: boolean) => isMobileContext ? "50%" : "75%",
       transform: "translateX(-50%)",
       WebkitTransform: "translateX(-50%)",
       MsTransform: "translateX(-50%)",
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     guests: {
       display: "flex",
-      justifyContent: 'center',
+      justifyContent: 'space-around',
       alignItems: 'center',
     },
   })
@@ -75,8 +76,9 @@ export interface IProjectionModalProps extends IModalProps {
   content: ProjectionContent;
 }
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
-  const classes = useStyles();
   const backHistoryContext = useContext(BackHistoryContext);
+  const isMobileContext = useContext(IsMobileContext);
+  const classes = useStyles(isMobileContext);
 
   const changeModal = (key: string) => {
     props.closeModal();
@@ -163,7 +165,9 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           ゲスト
         </Typography>
         <GuestLabel text={"地方での就職セミナー"} />
-        <Guest image={'image'} name={"金内　正"} job={'一般社団法人キャリア支援機構 理事長'} />
+        <div className={classes.guests}>
+          <Guest image={'image'} name={"金内　正"} job={'一般社団法人キャリア支援機構 理事長'} />
+        </div>
         <GuestLabel text={"先輩移住者トーク①"} />
         <div className={classes.guests}>
           <Guest image={'image'} name={"斎藤　拓哉"} job={'空き家てらす\n隠れ家ゲストハウス'} />
@@ -313,9 +317,9 @@ const useStylesGuest = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: '30px',
+      width: '40%',
     },
     image: {
-      width: '40vw',
       marginBottom: '10px',
     },
     name: {

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       backgroundImage: `url(${backgroundImage})`,
-      zIndex: theme.zIndex.drawer + 1,
+      zIndex: (isMobileContext: boolean) => isMobileContext ? theme.zIndex.drawer + 1 : 1300,
     },
     boad: {
       position: "relative",
@@ -91,17 +91,14 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IMenuProps {
   isVisible: boolean;
   closeMenu: () => void;
-  sclollToFloors: (() => void)[];
   openModal: (modalKey: string) => void;
 }
 const Menu: React.FC<IMenuProps> = (props) => {
   const isMobileContext = useContext(IsMobileContext);
-  const classes = useStyles();
+  const classes = useStyles(isMobileContext);
 
   const handleClickMenu = (modalKey: string) => {
-    // const handleClickMenu = (sclollToFloors: () => void) => {
     props.closeMenu();
-    // sclollToFloors();
     props.openModal(modalKey);
   };
   const list = [
@@ -154,7 +151,6 @@ const Menu: React.FC<IMenuProps> = (props) => {
       onClick={async () => {
         if (!m.modalKey) return;
         await Sleep.waitRipple();
-        // handleClickMenu(props.sclollToFloors[i]);
         handleClickMenu(m.modalKey);
       }}
     >

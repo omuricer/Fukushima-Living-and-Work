@@ -23,9 +23,6 @@ import HotelRooftop from "@/image/virtualSpace/hotel_00_pc.png";
 import HotelSignBoard from "@/image/virtualSpace/hotel_01.png";
 
 const floorNumber = 7;
-const floorRefs = [...Array(floorNumber)].map(() =>
-  React.createRef<HTMLDivElement>()
-);
 const floorImages = [
   FloorImage1,
   FloorImage2,
@@ -44,6 +41,16 @@ const floorImages2 = [
   null,
   null,
 ];
+const floorToolTipText = [
+  "総合案内\n何から相談するか悩んだらこちら！",
+  "しごと相談室\n仕事の相談をしたい方",
+  "水辺のあるくらし\n海や湖の近くで暮らしたい方",
+  "自然豊かな山あいのくらし\n大自然の中で暮らしたい方",
+  "便利な街でのくらし\n利便性を重視する方",
+  "市町村相談\n相談したい市町村がある方",
+  "動画シアター\nトークライブや移住関連動画をチェック！",
+];
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -75,21 +82,10 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
       openedModal={props.openedModal}
       openModal={props.openModal}
       closeModal={props.closeModal}
-      ref={floorRefs[i]}
+      toolTipText={floorToolTipText[i]}
     />
   ));
   floors.reverse();
-
-  const sclollToFloors = [...Array(floorNumber)].map((_, i) =>
-    React.useCallback(
-      () =>
-        floorRefs[i]!.current!.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        }),
-      [floorRefs[i]]
-    )
-  );
 
   const openMenu = () => {
     setIsVisibleMenu(true);
@@ -128,7 +124,6 @@ const VirtualSpace: React.FC<IVirtualSpaceProps> = React.memo((props) => {
       <Menu
         isVisible={isVisibleMenu}
         closeMenu={closeMenu}
-        sclollToFloors={sclollToFloors}
         openModal={props.openModal}
       />
       {

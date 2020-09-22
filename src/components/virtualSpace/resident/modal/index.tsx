@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
     ,
     // Override MuiDialog-paper
     paper: {
-      width: "91vw",
+      width: "90%",
       margin: "0",
       maxHeight: "85vh",
       minHeight: "85vh",
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     // Override MuiDialogContent-root
     contentRoot: {
-      padding: "5px 8px 20px 8px",
+      padding: (isMobileContext: boolean) => isMobileContext ? "5px 8px 20px 8px" : "5px 40px 20px 40px",
       textAlign: "center",
       alignItems: "center",
       justifyContent: "stretch",
