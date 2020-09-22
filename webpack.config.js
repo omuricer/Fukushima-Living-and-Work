@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   entry: {
-    akari: ["@babel/polyfill", "./src/index.tsx"],
+    fukushimaLivingWorking2020: ["@babel/polyfill", "./src/index.tsx"],
   },
   output: {
     filename: "js/[name]-[hash].js",

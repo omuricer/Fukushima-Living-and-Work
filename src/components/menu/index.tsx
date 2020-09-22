@@ -172,7 +172,7 @@ const Menu: React.FC<IMenuProps> = (props) => {
 
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,
-    zIndex: 1300,
+    zIndex: props.isVisible ? 1300 : -1,
     // animationDelay: `1s`, // TODO: 効いてない
   });
   const menu = (
