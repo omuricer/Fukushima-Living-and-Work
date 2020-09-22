@@ -84,7 +84,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
     <Modal
       {...props}
       headerColor={props.content.headerColor}
-      onEnter={() =>
+      onEnter={() => 
         backHistoryContext.push(() => {
           props.handleAnothers.openModal(props.modalKey);
         })

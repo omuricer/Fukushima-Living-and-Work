@@ -1,13 +1,35 @@
 import React, { useContext } from "react";
 import { BackHistoryContext } from "@/context/backHistory";
+import { IsMobileContext } from "@/context/isMobile";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Dialog, { DialogClassKey } from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import { BackdropProps } from "@material-ui/core/Backdrop";
 import Header from "./header";
 import { HandleAnothers } from "@/app/resident/types";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    // Override MuiDialog-root
+    root: (isMobileContext: boolean) =>
+      isMobileContext ? {
+        position: 'fixed',
+        zIndex: 1300,
+        right: '0px',
+        bottom: '0px',
+        top: '0px',
+        left: '0px',
+      } : {
+          position: 'fixed',
+          zIndex: 1300,
+          right: '0px',
+          bottom: '0px',
+          top: '0px',
+          left: 'auto!important',
+          width: '50vw',
+          pointerEvents: 'none',
+        }
+    ,
     // Override MuiDialog-paper
     paper: {
       width: "91vw",
@@ -17,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
       overflowY: "visible",
     },
     // Override MuiDialogContent-root
-    root: {
+    contentRoot: {
       padding: "5px 8px 20px 8px",
       textAlign: "center",
       alignItems: "center",
@@ -56,8 +78,9 @@ export interface IModalProps {
  * @param props
  */
 const Modal: React.FC<IModalProps> = (props) => {
-  const classes = useStyles();
   const backHistoryContext = useContext(BackHistoryContext);
+  const isMobileContext = useContext(IsMobileContext);
+  const classes = useStyles(isMobileContext);
 
   return (
     <React.Fragment>
@@ -68,14 +91,20 @@ const Modal: React.FC<IModalProps> = (props) => {
           backHistoryContext.flush();
         }}
         onEnter={props.onEnter}
-        classes={{ ...{ paper: classes.paper }, ...props.classes }}
+        onEntered={() => {
+          document.body.style.overflow = "";
+          document.body.style.padding = "0px";
+        }}
+        classes={{ ...{ paper: classes.paper, root: classes.root }, ...props.classes }}
+        BackdropComponent={isMobileContext ? undefined : DummyBackdrop}
+        disableBackdropClick={!isMobileContext} // PC版の場合Backdropは無いが、Modalの周りでonCloseが発生してしまうため必要
       >
         <Header
           icon={props.headerIcon}
           color={props.headerColor}
           closeModal={props.closeModal}
         />
-        <DialogContent classes={{ root: classes.root }}>
+        <DialogContent classes={{ root: classes.contentRoot }}>
           {props.children}
         </DialogContent>
       </Dialog>
@@ -83,3 +112,10 @@ const Modal: React.FC<IModalProps> = (props) => {
   );
 };
 export default Modal;
+
+const DummyBackdrop: React.FC<BackdropProps> = (props) => {
+  return (
+    <React.Fragment />
+  );
+};
+

@@ -82,6 +82,7 @@ const caluculateWidthPixel = (
   isMobile: boolean,
 ): number => {
   const backgroundRatio = windowWidth / backgroundImageNaturalWidth;
+  // PC版の場合はVirtualSpaceが画面の左半分のみになるので0.5掛けする
   const iconWidthPixel = iconImageNaturalWidth * backgroundRatio * (isMobile ? 1 : 0.5);
   return iconWidthPixel
 };
