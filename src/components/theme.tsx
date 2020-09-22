@@ -36,27 +36,6 @@ let theme = createMuiTheme({
       lineHeight: "1.3em",
       letterSpacing: "0.2em",
     },
-    h3: {
-      color: "#333333",
-      fontSize: 19,
-      fontWeight: 600,
-      lineHeight: "1.3em",
-      letterSpacing: "0em",
-    },
-    body1: {
-      color: "#333333",
-      fontSize: 14,
-      fontWeight: 500,
-      lineHeight: "1.3em",
-      letterSpacing: "0em",
-    },
-    body2: {
-      color: "#333333",
-      fontSize: 11.5,
-      fontWeight: 400,
-      lineHeight: "1.3em",
-      letterSpacing: "0.1em",
-    },
     button: {
       textTransform: "none",
     },
@@ -90,21 +69,33 @@ let theme = createMuiTheme({
   },
 });
 theme.typography.h3 = {
-  [theme.breakpoints.up('xs')]: {
-    fontSize: 19,
-    lineHeight: "1.3em",
-  },
+  color: "#333333",
+  fontSize: 19,
+  fontWeight: 600,
+  lineHeight: "1.3em",
+  letterSpacing: "0em",
+  // [theme.breakpoints.up('sm')]: {
+  //   fontSize: 19,
+  // },
 };
 theme.typography.body1 = {
-  [theme.breakpoints.up('xs')]: {
+  color: "#333333",
+  fontSize: 14,
+  fontWeight: 500,
+  lineHeight: "1.3em",
+  letterSpacing: "0em",
+  [theme.breakpoints.up('sm')]: {
     fontSize: 15,
-    lineHeight: "1.3em",
   },
 };
 theme.typography.body2 = {
-  [theme.breakpoints.up('xs')]: {
+  color: "#333333",
+  fontSize: 11.5,
+  fontWeight: 400,
+  lineHeight: "1.3em",
+  letterSpacing: "0.1em",
+  [theme.breakpoints.up('sm')]: {
     fontSize: 12,
-    lineHeight: "1.3em",
   },
 };
 

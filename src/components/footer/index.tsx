@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     contact: {
       display: (isMobileContext: boolean) => isMobileContext ? 'block' : 'inline-block',
-      margin: (isMobileContext: boolean) => isMobileContext ? 'auto' : '7px',
+      margin: '7px',
+      textAlign: 'center',
     }
   })
 );
@@ -101,7 +102,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
         <div>
           <Typography variant="body2" className={classes.contact}>tel:024-521-8023</Typography>
           <Typography variant="body2" className={classes.contact}>
-            mail:ut-turn@pref.fukushima.lg.jp
+            mail:ui-turn@pref.fukushima.lg.jp
         </Typography>
         </div>
       </Grid>
