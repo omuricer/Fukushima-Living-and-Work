@@ -66,14 +66,14 @@ const Floor: React.FC<IFloorProps> = React.memo((props) => {
   const visual2 = (props.visual2) ? <Image src={props.visual2} className={classes.image2} /> : <React.Fragment />
 
   return (
-    <Grid container className={classes.root}>
-      <Tooltip title={props.toolTipText}>
+    <Tooltip title={props.toolTipText}>
+      <Grid container className={classes.root}>
         <Image src={props.visual} className={classes.image} />
-      </Tooltip>
-      {residents}
-      {linkIcons}
-      {visual2}
-    </Grid>
+        {residents}
+        {linkIcons}
+        {visual2}
+      </Grid>
+    </Tooltip>
   );
 });
 export default Floor;

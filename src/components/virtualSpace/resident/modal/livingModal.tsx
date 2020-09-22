@@ -84,7 +84,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
     <Modal
       {...props}
       headerColor={props.content.headerColor}
-      onEnter={() => 
+      onEnter={() =>
         backHistoryContext.push(() => {
           props.handleAnothers.openModal(props.modalKey);
         })
@@ -171,7 +171,7 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
           {props.name}
         </Typography>
         <div className={classes.line}>
-          <Image src={props.personImage} className={classes.image} />
+          <Image src={'/image/virtualSpace/advisors/' + props.personImage} className={classes.image} />
           <div className={classes.inCharge}>
             <Typography className={classes.inChargeLabel} variant="body2">
               担当
