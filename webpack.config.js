@@ -7,6 +7,7 @@ const zopfli = require("node-zopfli");
 const path = require("path");
 const AppManifestWebpackPlugin = require("app-manifest-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   resolve: {
@@ -73,7 +74,7 @@ module.exports = {
             options: {
               sassOptions: {
                 includePaths: ["./node_modules"],
-              },
+            },
             },
           },
         ],
@@ -105,6 +106,7 @@ module.exports = {
         return zopfli.gzip(input, compressionOptions, callback);
       },
     }),
+    new BundleAnalyzerPlugin(),
   ],
   optimization: {
     minimizer: [
