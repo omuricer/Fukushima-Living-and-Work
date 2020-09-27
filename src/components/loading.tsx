@@ -30,8 +30,10 @@ const Loading: React.FC<ILoadingProps> = (props) => {
   const classes = useStyles();
 
   if (!props.display) {
+    document.body.style.overflow = "";
     return <React.Fragment></React.Fragment>;
   }
+  document.body.style.overflow = "hidden";
   return (
     <div className={classes.loading}>
       <img className={classes.animation} src={gif} />

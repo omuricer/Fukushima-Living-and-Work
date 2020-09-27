@@ -41,7 +41,13 @@ const Icon: React.FC<IIconProps> = (props) => {
         top: `calc(${props.positionY}%)`,
         left: `calc(${props.positionX}%)`,
         animationDelay: `${generateRondomDelay()}s`,
-        width: caluculateWidthPixel(width, backgroundImageWidth, naturalWidth, isMobileContext) + `px`,
+        width:
+          caluculateWidthPixel(
+            width,
+            backgroundImageWidth,
+            naturalWidth,
+            isMobileContext
+          ) + `px`,
       }}
       onClick={props.onClick}
     />
@@ -79,13 +85,14 @@ const caluculateWidthPixel = (
   windowWidth: number,
   backgroundImageNaturalWidth: number,
   iconImageNaturalWidth: number,
-  isMobile: boolean,
+  isMobile: boolean
 ): number => {
-  const backgroundRatio = windowWidth / backgroundImageNaturalWidth;
+  const backgroundRatio =
+    (windowWidth > 1700 ? 1700 : windowWidth) / backgroundImageNaturalWidth;
   // PC版の場合はVirtualSpaceが画面の左半分のみになるので0.5掛けする
-  const iconWidthPixel = iconImageNaturalWidth * backgroundRatio * (isMobile ? 1 : 0.5);
-  return iconWidthPixel
+  const iconWidthPixel =
+    iconImageNaturalWidth * backgroundRatio * (isMobile ? 1 : 0.5);
+  return iconWidthPixel;
 };
-
 
 export default Icon;

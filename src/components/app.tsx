@@ -80,47 +80,43 @@ const App: React.FC<IAppProps> = (props) => {
         <BackHistoryContext.Provider value={backHistory}>
           <GlobalStyle />
           <Loading display={loading} />
-          {!loading ? (
-            isMobile ? (
-              <React.Fragment>
-                <FirstView openModal={openModal} />
-                <Grid>
-                  <Image src={Hotel} style={{ width: "100%" }} />
-                </Grid>
+          {isMobile ? (
+            <React.Fragment>
+              <FirstView openModal={openModal} />
+              <Grid>
+                <Image src={Hotel} style={{ width: "100%" }} />
+              </Grid>
+              <VirtualSpace
+                openedModal={openedModal}
+                openModal={openModal}
+                closeModal={closeModal}
+              />
+              <Footer />
+            </React.Fragment>
+          ) : (
+            <Grid container style={{ margin: "0 auto", maxWidth: "1700px" }}>
+              <Grid item sm={6}>
                 <VirtualSpace
                   openedModal={openedModal}
                   openModal={openModal}
                   closeModal={closeModal}
                 />
-                <Footer />
-              </React.Fragment>
-            ) : (
-              <Grid container style={{ margin: "0 auto", maxWidth: "1700px" }}>
-                <Grid item sm={6}>
-                  <VirtualSpace
-                    openedModal={openedModal}
-                    openModal={openModal}
-                    closeModal={closeModal}
-                  />
-                </Grid>
-                <Grid
-                  item
-                  sm={6}
-                  style={{
-                    margin: "0 auto",
-                    width: "100%",
-                    position: "relative",
-                  }}
-                >
-                  <RightView openModal={openModal} />
-                </Grid>
-                <Grid item sm={12}>
-                  <Footer />
-                </Grid>
               </Grid>
-            )
-          ) : (
-            <React.Fragment></React.Fragment>
+              <Grid
+                item
+                sm={6}
+                style={{
+                  margin: "0 auto",
+                  width: "100%",
+                  position: "relative",
+                }}
+              >
+                <RightView openModal={openModal} />
+              </Grid>
+              <Grid item sm={12}>
+                <Footer />
+              </Grid>
+            </Grid>
           )}
         </BackHistoryContext.Provider>
       </IsMobileContext.Provider>
