@@ -16,6 +16,7 @@ import Image from "@/components/form/image";
 import Hotel from "@/image/virtualSpace/hotel_01.png";
 import backgroundImage from "@/image/background.jpg";
 import backgroundImage2 from "@/image/cloud_mb_2.png";
+import backgroundImageCloudPC from "@/image/bg_cloud.png";
 import Ogp from "@/image/ogp.png";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -28,8 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       position: "relative",
-      background: `url(${backgroundImage2}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
-      backgroundRepeat: (isMobile: boolean) => isMobile ? "no-repeat, repeat, repeat" : "repeat, repeat, repeat",
+      background: (isMobile: boolean) => isMobile ? 
+        `url(${backgroundImage2}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})` :
+        `url(${backgroundImageCloudPC}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
+      backgroundRepeat: "no-repeat, repeat, repeat",
       backgroundSize: (isMobile: boolean) => isMobile ? "auto, contain, contain" : "auto, contain, auto",
       backgroundPositionX: "center",
     },
