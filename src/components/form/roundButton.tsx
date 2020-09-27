@@ -19,12 +19,14 @@ const useStyles = makeStyles((theme: Theme) =>
         boxShadow: "none",
       },
     },
+    // Override MuiButton-contained
     contained: {
       boxShadow: "none",
       "&:hover": {
         boxShadow: "none",
       },
     },
+    // Override MuiButton-containedSecondary
     containedSecondary: {
       boxShadow: "none",
       "&:hover": {
