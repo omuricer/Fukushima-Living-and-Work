@@ -15,9 +15,21 @@ const useStyles = makeStyles((theme: Theme) =>
           return `solid 3px ${theme.palette.secondary.dark}`;
         return `solid 3px`;
       },
-      '&:hover' : {
-        boxShadow: 'none'
-      }
+      "&:hover": {
+        boxShadow: "none",
+      },
+    },
+    contained: {
+      boxShadow: "none",
+      "&:hover": {
+        boxShadow: "none",
+      },
+    },
+    containedSecondary: {
+      boxShadow: "none",
+      "&:hover": {
+        boxShadow: "none",
+      },
     },
     // Override MuiButton-text
     text: {
@@ -37,7 +49,12 @@ const RoundButton: React.FC<IRoundButtonProps> = (props) => {
   };
   return (
     <Button
-      classes={{ root: classes.root, text: classes.text }}
+      classes={{
+        root: classes.root,
+        text: classes.text,
+        contained: classes.contained,
+        containedSecondary: classes.containedSecondary,
+      }}
       {...props}
       onClick={onClick}
     >

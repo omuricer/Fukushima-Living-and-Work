@@ -21,12 +21,13 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
     line: {
       display: "flex",
       alignItems: "flex-end",
-      justifyContent: 'center',
-      marginBottom: '10px',
+      justifyContent: "center",
+      marginBottom: "10px",
     },
     person: {
       display: "flex",
-      width: (arg: { props: IAdvisorProps, isMobile: boolean }) => arg.isMobile ? 'auto' : '250px',
+      width: (arg: { props: IAdvisorProps; isMobile: boolean }) =>
+        arg.isMobile ? "auto" : "250px",
     },
     inCharge: {
       textAlign: "left",
@@ -46,7 +47,8 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       borderRadius: "50%",
       margin: "5px",
 
-      backgroundImage: (arg: { props: IAdvisorProps, isMobile: boolean }) => `url(/image/virtualSpace/advisors/${arg.props.personImage})`,
+      backgroundImage: (arg: { props: IAdvisorProps; isMobile: boolean }) =>
+        `url(/image/virtualSpace/advisors/${arg.props.personImage})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
@@ -54,13 +56,27 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
     name: {
       marginTop: "5px",
     },
-    button: {
-    },
+    button: {},
     // Override MuiButton-root
     buttonRoot: {
       borderRadius: "30px",
-      backgroundColor: (arg: { props: IAdvisorProps, isMobile: boolean }) => arg.props.color,
-      borderBottom: (arg: { props: IAdvisorProps, isMobile: boolean }) => `solid 3px ${arg.props.colorDark}`,
+      backgroundColor: (arg: { props: IAdvisorProps; isMobile: boolean }) =>
+        arg.props.color,
+      borderBottom: (arg: { props: IAdvisorProps; isMobile: boolean }) =>
+        `solid 3px ${arg.props.colorDark}`,
+      "&:hover": {
+        backgroundColor: (arg: { props: IAdvisorProps; isMobile: boolean }) =>
+          arg.props.colorDark,
+        boxShadow: "none",
+      },
+    },
+    // Override MuiButton-contained
+    buttonContained: {
+      color: "#ffffff",
+      boxShadow: "none",
+      "&:hover": {
+        boxShadow: "none",
+      },
     },
   })
 );
@@ -86,18 +102,25 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
           <div className={classes.inCharge}>
             <Typography className={classes.inChargeLabel} variant="body2">
               担当
-          </Typography>
-            <Typography className={classes.name}>
-              {props.personName}
             </Typography>
+            <Typography className={classes.name}>{props.personName}</Typography>
           </div>
         </div>
-        <RoundButton variant="contained" color="secondary" classes={{ root: classes.buttonRoot }}           
+        <RoundButton
+          variant="contained"
+          classes={{
+            root: classes.buttonRoot,
+            contained: classes.buttonContained,
+          }}
           // onClick={() => window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`)}
-          onClick={() => window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`)}
->
-            個別相談
-          </RoundButton>
+          onClick={() =>
+            window.open(
+              `https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`
+            )
+          }
+        >
+          個別相談
+        </RoundButton>
       </li>
     </div>
   );
