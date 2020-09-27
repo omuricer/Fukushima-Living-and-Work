@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
       background: `url(${backgroundImage2}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
       backgroundRepeat: (isMobile: boolean) => isMobile ? "no-repeat, repeat, repeat" : "repeat, repeat, repeat",
-      backgroundSize: "auto, contain, contain",
+      backgroundSize: (isMobile: boolean) => isMobile ? "auto, contain, contain" : "auto, contain, auto",
       backgroundPositionX: "center",
     },
   })
