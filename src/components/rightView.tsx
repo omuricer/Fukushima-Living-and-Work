@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import Banner1 from "@/image/1stv_bn1.png";
 import Banner2 from "@/image/1stv_bn2.png";
-import Logo from "@/image/logo.png";
+import Logo from "@/image/logo_pc.png";
 import Swiper from "react-id-swiper";
 import bn1 from "@/image/footer/footer_bn_01.jpg";
 import bn2 from "@/image/footer/footer_bn_02.jpg";
@@ -19,14 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
     fixed: {
       position: "fixed",
       left: 'auto',
-      marginLeft: '5vw',
-      width: '40vw',
+      margin: '0 0 0 150px',
     },
     absolute: {
       position: "absolute",
       bottom: '20px',
-      left: '5vw',
-      width: '40vw',
+      left: '150px',
     },
     root: {
       width: "100%",
@@ -45,6 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundPositionY: "bottom",
       backgroundRepeat: "no-repeat",
       marginBottom: '20px',
+      width: '460px',
     },
     catch: {
       textAlign: "center",

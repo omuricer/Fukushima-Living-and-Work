@@ -7,8 +7,9 @@ import { ResidentCreater } from "@/app/resident/residentCreater";
 import RegidentsDefinitions from "../resident/data";
 import LinkIconsDefinitions from "../linkIcon/data";
 import Icon from "../resident/icon";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
+import TooltipContent from "./tooltipContent";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,10 +22,15 @@ const useStyles = makeStyles((theme: Theme) =>
     image2: {
       width: "100%",
       position: "absolute",
-      pointerEvents: 'none',
+      pointerEvents: "none",
     },
     icon: {
       position: "absolute",
+    },
+    tooltip: {
+      padding: "10px 20px",
+      backgroundColor: "rgba(97, 97, 97, 0.6)",
+      maxWidth: "initial",
     },
     popper: {
       left: "-10vw!important",
@@ -39,8 +45,8 @@ interface IFloorProps {
   openedModal: string | null;
   openModal: (modalKey: string) => void;
   closeModal: () => void;
-  toolTipTitle: string,
-  toolTipText: string,
+  toolTipTitle: string;
+  toolTipText: string;
 }
 const Floor: React.FC<IFloorProps> = React.memo((props) => {
   const classes = useStyles();
@@ -65,23 +71,37 @@ const Floor: React.FC<IFloorProps> = React.memo((props) => {
   const linkIcons: JSX.Element[] = LinkIconsDefinitions.filter(
     (i) => i.floor === props.number + 1
   ).map((i, index: number) => {
-    return <Icon image={i.icon.image} positionX={i.icon.positionX} positionY={i.icon.positionY} onClick={i.icon.onclick} />;
+    return (
+      <Icon
+        image={i.icon.image}
+        positionX={i.icon.positionX}
+        positionY={i.icon.positionY}
+        onClick={i.icon.onclick}
+      />
+    );
   });
 
-  const visual2 = (props.visual2) ? <Image src={props.visual2} className={classes.image2} /> : <React.Fragment />
+  const visual2 = props.visual2 ? (
+    <Image src={props.visual2} className={classes.image2} />
+  ) : (
+    <React.Fragment />
+  );
 
   return (
-    <Grid container className={classes.root}>
-      <Tooltip title={<React.Fragment>
-        <Typography variant="h3" color="textSecondary">{props.toolTipTitle}</Typography>
-        <Typography color="textSecondary">{props.toolTipText}</Typography>
-      </React.Fragment>} placement="right-start" classes={{ popper: classes.popper }}>
+    <Tooltip
+      title={
+        <TooltipContent title={props.toolTipTitle} text={props.toolTipText} />
+      }
+      placement="right-start"
+      classes={{ tooltip: classes.tooltip, popper: classes.popper }}
+    >
+      <Grid container className={classes.root}>
         <Image src={props.visual} className={classes.image} />
-      </Tooltip>
-      {residents}
-      {linkIcons}
-      {visual2}
-    </Grid>
+        {residents}
+        {linkIcons}
+        {visual2}
+      </Grid>
+    </Tooltip>
   );
 });
 export default Floor;

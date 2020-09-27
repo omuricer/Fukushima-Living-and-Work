@@ -16,6 +16,7 @@ import Image from "@/components/form/image";
 import Hotel from "@/image/virtualSpace/hotel_01.png";
 import backgroundImage from "@/image/background.jpg";
 import backgroundImage2 from "@/image/cloud_mb_2.png";
+import backgroundImageCloudPC from "@/image/bg_cloud.png";
 import Ogp from "@/image/ogp.png";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -28,14 +29,20 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       position: "relative",
-      background: `url(${backgroundImage2}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
-      backgroundRepeat: (isMobile: boolean) => isMobile ? "no-repeat, repeat, repeat" : "repeat, repeat, repeat",
-      backgroundSize: "auto, contain, contain",
-      backgroundPositionX: "center",
+      background: (isMobile: boolean) =>
+        isMobile
+          ? `url(${backgroundImage2}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`
+          : `url(${backgroundImageCloudPC}), linear-gradient(to bottom, rgba(64, 183, 243, 0.2), rgba(79, 152, 51, 0.2)), url(${backgroundImage})`,
+      backgroundRepeat: "no-repeat, repeat, repeat!important",
+      backgroundSize: (isMobile: boolean) =>
+        isMobile
+          ? "auto, contain, contain!important"
+          : "auto, contain, auto!important",
+      backgroundPositionX: "center!important",
     },
   })
 );
-interface IAppProps { }
+interface IAppProps {}
 const App: React.FC<IAppProps> = (props) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [backHistory, setBackHistory] = useState<BackHistory>(_backHistory);
@@ -64,7 +71,8 @@ const App: React.FC<IAppProps> = (props) => {
       detectedBreakPoint = breakPoint;
     }
   });
-  if (isMobile != (detectedBreakPoint == "xs")) setIsMobile(detectedBreakPoint == "xs");
+  if (isMobile != (detectedBreakPoint == "xs"))
+    setIsMobile(detectedBreakPoint == "xs");
 
   return (
     <div className={classes.root}>
@@ -72,7 +80,7 @@ const App: React.FC<IAppProps> = (props) => {
         <BackHistoryContext.Provider value={backHistory}>
           <GlobalStyle />
           <Loading display={loading} />
-          {!loading ?
+          {!loading ? (
             isMobile ? (
               <React.Fragment>
                 <FirstView openModal={openModal} />
@@ -87,29 +95,36 @@ const App: React.FC<IAppProps> = (props) => {
                 <Footer />
               </React.Fragment>
             ) : (
-                <Grid container>
-                  <Grid item sm={6}>
-                    <VirtualSpace
-                      openedModal={openedModal}
-                      openModal={openModal}
-                      closeModal={closeModal}
-                    />
-                  </Grid>
-                  <Grid item sm={6} style={{ margin: '0 auto', width: '100%', position: "relative" }}>
-                    <RightView openModal={openModal} />
-                  </Grid>
-                  <Grid item sm={12}>
-                    <Footer />
-                  </Grid>
+              <Grid container style={{ margin: "0 auto", maxWidth: "1700px" }}>
+                <Grid item sm={6}>
+                  <VirtualSpace
+                    openedModal={openedModal}
+                    openModal={openModal}
+                    closeModal={closeModal}
+                  />
                 </Grid>
-              ) : (
-              <React.Fragment></React.Fragment>
-            )}
+                <Grid
+                  item
+                  sm={6}
+                  style={{
+                    margin: "0 auto",
+                    width: "100%",
+                    position: "relative",
+                  }}
+                >
+                  <RightView openModal={openModal} />
+                </Grid>
+                <Grid item sm={12}>
+                  <Footer />
+                </Grid>
+              </Grid>
+            )
+          ) : (
+            <React.Fragment></React.Fragment>
+          )}
         </BackHistoryContext.Provider>
       </IsMobileContext.Provider>
     </div>
   );
 };
 export default App;
-
-

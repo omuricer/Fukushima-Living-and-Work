@@ -14,8 +14,17 @@ const useStyles = makeStyles((theme: Theme) =>
           return `solid 3px ${theme.palette.secondary.dark}`;
         return `solid 3px`;
       },
+      '&:hover' : {
+        boxShadow: 'none'
+      }
     },
-    // Override MuiButton-text
+    contained: {
+      boxShadow: 'none',
+      '&:hover' : {
+        boxShadow: 'none'
+      }
+    },
+  // Override MuiButton-text
     text: {
       padding: "6px 20px",
     },
@@ -33,7 +42,7 @@ const SquareButton: React.FC<ISquareButtonProps> = (props) => {
   };
   return (
     <Button
-      classes={{ root: classes.root, text: classes.text }}
+      classes={{ root: classes.root, text: classes.text, contained: classes.contained, }}
       {...props}
       style={props.disabled ? { borderBottom: `solid 3px #c8c8c8` } : {}} // HACK: ダサすぎる
       onClick={onClick}

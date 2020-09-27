@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import SquareButton from "@/components/form/squareButton";
 import Image from "@/components/form/image";
@@ -8,12 +8,21 @@ import ConciergeImage from "@/image/virtualSpace/concierge/m_1f_01.png";
 import PresentImage from "@/image/virtualSpace/concierge/m_1f_02.png";
 import BackButton from "@/components/form/backButton";
 import Sleep from "@/app/libs/sleep";
+import Flow1 from "@/image/virtualSpace/concierge/m_1f_maru1.png";
+import Flow2 from "@/image/virtualSpace/concierge/m_1f_maru2.png";
+import Flow3 from "@/image/virtualSpace/concierge/m_1f_maru3.png";
+import Flow4 from "@/image/virtualSpace/concierge/m_1f_maru4.png";
+import Flow5 from "@/image/virtualSpace/concierge/m_1f_maru5.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
       marginTop: "10px",
       marginBottom: "10px",
+    },
+    visual: {
+      maxWidth: '420px',
+      margin: '0 auto',
     },
     answer: {
       display: "flex",
@@ -60,7 +69,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <Image src={ConciergeImage} />
+      <Image src={ConciergeImage} className={classes.visual} />
       <Typography
         variant="h3"
         className={classes.h3}
@@ -197,19 +206,13 @@ export default Counter;
 
 const useStylesFlow = makeStyles((theme: Theme) =>
   createStyles({
-    circle: {
+    number: {
       width: "40px",
       height: "40px",
-      display: "inline-block",
-      textAlign: "center",
-      lineHeight: "40px",
-      borderRadius: "50%",
-      borderColor: "#797979",
-      borderStyle: "solid",
       marginTop: "35px",
       marginBottom: "15px",
-      fontSize: "18px",
-      color: "#797979",
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
     description: {
       whiteSpace: "pre-wrap",
@@ -231,6 +234,13 @@ const useStylesFlow = makeStyles((theme: Theme) =>
     },
   })
 );
+const NumberImages = [
+  Flow1,
+  Flow2,
+  Flow3,
+  Flow4,
+  Flow5
+]
 export interface IFlowProps {
   index: number;
   description: string;
@@ -245,7 +255,7 @@ const Flow: React.FC<IFlowProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className={classes.circle}>{props.index}</div>
+      <Image src={NumberImages[props.index - 1]} className={classes.number} />
       <Typography className={classes.description}>
         {props.description}
       </Typography>

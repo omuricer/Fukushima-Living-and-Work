@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "15px",
     },
     visual: {
-      position: "relative",
+      maxWidth: "420px",
+      margin: "0 auto",
     },
     commentRight: {
       position: "absolute",
@@ -72,12 +73,16 @@ export interface ILivingModalProps extends IModalProps {
   content: LivingContent;
 }
 const LivingModal: React.FC<ILivingModalProps> = (props) => {
-  const [preLoadedImage, setPreLoadedImage] = useState<boolean>(false);
   const classes = useStyles();
   const backHistoryContext = useContext(BackHistoryContext);
 
   const advisors = props.content.advisors.map((a, index) => (
-    <Advisor key={index} color={props.content.headerColor} colorDark={props.content.headerColorDark} {...a} />
+    <Advisor
+      key={index}
+      color={props.content.headerColor}
+      colorDark={props.content.headerColorDark}
+      {...a}
+    />
   ));
 
   return (
@@ -94,9 +99,7 @@ const LivingModal: React.FC<ILivingModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <div className={classes.visual}>
-        <Image src={props.content.visual} />
-      </div>
+      <Image src={props.content.visual} className={classes.visual} />
       <Typography className={classes.h3}>個別相談のご予約を受付中！</Typography>
       <ul className={classes.advidors}>{advisors}</ul>
       <BackButton onClick={props.closeModal} />
