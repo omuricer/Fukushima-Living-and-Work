@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       minHeight: "80vh",
       overflowY: "visible",
       top: "-10px",
-      pointerEvents: 'auto',
+      pointerEvents: "auto",
     },
     h3: {
       marginTop: "15px",
@@ -31,12 +31,12 @@ const useStyles = makeStyles((theme: Theme) =>
     programs: {
       display: "flex",
       flexFlow: "wrap",
-      marginBottom: '30px',
+      marginBottom: "30px",
     },
     buttonConcierge: {
       position: "fixed",
       bottom: "30px",
-      left: (isMobileContext: boolean) => isMobileContext ? "50%" : "75%",
+      left: (isMobileContext: boolean) => (isMobileContext ? "50%" : "75%"),
       transform: "translateX(-50%)",
       WebkitTransform: "translateX(-50%)",
       MsTransform: "translateX(-50%)",
@@ -44,15 +44,15 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "150px",
     },
     hr: {
-      width: "20vw",
+      width: "80px",
       marginBottom: "30px",
       borderWidth: "2px",
       margin: "0 auto",
     },
     guests: {
       display: "flex",
-      justifyContent: 'space-around',
-      alignItems: 'center',
+      justifyContent: "space-around",
+      alignItems: "center",
     },
   })
 );
@@ -99,7 +99,8 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
       end: "10:45",
     },
     {
-      title: "都会での仕事にモヤモヤ？？「地方ならではの仕事の流儀」お伝えします！",
+      title:
+        "都会での仕事にモヤモヤ？？「地方ならではの仕事の流儀」お伝えします！",
       subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク①",
       start: "11:00",
       end: "11:40",
@@ -166,22 +167,50 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         </Typography>
         <GuestLabel text={"地方での就職セミナー"} />
         <div className={classes.guests}>
-          <Guest image={'image'} name={"金内　正"} job={'一般社団法人キャリア支援機構 理事長'} />
+          <Guest
+            image={"image"}
+            name={"金内　正"}
+            job={"一般社団法人キャリア支援機構 理事長"}
+          />
         </div>
         <GuestLabel text={"先輩移住者トーク①"} />
         <div className={classes.guests}>
-          <Guest image={'image'} name={"斎藤　拓哉"} job={'空き家てらす\n隠れ家ゲストハウス'} />
-          <Guest image={'image'} name={"齋藤　康平"} job={'空き家てらす(株)\nなちゅらる'} />
+          <Guest
+            image={"image"}
+            name={"斎藤　拓哉"}
+            job={"空き家てらす\n隠れ家ゲストハウス"}
+          />
+          <Guest
+            image={"image"}
+            name={"齋藤　康平"}
+            job={"空き家てらす(株)\nなちゅらる"}
+          />
         </div>
         <GuestLabel text={"先輩移住者トーク②"} />
         <div className={classes.guests}>
-          <Guest image={'image'} name={"渡部　允道"} job={'ヘルベチカデザイン（株）\nまちの人事部'} />
-          <Guest image={'image'} name={"上神田　健太"} job={'家守舎桃ノ音アカリ\nFUKUSHIMA BONCHI'} />
+          <Guest
+            image={"image"}
+            name={"渡部　允道"}
+            job={"ヘルベチカデザイン（株）\nまちの人事部"}
+          />
+          <Guest
+            image={"image"}
+            name={"上神田　健太"}
+            job={"家守舎桃ノ音アカリ\nFUKUSHIMA BONCHI"}
+          />
         </div>
         <GuestLabel text={"先輩移住者トーク③"} />
         <div className={classes.guests}>
-          <Guest image={'image'} name={"大和田　智之"} job={'南相馬市役所観光交流課\n交流推進係'} />
-          <Guest image={'image'} name={"後藤　彩"} job={'南相馬へ\nサーフィンに通う'} />
+          <Guest
+            image={"image"}
+            name={"大和田　智之"}
+            job={"南相馬市役所観光交流課\n交流推進係"}
+          />
+          <Guest
+            image={"image"}
+            name={"後藤　彩"}
+            job={"南相馬へ\nサーフィンに通う"}
+          />
         </div>
         <BackButton onClick={props.closeModal} />
       </Modal>
@@ -244,14 +273,14 @@ const useStylesProgram = makeStyles((theme: Theme) =>
       justifyContent: "center",
     },
     titleText: {
-      whiteSpace: 'pre-wrap',
+      whiteSpace: "pre-wrap",
     },
     subtitleText: {
-      letterSpacing: '0',
-      fontSize: '10px',
-      marginTop: '5px',
-      marginBottom: '5px',
-      color: '#AE3345',
+      letterSpacing: "0",
+      fontSize: "10px",
+      marginTop: "5px",
+      marginBottom: "5px",
+      color: "#AE3345",
     },
   })
 );
@@ -278,7 +307,9 @@ const Program: React.FC<IProgramProps> = (props) => {
         </Typography>
       </div>
       <div className={classes.title}>
-        <Typography variant="body2" className={classes.subtitleText}>{props.subtitle}</Typography>
+        <Typography variant="body2" className={classes.subtitleText}>
+          {props.subtitle}
+        </Typography>
         <Typography className={classes.titleText}>{props.title}</Typography>
       </div>
     </li>
@@ -288,12 +319,12 @@ const Program: React.FC<IProgramProps> = (props) => {
 const useStylesGuestLabel = makeStyles((theme: Theme) =>
   createStyles({
     text: {
-      border: 'solid 2px #AE3345',
-      borderRadius: '18px',
-      padding: '7px',
-      color: '#AE3345',
+      border: "solid 2px #AE3345",
+      borderRadius: "18px",
+      padding: "7px",
+      color: "#AE3345",
       fontWeight: 600,
-      marginBottom: '10px',
+      marginBottom: "10px",
     },
   })
 );
@@ -302,29 +333,25 @@ export interface IGuestLabelProps {
 }
 const GuestLabel: React.FC<IGuestLabelProps> = (props) => {
   const classes = useStylesGuestLabel();
-  return (
-    <div className={classes.text}>
-      {props.text}
-    </div>
-  );
+  return <div className={classes.text}>{props.text}</div>;
 };
 
 const useStylesGuest = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
-      flexFlow: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginBottom: '30px',
-      width: '40%',
+      display: "flex",
+      flexFlow: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      marginBottom: "30px",
+      width: "40%",
     },
     image: {
-      marginBottom: '10px',
+      marginBottom: "10px",
     },
     name: {
       fontWeight: 600,
-      marginBottom: '10px',
+      marginBottom: "10px",
     },
     job: {
       whiteSpace: "pre-wrap",
