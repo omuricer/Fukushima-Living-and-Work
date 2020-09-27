@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme: Theme) =>
           return `solid 3px ${theme.palette.secondary.dark}`;
         return `solid 3px`;
       },
+      '&:hover' : {
+        boxShadow: 'none'
+      }
     },
     // Override MuiButton-text
     text: {
