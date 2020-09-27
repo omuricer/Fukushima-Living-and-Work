@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
     },
     boadPC: {
-      right: '10vw',
+      left: 'calc(75vw - 230px)',
       top: '8vh',
       position: 'fixed',
     },
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
       maxHeight: "570px",
     },
     boadImagePC: {
-      maxHeight: "700px",
+      width: "460px",
     },
     menu: {
       top: "23%",
@@ -93,7 +93,7 @@ interface IMenuProps {
 }
 const Menu: React.FC<IMenuProps> = (props) => {
   const isMobileContext = useContext(IsMobileContext);
-  const classes = useStyles(isMobileContext);
+  const classes = useStyles(props);
 
   const handleClickMenu = (modalKey: string) => {
     props.closeMenu();
@@ -172,8 +172,8 @@ const Menu: React.FC<IMenuProps> = (props) => {
 
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,
-    zIndex: props.isVisible ? 1300 : -1,
-    // animationDelay: `1s`, // TODO: 効いてない
+    zIndex: 1300,
+    pointerEvents: props.isVisible ? 'auto' : 'none',
   });
   const menu = (
     <animated.div style={springProps} onClick={(e) => e.stopPropagation()}>
