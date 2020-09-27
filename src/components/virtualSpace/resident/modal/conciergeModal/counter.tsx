@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import SquareButton from "@/components/form/squareButton";
 import Image from "@/components/form/image";
@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme: Theme) =>
     h3: {
       marginTop: "10px",
       marginBottom: "10px",
+    },
+    visual: {
+      maxWidth: '420px',
+      margin: '0 auto',
     },
     answer: {
       display: "flex",
@@ -65,7 +69,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
       <Typography variant="h3" className={classes.h3}>
         {props.content.title}
       </Typography>
-      <Image src={ConciergeImage} />
+      <Image src={ConciergeImage} className={classes.visual} />
       <Typography
         variant="h3"
         className={classes.h3}

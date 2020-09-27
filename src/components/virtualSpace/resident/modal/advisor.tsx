@@ -7,20 +7,21 @@ import RoundButton from "@/components/form/roundButton";
 const useStylesAdvisor = makeStyles((theme: Theme) =>
   createStyles({
     wrap: {
-      width: "100%",
+      width: "50%",
     },
     li: {
       borderStyle: "solid",
       borderRadius: "4px",
       margin: "5px",
+      padding: "10px",
     },
     h3: {
-      marginTop: "10px",
+      marginBottom: "10px",
     },
     line: {
       display: "flex",
       alignItems: "flex-end",
-      justifyContent: 'space-around',
+      justifyContent: 'center',
       marginBottom: '10px',
     },
     person: {
@@ -33,7 +34,6 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       display: "flex",
       flexFlow: "column",
       justifyContent: "center",
-      flex: 1,
     },
     inChargeLabel: {
       color: "#797979",
@@ -82,29 +82,22 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
           {props.name}
         </Typography>
         <div className={classes.line}>
-          <div className={classes.person}>
-            <div className={classes.image} />
-            <div className={classes.inCharge}>
-              <Typography className={classes.inChargeLabel} variant="body2">
-                担当
+          <div className={classes.image} />
+          <div className={classes.inCharge}>
+            <Typography className={classes.inChargeLabel} variant="body2">
+              担当
+          </Typography>
+            <Typography className={classes.name}>
+              {props.personName}
             </Typography>
-              <Typography className={classes.name}>
-                {props.personName}
-              </Typography>
-            </div>
           </div>
-          <a
-            // href={`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`}
-            href={`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={classes.button}
-          >
-            <RoundButton variant="contained" color="secondary" classes={{ root: classes.buttonRoot }}>
-              個別相談
-            </RoundButton>
-          </a>
         </div>
+        <RoundButton variant="contained" color="secondary" classes={{ root: classes.buttonRoot }}           
+          // onClick={() => window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`)}
+          onClick={() => window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`)}
+>
+            個別相談
+          </RoundButton>
       </li>
     </div>
   );
