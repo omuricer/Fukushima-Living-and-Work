@@ -90,7 +90,7 @@ const App: React.FC<IAppProps> = (props) => {
                 <Footer />
               </React.Fragment>
             ) : (
-                <Grid container>
+                <Grid container style={{ margin: '0 auto', maxWidth: '1700px' }}>
                   <Grid item sm={6}>
                     <VirtualSpace
                       openedModal={openedModal}

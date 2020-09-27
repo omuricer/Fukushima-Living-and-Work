@@ -19,14 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
     fixed: {
       position: "fixed",
       left: 'auto',
-      marginLeft: '5vw',
-      width: '40vw',
+      margin: '0 0 0 150px',
     },
     absolute: {
       position: "absolute",
       bottom: '20px',
-      left: '5vw',
-      width: '40vw',
+      left: '150px',
     },
     root: {
       width: "100%",
@@ -45,6 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundPositionY: "bottom",
       backgroundRepeat: "no-repeat",
       marginBottom: '20px',
+      width: '460px',
     },
     catch: {
       textAlign: "center",
