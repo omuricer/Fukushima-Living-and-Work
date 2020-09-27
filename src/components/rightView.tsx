@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Image from "@/components/form/image";
 import Banner1 from "@/image/1stv_bn1.png";
 import Banner2 from "@/image/1stv_bn2.png";
-import Logo from "@/image/logo.png";
+import Logo from "@/image/logo_pc.png";
 import Swiper from "react-id-swiper";
 import bn1 from "@/image/footer/footer_bn_01.jpg";
 import bn2 from "@/image/footer/footer_bn_02.jpg";
