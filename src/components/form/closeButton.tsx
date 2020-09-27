@@ -14,7 +14,7 @@ const CloseButton: React.FC<ICloseButtonProps> = (props) => {
   };
   return (
     <IconButton {...props} onClick={onClick}>
-      <Icon>close</Icon>
+      <Icon style={{ fontSize: "2rem" }}>close</Icon>
     </IconButton>
   );
 };

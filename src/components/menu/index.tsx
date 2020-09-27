@@ -79,8 +79,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     close: {
       position: "absolute",
-      top: "10px",
-      right: "10px",
+      top: "20px",
+      right: "20px",
       color: "#ffffff"
     },
   })
@@ -187,7 +187,7 @@ const Menu: React.FC<IMenuProps> = (props) => {
           className={classes.close}
           color="secondary"
         >
-          <Icon style={{ fontSize: "3rem" }}>close</Icon>
+          <Icon style={{ fontSize: "2rem" }}>close</Icon>
         </IconButton>
         <menu className={classes.menu}>{list}</menu>
       </div>
