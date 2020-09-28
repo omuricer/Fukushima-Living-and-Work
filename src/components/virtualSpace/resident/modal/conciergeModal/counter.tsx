@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: "10px",
     },
     visual: {
-      maxWidth: '420px',
-      margin: '0 auto',
+      maxWidth: "420px",
+      margin: "0 auto",
     },
     answer: {
       display: "flex",
@@ -45,14 +45,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     wrap: {
       width: "100%",
-      height: "75px",
+      height: "60px",
       position: "relative",
     },
     chat: {
-      backgroundColor: '#fde4c8',
-      padding: '10px',
-      marginBottom: '20px',
-      marginTop: '20px',
+      backgroundColor: "#fde4c8",
+      padding: "10px",
+      marginBottom: "20px",
+      marginTop: "20px",
     },
   })
 );
@@ -122,7 +122,9 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               onClick={async () => {
                 await Sleep.waitRipple();
                 // TODO: 10/1
-                window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040")
+                window.open(
+                  "https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040"
+                );
               }}
             >
               総合相談
@@ -144,7 +146,7 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               className={classes.answerButton}
               onClick={async () => {
                 await Sleep.waitRipple();
-                window.open("https://needyou.jp/signup/")
+                window.open("https://needyou.jp/signup/");
               }}
             >
               ユーザー登録
@@ -180,7 +182,9 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
       </Flow>
       <div className={classes.chat}>
         <Typography className={classes.h3}>
-          わからないことがあった場合は<br />チャットで気軽にお問い合わせください
+          わからないことがあった場合は
+          <br />
+          チャットで気軽にお問い合わせください
         </Typography>
         <div className={classes.wrap}>
           <div className={classes.registerUser}>
@@ -211,8 +215,8 @@ const useStylesFlow = makeStyles((theme: Theme) =>
       height: "40px",
       marginTop: "35px",
       marginBottom: "15px",
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
     description: {
       whiteSpace: "pre-wrap",
@@ -234,13 +238,7 @@ const useStylesFlow = makeStyles((theme: Theme) =>
     },
   })
 );
-const NumberImages = [
-  Flow1,
-  Flow2,
-  Flow3,
-  Flow4,
-  Flow5
-]
+const NumberImages = [Flow1, Flow2, Flow3, Flow4, Flow5];
 export interface IFlowProps {
   index: number;
   description: string;

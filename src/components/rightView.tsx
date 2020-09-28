@@ -7,24 +7,24 @@ import Banner1 from "@/image/1stv_bn1.png";
 import Banner2 from "@/image/1stv_bn2.png";
 import Logo from "@/image/logo_pc.png";
 import Swiper from "react-id-swiper";
+import Usabori from "@/image/usa_pc.png";
 import bn1 from "@/image/footer/footer_bn_01.jpg";
 import bn2 from "@/image/footer/footer_bn_02.jpg";
 import bn3 from "@/image/footer/footer_bn_03.jpg";
 import bn4 from "@/image/footer/footer_bn_04.jpg";
 import bn5 from "@/image/footer/footer_bn_05.jpg";
-import UsagiImage from "@/image/virtualSpace/modalTitleIcon/m_top_1.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     fixed: {
       position: "fixed",
-      left: 'auto',
-      margin: '0 0 0 150px',
+      left: "auto",
+      margin: "0",
     },
     absolute: {
       position: "absolute",
-      bottom: '20px',
-      left: '150px',
+      bottom: "20px",
+      left: "0",
     },
     root: {
       width: "100%",
@@ -42,8 +42,8 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundPositionX: "center",
       backgroundPositionY: "bottom",
       backgroundRepeat: "no-repeat",
-      marginBottom: '20px',
-      width: '460px',
+      marginBottom: "20px",
+      width: "460px",
     },
     catch: {
       textAlign: "center",
@@ -79,6 +79,9 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: "5px",
       width: "280px",
     },
+    usabori: {
+      marginTop: "30px",
+    },
   })
 );
 
@@ -100,14 +103,13 @@ const RightView: React.FC<IRightViewProps> = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       setIsFixed(getIsFixed());
     });
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       setIsFixed(getIsFixed());
     });
   }, []);
-
 
   return (
     <React.Fragment>
@@ -116,13 +118,13 @@ const RightView: React.FC<IRightViewProps> = (props) => {
         <Grid className={classes.catch}>
           <Typography className={classes.catchText}>
             福島県内の市町村や団体が大集合！！
-          <br />
-          ALLふくしまであなたの移住を応援します
-          <br />
-          あなたに合ったふくしまぐらしを
-          <br />
-          一緒に見つけましょう！
-        </Typography>
+            <br />
+            ALLふくしまであなたの移住を応援します
+            <br />
+            あなたに合ったふくしまぐらしを
+            <br />
+            一緒に見つけましょう！
+          </Typography>
         </Grid>
         <Grid className={classes.event}>
           <div className={classes.eventSwiper}>
@@ -132,14 +134,11 @@ const RightView: React.FC<IRightViewProps> = (props) => {
                 className={classes.eventBoard}
                 onClick={() => props.openModal("projection")}
               />
-              <Image
-                src={Banner2}
-                className={classes.eventBoard}
-              />
+              <Image src={Banner2} className={classes.eventBoard} />
             </Swiper>
           </div>
         </Grid>
-        <Usagi />
+        <Image src={Usabori} className={classes.usabori} />
         <Grid className={classes.bnGrid}>
           <a
             href="https://www.pref.fukushima.lg.jp/site/fui/#wide/0"
@@ -183,13 +182,13 @@ const RightView: React.FC<IRightViewProps> = (props) => {
 };
 export default RightView;
 
-
 // scroll位置取得
 const scrollTop = (): number => {
   return Math.max(
     window.pageYOffset,
     document.documentElement.scrollTop,
-    document.body.scrollTop);
+    document.body.scrollTop
+  );
 };
 
 const getIsFixed = () => {
@@ -197,52 +196,59 @@ const getIsFixed = () => {
   const scroll = scrollTop();
   const footerHeight = 150;
   const rightViewHeight = 1134;
-  return pageHeight - scroll - window.innerHeight + (window.innerHeight - rightViewHeight) - 20 > footerHeight;
-}
-
-const useStylesUsagi = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexFlow: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: '30px',
-      position: 'relative',
-    },
-    image: {
-      zIndex: 10,
-      width: '200px',
-    },
-    text: {
-      backgroundColor: '#ffffff',
-      opacity: '0.5',
-      display: 'inline-block',
-      padding: '40px',
-      borderRadius: '120px 120px 120px 120px / 70px 70px 70px 70px',
-      margin: 'auto',
-      position: 'relative',
-      top: '-20px',
-      textAlign: "center",
-    },
-  })
-);
-
-interface IUsagiProps {
-}
-const Usagi: React.FC<IUsagiProps> = (props) => {
-  const classes = useStylesUsagi();
-
   return (
-    <Grid className={classes.root}>
-      <Image src={UsagiImage} className={classes.image} />
-      <Typography className={classes.text}>
-        ホテルの各フロアのアイコンを
-          <br />
-          クリックしてみてください。
-          <br />
-          迷ったときは総合案内へどうぞ。
-        </Typography>
-    </Grid>
+    pageHeight -
+      scroll -
+      window.innerHeight +
+      (window.innerHeight - rightViewHeight) -
+      20 >
+    footerHeight
   );
 };
+
+// const useStylesUsagi = makeStyles((theme: Theme) =>
+//   createStyles({
+//     root: {
+//       display: 'flex',
+//       flexFlow: 'column',
+//       justifyContent: 'center',
+//       alignItems: 'center',
+//       marginTop: '30px',
+//       position: 'relative',
+//     },
+//     image: {
+//       zIndex: 10,
+//       width: '200px',
+//     },
+//     text: {
+//       backgroundColor: '#ffffff',
+//       opacity: '0.5',
+//       display: 'inline-block',
+//       padding: '40px',
+//       borderRadius: '120px 120px 120px 120px / 70px 70px 70px 70px',
+//       margin: 'auto',
+//       position: 'relative',
+//       top: '-20px',
+//       textAlign: "center",
+//     },
+//   })
+// );
+
+// interface IUsagiProps {
+// }
+// const Usagi: React.FC<IUsagiProps> = (props) => {
+//   const classes = useStylesUsagi();
+
+//   return (
+//     <Grid className={classes.root}>
+//       <Image src={UsagiImage} className={classes.image} />
+//       <Typography className={classes.text}>
+//         ホテルの各フロアのアイコンを
+//           <br />
+//           クリックしてみてください。
+//           <br />
+//           迷ったときは総合案内へどうぞ。
+//         </Typography>
+//     </Grid>
+//   );
+// };
