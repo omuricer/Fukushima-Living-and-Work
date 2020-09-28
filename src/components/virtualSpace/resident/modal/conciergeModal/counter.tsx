@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: "10px",
     },
     visual: {
+      width: "100%",
       maxWidth: "420px",
       margin: "0 auto",
     },
