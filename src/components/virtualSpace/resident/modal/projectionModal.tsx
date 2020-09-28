@@ -105,7 +105,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         "都会での仕事にモヤモヤ？？「地方ならではの仕事の流儀」お伝えします！",
       subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク①",
       start: "11:00",
-      end: "11:40",
+      end: "11:50",
     },
     {
       title: "市町村PR（ランチタイムトーク）",
@@ -116,14 +116,14 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
     {
       title: "サーフィンが繋いでくれた、\n地方満喫ライフとは？",
       subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク②",
-      start: "14:00",
-      end: "14:40",
+      start: "13:00",
+      end: "13:50",
     },
     {
       title: "人と人とのつながりで生まれる、\n空き家を通じた地域活性化とは？",
       subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク③",
       start: "14:00",
-      end: "14:40",
+      end: "14:50",
     },
     {
       title: "市町村PR（おやつタイムトーク）",
