@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
     },
     boadPC: {
-      left: 'calc(75vw - 230px)',
-      top: '8vh',
-      position: 'fixed',
+      left: "50vw",
+      top: "8vh",
+      position: "fixed",
     },
     boadImage: {
       height: "95vh",
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "absolute",
       top: "20px",
       right: "20px",
-      color: "#ffffff"
+      color: "#ffffff",
     },
   })
 );
@@ -169,16 +169,18 @@ const Menu: React.FC<IMenuProps> = (props) => {
   ));
   list.reverse();
 
-
   const springProps = useSpring({
     opacity: props.isVisible ? 1 : 0,
     zIndex: 1300,
-    pointerEvents: props.isVisible ? 'auto' : 'none',
+    pointerEvents: props.isVisible ? "auto" : "none",
   });
   const menu = (
     <animated.div style={springProps} onClick={(e) => e.stopPropagation()}>
       <div className={isMobileContext ? classes.boad : classes.boadPC}>
-        <Image src={menuBackgroundImage} className={isMobileContext ? classes.boadImage : classes.boadImagePC} />
+        <Image
+          src={menuBackgroundImage}
+          className={isMobileContext ? classes.boadImage : classes.boadImagePC}
+        />
         <IconButton
           onClick={async () => {
             await Sleep.waitRipple();
@@ -192,7 +194,6 @@ const Menu: React.FC<IMenuProps> = (props) => {
         <menu className={classes.menu}>{list}</menu>
       </div>
     </animated.div>
-
   );
   return isMobileContext ? (
     <Backdrop
@@ -201,6 +202,9 @@ const Menu: React.FC<IMenuProps> = (props) => {
       onClick={props.closeMenu}
     >
       {menu}
-    </Backdrop>) : menu;
+    </Backdrop>
+  ) : (
+    menu
+  );
 };
 export default Menu;

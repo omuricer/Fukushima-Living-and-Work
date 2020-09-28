@@ -40,6 +40,12 @@ const useStyles = makeStyles((theme: Theme) =>
       overflowY: "visible",
       pointerEvents: "auto",
       boxShadow: "0 0 10px grey",
+      maxWidth: (isMobileContext: boolean) =>
+        isMobileContext ? "initial" : "470px",
+    },
+    // Override MuiDialog-scrollPaper
+    scrollPaper: {
+      justifyContent: "initial",
     },
     // Override MuiDialogContent-root
     contentRoot: {
@@ -100,7 +106,11 @@ const Modal: React.FC<IModalProps> = (props) => {
           document.body.style.padding = "0px";
         }}
         classes={{
-          ...{ paper: classes.paper, root: classes.root },
+          ...{
+            root: classes.root,
+            paper: classes.paper,
+            scrollPaper: classes.scrollPaper,
+          },
           ...props.classes,
         }}
         BackdropComponent={isMobileContext ? undefined : DummyBackdrop}
