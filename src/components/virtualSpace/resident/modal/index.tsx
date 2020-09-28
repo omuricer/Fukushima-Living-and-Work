@@ -12,24 +12,25 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     // Override MuiDialog-root
     root: (isMobileContext: boolean) =>
-      isMobileContext ? {
-        position: 'fixed',
-        zIndex: 1300,
-        right: '0px',
-        bottom: '0px',
-        top: '0px',
-        left: '0px',
-      } : {
-          position: 'fixed',
-          zIndex: 1300,
-          right: '0px',
-          bottom: '0px',
-          top: '0px',
-          left: 'auto!important',
-          width: '50vw',
-          pointerEvents: 'none',
-        }
-    ,
+      isMobileContext
+        ? {
+            position: "fixed",
+            zIndex: 1300,
+            right: "0px",
+            bottom: "0px",
+            top: "0px",
+            left: "0px",
+          }
+        : {
+            position: "fixed",
+            zIndex: 1300,
+            right: "0px",
+            bottom: "0px",
+            top: "0px",
+            left: "auto!important",
+            width: "50vw",
+            pointerEvents: "none",
+          },
     // Override MuiDialog-paper
     paper: {
       width: "90%",
@@ -37,15 +38,17 @@ const useStyles = makeStyles((theme: Theme) =>
       maxHeight: "85vh",
       minHeight: "85vh",
       overflowY: "visible",
-      pointerEvents: 'auto',
+      pointerEvents: "auto",
+      boxShadow: "0 0 10px grey",
     },
     // Override MuiDialogContent-root
     contentRoot: {
-      padding: (isMobileContext: boolean) => isMobileContext ? "5px 8px 20px 8px" : "5px 40px 20px 40px",
+      padding: (isMobileContext: boolean) =>
+        isMobileContext ? "5px 8px 20px 8px" : "5px 40px 20px 40px",
       textAlign: "center",
       alignItems: "center",
       justifyContent: "stretch",
-      position: "relative"
+      position: "relative",
     },
     flow: {
       textAlign: "center",
@@ -96,7 +99,10 @@ const Modal: React.FC<IModalProps> = (props) => {
           document.body.style.overflow = "";
           document.body.style.padding = "0px";
         }}
-        classes={{ ...{ paper: classes.paper, root: classes.root }, ...props.classes }}
+        classes={{
+          ...{ paper: classes.paper, root: classes.root },
+          ...props.classes,
+        }}
         BackdropComponent={isMobileContext ? undefined : DummyBackdrop}
         disableBackdropClick={!isMobileContext} // PC版の場合Backdropは無いが、Modalの周りでonCloseが発生してしまうため必要
       >
@@ -115,8 +121,5 @@ const Modal: React.FC<IModalProps> = (props) => {
 export default Modal;
 
 const DummyBackdrop: React.FC<BackdropProps> = (props) => {
-  return (
-    <React.Fragment />
-  );
+  return <React.Fragment />;
 };
-
