@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme: Theme) =>
       overflowY: "visible",
       top: "-10px",
       pointerEvents: "auto",
+      maxWidth: (isMobileContext: boolean) =>
+        isMobileContext ? "initial" : "470px",
     },
     h3: {
       marginTop: "15px",
