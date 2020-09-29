@@ -55,7 +55,8 @@ const useStyles = makeStyles((theme: Theme) =>
     buttonConcierge: {
       position: "fixed",
       bottom: "30px",
-      left: (isMobileContext: boolean) => (isMobileContext ? "50%" : "75%"),
+      left: (isMobileContext: boolean) =>
+        isMobileContext ? "50%" : "calc(50% + 235px)",
       transform: "translateX(-50%)",
       WebkitTransform: "translateX(-50%)",
       MsTransform: "translateX(-50%)",
