@@ -74,7 +74,7 @@ const Chat: React.FC<IConciergeModalProps> = (props) => {
             variant="contained"
             color="primary"
             className={classes.answerButton}
-            onClick={() => { }} // TODO: 9/23
+            onClick={() => { }} // TODO: 10/1以降 Zoom？
             disabled
           >
             チャット相談受付中！

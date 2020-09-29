@@ -8,6 +8,15 @@ import { BackHistoryContext } from "@/context/backHistory";
 import { IsMobileContext } from "@/context/isMobile";
 import TalkLive from "@/image/virtualSpace/projection/m_7f_01.png";
 import BackButton from "@/components/form/backButton";
+import GuestImage1 from "@/image/virtualSpace/projection/guest_1.jpg";
+import GuestImage2 from "@/image/virtualSpace/projection/guest_2.jpg";
+import GuestImage3 from "@/image/virtualSpace/projection/guest_3.jpg";
+import GuestImage4 from "@/image/virtualSpace/projection/guest_4.jpg";
+import GuestImage5 from "@/image/virtualSpace/projection/guest_5.jpg";
+import GuestImage6 from "@/image/virtualSpace/projection/guest_6.jpg";
+import GuestImage7 from "@/image/virtualSpace/projection/guest_7.jpg";
+import GuestImage8 from "@/image/virtualSpace/projection/guest_8.jpg";
+import GuestImage9 from "@/image/virtualSpace/projection/guest_9.jpg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,6 +31,14 @@ const useStyles = makeStyles((theme: Theme) =>
       pointerEvents: "auto",
       maxWidth: (isMobileContext: boolean) =>
         isMobileContext ? "initial" : "470px",
+    },
+    // Override MuiDialog-contentRoot
+    contentRoot: {
+      padding: "5px 10px 20px",
+      position: "relative",
+      textAlign: "center",
+      alignItems: "center",
+      justifyContent: "stretch",
     },
     h3: {
       marginTop: "15px",
@@ -151,6 +168,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         }
         headerIcon={props.content.icon}
         classes={{ paper: classes.paper }}
+        classesContent={{ root: classes.contentRoot }}
       >
         <Typography variant="h3" className={classes.h3}>
           {props.content.title}
@@ -168,50 +186,90 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           ゲスト
         </Typography>
         <GuestLabel text={"地方での就職セミナー"} />
+        <Typography variant="h3" style={{ marginBottom: "10px" }}>
+          求人票ではわからない、地方企業の魅力
+        </Typography>
         <div className={classes.guests}>
           <Guest
-            image={"image"}
+            image={GuestImage1}
+            role={"ゲスト"}
             name={"金内　正"}
-            job={"一般社団法人キャリア支援機構 理事長"}
+            job={"一般社団法人キャリア\n支援機構 理事長"}
+          />
+          <Guest
+            image={GuestImage2}
+            role={"ファシリテーター"}
+            name={"大宮　美咲"}
+            job={"コーディネーター\nキャリアコンサルタント"}
           />
         </div>
         <GuestLabel text={"先輩移住者トーク①"} />
+        <Typography variant="h3" style={{ marginBottom: "10px" }}>
+          都会での仕事にモヤモヤ？？
+          <br />
+          「地方ならではの仕事の流儀」お伝えします！
+        </Typography>
         <div className={classes.guests}>
           <Guest
-            image={"image"}
-            name={"斎藤　拓哉"}
-            job={"空き家てらす\n隠れ家ゲストハウス"}
-          />
-          <Guest
-            image={"image"}
-            name={"齋藤　康平"}
-            job={"空き家てらす(株)\nなちゅらる"}
-          />
-        </div>
-        <GuestLabel text={"先輩移住者トーク②"} />
-        <div className={classes.guests}>
-          <Guest
-            image={"image"}
+            image={GuestImage5}
+            role={"ゲスト"}
             name={"渡部　允道"}
             job={"ヘルベチカデザイン（株）\nまちの人事部"}
           />
           <Guest
-            image={"image"}
+            image={GuestImage6}
+            role={"ゲスト"}
             name={"上神田　健太"}
             job={"家守舎桃ノ音アカリ\nFUKUSHIMA BONCHI"}
           />
         </div>
-        <GuestLabel text={"先輩移住者トーク③"} />
+        <GuestLabel text={"先輩移住者トーク②"} />
+        <Typography variant="h3" style={{ marginBottom: "10px" }}>
+          サーフィンがつないでくれた、
+          <br />
+          地方満喫ライフとは？
+        </Typography>
         <div className={classes.guests}>
           <Guest
-            image={"image"}
+            image={GuestImage7}
+            role={"ゲスト"}
             name={"大和田　智之"}
             job={"南相馬市役所観光交流課\n交流推進係"}
           />
           <Guest
-            image={"image"}
+            image={GuestImage8}
+            role={"ゲスト"}
             name={"後藤　彩"}
             job={"南相馬へ\nサーフィンに通う"}
+          />
+        </div>
+        <GuestLabel text={"先輩移住者トーク③"} />
+        <Typography variant="h3" style={{ marginBottom: "10px" }}>
+          人と人との繋がりで生まれる、
+          <br />
+          空き家を通じた地域活性化とは？
+        </Typography>
+        <div className={classes.guests}>
+          <Guest
+            image={GuestImage3}
+            role={"ゲスト"}
+            name={"斎藤　拓哉"}
+            job={"空き家てらす\n隠れ家ゲストハウス"}
+          />
+          <Guest
+            image={GuestImage4}
+            role={"ゲスト"}
+            name={"齋藤　康平"}
+            job={"空き家てらす\n(株)なちゅらる"}
+          />
+        </div>
+        <GuestLabel text={"先輩移住者トーク①～③"} />
+        <div className={classes.guests}>
+          <Guest
+            image={GuestImage9}
+            role={"ファシリテーター"}
+            name={"山根　麻衣子"}
+            job={"ライター\nいわき経済新聞編集長"}
           />
         </div>
         <BackButton onClick={props.closeModal} />
@@ -346,13 +404,16 @@ const useStylesGuest = makeStyles((theme: Theme) =>
       justifyContent: "center",
       alignItems: "center",
       marginBottom: "30px",
-      width: "40%",
+      width: "45%",
     },
     image: {
       marginBottom: "10px",
     },
+    role: {
+      marginBottom: "10px",
+    },
     name: {
-      fontWeight: 600,
+      // fontWeight: 600,
       marginBottom: "10px",
     },
     job: {
@@ -362,6 +423,7 @@ const useStylesGuest = makeStyles((theme: Theme) =>
 );
 export interface IGuestProps {
   image: string;
+  role: string;
   name: string;
   job: string;
 }
@@ -370,7 +432,10 @@ const Guest: React.FC<IGuestProps> = (props) => {
   return (
     <div className={classes.root}>
       <Image src={props.image} className={classes.image} />
-      <Typography className={classes.name}>{props.name}</Typography>
+      <Typography className={classes.role}>{props.role}</Typography>
+      <Typography className={classes.name} variant="h3">
+        {props.name}
+      </Typography>
       <Typography className={classes.job}>{props.job}</Typography>
     </div>
   );

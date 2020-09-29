@@ -112,10 +112,9 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
             root: classes.buttonRoot,
             contained: classes.buttonContained,
           }}
-          // onClick={() => window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`)}
           onClick={() =>
             window.open(
-              `https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`
+              `https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`
             )
           }
         >

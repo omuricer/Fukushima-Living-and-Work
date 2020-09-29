@@ -122,9 +122,10 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
               className={classes.answerButton}
               onClick={async () => {
                 await Sleep.waitRipple();
-                // TODO: 10/1
                 window.open(
-                  "https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040"
+                  "https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/ex/1075"
+                  // TODO: 11/2～
+                  // "https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1076"
                 );
               }}
             >

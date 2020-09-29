@@ -3,7 +3,9 @@ import { BackHistoryContext } from "@/context/backHistory";
 import { IsMobileContext } from "@/context/isMobile";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import Dialog, { DialogClassKey } from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
+import DialogContent, {
+  DialogContentClassKey,
+} from "@material-ui/core/DialogContent";
 import { BackdropProps } from "@material-ui/core/Backdrop";
 import Header from "./header";
 import { HandleAnothers } from "@/app/resident/types";
@@ -50,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) =>
     // Override MuiDialogContent-root
     contentRoot: {
       padding: (isMobileContext: boolean) =>
-        isMobileContext ? "5px 8px 20px 8px" : "5px 40px 20px 40px",
+        isMobileContext ? "5px 8px 20px 8px" : "5px 10px 20px 10px",
       textAlign: "center",
       alignItems: "center",
       justifyContent: "stretch",
@@ -81,6 +83,7 @@ export interface IModalProps {
   handleAnothers: HandleAnothers;
   headerColor: string;
   classes: Partial<Record<DialogClassKey, string>>;
+  classesContent?: Partial<Record<DialogContentClassKey, string>>;
   headerIcon: string;
 }
 /**
@@ -121,7 +124,12 @@ const Modal: React.FC<IModalProps> = (props) => {
           color={props.headerColor}
           closeModal={props.closeModal}
         />
-        <DialogContent classes={{ root: classes.contentRoot }}>
+        <DialogContent
+          classes={{
+            ...{ root: classes.contentRoot },
+            ...(props.classesContent ? props.classesContent : {}),
+          }}
+        >
           {props.children}
         </DialogContent>
       </Dialog>

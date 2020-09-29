@@ -59,8 +59,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
         color="secondary"
         onClick={async () => {
           await Sleep.waitRipple();
-          // TODO: 10/1
-          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`);
+          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1100`);
         }}
         className={classes.selectButton}
       >
@@ -71,8 +70,7 @@ const SelectWorkStyle: React.FC<IConciergeModalProps> = (props) => {
         color="secondary"
         onClick={async () => {
           await Sleep.waitRipple();
-          // TODO: 10/1
-          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1040`);
+          window.open(`https://needyou.jp/g/fukushima-kurashi-shigoto/ex/1094`);
         }}
         className={classes.selectButton}
       >
