@@ -82,9 +82,7 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
           onClick={() => changeModal("livingSea")}
         />
       </ul>
-      <Typography className={classes.text}>
-        市町村一覧から探す
-      </Typography>
+      <Typography className={classes.text}>市町村一覧から探す</Typography>
       <div className={classes.wrap}>
         <div className={classes.registerUser}>
           <SquareButton
@@ -93,11 +91,15 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
             className={classes.answerButton}
             onClick={async () => {
               await Sleep.waitRipple();
-              window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/")
+              window.open(
+                "https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/"
+              );
+              // TODO: 11/2～
+              // window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/  ")
             }}
           >
             市町村一覧
-            </SquareButton>
+          </SquareButton>
         </div>
       </div>
       <BackButton onClick={props.closeModal} />

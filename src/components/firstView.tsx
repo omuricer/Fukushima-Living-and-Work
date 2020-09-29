@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: "contain",
       backgroundPosition: "bottom",
       backgroundRepeat: "no-repeat",
-      // TODO: Heroコンポーネントと重複。マージするようにしたい
       width: "100%",
       display: "flex",
       flexDirection: "column",
@@ -89,12 +88,14 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
           <Image
             src={Banner1}
             className={classes.eventBoard}
-            onClick={() => props.openModal("projection")}
+            onClick={() =>
+              window.open("https://questant.jp/q/fukushima_yoyaku")
+            }
           />
           <Image
             src={Banner2}
             className={classes.eventBoard}
-          // onClick={() => props.openModal("projection")}
+            // onClick={() => props.openModal("projection")}
           />
         </Swiper>
       </Grid>
