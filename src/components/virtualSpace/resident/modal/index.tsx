@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     // Override MuiDialog-scrollPaper
     scrollPaper: {
-      justifyContent: "initial",
+      justifyContent: (isMobileContext: boolean) =>
+        isMobileContext ? "center" : "initial",
     },
     // Override MuiDialogContent-root
     contentRoot: {
