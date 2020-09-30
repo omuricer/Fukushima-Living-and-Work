@@ -13,7 +13,7 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       borderStyle: "solid",
       borderRadius: "4px",
       margin: "5px",
-      padding: "10px",
+      padding: "10px 0",
     },
     h3: {
       marginBottom: "10px",
