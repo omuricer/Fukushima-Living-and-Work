@@ -114,7 +114,7 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
           }}
           onClick={() =>
             window.open(
-              `https://needyou.jp/g/fukushima-kurashi-shigoto/ex/${props.id}`
+              `https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/ex/${props.id}`
             )
           }
         >
