@@ -7,13 +7,17 @@ import RoundButton from "@/components/form/roundButton";
 const useStylesAdvisor = makeStyles((theme: Theme) =>
   createStyles({
     wrap: {
-      width: "50%",
+      width: "calc(50% - 10px)",
+      margin: "5px",
     },
     li: {
       borderStyle: "solid",
       borderRadius: "4px",
-      margin: "5px",
       padding: "10px 0",
+      height: "100%",
+      display: "flex",
+      flexFlow: "column",
+      justifyContent: "space-between",
     },
     h3: {
       marginBottom: "10px",
@@ -106,20 +110,22 @@ const Advisor: React.FC<IAdvisorProps> = (props) => {
             <Typography className={classes.name}>{props.personName}</Typography>
           </div>
         </div>
-        <RoundButton
-          variant="contained"
-          classes={{
-            root: classes.buttonRoot,
-            contained: classes.buttonContained,
-          }}
-          onClick={() =>
-            window.open(
-              `https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/ex/${props.id}`
-            )
-          }
-        >
-          個別相談
-        </RoundButton>
+        <div>
+          <RoundButton
+            variant="contained"
+            classes={{
+              root: classes.buttonRoot,
+              contained: classes.buttonContained,
+            }}
+            onClick={() =>
+              window.open(
+                `https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/ex/${props.id}`
+              )
+            }
+          >
+            個別相談
+          </RoundButton>
+        </div>
       </li>
     </div>
   );

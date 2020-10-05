@@ -46,6 +46,12 @@ const LivingRegidents: Resident<LivingContent>[] = [
             personName: "企画課職員",
             personImage: "17-15.jpg",
           },
+          {
+            id: "1103",
+            name: "IWAKIふるさと誘致センター",
+            personName: "鈴木美由紀",
+            personImage: "35-15.jpg",
+          },
         ],
       },
     },
