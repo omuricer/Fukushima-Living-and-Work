@@ -458,6 +458,12 @@ const Working: Resident<WorkingContent>[] = [
             personName: "石井聡子",
             personImage: "33-15.jpg",
           },
+          {
+            id: "1103",
+            name: "IWAKIふるさと誘致センター",
+            personName: "鈴木美由紀",
+            personImage: "35-15.jpg",
+          },
         ],
       },
     },
