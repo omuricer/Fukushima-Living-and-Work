@@ -74,6 +74,9 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "space-around",
       alignItems: "center",
     },
+    buttonReserve: {
+      margin: "10px auto",
+    },
   })
 );
 
@@ -179,6 +182,14 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           トークライブや自治体関連動画をチェック
         </Typography>
         <Image src={TalkLive} className={classes.image} />
+        <RoundButton
+          onClick={() => window.open("https://questant.jp/q/fukushima_yoyaku")}
+          variant="contained"
+          color="primary"
+          className={classes.buttonReserve}
+        >
+          オンライン参加に予約する
+        </RoundButton>
         <Typography variant="h3" className={classes.h3}>
           プログラム
         </Typography>
@@ -195,7 +206,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
             image={GuestImage1}
             role={"ゲスト"}
             name={"金内　正"}
-            job={"一般社団法人キャリア\n支援機構 理事長"}
+            job={"一般社団法人\nキャリア支援機構"}
           />
           <Guest
             image={GuestImage2}
@@ -215,13 +226,13 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
             image={GuestImage5}
             role={"ゲスト"}
             name={"渡部　允道"}
-            job={"ヘルベチカデザイン（株）\nまちの人事部"}
+            job={"NPO法人こおりやま\n地域人財支援センター"}
           />
           <Guest
             image={GuestImage6}
             role={"ゲスト"}
             name={"上神田　健太"}
-            job={"家守舎桃ノ音アカリ\nFUKUSHIMA BONCHI"}
+            job={"株式会社\n家守舎桃ノ音アカリ"}
           />
         </div>
         <GuestLabel text={"先輩移住者トーク②"} />
@@ -241,7 +252,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
             image={GuestImage8}
             role={"ゲスト"}
             name={"後藤　彩"}
-            job={"南相馬へ\nサーフィンに通う"}
+            job={"製薬会社勤務\n毎週末南相馬へ通うサーフィン初心者"}
           />
         </div>
         <GuestLabel text={"先輩移住者トーク③"} />
@@ -255,13 +266,13 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
             image={GuestImage3}
             role={"ゲスト"}
             name={"斎藤　拓哉"}
-            job={"空き家てらす\n隠れ家ゲストハウス"}
+            job={"隠れ家ゲストハウス\n空き家てらす"}
           />
           <Guest
             image={GuestImage4}
             role={"ゲスト"}
             name={"齋藤　康平"}
-            job={"空き家てらす\n(株)なちゅらる"}
+            job={"wowroom\n空き家てらす"}
           />
         </div>
         <GuestLabel text={"先輩移住者トーク①～③"} />
