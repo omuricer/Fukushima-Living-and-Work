@@ -24,7 +24,7 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
     },
     line: {
       display: "flex",
-      alignItems: "flex-end",
+      alignItems: "center",
       justifyContent: "center",
       marginBottom: "10px",
     },
@@ -39,6 +39,7 @@ const useStylesAdvisor = makeStyles((theme: Theme) =>
       display: "flex",
       flexFlow: "column",
       justifyContent: "center",
+      flex: "1",
     },
     inChargeLabel: {
       color: "#797979",
