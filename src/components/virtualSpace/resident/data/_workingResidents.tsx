@@ -99,7 +99,7 @@ const Working: Resident<WorkingContent>[] = [
           {
             id: "1055",
             name: "会津若松市",
-            personName: "鈴木",
+            personName: "鈴木（左）、渡部（右）",
             personImage: "18-15.jpg",
           },
           {
@@ -226,7 +226,7 @@ const Working: Resident<WorkingContent>[] = [
           {
             id: "1055",
             name: "会津若松市",
-            personName: "鈴木",
+            personName: "鈴木（左）、渡部（右）",
             personImage: "18-15.jpg",
           },
           {
@@ -383,7 +383,7 @@ const Working: Resident<WorkingContent>[] = [
           {
             id: "1055",
             name: "会津若松市",
-            personName: "鈴木",
+            personName: "鈴木（左）、渡部（右）",
             personImage: "18-15.jpg",
           },
           {
@@ -498,7 +498,7 @@ const Working: Resident<WorkingContent>[] = [
           {
             id: "1055",
             name: "会津若松市",
-            personName: "鈴木",
+            personName: "鈴木（左）、渡部（右）",
             personImage: "18-15.jpg",
           },
           {
