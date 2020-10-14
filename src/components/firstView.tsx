@@ -88,14 +88,16 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
           <Image
             src={Banner1}
             className={classes.eventBoard}
-            onClick={() =>
-              window.open("https://questant.jp/q/fukushima_yoyaku")
-            }
+            onClick={() => props.openModal("projection")}
           />
           <Image
             src={Banner2}
             className={classes.eventBoard}
-            // onClick={() => props.openModal("projection")}
+            onClick={() =>
+              window.open(
+                "https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/"
+              )
+            }
           />
         </Swiper>
       </Grid>
