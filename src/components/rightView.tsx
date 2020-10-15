@@ -132,11 +132,17 @@ const RightView: React.FC<IRightViewProps> = (props) => {
               <Image
                 src={Banner1}
                 className={classes.eventBoard}
+                onClick={() => props.openModal("projection")}
+              />
+              <Image
+                src={Banner2}
+                className={classes.eventBoard}
                 onClick={() =>
-                  window.open("https://questant.jp/q/fukushima_yoyaku")
+                  window.open(
+                    "https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/"
+                  )
                 }
               />
-              <Image src={Banner2} className={classes.eventBoard} />
             </Swiper>
           </div>
         </Grid>
