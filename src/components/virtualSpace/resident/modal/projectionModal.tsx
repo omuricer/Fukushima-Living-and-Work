@@ -201,7 +201,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <Typography variant="h3" style={{ marginBottom: "10px" }}>
           求人票ではわからない、地方企業の魅力
         </Typography>
-        <Typography style={{ marginBottom: "10px" }}>
+        <Typography style={{ marginBottom: "20px" }}>
           県内企業に自ら赴き、直接経営者や社員からお話しを伺っている金内さんだからこそ知る地方企業の魅力を伺います！
         </Typography>
         <div className={classes.guests}>
@@ -224,7 +224,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           <br />
           「地方ならではの仕事の流儀」お伝えします！
         </Typography>
-        <Typography style={{ marginBottom: "10px" }}>
+        <Typography style={{ marginBottom: "20px" }}>
           本業と副業という区切りではない、複数の仕事をこなすゲストのお２人から、仕事と暮らしがつながる「地方ならではの仕事の流儀」や新しい働き方についてお話しを伺います。
         </Typography>
         <div className={classes.guests}>
@@ -247,7 +247,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           <br />
           地方満喫ライフとは？
         </Typography>
-        <Typography style={{ marginBottom: "10px" }}>
+        <Typography style={{ marginBottom: "20px" }}>
           自称「つながりメーカー」大和田さんが繋いだ、サーフィン女子後藤さんと南相馬市の海。地方で実現したいリア充な暮らしを伺います。
         </Typography>
         <div className={classes.guests}>
@@ -270,7 +270,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           <br />
           空き家を通じた地域活性化とは？
         </Typography>
-        <Typography style={{ marginBottom: "10px" }}>
+        <Typography style={{ marginBottom: "20px" }}>
           人と人が出会える場所として「ゲストハウス」を運営する拓哉さんと、拓哉さんの師匠である「おせっかいな建設屋」である康平さんが生み出す、人を繋げる空き家再生について伺います。
         </Typography>
         <div className={classes.guests}>
@@ -288,7 +288,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           />
         </div>
         <GuestLabel text={"先輩移住者トーク①～③"} />
-        <Typography style={{ marginBottom: "10px" }}>
+        <Typography style={{ marginBottom: "20px" }}>
           ライターであり、ご自身も移住者である立場から、それぞれの先輩移住者や地域で暮らす方々のリアルなお話しを聞き出します！
         </Typography>
         <div className={classes.guests}>
