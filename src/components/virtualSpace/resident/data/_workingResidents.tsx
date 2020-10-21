@@ -151,12 +151,11 @@ const Working: Resident<WorkingContent>[] = [
             personImage: "33-15.jpg",
           },
           {
-            id: "", // TODO:
+            id: "1111",
             name: "北塩原村",
             personName: "佐藤雅英",
             personImage: "36-15.jpg",
           },
-
         ],
       },
     },
@@ -303,12 +302,11 @@ const Working: Resident<WorkingContent>[] = [
             personImage: "33-15.jpg",
           },
           {
-            id: "", // TODO:
+            id: "1111",
             name: "北塩原村",
             personName: "佐藤雅英",
             personImage: "36-15.jpg",
           },
-
         ],
       },
     },
@@ -479,12 +477,11 @@ const Working: Resident<WorkingContent>[] = [
             personImage: "35-15.jpg",
           },
           {
-            id: "", // TODO:
+            id: "1111",
             name: "北塩原村",
             personName: "佐藤雅英",
             personImage: "36-15.jpg",
           },
-
         ],
       },
     },
@@ -547,12 +544,11 @@ const Working: Resident<WorkingContent>[] = [
             personImage: "27-15.jpg",
           },
           {
-            id: "", // TODO:
+            id: "1111",
             name: "北塩原村",
             personName: "佐藤雅英",
             personImage: "36-15.jpg",
           },
-
         ],
       },
     },
