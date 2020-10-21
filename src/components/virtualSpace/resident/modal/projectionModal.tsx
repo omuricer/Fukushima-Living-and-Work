@@ -232,7 +232,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
             image={GuestImage5}
             role={"ゲスト"}
             name={"渡部　允道"}
-            job={"NPO法人こおりやま\n地域人財支援センター"}
+            job={"一般社団法人\nブルーバード"}
           />
           <Guest
             image={GuestImage6}

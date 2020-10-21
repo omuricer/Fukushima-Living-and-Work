@@ -187,6 +187,12 @@ const LivingRegidents: Resident<LivingContent>[] = [
             personName: "石井聡子",
             personImage: "33-15.jpg",
           },
+          {
+            id: "", // TODO:
+            name: "北塩原村",
+            personName: "佐藤雅英",
+            personImage: "36-15.jpg",
+          },
         ],
       },
     },
