@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { useWindowDimensions } from "@/hooks/windowDimensions";
 import RoundButton from "@/components/form/roundButton";
 import Modal, { IModalProps } from "./index";
 import Typography from "@material-ui/core/Typography";
@@ -101,6 +102,7 @@ export interface IProjectionModalProps extends IModalProps {
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
   const backHistoryContext = useContext(BackHistoryContext);
   const isMobileContext = useContext(IsMobileContext);
+  const { width, height } = useWindowDimensions();
   const classes = useStyles(isMobileContext);
 
   const changeModal = (key: string) => {
@@ -160,6 +162,8 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
     },
   ].map((p, i) => <Program {...p} key={i} />);
 
+  const LiveWidth = isMobileContext ? Math.round(width * 0.85) : 420;
+
   return (
     <React.Fragment>
       <Modal
@@ -181,7 +185,16 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <Typography className={classes.h3}>
           トークライブや自治体関連動画をチェック
         </Typography>
-        <Image src={TalkLive} className={classes.image} />
+        <iframe
+          src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fvideos%2F422647588725249%2F&width=${LiveWidth}`}
+          width={LiveWidth}
+          height="360"
+          style={{ border: "none", overflow: "hidden" }}
+          scrolling="no"
+          frameBorder="0"
+          // allowTransparency={true}
+          allowFullScreen={true}
+        />
         <RoundButton
           onClick={() => window.open("https://questant.jp/q/fukushima_yoyaku")}
           variant="contained"
