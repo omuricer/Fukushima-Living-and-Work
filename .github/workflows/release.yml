@@ -22,7 +22,7 @@ jobs:
       - run: sh deploy.sh
 
       - name: SCP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.0.0
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
           ftp-server: sftp://padopado.sakura.ne.jp:22/
           ftp-username: padopado
