@@ -1,0 +1,31 @@
+name: Deploy Production Server
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: sh deploy.sh
+
+      - name: SCP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ftp://padopado.sakura.ne.jp/
+          ftp-username: padopado
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          git-ftp-args: --remote-root test
+          local-dir: docs
