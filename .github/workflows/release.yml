@@ -29,4 +29,4 @@ jobs:
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           known-hosts: padopado.sakura.ne.jp ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEkboqp7Nrqclgk98qMOARevJEDKCzjFVb0s8uIQzMUelmo3S3+SeviBBCMeWS6HRS85F7IqXHWQTmytog+AlH8aVTP8KPqfQt61WZIx/n1fIWzuEr4VZKwxghGvjINbiW5XmDbunKEj0HbWqAzb9j1lPrr6TwMdLTfN4J6KUbeBEBPzxc8Ohg5P/SQiq+1+JGpD3GjeNaIDTDjWTbRROpVtoMJWzerCanDi8Kdwo+l020en23hjiQV4tLzA/atulL5FTSOeUqvyVJ3cj1HcLOdcIGh9wKj8xsHMmx1zwEIg6vTmSnbFF98Um68b1Ajt1uH+piRs736kMFU4eoxOkf
           local-dir: docs
-          # git-ftp-args: --remote-root=test
+          git-ftp-args: --insecure
