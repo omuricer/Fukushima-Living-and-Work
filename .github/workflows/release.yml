@@ -24,8 +24,7 @@ jobs:
       - name: SCP Deploy
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          ftp-server: ftp://padopado.sakura.ne.jp/
+          ftp-server: ftp://padopado.sakura.ne.jp/test
           ftp-username: padopado
           ftp-password: ${{ secrets.FTP_PASSWORD }}
-          git-ftp-args: --remote-root test
           local-dir: docs
