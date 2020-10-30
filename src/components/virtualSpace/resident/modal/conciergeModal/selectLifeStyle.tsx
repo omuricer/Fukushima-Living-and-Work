@@ -91,11 +91,7 @@ const SelectLifeStyle: React.FC<IConciergeModalProps> = (props) => {
             className={classes.answerButton}
             onClick={async () => {
               await Sleep.waitRipple();
-              window.open(
-                "https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/"
-              );
-              // TODO: 11/2～
-              // window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/  ")
+              window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/");
             }}
           >
             市町村一覧

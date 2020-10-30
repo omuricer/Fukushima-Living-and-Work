@@ -8,9 +8,7 @@ const linkIcon = [
       positionY: 38,
       positionX: 20,
       onclick: () => {
-        window.open("https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/");
-        // TODO: 11/2～
-        // window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/  ")
+        window.open("https://needyou.jp/g/fukushima-kurashi-shigoto/");
       },
     },
   },
