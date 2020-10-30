@@ -187,7 +187,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           トークライブや自治体関連動画をチェック
         </Typography>
         <iframe
-          src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fvideos%2F422647588725249%2F&width=${LiveWidth}`}
+          src={`https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fposts%2F2710257215855108&width=${LiveWidth}`}
           width={LiveWidth}
           height={LiveHeight}
           style={{ border: "none", overflow: "hidden" }}
