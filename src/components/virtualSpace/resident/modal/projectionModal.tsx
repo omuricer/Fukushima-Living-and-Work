@@ -163,6 +163,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
   ].map((p, i) => <Program {...p} key={i} />);
 
   const LiveWidth = isMobileContext ? Math.round(width * 0.85) : 420;
+  const LiveHeight = isMobileContext ? Math.round(LiveWidth * 0.8) : 360;
 
   return (
     <React.Fragment>
@@ -188,7 +189,7 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <iframe
           src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fvideos%2F422647588725249%2F&width=${LiveWidth}`}
           width={LiveWidth}
-          height="360"
+          height={LiveHeight}
           style={{ border: "none", overflow: "hidden" }}
           scrolling="no"
           frameBorder="0"
