@@ -4,23 +4,23 @@ import SquareButton from "@/components/form/squareButton";
 import Typography from "@material-ui/core/Typography";
 import { IConciergeModalProps } from "./index";
 import BackButton from "@/components/form/backButton";
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     h3: {
       margin: "20px",
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
     text: {
       margin: "20px",
-      lineHeight: '1.6rem',
+      lineHeight: "1.6rem",
     },
     icon: {
       color: "#E9A75B",
-      marginRight: '5px',
+      marginRight: "5px",
     },
     answerButton: {
       width: "100%",
@@ -41,8 +41,8 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
     },
     back: {
-      position: 'absolute',
-      bottom: '20px',
+      position: "absolute",
+      bottom: "20px",
     },
   })
 );
@@ -58,15 +58,17 @@ const Chat: React.FC<IConciergeModalProps> = (props) => {
     <React.Fragment>
       <div className={classes.h3}>
         <ChatBubbleIcon className={classes.icon} />
-        <Typography variant="h3">
-          {props.content.title}
-        </Typography>
+        <Typography variant="h3">{props.content.title}</Typography>
       </div>
       <Typography className={classes.text}>
-        移住に関する質問を気軽に<br />ご相談ください
+        移住に関する質問を気軽に
+        <br />
+        ご相談ください
       </Typography>
       <Typography className={classes.text}>
-        【受付日時】<br />11/1　10:00～17:00
+        【受付日時】
+        <br />
+        11/1　10:00～17:00
       </Typography>
       <div className={classes.wrap}>
         <div className={classes.registerUser}>
@@ -74,18 +76,16 @@ const Chat: React.FC<IConciergeModalProps> = (props) => {
             variant="contained"
             color="primary"
             className={classes.answerButton}
-            onClick={() => { }} // TODO: 10/1以降 Zoom？
-            disabled
+            onClick={() => {
+              window.open("https://page.line.me/egj5830s");
+            }}
           >
             チャット相談受付中！
           </SquareButton>
         </div>
       </div>
-      <Typography>
-        ※現在受付時間外です
-      </Typography>
       <BackButton onClick={props.closeModal} className={classes.back} />
-    </React.Fragment >
+    </React.Fragment>
   );
 };
 export default Chat;
