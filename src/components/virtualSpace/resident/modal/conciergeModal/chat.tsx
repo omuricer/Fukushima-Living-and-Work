@@ -79,11 +79,13 @@ const Chat: React.FC<IConciergeModalProps> = (props) => {
             onClick={() => {
               window.open("https://page.line.me/egj5830s");
             }}
+            disabled
           >
             チャット相談受付中！
           </SquareButton>
         </div>
       </div>
+      <Typography>※現在受付時間外です</Typography>
       <BackButton onClick={props.closeModal} className={classes.back} />
     </React.Fragment>
   );
