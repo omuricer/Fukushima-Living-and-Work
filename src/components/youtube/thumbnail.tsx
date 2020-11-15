@@ -5,14 +5,15 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "45%",
-      margin: "10px",
+      width: "50%",
+      padding: "10px",
+      display: "flex",
+      flexFlow: "column",
     },
     image: {
       width: "100%",
     },
-    titile: {
-      width: "45%",
+    title: {
       marginTop: "10px",
     },
   })
@@ -30,7 +31,9 @@ const Thumbnail: React.FC<IThumbnailProps> = (props) => {
     <div onClick={props.onClick} className={classes.root}>
       <img src={props.url} className={classes.image} />
       {props.title && (
-        <Typography className={classes.title}>{props.title}</Typography>
+        <Typography variant="body2" className={classes.title}>
+          {props.title}
+        </Typography>
       )}
     </div>
   );

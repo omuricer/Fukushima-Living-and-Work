@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     thumbnails: {
       display: "flex",
-      alignItems: "center",
-      justifyContent: "space-around",
+      alignItems: "stretch",
+      justifyContent: "space-between",
       flexFlow: "wrap",
     },
   })
@@ -28,6 +28,7 @@ const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
         onClick={() => {
           props.setPlayVideoId(v.videoId);
         }}
+        title={v.videoTitle}
       />
     );
   });
