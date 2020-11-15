@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useWindowDimensions } from "@/hooks/windowDimensions";
 import RoundButton from "@/components/form/roundButton";
@@ -18,6 +18,8 @@ import GuestImage6 from "@/image/virtualSpace/projection/guest_6.jpg";
 import GuestImage7 from "@/image/virtualSpace/projection/guest_7.jpg";
 import GuestImage8 from "@/image/virtualSpace/projection/guest_8.jpg";
 import GuestImage9 from "@/image/virtualSpace/projection/guest_9.jpg";
+import PlayView from "@/components/youtube/playView";
+import Thumbnails from "@/components/youtube/thumbnails";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -100,6 +102,7 @@ export interface IProjectionModalProps extends IModalProps {
   content: ProjectionContent;
 }
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
+  const [videoId, setVideoId] = useState<string | undefined>('F5GSa8mc4i8');
   const backHistoryContext = useContext(BackHistoryContext);
   const isMobileContext = useContext(IsMobileContext);
   const { width, height } = useWindowDimensions();
@@ -186,26 +189,13 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <Typography className={classes.h3}>
           トークライブや自治体関連動画をチェック
         </Typography>
-        <iframe
-          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fvideos%2F661483484490131%2F&show_text=0&width=560"
-          width={LiveWidth}
-          height={LiveHeight}
-          style={{ border: "none", overflow: "hidden" }}
-          scrolling="no"
-          frameBorder="0"
-          // allowTransparency="true"
-          allowFullScreen={true}
+        <PlayView
+          videoId={videoId}
+          opts={{
+            height: `${LiveHeight}px`,
+            width: `${LiveWidth}px`,
+          }}
         />
-        {/* <iframe
-          src={`https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fposts%2F2710257215855108&width=${LiveWidth}`}
-          width={LiveWidth}
-          height={LiveHeight}
-          style={{ border: "none", overflow: "hidden" }}
-          scrolling="no"
-          frameBorder="0"
-          // allowTransparency={true}
-          allowFullScreen={true}
-        /> */}
         <RoundButton
           onClick={() => window.open("https://questant.jp/q/fukushima_yoyaku")}
           variant="contained"
@@ -214,6 +204,38 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         >
           オンライン参加に予約する
         </RoundButton>
+        <Thumbnails
+          videos={[
+            {
+              videoId: "F5GSa8mc4i8",
+              thumbnail: {
+                url: "http://img.youtube.com/vi/F5GSa8mc4i8/mq1.jpg",
+                width: 320,
+                height: 180,
+              },
+              videoTitle: "求人票ではわからない、地方企業の魅力",
+            },
+            {
+              videoId: "g9nYRGkNn0g",
+              thumbnail: {
+                url: "http://img.youtube.com/vi/g9nYRGkNn0g/mq1.jpg",
+                width: 320,
+                height: 180,
+              },
+              videoTitle: "ゆるゆるランチタイムトーク",
+            },
+            {
+              videoId: "meauXficQlw",
+              thumbnail: {
+                url: "http://img.youtube.com/vi/meauXficQlw/mq1.jpg",
+                width: 320,
+                height: 180,
+              },
+              videoTitle: "ゆるゆるおやつタイムトーク",
+            },
+          ]}
+          setPlayVideoId={setVideoId}
+        />
         <Typography variant="h3" className={classes.h3}>
           プログラム
         </Typography>

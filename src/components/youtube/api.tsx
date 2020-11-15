@@ -40,6 +40,7 @@ class YouTubeApi {
 export type TSearchResponse = {
   videoId: string;
   thumbnail: TThumbnail;
+  videoTitle?: string;
 }[];
 
 type SearchRequest = {
