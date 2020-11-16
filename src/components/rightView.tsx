@@ -128,21 +128,16 @@ const RightView: React.FC<IRightViewProps> = (props) => {
         </Grid>
         <Grid className={classes.event}>
           <div className={classes.eventSwiper}>
-            <Swiper {...swiperParams}>
-              <Image
-                src={Banner1}
-                className={classes.eventBoard}
-                onClick={() => props.openModal("projection")}
-              />
-              <Image
-                src={Banner2}
-                className={classes.eventBoard}
-                onClick={() =>
-                  window.open(
-                    "https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/"
-                  )
-                }
-              />
+          <Swiper {...swiperParams}>
+            <Image
+              src={Banner2}
+              className={classes.eventBoard}
+              onClick={() =>
+                window.open(
+                  "https://needyou.jp/g/fukushima-kurashi-shigoto-talklive/"
+                )
+              }
+            />
             </Swiper>
           </div>
         </Grid>

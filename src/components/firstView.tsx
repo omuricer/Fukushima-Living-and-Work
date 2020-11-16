@@ -86,11 +86,6 @@ const FirstView: React.FC<IFirstViewProps> = (props) => {
       <Grid className={classes.event}>
         <Swiper {...swiperParams}>
           <Image
-            src={Banner1}
-            className={classes.eventBoard}
-            onClick={() => props.openModal("projection")}
-          />
-          <Image
             src={Banner2}
             className={classes.eventBoard}
             onClick={() =>

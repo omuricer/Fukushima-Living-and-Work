@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useWindowDimensions } from "@/hooks/windowDimensions";
 import RoundButton from "@/components/form/roundButton";
@@ -18,6 +18,8 @@ import GuestImage6 from "@/image/virtualSpace/projection/guest_6.jpg";
 import GuestImage7 from "@/image/virtualSpace/projection/guest_7.jpg";
 import GuestImage8 from "@/image/virtualSpace/projection/guest_8.jpg";
 import GuestImage9 from "@/image/virtualSpace/projection/guest_9.jpg";
+import PlayView from "@/components/youtube/playView";
+import Thumbnails from "@/components/youtube/thumbnails";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -100,6 +102,7 @@ export interface IProjectionModalProps extends IModalProps {
   content: ProjectionContent;
 }
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
+  const [videoId, setVideoId] = useState<string | undefined>("F5GSa8mc4i8");
   const backHistoryContext = useContext(BackHistoryContext);
   const isMobileContext = useContext(IsMobileContext);
   const { width, height } = useWindowDimensions();
@@ -112,53 +115,30 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
 
   const programs = [
     {
-      title: "オープニング",
-      subtitle: "",
-      start: "10:00",
-      end: "",
-    },
-    {
-      title: "求人票ではわからない、地方企業の魅力",
-      subtitle: "地方での就職セミナー",
-      start: "10:10",
-      end: "10:45",
+      title: "テレワーク×○○～地域とつながることで広がる可能性～",
+      subtitle: "11月11日（水）",
+      start: "19:00",
+      end: "20:40",
     },
     {
       title:
-        "都会での仕事にモヤモヤ？？「地方ならではの仕事の流儀」お伝えします！",
-      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク①",
-      start: "11:00",
-      end: "11:50",
+        "FPが教える！地方移住するなら知っておきたいお金事情～ふくしまぐらし。の実践者から学ぶ～",
+      subtitle: "11月17日（火）",
+      start: "19:00",
+      end: "20:30",
     },
     {
-      title: "市町村PR（ランチタイムトーク）",
-      subtitle: "",
-      start: "12:00",
-      end: "12:40",
+      title: "転職者に聞く！都市部とは違う！？地方で働くということ",
+      subtitle: "11月25日（水）",
+      start: "19:15",
+      end: "20:45",
     },
     {
-      title: "サーフィンが繋いでくれた、\n地方満喫ライフとは？",
-      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク②",
-      start: "13:00",
-      end: "13:50",
-    },
-    {
-      title: "人と人とのつながりで生まれる、\n空き家を通じた地域活性化とは？",
-      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク③",
-      start: "14:00",
-      end: "14:50",
-    },
-    {
-      title: "市町村PR（おやつタイムトーク）",
-      subtitle: "",
-      start: "15:00",
-      end: "15:40",
-    },
-    {
-      title: "終了",
-      subtitle: "",
-      start: "",
-      end: "17:00",
+      title:
+        "子育ての悩み、福島の移住コーディネーター視点で解決！～先輩ママパパの本音もお伝えします～",
+      subtitle: "11月29日（日）",
+      start: "10:00",
+      end: "11:30",
     },
   ].map((p, i) => <Program {...p} key={i} />);
 
@@ -186,143 +166,92 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <Typography className={classes.h3}>
           トークライブや自治体関連動画をチェック
         </Typography>
-        <iframe
-          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fvideos%2F661483484490131%2F&show_text=0&width=560"
-          width={LiveWidth}
-          height={LiveHeight}
-          style={{ border: "none", overflow: "hidden" }}
-          scrolling="no"
-          frameBorder="0"
-          // allowTransparency="true"
-          allowFullScreen={true}
+        <PlayView
+          videoId={videoId}
+          opts={{
+            height: `${LiveHeight}px`,
+            width: `${LiveWidth}px`,
+          }}
         />
-        {/* <iframe
-          src={`https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffukushima.furusato%2Fposts%2F2710257215855108&width=${LiveWidth}`}
-          width={LiveWidth}
-          height={LiveHeight}
-          style={{ border: "none", overflow: "hidden" }}
-          scrolling="no"
-          frameBorder="0"
-          // allowTransparency={true}
-          allowFullScreen={true}
-        /> */}
+        <Thumbnails
+          videos={[
+            {
+              videoId: "F5GSa8mc4i8",
+              thumbnail: {
+                url: "http://img.youtube.com/vi/F5GSa8mc4i8/mq1.jpg",
+                width: 320,
+                height: 180,
+              },
+              videoTitle: "求人票ではわからない、地方企業の魅力",
+            },
+            {
+              videoId: "g9nYRGkNn0g",
+              thumbnail: {
+                url: "http://img.youtube.com/vi/g9nYRGkNn0g/mq1.jpg",
+                width: 320,
+                height: 180,
+              },
+              videoTitle: "ゆるゆるランチタイムトーク",
+            },
+            {
+              videoId: "meauXficQlw",
+              thumbnail: {
+                url: "http://img.youtube.com/vi/meauXficQlw/mq1.jpg",
+                width: 320,
+                height: 180,
+              },
+              videoTitle: "ゆるゆるおやつタイムトーク",
+            },
+          ]}
+          setPlayVideoId={setVideoId}
+        />
+        <Typography className={classes.h3}>
+          「求人票ではわからない、地方企業の魅力」ご視聴後アンケートにご協力をお願いします。
+        </Typography>
         <RoundButton
-          onClick={() => window.open("https://questant.jp/q/fukushima_yoyaku")}
+          onClick={() => window.open("https://questant.jp/q/fukushimasankasya")}
           variant="contained"
           color="primary"
           className={classes.buttonReserve}
         >
-          オンライン参加に予約する
+          アンケートに回答する
         </RoundButton>
         <Typography variant="h3" className={classes.h3}>
-          プログラム
+          福島くらし＆しごとセミナー
+        </Typography>
+        <Typography className={classes.h3}>
+          Zoomを使用したオンラインセミナー
         </Typography>
         <ul className={classes.programs}>{programs}</ul>
-        <Typography variant="h3" className={classes.h3}>
-          ゲスト
-        </Typography>
-        <GuestLabel text={"地方での就職セミナー"} />
-        <Typography variant="h3" style={{ marginBottom: "10px" }}>
-          求人票ではわからない、地方企業の魅力
-        </Typography>
-        <Typography style={{ marginBottom: "20px" }}>
-          県内企業に自ら赴き、直接経営者や社員からお話しを伺っている金内さんだからこそ知る地方企業の魅力を伺います！
-        </Typography>
-        <div className={classes.guests}>
-          <Guest
-            image={GuestImage1}
-            role={"ゲスト"}
-            name={"金内　正"}
-            job={"一般社団法人\nキャリア支援機構"}
-          />
-          <Guest
-            image={GuestImage2}
-            role={"ファシリテーター"}
-            name={"大宮　美咲"}
-            job={"コーディネーター\nキャリアコンサルタント"}
-          />
+        <div>
+          <RoundButton
+            onClick={() =>
+              window.open(
+                "http://www.task-asp.net/cu/eg/lar070009.task?app=202000182"
+              )
+            }
+            variant="contained"
+            color="primary"
+            className={classes.buttonReserve}
+          >
+            セミナーに申し込む
+          </RoundButton>
         </div>
-        <GuestLabel text={"先輩移住者トーク①"} />
-        <Typography variant="h3" style={{ marginBottom: "10px" }}>
-          都会での仕事にモヤモヤ？？
-          <br />
-          「地方ならではの仕事の流儀」お伝えします！
-        </Typography>
-        <Typography style={{ marginBottom: "20px" }}>
-          本業と副業という区切りではない、複数の仕事をこなすゲストのお２人から、仕事と暮らしがつながる「地方ならではの仕事の流儀」や新しい働き方についてお話しを伺います。
-        </Typography>
-        <div className={classes.guests}>
-          <Guest
-            image={GuestImage5}
-            role={"ゲスト"}
-            name={"渡部　允道"}
-            job={"一般社団法人\nブルーバード"}
-          />
-          <Guest
-            image={GuestImage6}
-            role={"ゲスト"}
-            name={"上神田　健太"}
-            job={"株式会社\n家守舎桃ノ音アカリ"}
-          />
+        <div>
+          <RoundButton
+            onClick={() =>
+              window.open(
+                "https://www.pref.fukushima.lg.jp/site/fui/menu-seminar.html"
+              )
+            }
+            variant="contained"
+            color="primary"
+            className={classes.buttonReserve}
+          >
+            セミナー情報詳細
+          </RoundButton>
         </div>
-        <GuestLabel text={"先輩移住者トーク②"} />
-        <Typography variant="h3" style={{ marginBottom: "10px" }}>
-          サーフィンがつないでくれた、
-          <br />
-          地方満喫ライフとは？
-        </Typography>
-        <Typography style={{ marginBottom: "20px" }}>
-          自称「つながりメーカー」大和田さんが繋いだ、サーフィン女子後藤さんと南相馬市の海。地方で実現したいリア充な暮らしを伺います。
-        </Typography>
-        <div className={classes.guests}>
-          <Guest
-            image={GuestImage7}
-            role={"ゲスト"}
-            name={"大和田　智之"}
-            job={"南相馬市役所観光交流課\n交流推進係"}
-          />
-          <Guest
-            image={GuestImage8}
-            role={"ゲスト"}
-            name={"後藤　彩"}
-            job={"製薬会社勤務\n毎週末南相馬へ通うサーフィン初心者"}
-          />
-        </div>
-        <GuestLabel text={"先輩移住者トーク③"} />
-        <Typography variant="h3" style={{ marginBottom: "10px" }}>
-          人と人との繋がりで生まれる、
-          <br />
-          空き家を通じた地域活性化とは？
-        </Typography>
-        <Typography style={{ marginBottom: "20px" }}>
-          人と人が出会える場所として「ゲストハウス」を運営する拓哉さんと、拓哉さんの師匠である「おせっかいな建設屋」である康平さんが生み出す、人を繋げる空き家再生について伺います。
-        </Typography>
-        <div className={classes.guests}>
-          <Guest
-            image={GuestImage3}
-            role={"ゲスト"}
-            name={"斎藤　拓哉"}
-            job={"隠れ家ゲストハウス\n空き家てらす"}
-          />
-          <Guest
-            image={GuestImage4}
-            role={"ゲスト"}
-            name={"齋藤　康平"}
-            job={"wowroom\n空き家てらす"}
-          />
-        </div>
-        <GuestLabel text={"先輩移住者トーク①～③"} />
-        <Typography style={{ marginBottom: "20px" }}>
-          ライターであり、ご自身も移住者である立場から、それぞれの先輩移住者や地域で暮らす方々のリアルなお話しを聞き出します！
-        </Typography>
-        <div className={classes.guests}>
-          <Guest
-            image={GuestImage9}
-            role={"ファシリテーター"}
-            name={"山根　麻衣子"}
-            job={"ライター\nいわき経済新聞編集長"}
-          />
-        </div>
+
         <BackButton onClick={props.closeModal} />
       </Modal>
       {props.open && (
@@ -418,7 +347,7 @@ const Program: React.FC<IProgramProps> = (props) => {
         </Typography>
       </div>
       <div className={classes.title}>
-        <Typography variant="body2" className={classes.subtitleText}>
+        <Typography className={classes.subtitleText}>
           {props.subtitle}
         </Typography>
         <Typography className={classes.titleText}>{props.title}</Typography>

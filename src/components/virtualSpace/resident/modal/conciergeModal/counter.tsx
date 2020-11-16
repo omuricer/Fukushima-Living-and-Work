@@ -49,12 +49,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "60px",
       position: "relative",
     },
-    chat: {
-      backgroundColor: "#fde4c8",
-      padding: "10px",
-      marginBottom: "20px",
-      marginTop: "20px",
-    },
   })
 );
 
@@ -180,28 +174,6 @@ const Counter: React.FC<IConciergeModalProps> = (props) => {
           <Image src={PresentImage} />
         </div>
       </Flow>
-      <div className={classes.chat}>
-        <Typography className={classes.h3}>
-          わからないことがあった場合は
-          <br />
-          チャットで気軽にお問い合わせください
-        </Typography>
-        <div className={classes.wrap}>
-          <div className={classes.registerUser}>
-            <SquareButton
-              variant="contained"
-              color="primary"
-              className={classes.answerButton}
-              onClick={() => {
-                props.closeModal();
-                props.handleAnothers.openModal("conciergeChat");
-              }}
-            >
-              チャット相談
-            </SquareButton>
-          </div>
-        </div>
-      </div>
       <BackButton onClick={props.closeModal} />
     </React.Fragment>
   );
