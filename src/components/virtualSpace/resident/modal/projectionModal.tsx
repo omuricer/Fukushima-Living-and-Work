@@ -115,53 +115,30 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
 
   const programs = [
     {
-      title: "オープニング",
-      subtitle: "",
-      start: "10:00",
-      end: "",
-    },
-    {
-      title: "求人票ではわからない、地方企業の魅力",
-      subtitle: "地方での就職セミナー",
-      start: "10:10",
-      end: "10:45",
+      title: "テレワーク×○○～地域とつながることで広がる可能性～",
+      subtitle: "11月11日（水）",
+      start: "19:00",
+      end: "20:40",
     },
     {
       title:
-        "都会での仕事にモヤモヤ？？「地方ならではの仕事の流儀」お伝えします！",
-      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク①",
-      start: "11:00",
-      end: "11:50",
+        "FPが教える！地方移住するなら知っておきたいお金事情～ふくしまぐらし。の実践者から学ぶ～",
+      subtitle: "11月17日（火）",
+      start: "19:00",
+      end: "20:30",
     },
     {
-      title: "市町村PR（ランチタイムトーク）",
-      subtitle: "",
-      start: "12:00",
-      end: "12:40",
+      title: "転職者に聞く！都市部とは違う！？地方で働くということ",
+      subtitle: "11月25日（水）",
+      start: "19:15",
+      end: "20:45",
     },
     {
-      title: "サーフィンが繋いでくれた、\n地方満喫ライフとは？",
-      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク②",
-      start: "13:00",
-      end: "13:50",
-    },
-    {
-      title: "人と人とのつながりで生まれる、\n空き家を通じた地域活性化とは？",
-      subtitle: "今だからこそ、聞いておきたい！先輩移住者トーク③",
-      start: "14:00",
-      end: "14:50",
-    },
-    {
-      title: "市町村PR（おやつタイムトーク）",
-      subtitle: "",
-      start: "15:00",
-      end: "15:40",
-    },
-    {
-      title: "終了",
-      subtitle: "",
-      start: "",
-      end: "17:00",
+      title:
+        "子育ての悩み、福島の移住コーディネーター視点で解決！～先輩ママパパの本音もお伝えします～",
+      subtitle: "11月29日（日）",
+      start: "10:00",
+      end: "11:30",
     },
   ].map((p, i) => <Program {...p} key={i} />);
 
@@ -246,30 +223,34 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           Zoomを使用したオンラインセミナー
         </Typography>
         <ul className={classes.programs}>{programs}</ul>
-        <RoundButton
-          onClick={() =>
-            window.open(
-              "http://www.task-asp.net/cu/eg/lar070009.task?app=202000182"
-            )
-          }
-          variant="contained"
-          color="primary"
-          className={classes.buttonReserve}
-        >
-          セミナーに申し込む
-        </RoundButton>
-        <RoundButton
-          onClick={() =>
-            window.open(
-              "https://www.pref.fukushima.lg.jp/site/fui/menu-seminar.html"
-            )
-          }
-          variant="contained"
-          color="primary"
-          className={classes.buttonReserve}
-        >
-          セミナー情報詳細
-        </RoundButton>
+        <div>
+          <RoundButton
+            onClick={() =>
+              window.open(
+                "http://www.task-asp.net/cu/eg/lar070009.task?app=202000182"
+              )
+            }
+            variant="contained"
+            color="primary"
+            className={classes.buttonReserve}
+          >
+            セミナーに申し込む
+          </RoundButton>
+        </div>
+        <div>
+          <RoundButton
+            onClick={() =>
+              window.open(
+                "https://www.pref.fukushima.lg.jp/site/fui/menu-seminar.html"
+              )
+            }
+            variant="contained"
+            color="primary"
+            className={classes.buttonReserve}
+          >
+            セミナー情報詳細
+          </RoundButton>
+        </div>
 
         <BackButton onClick={props.closeModal} />
       </Modal>
@@ -366,7 +347,7 @@ const Program: React.FC<IProgramProps> = (props) => {
         </Typography>
       </div>
       <div className={classes.title}>
-        <Typography variant="body2" className={classes.subtitleText}>
+        <Typography className={classes.subtitleText}>
           {props.subtitle}
         </Typography>
         <Typography className={classes.titleText}>{props.title}</Typography>
