@@ -242,10 +242,35 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
         <Typography variant="h3" className={classes.h3}>
           福島くらし＆しごとセミナー
         </Typography>
-        <Typography variant="body2" className={classes.h3}>
+        <Typography className={classes.h3}>
           Zoomを使用したオンラインセミナー
         </Typography>
         <ul className={classes.programs}>{programs}</ul>
+        <RoundButton
+          onClick={() =>
+            window.open(
+              "http://www.task-asp.net/cu/eg/lar070009.task?app=202000182"
+            )
+          }
+          variant="contained"
+          color="primary"
+          className={classes.buttonReserve}
+        >
+          セミナーに申し込む
+        </RoundButton>
+        <RoundButton
+          onClick={() =>
+            window.open(
+              "https://www.pref.fukushima.lg.jp/site/fui/menu-seminar.html"
+            )
+          }
+          variant="contained"
+          color="primary"
+          className={classes.buttonReserve}
+        >
+          セミナー情報詳細
+        </RoundButton>
+
         <Typography variant="h3" className={classes.h3}>
           ゲスト
         </Typography>
