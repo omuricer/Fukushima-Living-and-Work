@@ -102,7 +102,7 @@ export interface IProjectionModalProps extends IModalProps {
   content: ProjectionContent;
 }
 const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
-  const [videoId, setVideoId] = useState<string | undefined>('F5GSa8mc4i8');
+  const [videoId, setVideoId] = useState<string | undefined>("F5GSa8mc4i8");
   const backHistoryContext = useContext(BackHistoryContext);
   const isMobileContext = useContext(IsMobileContext);
   const { width, height } = useWindowDimensions();
@@ -196,14 +196,6 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
             width: `${LiveWidth}px`,
           }}
         />
-        <RoundButton
-          onClick={() => window.open("https://questant.jp/q/fukushima_yoyaku")}
-          variant="contained"
-          color="primary"
-          className={classes.buttonReserve}
-        >
-          オンライン参加に予約する
-        </RoundButton>
         <Thumbnails
           videos={[
             {
@@ -236,8 +228,22 @@ const ProjectionModal: React.FC<IProjectionModalProps> = (props) => {
           ]}
           setPlayVideoId={setVideoId}
         />
+        <Typography className={classes.h3}>
+          「求人票ではわからない、地方企業の魅力」ご視聴後アンケートにご協力をお願いします。
+        </Typography>
+        <RoundButton
+          onClick={() => window.open("https://questant.jp/q/fukushimasankasya")}
+          variant="contained"
+          color="primary"
+          className={classes.buttonReserve}
+        >
+          アンケートに回答する
+        </RoundButton>
         <Typography variant="h3" className={classes.h3}>
-          プログラム
+          福島くらし＆しごとセミナー
+        </Typography>
+        <Typography variant="body2" className={classes.h3}>
+          Zoomを使用したオンラインセミナー
         </Typography>
         <ul className={classes.programs}>{programs}</ul>
         <Typography variant="h3" className={classes.h3}>
